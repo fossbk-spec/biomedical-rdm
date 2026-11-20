@@ -1,0 +1,20 @@
+project:
+  type: book
+  output-dir: _site
+
+book:
+  title: "Biomedical Research Data Management"
+  subtitle: "Quản lý dữ liệu nghiên cứu y sinh"
+  chapters:
+    - index.qmd
+    - docs/literature-review/index.md
+    - docs/INPUT-INVENTORY.md
+    - docs/DECISIONS.md
+    - docs/DATA-USE.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+lang: vi

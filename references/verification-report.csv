@@ -1,0 +1,104 @@
+key,title,bib_year,bib_doi,method,openalex,semantic_scholar,oa_year,oa_n_authors,oa_pages,s2_year,s2_n_authors,doi_found
+ref_001,DAMA-DMBOK® 3.0 project,,,,NOT_APPLICABLE,,,,,,,,
+ref_002,Adoption Model for Analytics Maturity,,,,NOT_APPLICABLE,,,,,,,,
+ref_003,Horizon Europe data management plan,,,,NOT_APPLICABLE,,,,,,,,
+ref_004,ICH E6(R3) Guideline for Good Clinical Practice,,,,NOT_APPLICABLE,,,,,,,,
+ref_005,Updated elements of an NIH Data Management and Sharing Plan,,,,NOT_APPLICABLE,,,,,,,,
+ref_006,Research electronic data capture (REDCap) — A metadata-driven methodol,2009,,title-search,TITLE_MATCH_YEAR_DIFF,NOT_FOUND,2008,6,377-381,,,10.1016/j.jbi.2008.08.010
+ref_007,Final NIH Policy for Data Management and Sharing,,,,NOT_APPLICABLE,,,,,,,,
+ref_008,Supplemental information to the NIH Policy for Data Management and Sha,,,,NOT_APPLICABLE,,,,,,,,
+ref_009,FHIR,,,,NOT_APPLICABLE,,,,,,,,
+ref_010,FHIR to OMOP Implementation Guide,,,,NOT_APPLICABLE,,,,,,,,
+ref_011,Our journey,2025,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2013,1,6852-6866,,,10.1021/om400716v
+ref_012,The FAIR Guiding Principles for scientific data management and steward,2016,,title-search,MATCH,MATCH,2016,53,160018-160018,2016,53,10.1038/sdata.2016.18
+ref_013,GCDMP — Good Clinical Data Management Practices,,,,NOT_APPLICABLE,,,,,,,,
+ref_014,DAMA-DMBOK: Data Management Body of Knowledge,2017,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2020,1,,,,10.5281/zenodo.4205665
+ref_015,Data governance in academic medicine,,,,NOT_APPLICABLE,,,,,,,,
+ref_016,What is data stewardship? Towards a comprehensive understanding,2023,,title-search,MATCH,NOT_FOUND,2023,3,104337-104337,,,10.1016/j.jbi.2023.104337
+ref_017,"Professionalising data stewardship in the Netherlands: Competences, tr",2021,,title-search,NO_RELIABLE_MATCH,MATCH,2021,1,,2021,1,10.5281/zenodo.4773339
+ref_018,Data stewards: Overview,n.d.,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2007,4,,,,
+ref_019,Horizon Europe FAIR Data Management Plan,,,,NOT_APPLICABLE,,,,,,,,
+ref_020,"Expert Advisory Group on Data Access. (2017, August)",,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2025,1,,,,10.2471/b09159
+ref_021,A generic workflow for the data FAIRification process,2020,,title-search,TITLE_MATCH_YEAR_DIFF,NOT_FOUND,2019,7,56-65,,,10.1162/dint_a_00028
+ref_022,DataCite Metadata Schema for the publication and citation of research ,2024,,title-search,TITLE_MATCH_YEAR_DIFF,NOT_FOUND,2026,1,,,,10.14454/28a4-kd32
+ref_023,Common Data Elements Repository,2024,,title-search,MATCH,NOT_FOUND,2024,1,182-190,,,10.1080/02763869.2024.2323896
+ref_024,"Electronic systems, electronic records, and electronic signatures in c",,,,NOT_APPLICABLE,,,,,,,,
+ref_025,Castor EDC & lightweight EDC for IITs,,,,NOT_APPLICABLE,,,,,,,,
+ref_026,A pragmatic method for transforming clinical research data from the re,2017,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2019,1,83,,,
+ref_027,REDCap2OMOP: A platform for ETLing REDCap projects into the OMOP CDM,,,,NOT_APPLICABLE,,,,,,,,
+ref_028,Methods and dimensions of electronic health record data quality assess,2013,,title-search,TITLE_MATCH_YEAR_DIFF,NOT_FOUND,2012,2,144-151,,,10.1136/amiajnl-2011-000681
+ref_029,Evaluating source data verification as a quality control measure in cl,2014,,title-search,MATCH,NOT_FOUND,2014,10,671-680,,,10.1177/2168479014554400
+ref_030,A harmonized data quality assessment terminology and framework for the,2016,10.13063/2327-9214.1244,doi,MATCH,MATCH,2016,20,18-18,2016,20,10.13063/2327-9214.1244
+ref_031,Inference and missing data,1976,,title-search,MATCH,NOT_FOUND,1976,1,581-581,,,10.1093/biomet/63.3.581
+ref_032,Multiple imputation for missing data in epidemiological and clinical r,2009,,title-search,MATCH,NOT_FOUND,2009,8,b2393-b2393,,,10.1136/bmj.b2393
+ref_033,"1,500 scientists lift the lid on reproducibility",2016,,title-search,MATCH,MATCH,2016,1,452-454,2016,1,10.1038/533452a
+ref_034,FHIR to CDISC Joint Mapping Implementation Guide,,,,NOT_APPLICABLE,,,,,,,,
+ref_035,Valueset-example-characteristic-codes,2026,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2017,4,1-13,,,10.1016/j.jbi.2017.04.010
+ref_036,"SMART on FHIR: A standards-based, interoperable apps platform for elec",2016,,title-search,MATCH,NOT_FOUND,2016,5,899-908,,,10.1093/jamia/ocv189
+ref_037,Push Button Population Health: The SMART/HL7 FHIR Bulk Data Access API,2020,,title-search,PARTIAL,PARTIAL,2020,9,151-151,2020,9,10.1038/s41746-020-00358-4
+ref_038,Observational Health Data Sciences and Informatics (OHDSI): Opportunit,2015,,title-search,MATCH,NOT_FOUND,2015,17,574-578,,,10.3233/978-1-61499-564-7-574
+ref_039,Validation of a common data model for active safety surveillance resea,2012,,title-search,MATCH,NOT_FOUND,2012,5,54-60,,,10.1136/amiajnl-2011-000376
+ref_040,Comprehensive comparative effectiveness and safety of first-line antih,2019,,title-search,MATCH,PARTIAL,2019,11,1816-1826,2019,11,10.1016/s0140-6736(19)32317-7
+ref_041,Applying the FAIR principles to data in a hospital: Challenges and opp,2022,,title-search,MATCH,TITLE_MATCH_YEAR_DIFF,2022,13,12-12,2021,11,10.1186/s13326-022-00263-7
+ref_042,From raw data to FAIR data: The FAIRification workflow for health rese,2020,,title-search,MATCH,NOT_FOUND,2020,14,e21-e32,,,10.1055/s-0040-1713684
+ref_043,Lessons learned from evaluating the NFDI4Health metadata schema for he,2025,,title-search,MATCH,NOT_FOUND,2025,12,,,,10.1101/2025.09.26.25336637
+ref_044,The FAIR Cookbook — the essential resource for and by FAIR doers,2023,,title-search,MATCH,NOT_FOUND,2023,63,292-292,,,10.1038/s41597-023-02166-3
+ref_045,Evaluating FAIR data maturity using the FAIR Data Maturity Model,2019,,title-search,NO_RELIABLE_MATCH,NOT_FOUND,2023,2,,,,10.5281/zenodo.8189262
+ref_046,UNESCO Recommendation on Open Science,2021,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_047,Data sharing statements for clinical trials: A requirement of the Inte,2017,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_048,Clinical trial reporting requirements,,,,NOT_APPLICABLE,,,,,,,,
+ref_049,Compliance with results reporting at ClinicalTrials.gov before and aft,2025,10.70542/rcj-japh-art-vr3aga,doi,MATCH,MATCH,2025,7,,2025,7,10.70542/rcj-japh-art-vr3aga
+ref_050,Practical challenges for researchers in data sharing,,,,NOT_APPLICABLE,,,,,,,,
+ref_051,Preferred repositories,,,,NOT_APPLICABLE,,,,,,,,
+ref_052,"Responsible, practical genomic data sharing that accelerates research",2020,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_053,"Vivli. (2018, July 20)",,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_054,Regulation (EU) No 536/2014 of the European Parliament and of the Coun,,,,NOT_APPLICABLE,,,,,,,,
+ref_055,"Thông tư 33/2025/TT-BYT quy định thời hạn lưu trữ hồ sơ, tài liệu ngàn",,,,NOT_APPLICABLE,,,,,,,,
+ref_056,Guidelines for media sanitization,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_057,Regulation (EU) 2016/679 of the European Parliament and of the Council,,,,NOT_APPLICABLE,,,,,,,,
+ref_058,Regulation (EU) 2025/327 of the European Parliament and of the Council,,,,NOT_APPLICABLE,,,,,,,,
+ref_059,Can personal data be recycled? The reuse and repurposing of data under,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_060,"Standards for Privacy of Individually Identifiable Health Information,",,,,NOT_APPLICABLE,,,,,,,,
+ref_061,"Processing neuroimaging data for research purposes: Open Science, FAIR",2025,10.1093/idpl/ipaf020,doi,MATCH,NOT_FOUND,2025,2,194-212,,,10.1093/idpl/ipaf020
+ref_062,Luật Bảo vệ dữ liệu cá nhân,,,,NOT_APPLICABLE,,,,,,,,
+ref_063,Nghị định 356/2025/NĐ-CP hướng dẫn Luật Bảo vệ dữ liệu cá nhân,,,,NOT_APPLICABLE,,,,,,,,
+ref_064,Luật Dữ liệu,,,,NOT_APPLICABLE,,,,,,,,
+ref_065,Thông tư 13/2025/TT-BYT hướng dẫn triển khai hồ sơ bệnh án điện tử,,,,NOT_APPLICABLE,,,,,,,,
+ref_066,Thông tư 50/2025/TT-BYT quy định về thử thuốc trên lâm sàng,,,,NOT_APPLICABLE,,,,,,,,
+ref_067,"K-anonymity, l-diversity and t-closeness",2023,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_068,k-Anonymity: A model for protecting privacy,2002,10.1142/s0218488502001648,doi,MATCH,MATCH,2002,1,557-570,2002,1,10.1142/s0218488502001648
+ref_069,ℓ-Diversity: Privacy beyond k-anonymity,2007,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_070,Differential privacy: A survey of results,2008,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_071,Privacy-first health research with federated learning,2021,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_072,AI-readiness criteria for biomedical data,2024,,title-search,NOT_FOUND,MATCH,,,,2024,32,10.1101/2024.10.23.619844
+ref_073,Tackling algorithmic bias and promoting transparency in health dataset,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_074,Datasheets for datasets,2021,,title-search,NOT_FOUND,TITLE_MATCH_YEAR_DIFF,,,,2018,7,10.1145/3458723
+ref_075,Trusted research environments & Five Safes framework,,,,NOT_APPLICABLE,,,,,,,,
+ref_076,Die Datenintegrationszentren — Von der Konzeption in der Medizininform,2024,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_077,Secondary use of clinical data: The Vanderbilt approach,2014,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_078,The Stanford Medicine data science ecosystem for clinical and translat,2023,,title-search,NOT_FOUND,MATCH,,,,2023,12,10.1093/jamiaopen/ooad054
+ref_079,"Nghị quyết 57-NQ/TW về đột phá phát triển khoa học, công nghệ, đổi mới",,,,NOT_APPLICABLE,,,,,,,,
+ref_080,"Nghị quyết 72-NQ/TW về một số giải pháp đột phá, tăng cường bảo vệ, ch",,,,NOT_APPLICABLE,,,,,,,,
+ref_081,Quyết định 1308/QĐ-TTg phê duyệt Chiến lược dữ liệu quốc gia giai đoạn,,,,NOT_APPLICABLE,,,,,,,,
+ref_082,"Quyết định 3218/QĐ-BYT ban hành Quy chế quản lý, vận hành, sử dụng, kh",,,,NOT_APPLICABLE,,,,,,,,
+ref_083,Digital health policy and programs for hospital care in Vietnam: Scopi,2022,,title-search,NOT_FOUND,TITLE_MATCH_YEAR_DIFF,,,,2021,6,10.2196/32392
+ref_084,Status of digital health technology adoption in 5 Vietnamese hospitals,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_085,Digital transformation in electronic medical record management towards,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_086,Roadmap to the future of clinical trials in Vietnam,,,,NOT_APPLICABLE,,,,,,,,
+ref_087,Swarm Learning for decentralized and confidential clinical machine lea,2021,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_088,Socio-technical infrastructure for a learning health system,2024,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_089,Federated learning for predicting clinical outcomes in patients with C,2021,10.1038/s41591-021-01506-3,doi,MATCH,MATCH,2021,99,1735-1743,2021,99,10.1038/s41591-021-01506-3
+ref_090,Federated learning enables big data for rare cancer boundary detection,2022,,title-search,NOT_FOUND,MATCH,,,,2022,279,10.1038/s41467-022-33407-5
+ref_091,MELLODDY: Cross-pharma federated learning at unprecedented scale unloc,2024,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_092,Federated learning in healthcare: From research to real-world deployme,2026,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_093,"Synthea: An approach, method, and software mechanism for generating sy",2018,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_094,Evaluating Synthea: Comprehensive analysis of a leading synthesized me,2024,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_095,LLMSYN: Generating synthetic electronic health records without patient,2024,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_096,Generating synthetic electronic health record data: A methodological s,2025,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_097,"Better, broader, safer: Using health data for research and analysis",2022,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_098,Factors associated with COVID-19-related death using OpenSAFELY,2020,,title-search,NOT_FOUND,NO_RELIABLE_MATCH,,,,2020,30,10.1101/2020.05.06.20092999
+ref_099,Toward a science of learning systems: A research agenda for the high-f,2015,,title-search,NOT_FOUND,NOT_FOUND,,,,,,
+ref_100,TRUST Platform: Home,,,,NOT_APPLICABLE,,,,,,,,
+ref_101,Overview of K-CURE Service,,,,NOT_APPLICABLE,,,,,,,,
+ref_102,The REDCap consortium: Building an international community of software,2019,,title-search,NOT_FOUND,MATCH,,,,2019,11,10.1016/j.jbi.2019.103208
+ref_103,"Safety of hydroxychloroquine, alone and in combination with azithromyc",2020,,title-search,NOT_FOUND,NOT_FOUND,,,,,,

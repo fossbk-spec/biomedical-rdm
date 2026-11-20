@@ -15,4 +15,4 @@ Repo đang được khởi tạo. Nội dung triển khai được thực hiện
 
 ## Giấy phép
 
-Nội dung dự kiến phát hành theo CC BY 4.0. Mã nguồn và công cụ hỗ trợ dự kiến phát hành theo MIT.
+Nội dung phát hành theo CC BY 4.0. Mã nguồn và công cụ hỗ trợ phát hành theo MIT.
