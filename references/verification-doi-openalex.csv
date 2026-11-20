@@ -1,0 +1,57 @@
+key,title,bib_year,doi,openalex,oa_title,oa_year,oa_n_authors,oa_pages,bib_pages
+ref_006,Research electronic data capture (REDCap) — A metadata-driven methodol,2009,10.1016/j.jbi.2008.08.010,TITLE_MATCH_YEAR_DIFF,Research electronic data capture (REDCap)—A metadata-driven methodolog,2008,6,377-381,377–381
+ref_012,The FAIR Guiding Principles for scientific data management and steward,2016,10.1038/sdata.2016.18,MATCH,The FAIR Guiding Principles for scientific data management and steward,2016,53,160018-160018,160018
+ref_016,What is data stewardship? Towards a comprehensive understanding,2023,10.1016/j.jbi.2023.104337,MATCH,What is data stewardship? Towards a comprehensive understanding,2023,3,104337-104337,104337
+ref_017,"Professionalising data stewardship in the Netherlands: Competences, tr",2021,10.5281/zenodo.4623713,DOI_NOT_RESOLVED,[DOI_NOT_RESOLVED],,,,
+ref_021,A generic workflow for the data FAIRification process,2020,10.1162/dint_a_00028,TITLE_MATCH_YEAR_DIFF,A Generic Workflow for the Data FAIRification Process,2019,7,56-65,56–65
+ref_022,DataCite Metadata Schema for the publication and citation of research ,2024,10.14454/mzv1-5b55,MATCH,DataCite Metadata Schema Documentation for the Publication and Citatio,2024,1,,
+ref_023,Common Data Elements Repository,2024,10.1080/02763869.2024.2323896,MATCH,Common Data Elements Repository,2024,1,182-190,182–190
+ref_026,A pragmatic method for transforming clinical research data from the re,2017,10.1016/j.jbi.2017.05.003,MATCH,A pragmatic method for transforming clinical research data from the re,2017,4,65-76,65–76
+ref_028,Methods and dimensions of electronic health record data quality assess,2013,10.1136/amiajnl-2011-000681,TITLE_MATCH_YEAR_DIFF,Methods and dimensions of electronic health record data quality assess,2012,2,144-151,144–151
+ref_029,Evaluating source data verification as a quality control measure in cl,2014,10.1177/2168479014554400,MATCH,Evaluating Source Data Verification as a Quality Control Measure in Cl,2014,10,671-680,671–680
+ref_030,A harmonized data quality assessment terminology and framework for the,2016,10.13063/2327-9214.1244,MATCH,A Harmonized Data Quality Assessment Terminology and Framework for the,2016,20,18-18,1244
+ref_031,Inference and missing data,1976,10.1093/biomet/63.3.581,MATCH,Inference and Missing Data,1976,1,581-581,581–592
+ref_032,Multiple imputation for missing data in epidemiological and clinical r,2009,10.1136/bmj.b2393,MATCH,Multiple imputation for missing data in epidemiological and clinical r,2009,8,b2393-b2393,b2393
+ref_033,"1,500 scientists lift the lid on reproducibility",2016,10.1038/533452a,MATCH,"1,500 scientists lift the lid on reproducibility",2016,1,452-454,452–454
+ref_036,"SMART on FHIR: A standards-based, interoperable apps platform for elec",2016,10.1093/jamia/ocv189,MATCH,"SMART on FHIR: a standards-based, interoperable apps platform for elec",2016,5,899-908,899–908
+ref_037,Push Button Population Health: The SMART/HL7 FHIR Bulk Data Access API,2020,10.1038/s41746-020-00358-4,PARTIAL,Push Button Population Health: The SMART/HL7 FHIR Bulk Data Access App,2020,9,151-151,151
+ref_039,Validation of a common data model for active safety surveillance resea,2012,10.1136/amiajnl-2011-000376,MATCH,Validation of a common data model for active safety surveillance resea,2012,5,54-60,54–60
+ref_040,Comprehensive comparative effectiveness and safety of first-line antih,2019,10.1016/s0140-6736(19)32317-7,MATCH,Comprehensive comparative effectiveness and safety of first-line antih,2019,11,1816-1826,1816–1826
+ref_041,Applying the FAIR principles to data in a hospital: Challenges and opp,2022,10.1186/s13326-022-00263-7,MATCH,Applying the FAIR principles to data in a hospital: challenges and opp,2022,13,12-12,Article
+ref_042,From raw data to FAIR data: The FAIRification workflow for health rese,2020,10.1055/s-0040-1713684,MATCH,From Raw Data to FAIR Data: The FAIRification Workflow for Health Rese,2020,14,e21-e32,e21–e32
+ref_043,Lessons learned from evaluating the NFDI4Health metadata schema for he,2025,10.1101/2025.09.26.25336637,MATCH,Lessons learned from evaluating the NFDI4Health metadata schema for he,2025,12,,
+ref_044,The FAIR Cookbook — the essential resource for and by FAIR doers,2023,10.1038/s41597-023-02166-3,MATCH,The FAIR Cookbook - the essential resource for and by FAIR doers,2023,63,292-292,292
+ref_045,Evaluating FAIR data maturity using the FAIR Data Maturity Model,2019,10.1038/s41597-019-0184-5,MISMATCH,"Evaluating FAIR maturity through a scalable, automated, community-gove",2019,11,174-174,174
+ref_047,Data sharing statements for clinical trials: A requirement of the Inte,2017,10.3346/jkms.2017.32.7.1051,MATCH,Data Sharing Statements for Clinical Trials: A Requirement of the Inte,2017,16,1051-1051,1051–1053
+ref_049,Compliance with results reporting at ClinicalTrials.gov before and aft,2025,10.70542/rcj-japh-art-vr3aga,MATCH,Compliance with Results Reporting at ClinicalTrials.gov Before and Aft,2025,7,,
+ref_050,Practical challenges for researchers in data sharing,2018,10.6084/m9.figshare.5975011,MATCH,Whitepaper: Practical challenges for researchers in data sharing,2018,7,,
+ref_052,"Responsible, practical genomic data sharing that accelerates research",2020,10.1038/s41576-020-0257-5,MATCH,"Responsible, practical genomic data sharing that accelerates research",2020,5,615-629,615–629
+ref_056,Guidelines for media sanitization,2025,10.6028/nist.sp.800-88r2,PARTIAL,Guidelines for Media Sanitization Revision 2 - Draft,2025,2,,
+ref_059,Can personal data be recycled? The reuse and repurposing of data under,2025,10.1093/ijlit/eaae016,MATCH,Can personal data be recycled? The reuse and repurposing of data under,2025,1,eaae016,Article
+ref_061,"Processing neuroimaging data for research purposes: Open Science, FAIR",2025,10.1093/idpl/ipaf020,MATCH,"Processing neuroimaging data for research purposes: Open Science, FAIR",2025,2,194-212,194
+ref_067,"K-anonymity, l-diversity and t-closeness",2023,10.5281/zenodo.8005847,MISMATCH,Data Privacy Handbook,2023,35,,
+ref_068,k-Anonymity: A model for protecting privacy,2002,10.1142/s0218488502001648,MATCH,k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY,2002,1,557-570,557–570
+ref_069,ℓ-Diversity: Privacy beyond k-anonymity,2007,10.1145/1217299.1217302,MATCH,L -diversity: Privacy beyond k -anonymity,2007,4,3-3,Article
+ref_070,Differential privacy: A survey of results,2008,10.1007/978-3-540-79228-4_1,MATCH,Differential Privacy: A Survey of Results,2008,1,1-19,
+ref_071,Privacy-first health research with federated learning,2021,10.1038/s41746-021-00489-2,MATCH,Privacy-first health research with federated learning,2021,18,132-132,132
+ref_072,AI-readiness criteria for biomedical data,2024,10.1101/2024.10.23.619844,MISMATCH,AI-readiness criteria for biomedical data in functional genomics and c,2024,34,,
+ref_073,Tackling algorithmic bias and promoting transparency in health dataset,2025,10.1016/s2589-7500(24)00224-3,TITLE_MATCH_YEAR_DIFF,Tackling algorithmic bias and promoting transparency in health dataset,2024,50,e64-e88,e64–e88
+ref_074,Datasheets for datasets,2021,10.1145/3458723,MATCH,Datasheets for datasets,2021,7,86-92,86–92
+ref_076,Die Datenintegrationszentren — Von der Konzeption in der Medizininform,2024,10.1007/s00103-024-03879-5,MISMATCH,Die Datenintegrationszentren – Von der Konzeption in der Medizininform,2024,6,629-636,629–636
+ref_077,Secondary use of clinical data: The Vanderbilt approach,2014,10.1016/j.jbi.2014.02.003,MATCH,Secondary use of clinical data: The Vanderbilt approach,2014,9,28-35,28–35
+ref_078,The Stanford Medicine data science ecosystem for clinical and translat,2023,10.1093/jamiaopen/ooad054,MATCH,The Stanford Medicine data science ecosystem for clinical and translat,2023,12,ooad054-ooad054,ooad054
+ref_083,Digital health policy and programs for hospital care in Vietnam: Scopi,2022,10.2196/32392,MATCH,Digital Health Policy and Programs for Hospital Care in Vietnam: Scopi,2022,6,e32392-e32392,e32392
+ref_084,Status of digital health technology adoption in 5 Vietnamese hospitals,2025,10.2196/53483,MATCH,Status of Digital Health Technology Adoption in 5 Vietnamese Hospitals,2025,12,e53483-e53483,e53483
+ref_085,Digital transformation in electronic medical record management towards,2025,10.52163/yhc.v66i4.2905,MISMATCH,41. CHUYỂN ĐỔI SỐ TRONG QUẢN LÝ HỒ SƠ BỆNH ÁN ĐIỆN TỬ HƯỚNG TỚI XÂY DỰ,2025,1,,262–268
+ref_087,Swarm Learning for decentralized and confidential clinical machine lea,2021,10.1038/s41586-021-03583-3,MATCH,Swarm Learning for decentralized and confidential clinical machine lea,2021,181,265-270,265–270
+ref_088,Socio-technical infrastructure for a learning health system,2024,10.1002/lrh2.10405,MATCH,Socio‐technical infrastructure for a learning health system,2024,4,e10405-e10405,e10405
+ref_089,Federated learning for predicting clinical outcomes in patients with C,2021,10.1038/s41591-021-01506-3,MATCH,Federated learning for predicting clinical outcomes in patients with C,2021,99,1735-1743,1735–1743
+ref_090,Federated learning enables big data for rare cancer boundary detection,2022,10.1038/s41467-022-33407-5,MATCH,Federated learning enables big data for rare cancer boundary detection,2022,279,7346-7346,7346
+ref_091,MELLODDY: Cross-pharma federated learning at unprecedented scale unloc,2024,10.1021/acs.jcim.3c00799,TITLE_MATCH_YEAR_DIFF,MELLODDY: Cross-pharma Federated Learning at Unprecedented Scale Unloc,2023,49,2331-2344,2331–2344
+ref_092,Federated learning in healthcare: From research to real-world deployme,2026,10.1146/annurev-bioeng-080125-041414,MATCH,Federated Learning in Healthcare: From Research to Real-World Deployme,2026,4,163-186,163–186
+ref_093,"Synthea: An approach, method, and software mechanism for generating sy",2018,10.1093/jamia/ocx079,TITLE_MATCH_YEAR_DIFF,"Synthea: An approach, method, and software mechanism for generating sy",2017,10,230-238,230–238
+ref_096,Generating synthetic electronic health record data: A methodological s,2025,10.1093/jamia/ocaf082,MATCH,Generating synthetic electronic health record data: a methodological s,2025,5,1227-1240,1227–1240
+ref_098,Factors associated with COVID-19-related death using OpenSAFELY,2020,10.1038/s41586-020-2521-4,MATCH,Factors associated with COVID-19-related death using OpenSAFELY,2020,31,430-436,430–436
+ref_099,Toward a science of learning systems: A research agenda for the high-f,2015,10.1136/amiajnl-2014-002977,TITLE_MATCH_YEAR_DIFF,Toward a science of learning systems: a research agenda for the high-f,2014,12,43-50,43–50
+ref_102,The REDCap consortium: Building an international community of software,2019,10.1016/j.jbi.2019.103208,MATCH,The REDCap consortium: Building an international community of software,2019,11,103208-103208,103208
+ref_103,"Safety of hydroxychloroquine, alone and in combination with azithromyc",2020,10.1016/s2665-9913(20)30276-9,MISMATCH,Risk of hydroxychloroquine alone and in combination with azithromycin ,2020,62,e698-e711,e698–e711

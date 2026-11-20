@@ -1,0 +1,8 @@
+_site/
+.quarto/
+/.luarc
+.quarto-localappdata/
+
+/.quarto/
+**/*.quarto_ipynb
+__pycache__/

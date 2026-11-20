@@ -1,10 +1,14 @@
-# Quản lý dữ liệu trong nghiên cứu y sinh: Yêu cầu từ thiết kế đề cương đến kết thúc nghiên cứu
-
-# Biomedical Research Data Management: Requirements from Study Design to Research Completion
+---
+title: "Quản lý dữ liệu trong nghiên cứu y sinh: Yêu cầu từ thiết kế đề cương đến kết thúc nghiên cứu"
+subtitle: "Biomedical Research Data Management: Requirements from Study Design to Research Completion"
+author: "Hoàng Quang Huy"
+date: 2026-11-20
+version: "1.0.0"
+---
 
 **Bản tổng hợp literature review — viết lại và hiệu đính từ bản Google Docs “Tổng Quan RDM Y Sinh” (60 trang, 25.133 từ, 334 tài liệu tham khảo) của TS. Hoàng Quang Huy.**
 **Ngày hoàn thành:** 20/11/2026. **Ngày chốt mọi khẳng định về phiên bản chuẩn và văn bản pháp luật:** 20/11/2026. **Phạm vi:** 2015–2026.
-**Nguồn:** toàn văn Google Docs đã trích xuất qua Google Docs API (`workspace/reviews/rdm-doc-2026-11-20/doc.txt`); bảng 334 tài liệu tham khảo chuẩn hóa APA (`workspace/your_files/rdm-334-tai-lieu-tham-khao-apa.md`); báo cáo nghiên cứu sâu ngày 19/11/2026 (`workspace/research_notes/biomedical-rdm-literature-review-20261119-1510/report.md`).
+**Nguồn:** toàn văn bản tổng hợp, bảng tài liệu tham khảo APA 334 mục và báo cáo nghiên cứu sâu được cung cấp trong bộ hồ sơ dự án.
 
 > **Năm hiệu đính quan trọng nhất so với bản Docs (chi tiết ở Phụ lục B):** (1) Thông tư 13/2025/TT-BYT — bệnh viện chậm nhất 30/9/2025, cơ sở khác chậm nhất 31/12/2026; (2) Nghị quyết 72-NQ/TW — khám miễn phí từ 2026 cho nhóm ưu tiên trước, các đối tượng còn lại từ 2028; (3) Tran và cộng sự về chính sách sức khỏe số Việt Nam là **2022**, *JMIR* 24(2), e32392, không phải 2025; (4) Luật 91/2025/QH15 hiệu lực 1/1/2026, Nghị định 356/2025 thay thế Nghị định 13/2023; (5) FHIR R6 chưa ban hành, OMOP CDM v5.4 là bản tham chiếu.
 
@@ -125,7 +129,7 @@ Khung RBQM tái thiết quy trình qua bốn mắt xích: nhận diện các y�
 
 *Thuộc bản tổng hợp literature review tiếng Việt "Quản lý dữ liệu trong nghiên cứu y sinh: Yêu cầu từ thiết kế đề cương đến kết thúc nghiên cứu". Phần này gồm §5 và §6 của bản tổng hợp.*
 
-**Quy ước trích dẫn.** Số trong ngoặc vuông [n] là số thứ tự trong bảng 334 tài liệu tham khảo đã chuẩn hóa APA 7th (`rdm-334-tai-lieu-tham-khao-apa.md`). Các tài liệu ghi "(tài liệu bổ sung)" không nằm trong bảng 334 mục mà được bổ sung từ nghiên cứu kiểm chứng ngày 19–20/11/2026; trích dẫn đầy đủ của chúng được ghi ngay trong văn bản. **Ngày chốt thông tin: 20/11/2026.** Mọi khẳng định về phiên bản chuẩn được ghi theo trạng thái tại ngày này.
+**Quy ước trích dẫn.** Số trong ngoặc vuông [n] là số thứ tự trong danh mục Tài liệu tham khảo cuối bản tổng hợp này (103 mục), không phải số trong danh mục gốc 334 mục. Các tài liệu ghi "(tài liệu bổ sung)" không nằm trong danh mục 103 mục mà được bổ sung từ nghiên cứu kiểm chứng ngày 19–20/11/2026; trích dẫn đầy đủ của chúng được ghi ngay trong văn bản. **Ngày chốt thông tin: 20/11/2026.** Mọi khẳng định về phiên bản chuẩn được ghi theo trạng thái tại ngày này.
 
 ---
 
@@ -137,9 +141,9 @@ Làm sạch dữ liệu, xử lý dữ liệu khuyết và khả năng tái lậ
 
 Hồ sơ bệnh án điện tử (EHR) được sinh ra để phục vụ chăm sóc lâm sàng, không phải để phục vụ nghiên cứu; vì vậy tái sử dụng thứ cấp dữ liệu EHR phải bắt đầu bằng đánh giá chất lượng có hệ thống, thay vì mặc nhiên giả định dữ liệu đầy đủ và đúng [28]. Weiskopf và Weng (2013) xác định năm chiều chất lượng: *completeness* (hiện diện), *correctness* (đúng với thực tế), *concordance* (nhất quán giữa các nguồn), *plausibility* (hợp lý theo tri thức lâm sàng) và *currency* (kịp thời) [28]. Năm chiều này không gộp thành một điểm số duy nhất, bởi mỗi chiều phát hiện một loại lỗi khác nhau: một trường dữ liệu có thể đầy đủ nhưng vẫn sai — như huyết áp ghi đều đặn mà sai đơn vị đo — và mâu thuẫn giữa chẩn đoán, thuốc đã kê và xét nghiệm thường báo hiệu lỗi ánh xạ hoặc nhập liệu [28].
 
-Khung hài hòa của Kahn và cộng sự (2016) bổ sung một ngôn ngữ đánh giá thống nhất, gồm ba nhóm: *conformance* (tuân thủ định dạng, quan hệ và quy tắc tính toán đã định), *completeness* và *plausibility* — trong đó plausibility gồm tính duy nhất và tính hợp lý theo thời gian [30]. Đóng góp phương pháp luận quan trọng nhất của khung này là phân biệt *verification* (kiểm tra nội bộ theo quy tắc định trước) với *validation* (đối chiếu với chuẩn bên ngoài độc lập): một bộ dữ liệu có thể vượt qua verification mà vẫn trượt validation, nên chỉ báo cáo một trong hai là chưa đủ [30]. Cả hai khung hội tụ ở nguyên tắc *fitness for use*: chất lượng chỉ có nghĩa khi gắn với mục đích phân tích cụ thể; cùng một bộ dữ liệu có thể đủ tốt cho mô tả dịch tễ nhưng không đủ tốt cho suy diễn nhân quả [134, 135].
+Khung hài hòa của Kahn và cộng sự (2016) bổ sung một ngôn ngữ đánh giá thống nhất, gồm ba nhóm: *conformance* (tuân thủ định dạng, quan hệ và quy tắc tính toán đã định), *completeness* và *plausibility* — trong đó plausibility gồm tính duy nhất và tính hợp lý theo thời gian [30]. Đóng góp phương pháp luận quan trọng nhất của khung này là phân biệt *verification* (kiểm tra nội bộ theo quy tắc định trước) với *validation* (đối chiếu với chuẩn bên ngoài độc lập): một bộ dữ liệu có thể vượt qua verification mà vẫn trượt validation, nên chỉ báo cáo một trong hai là chưa đủ [30]. Cả hai khung hội tụ ở nguyên tắc *fitness for use*: chất lượng chỉ có nghĩa khi gắn với mục đích phân tích cụ thể; cùng một bộ dữ liệu có thể đủ tốt cho mô tả dịch tễ nhưng không đủ tốt cho suy diễn nhân quả [28], [30].
 
-Về vận hành, ba nguyên tắc rút ra là: đo chất lượng theo từng chiều trước khi phân tích; thực thi quy tắc làm sạch bằng mã có kiểm soát phiên bản, không ghi đè dữ liệu thô; và tách tập huấn luyện–kiểm thử trước khi ước lượng tham số làm sạch hay chuẩn hóa, để tránh rò rỉ dữ liệu [134, 135].
+Về vận hành, ba nguyên tắc rút ra là: đo chất lượng theo từng chiều trước khi phân tích; thực thi quy tắc làm sạch bằng mã có kiểm soát phiên bản, không ghi đè dữ liệu thô; và tách tập huấn luyện–kiểm thử trước khi ước lượng tham số làm sạch hay chuẩn hóa, để tránh rò rỉ dữ liệu [28], [30].
 
 *Lưu ý [30]: nội dung khung đánh giá và DOI đã kiểm chứng; danh sách tác giả đầy đủ vẫn cần đối chiếu PMC5051581 để ghi đúng 20 tác giả đầu theo APA 7th trước khi nộp.*
 
@@ -170,7 +174,7 @@ Một sai lầm kiến trúc phổ biến là xem CDISC, HL7 FHIR và OMOP CDM n
 | Mục đích cốt lõi | Thu thập, lập bảng, phân tích dữ liệu thử nghiệm lâm sàng để đệ trình | Trao đổi lâm sàng thời gian thực; kết nối ứng dụng với EHR | Nghiên cứu quan sát đa trung tâm, bằng chứng đời thực, cảnh giác dược |
 | Mô hình dữ liệu | Bảng phẳng (SDTM), tập phân tích (ADaM), Define-XML | Tài nguyên mô-đun qua REST API | Bảng quan hệ chuẩn lấy bệnh nhân làm trung tâm |
 
-Nguyên tắc chung nối ba hệ chuẩn lại là khả năng liên thông (Interoperable) trong bộ nguyên tắc FAIR: dữ liệu và siêu dữ liệu phải dùng ngôn ngữ chung, từ vựng chung và tham chiếu chuẩn để máy có thể đọc và kết hợp được [12]. FAIR là nguyên tắc, không phải tiêu chuẩn kỹ thuật; CDISC, FHIR và OMOP là ba phương tiện khác nhau để hiện thực hóa cùng một nguyên tắc đó trên ba tầng của vòng đời dữ liệu [12]. Hệ quả là các cầu nối chính thức giữa các chuẩn, như Hướng dẫn ánh xạ FHIR to CDISC (01/9/2021) giữa FHIR R4 với CDASH IG v2.1, SDTMIG v3.2 và LAB v1.0.1 [34].
+Nguyên tắc chung nối ba hệ chuẩn lại là khả năng liên thông (Interoperable) trong bộ nguyên tắc FAIR: dữ liệu và siêu dữ liệu phải dùng ngôn ngữ chung, từ vựng chung và tham chiếu chuẩn để máy có thể đọc và kết hợp được [12]. FAIR là nguyên tắc, không phải tiêu chuẩn kỹ thuật; CDISC, FHIR và OMOP là ba phương tiện khác nhau để hiện thực hóa cùng một nguyên tắc đó trên ba tầng của vòng đời dữ liệu [12]. Hệ quả là các cầu nối chính thức giữa các chuẩn, như Hướng dẫn ánh xạ FHIR to CDISC (01/9/2021) giữa FHIR R4 với CDASH IG v2.1, SDTMIG v3.2 và LAB v1.0.1 [34], là một phần của khả năng liên thông.
 
 ### 6.2. HL7 FHIR: từ trao đổi lâm sàng tới nghiên cứu
 
@@ -184,13 +188,13 @@ OMOP CDM do cộng đồng OHDSI phát triển áp dụng cấu trúc bảng qua
 
 Về phiên bản, OMOP CDM v5.4 (tháng 9/2021) là bản tham chiếu có độ tương thích công cụ rộng nhất tại ngày chốt 20/11/2026; v6.0 đã không được tiếp tục; còn v5.5 vẫn mâu thuẫn giữa các nguồn thứ cấp trong năm 2026, nên bản tổng hợp không trình bày v5.5 như phiên bản đã ổn định [11]. Theo OHDSI, tính đến cuối năm 2025, mạng lưới có 4.833 cộng tác viên ở 88 quốc gia, 544 nguồn dữ liệu ở 54 quốc gia và 974 triệu hồ sơ bệnh nhân duy nhất [11]. Các con số này được kiểm chứng theo ấn phẩm *OHDSI 2025 Year in Review* (tháng 12/2025); trong bảng 334 mục, số liệu tương ứng được ghi tại mục [11] (*Our Journey* 2025).
 
-Minh chứng kinh điển là nghiên cứu LEGEND-HTN của Suchard và cộng sự (2019): so sánh hiệu quả và an toàn các nhóm thuốc hạ áp đầu tay trên 4,9 triệu bệnh nhân, với 22.000 tỷ số nguy hại đã hiệu chuẩn điểm xu hướng [40]. Thiazide liên quan đến nguy cơ thấp hơn có ý nghĩa so với thuốc ức chế men chuyển (ACEi) về nhồi máu cơ tim cấp (HR 0,84), nhập viện do suy tim (HR 0,83) và đột quỵ (HR 0,83); KTC 95% của các ước lượng này nằm trong khoảng 0,74–0,95 [40]. Về phương pháp luận, LEGEND-HTN chạy theo mô hình phân tích phân tán — mã phân tích tới từng cơ sở, chạy tại chỗ, chỉ gửi về thống kê tổng hợp — nên nghiên cứu 4,9 triệu bệnh nhân không cần gom dữ liệu thô về một máy chủ trung tâm [19, 185].
+Minh chứng kinh điển là nghiên cứu LEGEND-HTN của Suchard và cộng sự (2019): so sánh hiệu quả và an toàn các nhóm thuốc hạ áp đầu tay trên 4,9 triệu bệnh nhân, với 22.000 tỷ số nguy hại đã hiệu chuẩn điểm xu hướng [40]. Thiazide liên quan đến nguy cơ thấp hơn có ý nghĩa so với thuốc ức chế men chuyển (ACEi) về nhồi máu cơ tim cấp (HR 0,84), nhập viện do suy tim (HR 0,83) và đột quỵ (HR 0,83); KTC 95% của các ước lượng này nằm trong khoảng 0,74–0,95 [40]. Về phương pháp luận, LEGEND-HTN chạy theo mô hình phân tích phân tán — mã phân tích tới từng cơ sở, chạy tại chỗ, chỉ gửi về thống kê tổng hợp — nên nghiên cứu 4,9 triệu bệnh nhân không cần gom dữ liệu thô về một máy chủ trung tâm [38], [40].
 
 ### 6.4. Cầu nối FHIR-to-OMOP: nơi sự bổ trợ phải được kiểm toán
 
 FHIR được tối ưu cho trao đổi từng hồ sơ, nên truy vấn quần thể lớn qua API có thể làm quá tải máy chủ lâm sàng — đó là lý do tồn tại của tầng phân tích OMOP, và là lý do cầu nối dưới đây phải là một đường ống có kiểm soát. Cột mốc hợp tác giữa HL7 và OHDSI là *FHIR to OMOP Implementation Guide* v1.0.0 (Informative), dựa trên FHIR R5 và ánh xạ lõi tài nguyên FHIR sang OMOP CDM v5.4; bản 2.0.0-ballot đang được xây dựng tính đến tháng 10/2026 [10]. Hướng dẫn này hệ thống hóa bốn dạng mất mát cấu trúc khi chuyển đổi từ chuẩn trao đổi sang chuẩn phân tích [10]: mất mát độ trung thực (mã bệnh chi tiết trên FHIR phải quy về khái niệm chuẩn OMOP rộng hơn); mất mát thông tin (chi tiết ngữ cảnh trên FHIR, như thời điểm chứng kiến cấp phát thuốc, không có cột tương ứng trong OMOP); mất mát quan hệ (liên kết chẩn đoán–thuốc bị tách vào các bảng CONDITION_OCCURRENCE và DRUG_EXPOSURE, chỉ phục hồi được bằng suy diễn thời gian); và mất mát độ chính xác và độ phân giải thời gian (OMOP yêu cầu ngày kết thúc dùng thuốc mà FHIR không có; dấu thời gian chính xác cao bị hạ cấp xuống ngày hoặc năm) [10].
 
-Chuyển đổi FHIR-to-OMOP vì vậy không bao giờ là không mất mát và phải được đối soát định lượng — độ bao phủ trường ánh xạ, độ bao phủ khái niệm chuẩn, đối soát số dòng nạp, tỷ lệ suy giảm độ chính xác thời gian — với chủ sở hữu giải trình cho từng chỉ số, thay vì chỉ kiểm tra "đã chạy xong ETL". Điểm nối trở lại §5: đường ống chuyển đổi không có chỉ số đối soát cũng giống như quy trình làm sạch không có khung đánh giá chất lượng [8, 134, 135].
+Chuyển đổi FHIR-to-OMOP vì vậy không bao giờ là không mất mát và phải được đối soát định lượng — độ bao phủ trường ánh xạ, độ bao phủ khái niệm chuẩn, đối soát số dòng nạp, tỷ lệ suy giảm độ chính xác thời gian — với chủ sở hữu giải trình cho từng chỉ số, thay vì chỉ kiểm tra "đã chạy xong ETL". Điểm nối trở lại §5: đường ống chuyển đổi không có chỉ số đối soát cũng giống như quy trình làm sạch không có khung đánh giá chất lượng [10], [28], [30].
 
 Kết lại, kiến trúc khuyến nghị là: FHIR ở tầng trao đổi lâm sàng, CDISC ở tầng thu thập và đệ trình thử nghiệm, OMOP ở tầng phân tích quần thể — và đầu tư vào các cầu nối có kiểm toán (FHIR-to-CDISC [34], FHIR-to-OMOP [10]) thay vì chọn một chuẩn duy nhất. Một bệnh viện đại học không cần bắt dữ liệu nói một thứ ngôn ngữ duy nhất; điều nó cần là dữ liệu nói được ba thứ ngôn ngữ đó một cách nhất quán và có kiểm chứng.
 
@@ -399,9 +403,9 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 ---
 
-## Phụ lục A. Bảng 30 bài báo và văn bản landmark
+## Phụ lục A. Bảng các bài báo và văn bản landmark (29 mục đủ điều kiện; xem ghi chú)
 
-*Bảng này chỉ gồm các nguồn đã kiểm chứng đầy đủ. Ký hiệu [n] là số mục trong danh mục 334 tài liệu tham khảo chuẩn hóa APA; ký hiệu (BSn) là tài liệu bổ sung ngoài danh mục 334, đã kiểm chứng đầy đủ ngày 19–20/11/2026 (xem danh sách tài liệu bổ sung cuối phần này). Không đưa vào bảng các mục còn [CẦN KIỂM CHỨNG] — cụ thể Kahn và cộng sự (2016) [30] (danh sách tác giả đầy đủ) và Sweeney (2002) [68] (DOI) — dù cả hai đều là công trình nền tảng; điều phối viên bổ sung sau khi đối chiếu PMC/PubMed.*
+*Bảng này chỉ gồm các nguồn đã kiểm chứng đầy đủ. Ký hiệu [n] là số mục trong danh mục Tài liệu tham khảo cuối bản tổng hợp này (103 mục); ký hiệu (BSn) là tài liệu bổ sung ngoài danh mục 103, đã kiểm chứng đầy đủ ngày 19–20/11/2026 (xem danh sách tài liệu bổ sung cuối phần này). Không đưa vào bảng các mục còn [CẦN KIỂM CHỨNG] — cụ thể Kahn và cộng sự (2016) [30] (danh sách tác giả đầy đủ) và Sweeney (2002) [68] (DOI) — dù cả hai đều là công trình nền tảng; điều phối viên bổ sung sau khi đối chiếu PMC/PubMed.*
 
 | Tác giả | Năm | Tạp chí / Nguồn | Đóng góp chính | DOI / Định danh |
 |---|---|---|---|---|
@@ -421,7 +425,6 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 | Rubin [31] | 1976 | *Biometrika* | Khung cơ chế dữ liệu khuyết MCAR / MAR / MNAR | 10.1093/biomet/63.3.581 |
 | Sterne và cộng sự [32] | 2009 | *BMJ* | Multiple imputation: tiềm năng và cạm bẫy; không dùng mean imputation hay LOCF | 10.1136/bmj.b2393 |
 | Baker [33] | 2016 | *Nature* | Khảo sát tái lập: >70% trong 1.500 nhà khoa học không tái lập được thí nghiệm của nhóm khác | 10.1038/533452a |
-| Dayan và cộng sự [89] | 2021 | *Nature Medicine* | EXAM: học liên kết dự báo kết cục COVID-19, 20 cơ sở, 16.148 ca; +16% AUC, +38% khả năng tổng quát hóa | 10.1038/s41591-021-01506-3 |
 | Pati và cộng sự [90] | 2022 | *Nature Communications* | FeTS: học liên kết phát hiện ranh giới u nguyên bào thần kinh đệm, 71 trung tâm, 6 châu lục, 6.314 bệnh nhân | 10.1038/s41467-022-33407-5 |
 | Warnat-Herresthal và cộng sự [87] | 2021 | *Nature* | Swarm Learning: học máy lâm sàng phi tập trung, bảo mật; >16.400 mẫu máu, >95.000 X-quang ngực | 10.1038/s41586-021-03583-3 |
 | Heyndrickx và cộng sự [91] | 2024 | *Journal of Chemical Information and Modeling* | MELLODDY: học liên kết liên dược phẩm, 10 công ty, >2,6 tỉ điểm dữ liệu, >21 triệu phân tử | 10.1021/acs.jcim.3c00799 |
@@ -435,6 +438,8 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 | International Council for Harmonisation [4] | 2025 | *ICH E6(R3) Guideline for Good Clinical Practice* | GCP mới: 11 nguyên tắc; Phụ lục 1 §4 về quản trị dữ liệu và hệ thống máy tính hóa | Step 4, 6/1/2025 (database.ich.org) |
 | National Institutes of Health [7] | 2020 (hiệu lực 2023) | *Final NIH Policy for Data Management and Sharing* (NOT-OD-21-013) | DMSP ≤2 trang, 6 thành phần; chia sẻ chậm nhất lúc công bố hoặc cuối thời gian tài trợ | NOT-OD-21-013 (grants.nih.gov) |
 | Quốc hội Việt Nam [62] | 2025 | *Luật Bảo vệ dữ liệu cá nhân*, số 91/2025/QH15 | Luật chuyên ngành đầu tiên về bảo vệ dữ liệu cá nhân của Việt Nam; 5 chương, 39 điều | Thông qua 26/6/2025, hiệu lực 1/1/2026 |
+
+*Ghi chú: Phụ lục A hiện còn 29 hàng đủ điều kiện; Dayan [89] đã được loại vì còn BIB_PENDING.*
 
 ## Phụ lục B. Danh mục thay đổi so với bản Google Docs
 

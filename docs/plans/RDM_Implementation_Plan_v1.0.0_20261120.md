@@ -1,5 +1,7 @@
 # Kế hoạch triển khai repo và mini-course Quản lý dữ liệu nghiên cứu y sinh
 
+> Đính chính ngày 20/11/2026: course nằm ở repo riêng `biomedical-rdm-course`; repo này chỉ giữ nội dung nghiên cứu và tài liệu literature review.
+
 **Phiên bản:** 1.0.0  
 **Ngày lập:** 20/11/2026  
 **Thời gian thực hiện:** 23/11–04/12/2026, 10 ngày làm việc  
