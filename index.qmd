@@ -1,0 +1,7 @@
+---
+title: "Biomedical Research Data Management"
+---
+
+Repo nguồn cho literature review, tài liệu tham khảo và quyết định quản trị của dự án RDM y sinh.
+
+Khóa học được phát triển tại [biomedical-rdm-course](https://github.com/fossbk-spec/biomedical-rdm-course).
