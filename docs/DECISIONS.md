@@ -112,3 +112,9 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - Sửa lỗi biểu thức chính quy làm script/CSS không bị loại khỏi trang (thẻ đóng dùng ký tự điều khiển thay vì tham chiếu ngược `\1`); đổi tên script và CSV sang tên trung lập (`audit_nodoi_pages.py`, `audit-nodoi-pages.csv`); thêm cột `model` và `checked_at`.
 - Chạy lại ngày 21/11/2026: MATCH 17, PARTIAL 9, MISMATCH 2, NOT_CHECKED 19 (trước: 18/8/3/18). Chỉ 7 mục đổi kết quả; một số do tải trang không ổn định (ví dụ `ref_024`, `ref_046` không tải được lần này). Kết quả không ổn định giữa các lần chạy nên chỉ là gợi ý.
 - Cập nhật cột `page_check`/`page_check_note` trong `citation-audit.csv`; **không đổi cột `status`**. Cần người duyệt xem lại: `ref_034` (nay MATCH nhưng vẫn `BIB_PENDING`), `ref_046` (nay NOT_CHECKED, vẫn `BIB_PENDING`; ghi chú trước nêu lỗi kiểu bản ghi `@inproceedings`), `ref_018`, `ref_053` (nay PARTIAL, vẫn `VERIFIED_UNAUDITED`).
+
+## 2026-11-22 — Quiz theo chương: số câu theo nội dung; quy tắc tự đánh giá theo tỷ lệ
+
+- **Người quyết định:** Ben.
+- **Quyết định:** Quiz được tích hợp vào từng chương với số câu theo các phần lý thuyết chính, không cố định một số câu cho mọi chương; quiz tổng hợp giữ 10 câu.
+- **Quy tắc tự đánh giá:** Tổng số câu là tổng số câu của sáu chương cộng 10 câu tổng hợp; mục tiêu là đúng ít nhất 70% tổng số câu và đúng ít nhất 2/3 câu Q1–Q3 của quiz tổng hợp. Đây là tự đánh giá, không ai ghi lại kết quả; làm lại không giới hạn.

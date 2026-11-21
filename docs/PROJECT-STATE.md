@@ -1,6 +1,6 @@
 # Trạng thái dự án Biomedical RDM
 
-**Phiên bản:** 2.1.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #5–#16 và dọn nhánh) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
+**Phiên bản:** 2.2.0 · **Ngày:** 22/11/2026 (cập nhật quiz theo chương) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
 **Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh.
 
 ## 1. Tóm tắt
@@ -59,7 +59,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 
 | # | Mục | Ghi chú |
 |---|---|---|
-| 1 | Quiz theo bài (5 câu/chương) trong repo gốc | Chỉ ch01 có trong chương. Có ngân hàng câu hỏi nháp (`docs/quizzes/`, ch01–ch04 và ch06, 75 câu; thiếu ch05; chưa commit) đã review: đáp án đúng phân bố lệch (B 77%, không có D), 88% đáp án đúng là phương án dài nhất, một số câu hỏi dữ kiện dễ đổi/chưa kiểm. **Cần chốt số câu và quy tắc 34 câu** (24 theo bài + 10 tổng hợp) nếu tổng thay đổi |
+| 1 | Quiz theo chương trong repo gốc | Đã tích hợp theo nội dung: ch01 5, ch02 4, ch03 5, ch04 5, ch05 4, ch06 6; quiz tổng hợp ch07 giữ 10 câu. Quy tắc tự đánh giá dùng tỷ lệ phần trăm; công cụ kiểm tra ở `scripts/check_quizzes.py`. |
 | 2 | Đồng bộ chương, phụ lục, syllabus, quiz mới sang repo khóa học | Đang mở rộng `sync_from_source.py` (manifest, danh mục tham khảo, sidebar, khớp thứ tự M5/M6) |
 | 3 | NIH: giới hạn 300 từ gắn với yếu tố nào; tên mẫu trên DMPTool production; điều kiện dùng mẫu cũ khi chuyển tiếp (NOT-OD-26-100) | Cần mở bản DOCX/trang NIH bằng trình duyệt; hiện `CONTENT_PENDING` |
 | 4 | Pháp lý Việt Nam chưa đối chiếu | Điều 69 Luật KCB 15/2023; nghĩa vụ DPIA/DPO theo Luật 91/2025 và NĐ 356/2025; TT 50/2025; bảng 30/20 năm của TT 33/2025; QĐ 3218 |
