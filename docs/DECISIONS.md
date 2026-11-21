@@ -88,3 +88,9 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - **Chuyển phụ lục:** URL, ngày kiểm, trạng thái pháp lý, mốc EHDS, lưu trữ/hủy dữ liệu và kết quả chạy Lab 5 nằm ở `docs/appendices/legal.md`, `retention.md` và `privacy-lab-notes.md`.
 - **Case study:** dùng nhãn tình huống giả định minh họa; không giữ số liệu, chế tài hoặc khẳng định chưa đọc được nguồn.
 - **Giới hạn:** nguồn Five Safes, NIST SP 800-88 Rev. 2 và chi tiết Thông tư 33/2025/TT-BYT vẫn `CONTENT_PENDING`/`BIB_PENDING` cho đến khi đọc được nguồn tương ứng.
+
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 4 và 6
+
+- **Quyết định tạm thời:** Giữ trong thân chương các khái niệm ổn định về chất lượng dữ liệu, Rubin/MICE, FAIR, RO-Crate và Patient-Level Split; chuyển URL, trạng thái nguồn, phiên bản chuẩn và kết quả chạy lab vào phụ lục.
+- **Case study/lab:** dùng tình huống minh họa; giữ lab trong chương; dữ liệu Lab 5 không được xem là đạt HIPAA Safe Harbor và không được đăng công khai trước khi kiểm tra tái định danh.
+- **Giới hạn:** số DQD, tỷ lệ Q-01–Q-05 và ngưỡng Pass Rate trong chương chỉ là minh họa; `ref_043`/`ref_072` là preprint, `ref_003`/`ref_030` là `BIB_PENDING`, và `ref_011` là *Our Journey* (2025). Các nội dung chưa có bằng chứng giữ `CONTENT_PENDING`/`[CẦN KIỂM CHỨNG]`.

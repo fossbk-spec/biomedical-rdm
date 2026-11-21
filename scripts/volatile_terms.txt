@@ -32,3 +32,16 @@ Thông tư 13/2025/TT-BYT
 Thông tư 33/2025/TT-BYT
 Luật 91/2025/QH15
 Nghị định 356/2025/NĐ-CP
+OHDSI Data Quality Dashboard
+DQD
+RO-Crate
+DataCite Metadata Schema
+Zenodo Sandbox
+FAIR Maturity Indicators
+Bridge2AI
+Patient-Level Split
+STANDING Together
+Datasheets for Datasets
+MICE
+Rubin's Rules
+CONTENT_PENDING
