@@ -47,3 +47,15 @@ Lệnh dự kiến dùng trong môi trường có mạng: `python -c "... reques
 `ref_104`–`ref_108` được đánh dấu `VERIFIED_UNAUDITED`; hai DOI của bài gốc Surgisphere được nhận diện trong tra cứu nhưng không được thêm vì chưa hoàn tất kiểm tra trực tiếp qua Crossref trong môi trường này.
 
 Kiểm tra bổ sung (21/11/2026, gọi trực tiếp `api.crossref.org`): bốn DOI `ref_105`–`ref_108` đều phân giải, tiêu đề/tác giả/năm khớp. Sửa `ref_108`: số trang đúng là `382:2582` (không phải `e102`, là số của bài gốc). Với `ref_104`, trang nhà xuất bản Genome Biology xác nhận 18 tạp chí, 2005–2015, 704 bài (19,6% số bài có danh sách gen Excel). Đây là đối chiếu metadata, chưa phải audit nội dung độc lập.
+
+## Đối chiếu nguồn chương 2 — 21/11/2026
+
+| Khóa | URL | Kết quả và giới hạn |
+|---|---|---|
+| `ref_109` | https://www.ema.europa.eu/system/files/documents/regulatory-procedural-guideline/reflection-paper-expectations-electronic-source-data-data-transcribed-electronic-data-collection_en.pdf | Đọc được tài liệu EMA 2010; trang ghi tài liệu đã được thay thế bởi hướng dẫn 2023. Không dùng để khẳng định nguồn gốc lịch sử của ALCOA. |
+| `ref_110` | https://www.gov.uk/government/publications/guidance-on-gxp-data-integrity | Đọc được trang GOV.UK/MHRA; công bố 09/03/2018. Không suy rộng lịch sử ALCOA ngoài nội dung tài liệu. |
+| `ref_111` | https://www.ema.europa.eu/system/files/documents/regulatory-procedural-guideline/guideline_on_computerised_systems_and_electronic_data_in_clinical_trials_en.pdf | Đọc được hướng dẫn EMA 2023; bản cuối được thông qua 07/03/2023 và có mục ALCOA++/audit trail. |
+| `ref_112` | https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11 | Đọc được eCFR ngày 21/11/2026; xác nhận Part 11 là quy định về hồ sơ/chữ ký điện tử và các kiểm soát liên quan. |
+| REDCap resources | https://projectredcap.org/resources/ | Đọc được trang tài nguyên chính thức ngày 21/11/2026; không dùng tài liệu này để khẳng định chi tiết cơ chế De-Identified hay audit trail của mọi phiên bản REDCap. |
+
+Chưa tìm được nguồn chính thống trực tiếp để xác nhận phát biểu lịch sử “Stan Woollen đặt ra ALCOA”; cờ `[CẦN KIỂM CHỨNG: nguồn gốc ALCOA]` được giữ trong chương.

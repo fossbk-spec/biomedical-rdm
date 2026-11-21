@@ -7,7 +7,7 @@
 
 - Số lần xuất hiện trích dẫn đã quét: **366**
 - Số trích dẫn khác nhau: **103**
-- Mục chapter-only: **[104, 105, 106, 107, 108]** (không thuộc bộ lõi 1..103)
+- Mục chapter-only: **[104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115]** (không thuộc bộ lõi 1..103)
 - Mã thoát dự kiến: **0 — không có lỗi bắt buộc**
 
 ## (a) Trích dẫn thân bài không có mục tương ứng
@@ -27,7 +27,9 @@
 
 ## (d) Trùng DOI/URL/tiêu đề
 
-- Không phát hiện.
+- url: `https://eur-lex.europa.eu/eli/reg/2016/679/oj` → ref_057, ref_113
+- url: `https://eur-lex.europa.eu/eli/reg/2025/327/oj` → ref_058, ref_114
+- url: `https://www.ecfr.gov/current/title-45/section-164.514` → ref_060, ref_115
 
 ## (e) Mojibake/ký tự lạ trong `.bib`
 
@@ -39,8 +41,8 @@
 
 ## (g) Mục chapter-only
 
-- BibTeX: [104, 105, 106, 107, 108]
-- CSV: [104, 105, 106, 107, 108]
+- BibTeX: [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115]
+- CSV: [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115]
 
 ## Ghi chú
 

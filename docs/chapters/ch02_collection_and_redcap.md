@@ -1,8 +1,8 @@
 # CHƯƠNG 2. THU THẬP DỮ LIỆU LÂM SÀNG, NGUYÊN TẮC ALCOA+, GCP VÀ HỆ THỐNG THU THẬP DỮ LIỆU ĐIỆN TỬ (EDC / REDCap)
 
-> **Mã học phần:** BIO-RDM-2026 | **Thời lượng:** 3 giờ tín chỉ (1 giờ Lý thuyết + 2 giờ Thực hành phòng máy Lab 2)  
+> **Thời lượng ước lượng:** đọc ≈ 35–45 phút; lab tùy chọn ≈ 45–60 phút (tùy tốc độ đọc và thao tác).
 > **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*  
-> **Phiên bản:** `v2.0.0_20261121` | **Chuẩn trích dẫn:** SSoT BibTeX (`references/references.bib`)
+> **Lab:** tự chọn; rubric /20 chỉ để tự đối chiếu, không yêu cầu nộp bài.
 
 ---
 
@@ -11,8 +11,8 @@
 Sau khi hoàn thành Chương 2, người học có khả năng đạt được các chuẩn đầu ra (CLOs) sau:
 
 1. **Hiểu và Giải thích (Bloom Mức 2 - CLO1):**
-   - Phân tích cặn kẽ 10 tiêu chí của khung toàn vẹn dữ liệu **ALCOA+** (*Attributable, Legible, Contemporaneous, Original, Accurate + Complete, Consistent, Enduring, Available*) và yêu cầu truy vết (*Traceable - ALCOA++*).
-   - Giải thích vai trò của Thực hành lâm sàng tốt (**ICH E6(R3) GCP**) và Tiêu chuẩn **FDA 21 CFR Part 11** trong việc ràng buộc pháp lý đối với hệ thống máy tính, chữ ký điện tử và vết kiểm toán (*audit trail*).
+   - Phân tích 9 thuộc tính của khung toàn vẹn dữ liệu **ALCOA+** (*Attributable, Legible, Contemporaneous, Original, Accurate + Complete, Consistent, Enduring, Available*) và thuộc tính truy vết (*Traceable*) của **ALCOA++** (10 thuộc tính).
+   - Giải thích vai trò của Thực hành lâm sàng tốt (**ICH E6(R3) GCP**) và quy định **FDA 21 CFR Part 11** trong việc ràng buộc pháp lý đối với hệ thống máy tính, chữ ký điện tử và vết kiểm toán (*audit trail*).
    - Chỉ ra được những rủi ro chí mạng của "văn hóa bảng tính" (*spreadsheet-driven research*) so với hệ thống thu thập dữ liệu lâm sàng điện tử chuyên dụng (**EDC - Electronic Data Capture**).
 
 2. **Áp dụng và Thực hành (Bloom Mức 3 - CLO2):**
@@ -33,7 +33,7 @@ Sơ đồ dưới đây minh họa mối quan hệ giữa các quy định pháp
 ```mermaid
 flowchart TD
     subgraph ST["TẦNG 1: KHUNG PHÁP LÝ & NGUYÊN TẮC (GOVERNANCE & INTEGRITY)"]
-        GCP["ICH E6(R3) GCP (Step 4)<br/>Mục 4 Phụ lục 1: Data Governance"]
+        GCP["ICH E6(R3) GCP (Step 4)<br/>Data governance [CẦN KIỂM CHỨNG: số mục]"]
         CFR["FDA 21 CFR Part 11<br/>Electronic Records & Signatures"]
         ALCOA["Khung Toàn vẹn ALCOA+ / ALCOA++<br/>Attributable, Contemporaneous, Original..."]
     end
@@ -57,8 +57,8 @@ flowchart TD
     end
 
     subgraph DOWN["TẦNG 5: HẠ TẦNG KẾ THỪA (DOWNSTREAM INTEROPERABILITY)"]
-        SDTM["REDCap2SDTM<br/>Nộp hồ sơ FDA / PMDA"]
-        OMOP["REDCap2OMOP<br/>Nghiên cứu quan sát OHDSI / RWD"]
+        SDTM["REDCap2SDTM<br/>Phương pháp chuyển đổi sang CDISC SDTM"]
+        OMOP["REDCap2OMOP<br/>Nền tảng chuyển đổi sang OMOP CDM"]
     end
 
     ST --> RISK
@@ -82,18 +82,18 @@ flowchart TD
 
 Trong nghiên cứu y sinh học và dịch tễ học, việc sử dụng các phần mềm bảng tính phổ thông (như Microsoft Excel hoặc Google Sheets) để thu thập dữ liệu lâm sàng ban đầu đã trở thành một "thói quen tai hại" kéo dài nhiều thập kỷ. Mặc dù bảng tính có ưu điểm giao diện trực quan và dễ tiếp cận, việc sử dụng chúng làm công cụ thu thập dữ liệu chính thức (*primary data capture*) tiềm ẩn những nguy cơ phá hủy hoàn toàn giá trị khoa học của nghiên cứu:
 
-1. **Lỗi tự động chuyển đổi định dạng (Silent Data Corruption):** Bảng tính tự động suy đoán kiểu dữ liệu và tự ý chuyển đổi dữ liệu chuỗi thành ngày tháng hoặc số thực. Điển hình trong nghiên cứu bộ gen, các ký hiệu gen chuẩn như *SEPT2* (Septin 2) hay *MARCH1* (Membrane Associated Ring-CH-Type Finger 1) bị Excel tự động biến đổi thành `02-Sep` và `01-Mar`. Các khảo sát độc lập cho thấy hơn 20% các bài báo khoa học hàng đầu có bộ dữ liệu phụ lục kèm theo bị nhiễm lỗi định dạng này, gây sai lệch nghiêm trọng khi phân tích downstream [@ref_033].
+1. **Lỗi tự động chuyển đổi định dạng (Silent Data Corruption):** Bảng tính tự động suy đoán kiểu dữ liệu và tự ý chuyển đổi dữ liệu chuỗi thành ngày tháng hoặc số thực. Điển hình trong nghiên cứu bộ gen, các ký hiệu gen chuẩn như *SEPT2* (Septin 2) hay *MARCH1* (Membrane Associated Ring-CH-Type Finger 1) bị Excel tự động biến đổi thành `02-Sep` và `01-Mar`. Ziemann và cộng sự (2016) sàng lọc tệp Excel bổ sung của 18 tạp chí giai đoạn 2005–2015 và phát hiện 19,6% số bài có danh sách gen Excel (704 bài) chứa lỗi tên gen [@ref_104].
 2. **Không có vết kiểm toán bất biến (Lack of Immutable Audit Trail):** Bảng tính cho phép bất kỳ ai mở tệp sửa đổi giá trị tế bào (cell), xóa dòng, sao chép đè mà không để lại bất kỳ bản ghi tự động nào về việc *ai đã sửa, sửa vào thời điểm nào, giá trị gốc trước khi sửa là gì, và lý do sửa đổi là gì*.
 3. **Thiếu cơ chế kiểm soát chất lượng tại thời điểm nhập (No Real-Time Validation):** Nghiên cứu viên có thể vô tình gõ `1200` thay vì `120` cho huyết áp tâm thu, hoặc nhập ngày khám bệnh trước ngày sinh mà phần mềm hoàn toàn không cảnh báo hay ngăn chặn.
 4. **Hỗn loạn kiểm soát phiên bản (Version Control Nightmare):** Tình trạng phổ biến khi nhiều cộng sự cùng lưu các tệp `Data_Final.xlsx`, `Data_Final_v2.xlsx`, `Data_Final_v2_HuyFix.xlsx` dẫn đến mất tính nhất quán (*version drift*), mất dữ liệu do ghi đè tệp, và vi phạm nghiêm trọng nguyên tắc truy vết khoa học.
 
-Chính vì những lý do trên, các cơ quan quản lý dược phẩm và hội đồng đạo đức y sinh quốc tế đều từ chối phê duyệt hồ sơ nghiên cứu lâm sàng chỉ dựa trên các bảng tính rời rạc không được kiểm định hệ thống (*unvalidated spreadsheets*).
+Vì các rủi ro trên, việc dùng bảng tính rời rạc làm nguồn dữ liệu chính cần được đánh giá, kiểm soát và biện minh theo bối cảnh nghiên cứu; không thể suy ra một kết quả phê duyệt chung cho mọi hồ sơ.
 
 ---
 
 ### 3.2. Khung toàn vẹn dữ liệu: ALCOA, ALCOA+ và ALCOA++
 
-Khung toàn vẹn dữ liệu lâm sàng được Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ (FDA) khởi xướng thông qua tài liệu hướng dẫn thực hành phòng thí nghiệm và thử nghiệm lâm sàng, ban đầu bao gồm 5 nguyên tắc cốt lõi mang tên **ALCOA**. Sau đó, Cơ quan Dược phẩm Châu Âu (EMA), Tổ chức Y tế Thế giới (WHO) và Hiệp hội Quản lý Dữ liệu Lâm sàng (SCDM [@ref_013]) đã mở rộng thành **ALCOA+** và **ALCOA++**:
+ALCOA là một từ ghi nhớ (*mnemonic*) cho các thuộc tính của dữ liệu đáng tin cậy. Các cơ quan quản lý đã nêu khung mở rộng ALCOA+ trong hướng dẫn về dữ liệu điện tử và toàn vẹn dữ liệu, gồm tài liệu của EMA (2010) [@ref_109], MHRA (2018) [@ref_110] và hướng dẫn EMA về hệ thống máy tính và dữ liệu điện tử trong thử nghiệm lâm sàng (2023) [@ref_111]. Việc ALCOA do một viên chức FDA (Stan Woollen) đặt ra là thông tin thường được dẫn nhưng chưa được đối chiếu với nguồn gốc trực tiếp [CẦN KIỂM CHỨNG: nguồn gốc ALCOA]. ALCOA+ gồm 9 thuộc tính; ALCOA++ thêm **Traceable** thành 10 thuộc tính.
 
 | Ký tự | Nguyên tắc | Định nghĩa chuẩn mực lâm sàng | Hiện thực hóa kỹ thuật trên hệ thống EDC |
 | :--- | :--- | :--- | :--- |
@@ -113,13 +113,13 @@ Khung toàn vẹn dữ liệu lâm sàng được Cục Quản lý Thực phẩm
 ### 3.3. Các Chuẩn mực Quốc tế Điều chỉnh Hoạt động Thu thập Dữ liệu
 
 #### 3.3.1. Hướng dẫn ICH E6(R3) về Thực hành Lâm sàng Tốt (GCP)
-ICH E6(R3) đại diện cho bước chuyển biến quan trọng nhất của hướng dẫn Thực hành Lâm sàng Tốt quốc tế trong vòng hai thập kỷ qua [@ref_004]. Khác với bản R2 (năm 2016) vốn tập trung nhiều vào quy trình giám sát tại chỗ, bản ICH E6(R3) (Step 4, thông qua ngày 06/01/2025) dành riêng **Mục 4 trong Phụ lục 1 (Data Governance)** để thiết lập các nguyên tắc mang tính bắt buộc về quản trị dữ liệu lâm sàng:
+ICH E6(R3) là hướng dẫn Thực hành Lâm sàng Tốt quốc tế [@ref_004]. Bản Step 4 ngày 06/01/2025 trình bày các nguyên tắc về chất lượng theo thiết kế, quản lý chất lượng dựa trên rủi ro và quản trị dữ liệu; số mục chi tiết cần đối chiếu tài liệu gốc [CẦN KIỂM CHỨNG: số mục].
 - **Nguyên tắc "Chất lượng thiết kế ngay từ đầu" (Quality by Design - QbD):** Dữ liệu phải được bảo đảm chất lượng thông qua việc thiết kế biểu mẫu thu thập đơn giản, rõ ràng, tránh thu thập dữ liệu dư thừa không phục vụ mục tiêu khoa học của đề cương (*protocol*).
-- **Quản lý chất lượng dựa trên rủi ro (Risk-Based Quality Management - RBQM):** Thay vì tiến hành Đối soát dữ liệu nguồn 100% thủ công (**Source Data Verification - SDV**), một phương pháp cực kỳ tốn kém mà các nghiên cứu thực nghiệm đã chứng minh chỉ giúp cải thiện chất lượng dữ liệu dưới 0.1% [@ref_029], ICH E6(R3) yêu cầu tập trung nguồn lực giám sát tập trung bằng thuật toán (**Centralized Statistical Monitoring**) vào các điểm dữ liệu trọng yếu (*Critical-to-Quality factors*) như biến cố bất lợi nghiêm trọng (SAE) và tiêu chí đánh giá chính (*primary endpoints*).
+- **Quản lý chất lượng dựa trên rủi ro (Risk-Based Quality Management - RBQM):** Đối soát dữ liệu nguồn (**Source Data Verification - SDV**) cần được cân nhắc theo rủi ro và mục tiêu chất lượng; tóm tắt của Sheetz và cộng sự cho thấy SDV tổng quát có giá trị hạn chế [@ref_029].
 - **Trách nhiệm giải trình đối với hệ thống máy tính:** Nhà tài trợ (*Sponsor*) và Nghiên cứu viên chính (*PI*) chịu trách nhiệm pháp lý cao nhất về tính toàn vẹn của dữ liệu thu thập qua các hệ thống điện tử, đòi hỏi hệ thống phải được thẩm định (*validated*) đầy đủ trước khi đưa vào vận hành thực tế.
 
-#### 3.3.2. Tiêu chuẩn FDA 21 CFR Part 11
-Được ban hành bởi Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ, **Tiêu đề 21 Bộ Luật Quy định Liên bang Hoa Kỳ - Phần 11 (Title 21 CFR Part 11)** là tiêu chuẩn kỹ thuật toàn cầu quy định về Hồ sơ điện tử (*Electronic Records*) và Chữ ký điện tử (*Electronic Signatures*) [@ref_024]. Để một hệ thống EDC được chấp thuận trong các nghiên cứu lâm sàng nộp lên FDA, hệ thống bắt buộc phải thỏa mãn:
+#### 3.3.2. Quy định FDA Hoa Kỳ: 21 CFR Part 11
+**Title 21 CFR Part 11** là quy định của FDA Hoa Kỳ về hồ sơ điện tử và chữ ký điện tử; đây không phải là một “tiêu chuẩn toàn cầu”. eCFR nêu phạm vi và các kiểm soát áp dụng cho hồ sơ điện tử, gồm thẩm định hệ thống, kiểm soát truy cập, bản sao phục vụ thanh tra và audit trail tạo bởi máy tính [@ref_112]. Nguồn `ref_024` hiện là tài liệu Q&A của FDA năm 2024, không phải toàn văn Part 11; xem [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).
 1. **Thẩm định hệ thống (System Validation):** Chứng minh bằng tài liệu rằng hệ thống phần mềm và hạ tầng máy chủ hoạt động chính xác, đáng tin cậy và đạt đúng hiệu năng dự kiến trong môi trường vận hành thực tế.
 2. **Khả năng sinh vết kiểm toán do máy tính tự tạo (Computer-Generated Audit Trails):** Nhật ký kiểm toán phải được ghi tự động bởi hệ thống, độc lập với người dùng, có gắn nhãn thời gian thực (*time-stamped*), không thể sửa đổi, làm mờ hoặc xóa bởi bất kỳ ai (kể cả quản trị viên hệ thống - *System Administrator*).
 3. **Kiểm soát truy cập và bảo mật phiên (Access Controls & Session Timeouts):** Mỗi cá nhân phải có tên người dùng và mật khẩu riêng biệt; hệ thống tự động khóa phiên làm việc khi không hoạt động trong một khoảng thời gian quy định để ngăn chặn việc người khác nhập liệu thay.
@@ -150,7 +150,7 @@ Trong REDCap:
 - Toàn bộ cấu hình của một nghiên cứu (tên biến, loại câu hỏi, giới hạn kiểm tra, logic nhảy) được lưu trữ dưới dạng các hàng dữ liệu mô tả (*metadata*) trong các bảng hệ thống, thay vì tạo mới các cột hoặc bảng SQL trong cơ sở dữ liệu quan hệ truyền thống.
 - Dữ liệu lâm sàng thực tế của bệnh nhân được lưu trữ theo mô hình **Thực thể - Thuộc tính - Giá trị (Entity-Attribute-Value - EAV)** trong bảng duy nhất `redcap_data` (`project_id`, `event_id`, `record`, `field_name`, `value`).
 - Kiến trúc này cho phép các nhà nghiên cứu lâm sàng không chuyên về công nghệ thông tin có thể tự thiết kế và hiệu chỉnh biểu mẫu nghiên cứu một cách an toàn, linh hoạt mà không làm sập cấu trúc cơ sở dữ liệu máy chủ.
-- Hiện nay, **REDCap Consortium** đã mở rộng ra hơn 7.000 tổ chức nghiên cứu học thuật tại hơn 155 quốc gia trên thế giới [@ref_102]. Bên cạnh REDCap, các nền tảng EDC hiện đại khác như **Castor EDC** cũng phát triển theo hướng gọn nhẹ, thân thiện với các thử nghiệm lâm sàng do nghiên cứu viên khởi xướng (IITs) [@ref_025].
+- Theo trang tài nguyên REDCap được kiểm tra ngày 21/11/2026, các số liệu hiện hành của Consortium được cập nhật trong [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026); bài năm 2019 [@ref_102] không được dùng như số liệu hiện tại. Thông tin Castor EDC giữ ở mức cần đối chiếu vì `ref_025` đang `BIB_PENDING`.
 
 #### 3.4.2. Cấu trúc Thực thể của một Dự án REDCap
 Một dự án nghiên cứu trên REDCap được phân cấp quản lý theo mô hình:
@@ -190,35 +190,35 @@ Việc đặt tên biến tùy tiện giữa các nghiên cứu lâm sàng khác
 
 #### 3.4.5. Khả năng Tương tác Kế thừa (Downstream Interoperability)
 Dữ liệu được thu thập trên nền tảng REDCap có thể được chuyển đổi có hệ thống sang các chuẩn dữ liệu quốc tế lớn:
-- **REDCap sang CDISC SDTM (REDCap2SDTM):** Chuyển đổi dữ liệu từ điển và dữ liệu lâm sàng sang các bảng miền chuẩn của CDISC (như DM - Demographics, VS - Vital Signs, AE - Adverse Events) phục vụ nộp hồ sơ xin cấp phép thuốc lên FDA hoặc PMDA [@ref_026].
-- **REDCap sang OMOP CDM (REDCap2OMOP):** Ánh xạ tự động từ điển REDCap sang Mô hình Dữ liệu Chung OMOP của hiệp hội OHDSI, cho phép đưa dữ liệu từ các thử nghiệm lâm sàng nhỏ lẻ vào mạng lưới phân tích dữ liệu quan sát quy mô toàn cầu [@ref_027].
+- **REDCap sang CDISC SDTM (REDCap2SDTM):** Một phương pháp được mô tả để chuyển đổi dữ liệu từ điển và dữ liệu lâm sàng sang các bảng miền CDISC SDTM [@ref_026]; không kết luận rằng đầu ra đương nhiên được chấp nhận khi nộp hồ sơ.
+- **REDCap sang OMOP CDM (REDCap2OMOP):** Một nền tảng/phương pháp được mô tả để ánh xạ dữ liệu REDCap sang OMOP CDM [@ref_027]; nguồn hiện được giữ cờ cần audit độc lập.
 
 ---
 
 ## 4. NGHIÊN CỨU TÌNH HUỐNG VÀ BÀI HỌC THẤT BẠI (FAILURE ANALYSIS)
 
-### Case Study 1: Thảm họa bảng tính Excel trong nghiên cứu y sinh học
-- **Bối cảnh:** Một nghiên cứu quan sát đa trung tâm theo dõi 1.200 bệnh nhân suy tim được thực hiện tại một trường đại học y khoa lớn. Nhóm nghiên cứu lựa chọn chia sẻ một tệp Microsoft Excel qua dịch vụ đám mây công cộng để các bác sĩ nội trú tại 5 bệnh viện cùng nhập liệu bệnh nhân hàng ngày.
+### Case Study 1: Tình huống giả định minh họa — rủi ro bảng tính Excel
+- **Bối cảnh:** Đây là tình huống giả định minh họa. Một nhóm nghiên cứu chia sẻ một tệp Microsoft Excel qua dịch vụ đám mây để nhiều người cùng nhập dữ liệu hằng ngày.
 - **Diễn biến sai sót:**
   1. *Lỗi định dạng ngày tháng:* Bác sĩ tại bệnh viện A cài đặt máy tính theo định dạng ngày Mỹ (`MM/DD/YYYY`), trong khi bác sĩ tại bệnh viện B cài đặt định dạng Châu Âu/Việt Nam (`DD/MM/YYYY`). Khi nhập ngày tái khám `05/06/2025`, Excel tự động chuyển thành ngày 06 tháng 5 tại máy này và ngày 05 tháng 6 tại máy kia, làm sai lệch toàn bộ khoảng thời gian sống còn (*survival time*) của hơn 300 bệnh nhân.
   2. *Lỗi trượt dòng khi sắp xếp (Sorting Desynchronization):* Một nghiên cứu viên muốn tìm bệnh nhân có nồng độ kali huyết thanh cao nhất nên đã chọn một cột để sắp xếp (*Sort*). Do không bôi đen toàn bộ bảng dữ liệu, chỉ duy nhất cột xét nghiệm bị đảo lộn thứ tự, trong khi các cột mã bệnh nhân và thông tin nhân khẩu học vẫn giữ nguyên vị trí cũ. Toàn bộ kết quả xét nghiệm của 1.200 người bệnh bị gán nhầm lẫn chéo cho nhau mà không ai hay biết trong suốt 3 tháng.
-  3. *Hậu quả:* Do bảng tính không có vết kiểm toán (*audit trail*), nhóm nghiên cứu không thể xác định chính xác thời điểm xảy ra sự cố và không thể khôi phục lại dữ liệu gốc. Nghiên cứu buộc phải hủy bỏ toàn bộ kết quả sau 2 năm triển khai, tiêu tốn hơn \$400.000 kinh phí tài trợ và làm tổn hại nghiêm trọng danh tiếng học thuật của nhóm tác giả.
+  3. *Bài học:* Nếu không có vết kiểm toán và bản gốc được bảo toàn, nhóm nghiên cứu khó xác định thời điểm và phạm vi sự cố; cần đánh giá khả năng phục hồi trước khi dùng dữ liệu.
 
-### Case Study 2: Thư cảnh báo của FDA (FDA Warning Letter / Form 483) do vi phạm 21 CFR Part 11
-- **Bối cảnh:** Trong đợt thanh tra định kỳ một thử nghiệm lâm sàng pha III đánh giá hiệu quả của một loại thuốc kháng thể đơn dòng điều trị bệnh da liễu mạn tính, Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ (FDA) đã phát hiện các sai phạm nghiêm trọng về quản lý dữ liệu điện tử tại một điểm nghiên cứu (*investigational site*).
+### Case Study 2: Tình huống giả định minh họa — tài khoản và audit trail
+- **Bối cảnh:** Đây là tình huống giả định minh họa về một điểm nghiên cứu dùng hệ thống điện tử nhưng chưa kiểm soát tốt tài khoản và audit trail; không phải mô tả một thư cảnh báo cụ thể.
 - **Phát hiện thanh tra:**
-  1. *Chia sẻ tài khoản đăng nhập:* Tất cả điều phối viên nghiên cứu lâm sàng (CRC) tại cơ sở đều sử dụng chung một tài khoản đăng nhập có tên `study_coordinator` với mật khẩu được dán công khai trên màn hình máy tính. Do đó, hệ thống không thể xác định được cá nhân cụ thể nào chịu trách nhiệm cho các bản ghi dữ liệu (vi phạm trực tiếp nguyên tắc **Attributable** của ALCOA và Mục 11.10(d) của 21 CFR Part 11).
-  2. *Thiếu vết kiểm toán khi sửa đổi dữ liệu:* Thanh tra viên phát hiện 42 bản ghi điểm hoạt động bệnh của bệnh nhân bị thay đổi từ mức "Bệnh hoạt động nặng" xuống mức "Thuyên giảm một phần" ngay trước ngày chốt cơ sở dữ liệu (*database lock*). Hệ thống thu thập dữ liệu nội bộ của cơ sở nghiên cứu không ghi lại bất kỳ thông tin nào về lý do sửa đổi, không lưu lại giá trị điểm số ban đầu trước khi sửa, và không lưu dấu thời gian thực tế của thao tác sửa đổi.
-  3. *Hậu quả pháp lý:* FDA đã ban hành **Thư cảnh báo (Warning Letter)** chính thức, đình chỉ tuyển dụng bệnh nhân tại cơ sở, từ chối công nhận toàn bộ dữ liệu lâm sàng thu thập từ trung tâm này, và chuyển hồ sơ sang cơ quan điều tra gian lận khoa học.
+  1. *Chia sẻ tài khoản đăng nhập:* Người dùng minh họa dùng chung tài khoản `user_demo`, nên hệ thống khó quy trách nhiệm cho từng thao tác.
+  2. *Thiếu vết kiểm toán khi sửa đổi dữ liệu:* Một bản ghi minh họa được sửa gần thời điểm khóa cơ sở dữ liệu nhưng không lưu đủ giá trị trước/sau, lý do và thời gian.
+  3. *Bài học:* Cần tài khoản cá nhân, phân quyền phù hợp, audit trail có thể kiểm tra và quy trình xử lý sai lệch; không suy ra hậu quả pháp lý cụ thể từ tình huống này.
 
 ---
 
-## 5. HƯỚNG DẪN THỰC HÀNH PHÒNG MÁY - LAB 2 (2 GIỜ)
+## 5. HƯỚNG DẪN THỰC HÀNH PHÒNG MÁY - LAB TÙY CHỌN
 
 ### 5.1. Bối cảnh Nghiên cứu và Đề bài
-Trong bài thực hành này, học viên đóng vai trò là **Chuyên viên Quản lý Dữ liệu Nghiên cứu (Lead Clinical Data Manager)** cho đề tài nghiên cứu đoàn hệ tiến cứu: *"Đánh giá chất lượng cuộc sống và mức độ hoạt động bệnh ở bệnh nhân Mày đay Mạn tính Tự phát (Chronic Spontaneous Urticaria - CSU) điều trị bằng thuốc kháng Histamin H1 thế hệ 2"* (Dự án lâm sàng **DrMayDay / VERA**).
+Trong bài thực hành này, học viên đóng vai trò là **Chuyên viên Quản lý Dữ liệu Nghiên cứu (Lead Clinical Data Manager)** cho **ví dụ minh họa (bệnh nhân mày đay mạn tính tự phát)**.
 
-**Nhiệm vụ:** Thiết kế hoàn chỉnh một dự án thu thập dữ liệu lâm sàng trên hệ thống REDCap đáp ứng các tiêu chuẩn ICH E6(R3) và FDA 21 CFR Part 11, bao gồm:
+**Nhiệm vụ:** Thiết kế hoàn chỉnh một dự án thu thập dữ liệu lâm sàng trên hệ thống REDCap hướng tới các yêu cầu của ICH E6(R3) và quy định FDA 21 CFR Part 11 (chưa kiểm chứng sự tuân thủ), bao gồm:
 1. Tạo dự án và cấu hình 3 biểu mẫu thu thập dữ liệu điện tử (Instruments):
    - `demographics`: Thu thập thông tin định danh và đặc điểm ban đầu.
    - `clinical_visit`: Đánh giá chỉ số sinh tồn và Thang điểm hoạt động mày đay 7 ngày (**UAS7 - Urticaria Activity Score**).
@@ -235,7 +235,7 @@ Trong bài thực hành này, học viên đóng vai trò là **Chuyên viên Qu
 1. Đăng nhập vào hệ thống REDCap được cấp quyền (hoặc phiên bản REDCap Sandbox / Docker cục bộ).
 2. Nhấp vào tab **New Project**.
 3. Điền thông tin dự án:
-   - *Project Title:* `DrMayDay - Chronic Urticaria Cohort Study (Lab 2)`
+   - *Project Title:* `Example - Chronic Urticaria Cohort Study (Optional Lab)`
    - *Purpose of this project:* Chọn **Research**.
    - *Primary use of project:* Chọn **Clinical Research Study / Trial**.
    - *Project design:* Chọn **Start from scratch (clean slate)**.
@@ -256,21 +256,21 @@ Bảng thông số kỹ thuật chuẩn dưới đây định nghĩa đầy đ�
 | Variable / Field Name | Form Name | Section Header | Field Type | Field Label | Choices, Calculations, OR Slider Labels | Field Note | Text Validation Type | Min | Max | Identifier? | Branching Logic | Required? | Field Annotation |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `record_id` | demographics | *(Trống)* | text | Mã số hồ sơ nghiên cứu (Study ID) | *(Trống)* | Tự động tăng hoặc định dạng CSU-xxx | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `@READONLY` |
-| `pt_name` | demographics | Thông tin hành chính | text | Họ và tên bệnh nhân | *(Trống)* | Viết hoa có dấu | *(Trống)* | *(Trống)* | *(Trống)* | y | *(Trống)* | y | `@PHI` |
-| `pt_dob` | demographics | *(Trống)* | text | Ngày tháng năm sinh | *(Trống)* | Định dạng YYYY-MM-DD | date_ymd | 1920-01-01 | 2026-01-01 | y | *(Trống)* | y | `@PHI` |
-| `pt_gender` | demographics | *(Trống)* | radio | Giới tính sinh học | 1, Nam \| 2, Nữ \| 99, Khác | Chọn 1 phương án | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `OMOP:4135376` |
-| `visit_date` | clinical_visit | Đánh giá tại buổi khám | text | Ngày thăm khám | *(Trống)* | Định dạng YYYY-MM-DD | date_ymd | 2026-01-01 | 2026-12-31 | *(Trống)* | *(Trống)* | y | `@TODAY` |
-| `sys_bp` | clinical_visit | Chỉ số sinh tồn | text | Huyết áp tâm thu (mmHg) | *(Trống)* | Giá trị nguyên từ 60 đến 250 | integer | 60 | 250 | *(Trống)* | *(Trống)* | y | `LOINC:8480-6` |
-| `dia_bp` | clinical_visit | *(Trống)* | text | Huyết áp tâm trương (mmHg) | *(Trống)* | Giá trị nguyên từ 40 đến 140 | integer | 40 | 140 | *(Trống)* | *(Trống)* | y | `LOINC:8462-4` |
-| `heart_rate` | clinical_visit | *(Trống)* | text | Nhịp tim (lần/phút) | *(Trống)* | Đo lúc nghỉ ngơi (30 - 220) | integer | 30 | 220 | *(Trống)* | *(Trống)* | y | `LOINC:8867-4` |
-| `uas_wheals` | clinical_visit | Đánh giá mày đay (Thang điểm UAS7) | radio | Mức độ nổi sẩn phù (Wheals score) | 0, Không có sẩn \| 1, Nhẹ (< 20 sẩn/24h) \| 2, Vừa (20-50 sẩn/24h) \| 3, Nặng (> 50 sẩn hoặc mảng lớn) | Tính trung bình trong ngày | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDE:UAS7_WHEAL` |
-| `uas_pruritus` | clinical_visit | *(Trống)* | radio | Mức độ ngứa ngáy (Pruritus score) | 0, Không ngứa \| 1, Nhẹ (không khó chịu nhiều) \| 2, Vừa (ảnh hưởng sinh hoạt) \| 3, Nặng (ảnh hưởng giấc ngủ/công việc) | Tính trung bình trong ngày | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDE:UAS7_PRURITUS` |
+| `pt_name` | demographics | Thông tin hành chính | text | Họ và tên bệnh nhân | *(Trống)* | Viết hoa có dấu | *(Trống)* | *(Trống)* | *(Trống)* | y | *(Trống)* | y | Quy ước nội bộ; dùng Identifier?=`y` |
+| `pt_dob` | demographics | *(Trống)* | text | Ngày tháng năm sinh | *(Trống)* | Giá trị minh họa, không dùng làm giới hạn nghiên cứu | date_ymd | 1900-01-01 | 2099-12-31 | y | *(Trống)* | y | Quy ước nội bộ; dùng Identifier?=`y` |
+| `pt_gender` | demographics | *(Trống)* | radio | Giới tính sinh học | 1, Nam \| 2, Nữ \| 99, Khác | Chọn 1 phương án | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `OMOP:4135376` (chưa đối chiếu) |
+| `visit_date` | clinical_visit | Đánh giá tại buổi khám | text | Ngày thăm khám | *(Trống)* | Giá trị minh họa, cần cấu hình theo đề cương | date_ymd | 1900-01-01 | 2099-12-31 | *(Trống)* | *(Trống)* | y | `@TODAY` |
+| `sys_bp` | clinical_visit | Chỉ số sinh tồn | text | Huyết áp tâm thu (mmHg) | *(Trống)* | Giá trị nguyên từ 60 đến 250 | integer | 60 | 250 | *(Trống)* | *(Trống)* | y | `LOINC:8480-6` (chưa đối chiếu Athena/LOINC) |
+| `dia_bp` | clinical_visit | *(Trống)* | text | Huyết áp tâm trương (mmHg) | *(Trống)* | Giá trị nguyên từ 40 đến 140 | integer | 40 | 140 | *(Trống)* | *(Trống)* | y | `LOINC:8462-4` (chưa đối chiếu Athena/LOINC) |
+| `heart_rate` | clinical_visit | *(Trống)* | text | Nhịp tim (lần/phút) | *(Trống)* | Đo lúc nghỉ ngơi (30 - 220) | integer | 30 | 220 | *(Trống)* | *(Trống)* | y | `LOINC:8867-4` (chưa đối chiếu Athena/LOINC) |
+| `uas_wheals` | clinical_visit | Đánh giá mày đay (Thang điểm UAS7) | radio | Mức độ nổi sẩn phù (Wheals score) | 0, Không có sẩn \| 1, Nhẹ (< 20 sẩn/24h) \| 2, Vừa (20-50 sẩn/24h) \| 3, Nặng (> 50 sẩn hoặc mảng lớn) | Tính trung bình trong ngày | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDE:UAS7_WHEAL` (chưa đối chiếu) |
+| `uas_pruritus` | clinical_visit | *(Trống)* | radio | Mức độ ngứa ngáy (Pruritus score) | 0, Không ngứa \| 1, Nhẹ (không khó chịu nhiều) \| 2, Vừa (ảnh hưởng sinh hoạt) \| 3, Nặng (ảnh hưởng giấc ngủ/công việc) | Tính trung bình trong ngày | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDE:UAS7_PRURITUS` (chưa đối chiếu) |
 | `uas_daily_total` | clinical_visit | *(Trống)* | calc | Điểm hoạt động mày đay trong ngày (UAS ngày) | `[uas_wheals] + [uas_pruritus]` | Tự động tính toán (Thang 0-6) | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `@READONLY` |
-| `ae_occurred` | adverse_events | Theo dõi an toàn điều trị | yesno | Bệnh nhân có xuất hiện biến cố bất lợi (AE) không? | 1, Có \| 0, Không | Chọn Có nếu ghi nhận bất kỳ dấu hiệu bất thường nào | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDISC:AE.AETERM` |
-| `ae_term` | adverse_events | *(Trống)* | text | Tên biến cố bất lợi ghi nhận | *(Trống)* | Ví dụ: Buồn ngủ, Đau đầu, Sốc phản vệ | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_occurred] = '1'` | y | `MedDRA` |
-| `ae_sae_flag` | adverse_events | *(Trống)* | radio | Phân loại biến cố bất lợi nghiêm trọng (SAE)? | 1, Có (Là biến cố nghiêm trọng - SAE) \| 0, Không (AE thông thường) | Đáp ứng tiêu chuẩn đe dọa tính mạng, nhập viện hoặc tử vong | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_occurred] = '1'` | y | `ICH:SAE_CRITERIA` |
-| `ae_sae_reason` | adverse_events | *(Trống)* | checkbox | Tiêu chí xác định SAE (chọn tất cả phương án phù hợp) | 1, Tử vong \| 2, Đe dọa tính mạng \| 3, Nhập viện hoặc kéo dài thời gian nằm viện \| 4, Tàn tật vĩnh viễn \| 5, Dị tật bẩm sinh | Chỉ kích hoạt khi là biến cố SAE | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_sae_flag] = '1'` | y | `ICH:SAE_REASON` |
-| `ae_irb_notif_date`| adverse_events | *(Trống)* | text | Ngày báo cáo Hội đồng Đạo đức (IRB/IEC) | *(Trống)* | Bắt buộc báo cáo trong vòng 24-48h đối với SAE | date_ymd | 2026-01-01 | 2026-12-31 | *(Trống)* | `[ae_sae_flag] = '1'` | y | `@TODAY` |
+| `ae_occurred` | adverse_events | Theo dõi an toàn điều trị | yesno | Bệnh nhân có xuất hiện biến cố bất lợi (AE) không? | 1, Có \| 0, Không | Chọn Có nếu ghi nhận bất kỳ dấu hiệu bất thường nào | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | y | `CDISC:AE.AETERM` (chưa đối chiếu) |
+| `ae_term` | adverse_events | *(Trống)* | text | Tên biến cố bất lợi ghi nhận | *(Trống)* | Ví dụ: Buồn ngủ, Đau đầu, Sốc phản vệ | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_occurred] = '1'` | y | `MedDRA` (chưa đối chiếu) |
+| `ae_sae_flag` | adverse_events | *(Trống)* | radio | Phân loại biến cố bất lợi nghiêm trọng (SAE)? | 1, Có (Là biến cố nghiêm trọng - SAE) \| 0, Không (AE thông thường) | Đáp ứng tiêu chuẩn đe dọa tính mạng, nhập viện hoặc tử vong | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_occurred] = '1'` | y | `ICH:SAE_CRITERIA` (chưa đối chiếu) |
+| `ae_sae_reason` | adverse_events | *(Trống)* | checkbox | Tiêu chí xác định SAE (chọn tất cả phương án phù hợp) | 1, Tử vong \| 2, Đe dọa tính mạng \| 3, Nhập viện hoặc kéo dài thời gian nằm viện \| 4, Tàn tật vĩnh viễn \| 5, Dị tật bẩm sinh | Chỉ kích hoạt khi là biến cố SAE | *(Trống)* | *(Trống)* | *(Trống)* | *(Trống)* | `[ae_sae_flag] = '1'` | y | `ICH:SAE_REASON` (chưa đối chiếu) |
+| `ae_irb_notif_date`| adverse_events | *(Trống)* | text | Ngày báo cáo Hội đồng Đạo đức (IRB/IEC) | *(Trống)* | Giá trị minh họa | date_ymd | 1900-01-01 | 2099-12-31 | *(Trống)* | `[ae_sae_flag] = '1'` | y | `@TODAY` |
 
 #### Bước 4: Nhập Từ điển Dữ liệu và Kiểm tra Cú pháp
 1. Tải mẫu từ điển dạng bảng trên hoặc lưu lại thành tệp văn bản mã hóa UTF-8: `redcap_data_dictionary_lab2.csv`.
@@ -285,7 +285,7 @@ Bảng thông số kỹ thuật chuẩn dưới đây định nghĩa đầy đ�
 2. Thiết lập 2 nhóm quyền phân công điển hình:
    - **Nhóm 1: Clinical Research Coordinator (CRC - Người nhập liệu lâm sàng):**
      * Quyền xem/sửa biểu mẫu: *View & Edit* cho `demographics`, `clinical_visit`, `adverse_events`.
-     * Quyền trích xuất dữ liệu (*Data Exports*): Chọn **De-Identified** (hệ thống sẽ tự động loại bỏ các trường đánh dấu `Identifier = y` và che giấu ngày tháng để bảo vệ quyền riêng tư người bệnh).
+     * Quyền trích xuất dữ liệu (*Data Exports*): Chọn **De-Identified** theo cấu hình của hệ thống; cần đối chiếu tài liệu REDCap về trường `Identifier?`, xử lý ngày và quyền xuất trước khi áp dụng.
      * Quyền quản trị dự án (*Project Design and Setup*): **Không chọn (No Access)** để ngăn việc tự ý thay đổi cấu trúc bảng.
    - **Nhóm 2: Principal Investigator (PI / Sponsor - Nhà nghiên cứu chính):**
      * Toàn quyền truy cập, được trích xuất dữ liệu đầy đủ (*Full Data Set*), có quyền truy cập thanh tra *Logging*.
@@ -308,12 +308,12 @@ Bảng thông số kỹ thuật chuẩn dưới đây định nghĩa đầy đ�
    - Lưu bản ghi bệnh nhân vừa tạo.
    - Quay lại mở form `clinical_visit`, sửa giá trị `sys_bp` từ `120` thành `135` rồi bấm **Save & Exit Form**.
    - Truy cập menu **Logging** trên thanh công cụ bên trái.
-   - *Hiện tượng quan sát:* Nhật ký hệ thống ghi nhận một dòng sự kiện mới:
+    - *Hiện tượng minh họa:* Nhật ký có thể ghi nhận sự kiện tương tự, tùy cấu hình và phiên bản hệ thống:
      ```
-     Time: 2026-11-21 11:15:20 | User: hoangquanghuy | Action: Update record | Record: CSU-001 | 
+      Time: 2026-11-21 00:00:00 | User: user_demo | Action: Update record | Record: EXAMPLE-001 |
      Changes: sys_bp = '135' (previous value = '120')
      ```
-     Điều này chứng minh hệ thống đã đáp ứng hoàn hảo tiêu chuẩn vết kiểm toán bất biến theo FDA 21 CFR Part 11.
+      Đây chỉ là ví dụ minh họa; CSV chưa chạy thử trên REDCap Sandbox. Date shifting không đồng nghĩa với HIPAA Safe Harbor; cần đối chiếu cấu hình và tài liệu REDCap.
 
 ---
 
@@ -323,33 +323,35 @@ Bảng thông số kỹ thuật chuẩn dưới đây định nghĩa đầy đ�
 ```csv
 "Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max","Identifier?","Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)","Matrix Group Name","Matrix Ranking?","Field Annotation"
 "record_id","demographics","","text","Mã số hồ sơ nghiên cứu","","Tự động tăng","","","","","","y","","","","","@READONLY"
-"pt_name","demographics","Thông tin hành chính","text","Họ và tên bệnh nhân","","Viết hoa có dấu","","","","y","","y","","","","","@PHI"
-"pt_dob","demographics","","text","Ngày sinh","","YYYY-MM-DD","date_ymd","1920-01-01","2026-01-01","y","","y","","","","","@PHI"
-"pt_gender","demographics","","radio","Giới tính sinh học","1, Nam | 2, Nữ | 99, Khác","","","","","","","y","","","","","OMOP:4135376"
-"visit_date","clinical_visit","Đánh giá lâm sàng","text","Ngày khám","","YYYY-MM-DD","date_ymd","2026-01-01","2026-12-31","","","y","","","","","@TODAY"
-"sys_bp","clinical_visit","Chỉ số sinh tồn","text","Huyết áp tâm thu (mmHg)","","Khoảng 60-250","integer","60","250","","","y","","","","","LOINC:8480-6"
-"dia_bp","clinical_visit","","text","Huyết áp tâm trương (mmHg)","","Khoảng 40-140","integer","40","140","","","y","","","","","LOINC:8462-4"
-"uas_wheals","clinical_visit","Thang điểm UAS7","radio","Điểm sẩn phù","0, Không | 1, Nhẹ | 2, Vừa | 3, Nặng","","","","","","","y","","","","","CDE:UAS7_WHEAL"
-"uas_pruritus","clinical_visit","","radio","Điểm ngứa ngáy","0, Không | 1, Nhẹ | 2, Vừa | 3, Nặng","","","","","","","y","","","","","CDE:UAS7_PRURITUS"
+"pt_name","demographics","Thông tin hành chính","text","Họ và tên bệnh nhân","","Viết hoa có dấu","","","","y","","y","","","","",""
+"pt_dob","demographics","","text","Ngày sinh","","Giá trị minh họa","date_ymd","1900-01-01","2099-12-31","y","","y","","","","",""
+"pt_gender","demographics","","radio","Giới tính sinh học","1, Nam | 2, Nữ | 99, Khác","","","","","","","y","","","","","OMOP:4135376; chưa đối chiếu"
+"visit_date","clinical_visit","Đánh giá lâm sàng","text","Ngày khám","","Giá trị minh họa","date_ymd","1900-01-01","2099-12-31","","","y","","","","","@TODAY"
+"sys_bp","clinical_visit","Chỉ số sinh tồn","text","Huyết áp tâm thu (mmHg)","","Khoảng 60-250","integer","60","250","","","y","","","","","LOINC:8480-6; chưa đối chiếu Athena/LOINC"
+"dia_bp","clinical_visit","","text","Huyết áp tâm trương (mmHg)","","Khoảng 40-140","integer","40","140","","","y","","","","","LOINC:8462-4; chưa đối chiếu Athena/LOINC"
+"heart_rate","clinical_visit","","text","Nhịp tim (lần/phút)","","Đo lúc nghỉ ngơi (30-220)","integer","30","220","","","y","","","","","LOINC:8867-4; chưa đối chiếu Athena/LOINC"
+"uas_wheals","clinical_visit","Thang điểm UAS7","radio","Điểm sẩn phù","0, Không | 1, Nhẹ | 2, Vừa | 3, Nặng","","","","","","","y","","","","","CDE:UAS7_WHEAL; chưa đối chiếu"
+"uas_pruritus","clinical_visit","","radio","Điểm ngứa ngáy","0, Không | 1, Nhẹ | 2, Vừa | 3, Nặng","","","","","","","y","","","","","CDE:UAS7_PRURITUS; chưa đối chiếu"
 "uas_daily_total","clinical_visit","","calc","Tổng điểm hoạt động mày đay ngày","[uas_wheals] + [uas_pruritus]","Thang điểm 0 - 6","","","","","","","","","","","@READONLY"
-"ae_occurred","adverse_events","Theo dõi an toàn","yesno","Có biến cố bất lợi không?","1, Có | 0, Không","","","","","","","y","","","","","CDISC:AE.AETERM"
-"ae_term","adverse_events","","text","Tên biến cố bất lợi","","","","","","","[ae_occurred] = '1'","y","","","","","MedDRA"
-"ae_sae_flag","adverse_events","","radio","Biến cố nghiêm trọng (SAE)?","1, Có (SAE) | 0, Không","","","","","","[ae_occurred] = '1'","y","","","","","ICH:SAE_CRITERIA"
-"ae_irb_notif_date","adverse_events","","text","Ngày báo cáo IRB","","YYYY-MM-DD","date_ymd","2026-01-01","2026-12-31","","[ae_sae_flag] = '1'","y","","","","","@TODAY"
+"ae_occurred","adverse_events","Theo dõi an toàn","yesno","Có biến cố bất lợi không?","1, Có | 0, Không","","","","","","","y","","","","","CDISC:AE.AETERM; chưa đối chiếu"
+"ae_term","adverse_events","","text","Tên biến cố bất lợi","","","","","","","[ae_occurred] = '1'","y","","","","","MedDRA; chưa đối chiếu"
+"ae_sae_flag","adverse_events","","radio","Biến cố nghiêm trọng (SAE)?","1, Có (SAE) | 0, Không","","","","","","[ae_occurred] = '1'","y","","","","","ICH:SAE_CRITERIA; chưa đối chiếu"
+"ae_sae_reason","adverse_events","","checkbox","Lý do xác định SAE","1, Tử vong | 2, Đe dọa tính mạng | 3, Nhập viện | 4, Tàn tật | 5, Dị tật bẩm sinh","","","","","","[ae_sae_flag] = '1'","y","","","","","ICH:SAE_REASON; chưa đối chiếu"
+"ae_irb_notif_date","adverse_events","","text","Ngày báo cáo IRB","","Giá trị minh họa","date_ymd","1900-01-01","2099-12-31","","[ae_sae_flag] = '1'","y","","","","","@TODAY"
 ```
 
 ---
 
-### 5.4. Rubric Tự Đánh Giá Kết Quả Thực Hành Lab 2 (Thang điểm 20)
+### 5.4. Rubric Tự Đánh Giá Kết Quả Thực Hành Lab (Thang điểm 20)
 
-Học viên sử dụng bảng tiêu chí dưới đây để tự kiểm định chất lượng sản phẩm trước khi nộp báo cáo Lab 2 lên hệ thống:
+Học viên sử dụng bảng tiêu chí dưới đây để tự đối chiếu chất lượng sản phẩm; lab là tùy chọn và không yêu cầu gửi kết quả.
 
 | Tiêu chí | Trọng số | Mức Đạt Tối Đa (Xuất sắc - 100%) | Mức Đạt Trung Bình (Cần bổ sung - 50%) | Mức Không Đạt (0%) |
 | :--- | :---: | :--- | :--- | :--- |
 | **1. Cấu trúc Dự án & Biểu mẫu (Instruments)** | **4 điểm** | Tạo đủ 3 biểu mẫu với tên kỹ thuật chuẩn xác (`demographics`, `clinical_visit`, `adverse_events`). Phân đoạn Section Header rõ ràng. | Có đủ biểu mẫu nhưng đặt sai tên kỹ thuật hoặc không phân nhóm khoa học. | Thiếu biểu mẫu hoặc không tạo được dự án trên REDCap. |
 | **2. Cấu hình Kiểu dữ liệu & Kiểm tra Hợp lệ (Validation)** | **4 điểm** | Tất cả các biến số, ngày tháng, đo lường sinh tồn đều được gán đúng kiểu (`date_ymd`, `integer`) kèm cận trên/cận dưới (Min/Max range check) hợp lý. | Có gán kiểu dữ liệu nhưng thiếu thiết lập khoảng Min/Max sinh lý cho huyết áp hoặc nhịp tim. | Để kiểu dữ liệu dạng text tự do cho toàn bộ các trường số và ngày tháng. |
 | **3. Biểu thức Tính toán & Logic Rẽ nhánh (Branching)** | **4 điểm** | Trường tính điểm `uas_daily_total` tự động cập nhật chính xác; logic rẽ nhánh các trường biến cố bất lợi hoạt động mượt mà không lỗi cú pháp. | Logic rẽ nhánh hoạt động nhưng công thức tính điểm bị sai cú pháp hoặc tính sai kết quả. | Không thiết lập được logic rẽ nhánh hoặc công thức tính toán báo lỗi đỏ. |
-| **4. Từ điển Dữ liệu & Siêu dữ liệu (Metadata/CDE)** | **4 điểm** | Tệp CSV 18 cột hợp lệ, upload không có cảnh báo lỗi; sử dụng đầy đủ các nhãn ghi chú `@READONLY`, `@PHI`, và gán mã CDE/LOINC ở cột Annotation. | Tệp CSV hợp lệ nhưng để trống hoàn toàn cột Field Annotation và không đánh dấu biến định danh PHI. | Tệp CSV lỗi cú pháp không thể upload được vào REDCap. |
+| **4. Từ điển Dữ liệu & Siêu dữ liệu (Metadata/CDE)** | **4 điểm** | Tệp CSV 18 cột hợp lệ, upload không có cảnh báo lỗi; dùng `Identifier?`=`y` cho biến định danh và ghi mã ánh xạ là chưa đối chiếu khi chưa kiểm tra. | Tệp CSV hợp lệ nhưng thiếu ghi chú hoặc đánh dấu định danh. | Tệp CSV lỗi cú pháp không thể upload được vào REDCap. |
 | **5. Phân quyền & Vết Kiểm toán (RBAC & Audit Trail)** | **4 điểm** | Thiết lập đúng 2 nhóm quyền (CRC và PI) với chính sách xuất dữ liệu De-identified cho CRC; minh chứng được bản ghi Logging chứa đầy đủ lịch sử sửa đổi giá trị. | Phân quyền được người dùng nhưng không cấu hình đúng quyền trích xuất dữ liệu khử định danh. | Cho toàn bộ người dùng quyền Full Administrator hoặc không trích xuất được file vết kiểm toán. |
 
 ---
@@ -365,7 +367,7 @@ Một nghiên cứu sinh đang tiến hành thu thập dữ liệu về tác d�
 
 **Yêu cầu:** Dưới góc độ của một chuyên gia Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Data Steward):
 1. Phân tích các vi phạm nghiêm trọng của quy trình thu thập trên đối với:
-   - Nguyên tắc bảo mật dữ liệu cá nhân theo **Nghị định 13/2023/NĐ-CP** và **Luật Khám bệnh, chữa bệnh 2023** của Việt Nam.
+   - Nguyên tắc bảo mật dữ liệu cá nhân theo [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026); các mục chưa `VERIFIED` phải giữ `CONTENT_PENDING`.
    - Nguyên tắc **ALCOA+** (xác thực danh tính người điền, tính toàn vẹn và vết kiểm toán).
 2. Hãy đề xuất một giải pháp kỹ thuật thay thế hoàn toàn dựa trên tính năng **REDCap Survey** (sử dụng *Public Survey Link* kết hợp *Participant Identifier*, mã hóa đường truyền SSL/TLS, chế độ tự động xóa tệp ảnh định danh khuôn mặt, và lưu trữ dữ liệu trên máy chủ nội bộ của bệnh viện/viện nghiên cứu).
 
@@ -373,17 +375,21 @@ Một nghiên cứu sinh đang tiến hành thu thập dữ liệu về tác d�
 
 ## 7. TÀI LIỆU THAM KHẢO CHUẨN (REFERENCES)
 
-Toàn bộ các luận điểm khoa học, chuẩn mực pháp lý và công cụ kỹ thuật trong chương này được trích dẫn và đối chiếu trực tiếp từ cơ sở dữ liệu thư mục chuẩn (`references/references.bib`):
+Danh mục dưới đây được dựng từ các khóa thực sự dùng trong chương bằng cách đối chiếu với `references/references.bib`; các mục chưa audit giữ cờ trong `references/citation-audit.csv`:
 
-1. **Harris, P. A., Taylor, R., Thielke, R., Payne, J., Gonzalez, N., & Conde, J. G.** (2009). Research electronic data capture (REDCap) — A metadata-driven methodology and workflow process for providing translational research informatics support. *Journal of Biomedical Informatics*, 42(2), 377–381. DOI: [10.1016/j.jbi.2008.08.010](https://doi.org/10.1016/j.jbi.2008.08.010) `[@ref_006]`.
-2. **Harris, P. A., Taylor, R., Minor, B. L., Elliott, V., Fernandez, M., O'Neal, L., McLeod, L., Delacqua, G., Delacqua, F., Kirby, J., & Duda, S. N.** (2019). The REDCap consortium: Building an international community of software platform partners. *Journal of Biomedical Informatics*, 95, 103208. DOI: [10.1016/j.jbi.2019.103208](https://doi.org/10.1016/j.jbi.2019.103208) `[@ref_102]`.
-3. **International Council for Harmonisation (ICH).** (2025). *ICH Harmonised Guideline: Good Clinical Practice (GCP) E6(R3)* (Step 4 version, 06 January 2025). Geneva: ICH. `[@ref_004]`.
-4. **U.S. Food and Drug Administration (FDA).** (2024). *Electronic Systems, Electronic Records, and Electronic Signatures in Clinical Investigations: Questions and Answers — Guidance for Industry*. Silver Spring, MD: FDA. `[@ref_024]`.
-5. **Society for Clinical Data Management (SCDM).** (n.d.). *Good Clinical Data Management Practices (GCDMP)*. Milwaukee, WI: SCDM. `[@ref_013]`.
-6. **DAMA International.** (2017). *DAMA-DMBOK: Data Management Body of Knowledge* (2nd ed.). Technics Publications. `[@ref_014]`.
-7. **National Institutes of Health (NIH) & National Cancer Institute (NCI).** (2024). *Common Data Elements (CDE) Repository*. Bethesda, MD: NIH. `[@ref_023]`.
-8. **Yamamoto, K., Ota, K., Akiya, I., & Shintani, A.** (2017). A pragmatic method for transforming clinical research data from the research electronic data capture “REDCap” to Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM): Development and evaluation of REDCap2SDTM. *Journal of Biomedical Informatics*, 75, 78–87. DOI: [10.1016/j.jbi.2017.09.011](https://doi.org/10.1016/j.jbi.2017.09.011) `[@ref_026]`.
-9. **Gurley, M. J., Warner, J., Bushmanova, Y., & Wehbe, F.** (2021). REDCap2OMOP: A platform for ETLing REDCap projects into the OMOP CDM. *OHDSI Symposium 2021*. `[@ref_027]`.
-10. **Timmermans, C., Dowlati, A., & Buyse, M.** (2016). Evaluating source data verification as a quality control measure in clinical trials. *Therapeutic Innovation & Regulatory Science*, 50(4), 444–450. DOI: [10.1177/2168479016633696](https://doi.org/10.1177/2168479016633696) `[@ref_029]`.
-11. **Baker, M.** (2016). 1,500 scientists lift the lid on reproducibility. *Nature*, 533(7604), 452–454. DOI: [10.1038/533452a](https://doi.org/10.1038/533452a) `[@ref_033]`.
-12. **CASRAI.** (n.d.). *Castor EDC & lightweight EDC for Investigator-Initiated Trials (IITs)*. `[@ref_025]`.
+1. **Harris et al.** (2009). *Research electronic data capture (REDCap)*. *Journal of Biomedical Informatics*, 42(2), 377–381. DOI: [10.1016/j.jbi.2008.08.010](https://doi.org/10.1016/j.jbi.2008.08.010) `[@ref_006]`.
+2. **Harris et al.** (2019). *The REDCap consortium*. *Journal of Biomedical Informatics*, 95, 103208. DOI: [10.1016/j.jbi.2019.103208](https://doi.org/10.1016/j.jbi.2019.103208) `[@ref_102]`.
+3. **International Council for Harmonisation.** (2025). *ICH E6(R3) Guideline for Good Clinical Practice*. `[@ref_004]` [CẦN KIỂM CHỨNG: audit nội dung].
+4. **U.S. Food and Drug Administration.** (2024). *Electronic systems, electronic records, and electronic signatures in clinical investigations: Questions and answers*. `[@ref_024]` [CẦN KIỂM CHỨNG: Q&A, không phải toàn văn Part 11].
+5. **Society for Clinical Data Management.** (n.d.). *GCDMP — Good Clinical Data Management Practices*. `[@ref_013]` [CẦN KIỂM CHỨNG: audit nội dung].
+6. **DAMA International.** (2017). *DAMA-DMBOK: Data Management Body of Knowledge* (2nd ed.). `[@ref_014]`.
+7. **Villere, S.** (2024). *Common Data Elements Repository*. *Medical Reference Services Quarterly*, 43, 182–190. DOI: [10.1080/02763869.2024.2323896](https://doi.org/10.1080/02763869.2024.2323896) `[@ref_023]`.
+8. **Yamamoto et al.** (2017). *A pragmatic method for transforming clinical research data from REDCap to CDISC SDTM: Development and evaluation of REDCap2SDTM*. *Journal of Biomedical Informatics*, 70, 65–76. DOI: [10.1016/j.jbi.2017.05.003](https://doi.org/10.1016/j.jbi.2017.05.003) `[@ref_026]`.
+9. **Gurley et al.** (2021). *REDCap2OMOP*. `[@ref_027]` [CẦN KIỂM CHỨNG: nguồn hội nghị].
+10. **Sheetz et al.** (2014). *Evaluating source data verification as a quality control measure in clinical trials*. *Therapeutic Innovation & Regulatory Science*, 48, 671–680. DOI: [10.1177/2168479014554400](https://doi.org/10.1177/2168479014554400) `[@ref_029]`.
+11. **Ziemann et al.** (2016). *Gene name errors are widespread in the scientific literature*. *Genome Biology*, 17, 177. DOI: [10.1186/s13059-016-1044-7](https://doi.org/10.1186/s13059-016-1044-7) `[@ref_104]`.
+12. **CASRAI.** (n.d.). *Castor EDC & lightweight EDC for IITs*. `[@ref_025]` [CẦN KIỂM CHỨNG: nguồn yếu].
+13. **European Medicines Agency.** (2010). *Reflection paper on expectations for electronic source data*. `[@ref_109]` [VERIFIED_UNAUDITED].
+14. **Medicines and Healthcare products Regulatory Agency.** (2018). *Guidance on GxP data integrity*. `[@ref_110]` [VERIFIED_UNAUDITED].
+15. **European Medicines Agency.** (2023). *Guideline on computerised systems and electronic data in clinical trials*. `[@ref_111]` [VERIFIED_UNAUDITED].
+16. **U.S. Food and Drug Administration.** (1997). *21 CFR Part 11 — Electronic Records; Electronic Signatures*. `[@ref_112]` [VERIFIED_UNAUDITED].
