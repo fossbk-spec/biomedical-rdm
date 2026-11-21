@@ -1,5 +1,11 @@
 # Decision log
 
+## 2026-11-21 — Khóa học miễn phí tự học: syllabus, M0, trang cuối khóa
+
+- **Người quyết định:** Ben.
+- **Quyết định mặc định tạm thời:** Dùng syllabus tự học, M0 và trang cuối khóa mới; bản v2.0.0 được thay và giữ trong lịch sử git. Quiz cuối gồm 10 câu khái niệm, không dạy dữ kiện pháp lý phụ thuộc ngày; capstone dùng tình huống giả định, không dùng tên dự án thật.
+- **Trạng thái:** `CONTENT_PENDING` cho quiz 4 câu theo bài trên site khóa học; việc đối chiếu và tích hợp vào từng chương trong repo gốc chưa hoàn tất.
+
 ## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 1
 
 - **Quyết định:** Giữ khái niệm, nguyên lý và phương pháp ổn định trong thân chương 1; chuyển pháp lý, mẫu tài trợ, thời hạn lưu trữ, phiên bản chuẩn, công cụ và URL vào `docs/appendices/`.
