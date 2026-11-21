@@ -8,10 +8,28 @@ book:
   chapters:
     - index.qmd
     - docs/literature-review/index.md
+    - docs/chapters/ch01_overview_and_dmp.md
+    - docs/chapters/ch02_collection_and_redcap.md
+    - docs/chapters/ch03_standards_cdisc_fhir_omop.md
+    - docs/chapters/ch04_quality_and_imputation.md
+    - docs/chapters/ch05_privacy_and_deidentification.md
+    - docs/chapters/ch06_fair_and_ai_ready.md
+    - docs/appendices/legal.md
+    - docs/appendices/funder-templates.md
+    - docs/appendices/retention.md
+    - docs/appendices/standards.md
+    - docs/appendices/redcap-lab-notes.md
+    - docs/appendices/fhir-omop-lab-notes.md
+    - docs/appendices/privacy-lab-notes.md
+    - docs/appendices/quality-ai-lab-notes.md
+    - docs/appendices/appendices-CHANGELOG.md
+    - docs/legal-verification.md
     - docs/INPUT-INVENTORY.md
     - docs/DECISIONS.md
     - docs/DATA-USE.md
     - docs/PROJECT-STATE.md
+
+bibliography: references/references.bib
 
 format:
   html:
