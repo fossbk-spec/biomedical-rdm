@@ -69,7 +69,7 @@
 
 ## 2026-11-21 — Audit trang nguồn cho 47 mục không DOI
 
-- Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, Gemini chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
+- Kết quả đối chiếu trang web (script `scripts/audit_nodoi_pages.py`, mô hình ngôn ngữ chỉ so nội dung trang đã tải): `references/audit-nodoi-pages.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
 - `citation-audit.csv` thêm cột `page_check`, `page_check_note`. Chỉ chuyển `VERIFIED_UNAUDITED` → `BIB_PENDING` với 6 mục PARTIAL. Mục MATCH giữ `VERIFIED_UNAUDITED` (chưa đủ điều kiện `VERIFIED`); mục NOT_CHECKED/MISMATCH (trang chặn truy cập hoặc không có URL) cần audit thủ công.
 ## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 2
 
@@ -100,3 +100,9 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - **Quyết định tạm thời:** Giữ trong thân chương các khái niệm ổn định về chất lượng dữ liệu, Rubin/MICE, FAIR, RO-Crate và Patient-Level Split; chuyển URL, trạng thái nguồn, phiên bản chuẩn và kết quả chạy lab vào phụ lục.
 - **Case study/lab:** dùng tình huống minh họa; giữ lab trong chương; dữ liệu Lab 5 không được xem là đạt HIPAA Safe Harbor và không được đăng công khai trước khi kiểm tra tái định danh.
 - **Giới hạn:** số DQD, tỷ lệ Q-01–Q-05 và ngưỡng Pass Rate trong chương chỉ là minh họa; `ref_043`/`ref_072` là preprint, `ref_003`/`ref_030` là `BIB_PENDING`, và `ref_011` là *Our Journey* (2025). Các nội dung chưa có bằng chứng giữ `CONTENT_PENDING`/`[CẦN KIỂM CHỨNG]`.
+
+## 2026-11-21 — Sửa script audit trang và đổi tên
+
+- Sửa lỗi biểu thức chính quy làm script/CSS không bị loại khỏi trang (thẻ đóng dùng ký tự điều khiển thay vì tham chiếu ngược `\1`); đổi tên script và CSV sang tên trung lập (`audit_nodoi_pages.py`, `audit-nodoi-pages.csv`); thêm cột `model` và `checked_at`.
+- Chạy lại ngày 21/11/2026: MATCH 17, PARTIAL 9, MISMATCH 2, NOT_CHECKED 19 (trước: 18/8/3/18). Chỉ 7 mục đổi kết quả; một số do tải trang không ổn định (ví dụ `ref_024`, `ref_046` không tải được lần này). Kết quả không ổn định giữa các lần chạy nên chỉ là gợi ý.
+- Cập nhật cột `page_check`/`page_check_note` trong `citation-audit.csv`; **không đổi cột `status`**. Cần người duyệt xem lại: `ref_034` (nay MATCH nhưng vẫn `BIB_PENDING`), `ref_046` (nay NOT_CHECKED, vẫn `BIB_PENDING`; ghi chú trước nêu lỗi kiểu bản ghi `@inproceedings`), `ref_018`, `ref_053` (nay PARTIAL, vẫn `VERIFIED_UNAUDITED`).
