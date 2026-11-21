@@ -35,8 +35,8 @@ Tổng số 34 câu. Học viên đạt khi đúng ít nhất 24/34 câu và đ�
 
 ```
 1. Thiết kế & DMP → 2. Thu thập → 3. Làm sạch & kiểm tra
-→ 4. Chuẩn hóa (CDISC / FHIR / OMOP) → 5. FAIR & chia sẻ
-→ 6. Bảo mật & pháp lý → 7. Kết thúc: lưu trữ / hủy an toàn
+→ 4. Chuẩn hóa (CDISC / FHIR / OMOP) → 5. Bảo mật & khử định danh
+→ 6. FAIR & AI-ready → 7. Kết thúc: lưu trữ / hủy an toàn
 ```
 
 Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trường dữ liệu không định nghĩa ở bước 1 sẽ thành dữ liệu khuyết, không so sánh được, hoặc không dùng được cho AI ở bước 5–7. DMP không phải thủ tục hành chính — nó là bản hợp đồng về dữ liệu của cả nghiên cứu.
@@ -50,8 +50,8 @@ Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trư�
 | Làm sạch & kiểm tra | Xử lý và chuẩn hóa |
 | Chuẩn hóa | Xử lý và chuẩn hóa |
 | Phân tích | Bước 3–4: làm sạch, kiểm tra và chuẩn hóa để phân tích |
-| FAIR & chia sẻ | Chia sẻ và công bố |
-| Bảo mật & pháp lý | Áp dụng xuyên suốt |
+| Bảo mật & khử định danh | Áp dụng xuyên suốt |
+| FAIR & AI-ready | Chia sẻ, công bố và tái sử dụng |
 | Kết thúc: lưu trữ / hủy an toàn | Lưu trữ dài hạn hoặc tiêu hủy |
 
 ---
@@ -280,8 +280,61 @@ Cuối cùng là tái lập: khảo sát của Baker (2016) trên 1.500 nhà kho
 
 ---
 
-<!-- page: course/module-5-fair/index.md -->
-# Bài 5 — FAIR, chia sẻ và kết thúc nghiên cứu
+<!-- page: course/module-5-privacy/index.md -->
+# Bài 5 — Bảo mật, pháp lý và dữ liệu sẵn sàng cho AI
+
+**Mục tiêu:** kể được các lớp pháp lý áp dụng ở Việt Nam và quốc tế; biết khi nào dữ liệu “đủ tốt cho AI”.
+
+## Nội dung chính
+
+Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên suốt mọi giai đoạn của vòng đời dữ liệu.
+
+Bảo mật dữ liệu y sinh có nhiều lớp, không chỉ một luật:
+
+- **Quốc tế:** GDPR (EU 2016/679) — dữ liệu giả danh vẫn là dữ liệu cá nhân; dữ liệu sức khỏe là dữ liệu đặc biệt. EHDS (EU 2025/327) — có hiệu lực 26/03/2025, áp dụng từ 26/03/2027. HIPAA (Mỹ) — Safe Harbor (loại 18 định danh) hoặc Expert Determination.
+- **Việt Nam:** Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** (hiệu lực 01/01/2026); Nghị định **356/2025/NĐ-CP** (31/12/2025) hướng dẫn luật này và thay thế Nghị định 13/2023 từ 01/01/2026; Luật Dữ liệu 60/2024/QH15; Thông tư 13/2025/TT-BYT về bệnh án điện tử (bệnh viện chậm nhất 30/09/2025, cơ sở khác chậm nhất 31/12/2026); Thông tư 50/2025/TT-BYT về thử thuốc trên lâm sàng (hiệu lực 27/02/2026); Nghị quyết 72-NQ/TW (09/09/2025) về khám sức khỏe định kỳ miễn phí và sổ sức khỏe điện tử.
+
+Về kỹ thuật ẩn danh: **k-anonymity** (Sweeney, 2002) **[CẦN KIỂM CHỨNG thư mục]** — mỗi tổ hợp quasi-identifier xuất hiện ít nhất k lần; **l-diversity** (Machanavajjhala và cộng sự, 2007) — khắc phục điểm yếu của k-anonymity khi giá trị nhạy cảm thiếu đa dạng; **differential privacy** — thêm nhiễu có kiểm soát để bảo vệ cá nhân trong kết quả tổng hợp. Không có kỹ thuật nào là tuyệt đối — k-anonymity vẫn có thể bị tấn công nếu biết thêm thông tin nền.
+
+Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo Bridge2AI (**preprint chưa bình duyệt**), cần 7 tiêu chí: FAIR, Deep Provenance (nguồn gốc sâu), Characterization (mô tả đặc tính), Pre-Model Explainability, Ethics/Legal/Governance, Sustainability, Computability. Dữ liệu không có nguồn gốc rõ ràng thì mô hình AI huấn luyện trên đó cũng không thể giải trình được.
+
+**Điểm cần nhớ:** pháp lý là sàn, không phải trần. Tuân thủ luật là điều kiện cần; quản trị tốt — ai truy cập, vì mục đích gì, ghi lại ra sao — mới là điều kiện đủ.
+
+<!-- page: course/module-5-privacy/quiz.md -->
+# Quiz — Bài 5
+
+**5.1. Theo GDPR, dữ liệu giả danh (pseudonymised) có còn là dữ liệu cá nhân không?**
+- A. Có — vẫn là dữ liệu cá nhân vì có thể tái định danh bằng khóa riêng.
+- B. Không, đã ẩn danh hoàn toàn.
+- C. Chỉ khi có tên.
+- D. Chỉ ở Việt Nam.
+- **Đáp án: A.**
+
+**5.2. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 có hiệu lực khi nào?**
+- A. 01/01/2025.
+- B. 01/01/2026.
+- C. 01/07/2025.
+- D. Chưa có hiệu lực.
+- **Đáp án: B.** Nghị định 356/2025 hướng dẫn luật này và thay thế Nghị định 13/2023 từ cùng ngày.
+
+**5.3. l-Diversity ra đời để khắc phục điểm yếu nào của k-anonymity?**
+- A. k-Anonymity quá chậm.
+- B. k-Anonymity không dùng được cho dữ liệu lớn.
+- C. k-Anonymity không bảo vệ được khi giá trị nhạy cảm trong một nhóm thiếu đa dạng (ví dụ: cả nhóm cùng một chẩn đoán).
+- D. k-Anonymity đã bị cấm.
+- **Đáp án: C.**
+
+**5.4. Tình huống:** Một nhóm muốn huấn luyện AI trên dữ liệu EHR nhưng không có ghi chép nào về nguồn gốc, phiên bản và quy trình làm sạch dữ liệu. Vấn đề lớn nhất là gì?
+- A. Thiếu dữ liệu.
+- B. Thiếu máy tính mạnh.
+- C. Không có vấn đề gì.
+- D. Thiếu Deep Provenance — không giải trình được mô hình, không tái lập được, và có thể vi phạm yêu cầu quản trị.
+- **Đáp án: D.**
+
+---
+
+<!-- page: course/module-6-fair-ai/index.md -->
+# Bài 6 — FAIR, chia sẻ và kết thúc nghiên cứu
 
 **Mục tiêu:** áp dụng được 4 nguyên tắc FAIR; biết khi nào chia sẻ, khi nào đóng, và kết thúc nghiên cứu thế nào.
 
@@ -301,88 +354,35 @@ Kết thúc nghiên cứu không phải là “xong thì thôi”. Cần có:
 
 **Điểm cần nhớ:** một nghiên cứu chỉ hoàn thành khi dữ liệu của nó có thể được tìm lại, hiểu lại và kiểm tra lại sau nhiều năm.
 
-<!-- page: course/module-5-fair/quiz.md -->
-# Quiz — Bài 5
+<!-- page: course/module-6-fair-ai/quiz.md -->
+# Quiz — Bài 6
 
-**5.1. FAIR có nghĩa là dữ liệu phải công khai không?**
+**6.1. FAIR có nghĩa là dữ liệu phải công khai không?**
 - A. Không — FAIR nghĩa là tìm được, truy cập được (có thể có kiểm soát), liên thông được và tái sử dụng được.
 - B. Có, FAIR = mở hết.
 - C. Chỉ đúng với dữ liệu không phải y tế.
 - D. FAIR chỉ áp dụng cho ảnh.
 - **Đáp án: A.**
 
-**5.2. Bước cuối cùng trong FAIRification 7 bước là gì?**
+**6.2. Bước cuối cùng trong FAIRification 7 bước là gì?**
 - A. Thu thập dữ liệu.
 - B. Xóa dữ liệu.
 - C. Công bố bài báo.
 - D. Đánh giá lại mức độ trưởng thành FAIR sau triển khai.
 - **Đáp án: D.**
 
-**5.3. Vì sao xóa file thông thường chưa đủ khi hủy dữ liệu nghiên cứu?**
+**6.3. Vì sao xóa file thông thường chưa đủ khi hủy dữ liệu nghiên cứu?**
 - A. Vì file quá lớn.
 - B. Vì luật cấm xóa file.
 - C. Vì file vẫn có thể khôi phục được; cần hủy theo chuẩn như NIST SP 800-88 (Clear/Purge/Destroy).
 - D. Không có lý do gì.
 - **Đáp án: C.**
 
-**5.4. Tình huống:** Một nhóm muốn chia sẻ dữ liệu bệnh nhân cho nhóm khác nhưng không muốn công khai. Cách làm đúng theo FAIR là gì?
+**6.4. Tình huống:** Một nhóm muốn chia sẻ dữ liệu bệnh nhân cho nhóm khác nhưng không muốn công khai. Cách làm đúng theo FAIR là gì?
 - A. Không chia sẻ.
 - B. Công khai toàn bộ lên mạng.
 - C. Chỉ gửi qua email cá nhân.
 - D. Công bố metadata để người khác tìm được, cho truy cập dữ liệu có kiểm soát theo thỏa thuận sử dụng dữ liệu.
-- **Đáp án: D.**
-
----
-
-<!-- page: course/module-6-privacy-ai/index.md -->
-# Bài 6 — Bảo mật, pháp lý và dữ liệu sẵn sàng cho AI
-
-**Mục tiêu:** kể được các lớp pháp lý áp dụng ở Việt Nam và quốc tế; biết khi nào dữ liệu “đủ tốt cho AI”.
-
-## Nội dung chính
-
-Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên suốt mọi giai đoạn của vòng đời dữ liệu.
-
-Bảo mật dữ liệu y sinh có nhiều lớp, không chỉ một luật:
-
-- **Quốc tế:** GDPR (EU 2016/679) — dữ liệu giả danh vẫn là dữ liệu cá nhân; dữ liệu sức khỏe là dữ liệu đặc biệt. EHDS (EU 2025/327) — có hiệu lực 26/03/2025, áp dụng từ 26/03/2027. HIPAA (Mỹ) — Safe Harbor (loại 18 định danh) hoặc Expert Determination.
-- **Việt Nam:** Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** (hiệu lực 01/01/2026); Nghị định **356/2025/NĐ-CP** (31/12/2025) hướng dẫn luật này và thay thế Nghị định 13/2023 từ 01/01/2026; Luật Dữ liệu 60/2024/QH15; Thông tư 13/2025/TT-BYT về bệnh án điện tử (bệnh viện chậm nhất 30/09/2025, cơ sở khác chậm nhất 31/12/2026); Thông tư 50/2025/TT-BYT về thử thuốc trên lâm sàng (hiệu lực 27/02/2026); Nghị quyết 72-NQ/TW (09/09/2025) về khám sức khỏe định kỳ miễn phí và sổ sức khỏe điện tử.
-
-Về kỹ thuật ẩn danh: **k-anonymity** (Sweeney, 2002) **[CẦN KIỂM CHỨNG thư mục]** — mỗi tổ hợp quasi-identifier xuất hiện ít nhất k lần; **l-diversity** (Machanavajjhala và cộng sự, 2007) — khắc phục điểm yếu của k-anonymity khi giá trị nhạy cảm thiếu đa dạng; **differential privacy** — thêm nhiễu có kiểm soát để bảo vệ cá nhân trong kết quả tổng hợp. Không có kỹ thuật nào là tuyệt đối — k-anonymity vẫn có thể bị tấn công nếu biết thêm thông tin nền.
-
-Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo Bridge2AI (**preprint chưa bình duyệt**), cần 7 tiêu chí: FAIR, Deep Provenance (nguồn gốc sâu), Characterization (mô tả đặc tính), Pre-Model Explainability, Ethics/Legal/Governance, Sustainability, Computability. Dữ liệu không có nguồn gốc rõ ràng thì mô hình AI huấn luyện trên đó cũng không thể giải trình được.
-
-**Điểm cần nhớ:** pháp lý là sàn, không phải trần. Tuân thủ luật là điều kiện cần; quản trị tốt — ai truy cập, vì mục đích gì, ghi lại ra sao — mới là điều kiện đủ.
-
-<!-- page: course/module-6-privacy-ai/quiz.md -->
-# Quiz — Bài 6
-
-**6.1. Theo GDPR, dữ liệu giả danh (pseudonymised) có còn là dữ liệu cá nhân không?**
-- A. Có — vẫn là dữ liệu cá nhân vì có thể tái định danh bằng khóa riêng.
-- B. Không, đã ẩn danh hoàn toàn.
-- C. Chỉ khi có tên.
-- D. Chỉ ở Việt Nam.
-- **Đáp án: A.**
-
-**6.2. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 có hiệu lực khi nào?**
-- A. 01/01/2025.
-- B. 01/01/2026.
-- C. 01/07/2025.
-- D. Chưa có hiệu lực.
-- **Đáp án: B.** Nghị định 356/2025 hướng dẫn luật này và thay thế Nghị định 13/2023 từ cùng ngày.
-
-**6.3. l-Diversity ra đời để khắc phục điểm yếu nào của k-anonymity?**
-- A. k-Anonymity quá chậm.
-- B. k-Anonymity không dùng được cho dữ liệu lớn.
-- C. k-Anonymity không bảo vệ được khi giá trị nhạy cảm trong một nhóm thiếu đa dạng (ví dụ: cả nhóm cùng một chẩn đoán).
-- D. k-Anonymity đã bị cấm.
-- **Đáp án: C.**
-
-**6.4. Tình huống:** Một nhóm muốn huấn luyện AI trên dữ liệu EHR nhưng không có ghi chép nào về nguồn gốc, phiên bản và quy trình làm sạch dữ liệu. Vấn đề lớn nhất là gì?
-- A. Thiếu dữ liệu.
-- B. Thiếu máy tính mạnh.
-- C. Không có vấn đề gì.
-- D. Thiếu Deep Provenance — không giải trình được mô hình, không tái lập được, và có thể vi phạm yêu cầu quản trị.
 - **Đáp án: D.**
 
 ---
