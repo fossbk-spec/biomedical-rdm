@@ -20,6 +20,7 @@ Bản này là bảng đọc ngắn cho chương 1. Sổ kiểm chứng, giới 
 | EHDS (EU) 2025/327 | VERIFIED | https://eur-lex.europa.eu/eli/reg/2025/327/oj | 2026-11-21 | Không suy rộng các mốc áp dụng ngoài sổ kiểm chứng. |
 | HIPAA, 45 CFR §164.514 | VERIFIED | https://www.ecfr.gov/current/title-45/section-164.514 | 2026-11-21 | Hai phương pháp khử định danh được xác nhận. |
 | ICH E6(R3) | VERIFIED | https://database.ich.org/sites/default/files/ICH_E6%28R3%29_Step4_FinalGuideline_2025_0106.pdf | 2026-11-21 | Nguồn trong bibliography; chi tiết áp dụng theo tài liệu gốc. |
+| 21 CFR Part 11 | VERIFIED | https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11 | 2026-11-21 | Quy định FDA Hoa Kỳ về hồ sơ điện tử/chữ ký điện tử; eCFR là bản điện tử cập nhật, không phải ấn bản pháp lý chính thức. |
 | Luật Khám bệnh, chữa bệnh 15/2023/QH15 | CONTENT_PENDING | [CẦN KIỂM CHỨNG] | 2026-11-21 | Chưa có URL nguồn chính thống trong sổ kiểm chứng hiện tại. |
 | Thông tư 33/2025/TT-BYT — các mốc 30/20 năm | CONTENT_PENDING | https://vbpl.vn/FileData/TW/Lists/vbpq/Attachments/181190/VanBanGoc_663505.pdf | 2026-11-21 | Văn bản/hiệu lực đã có trong sổ kiểm chứng; các dòng thời hạn cụ thể chưa được đối chiếu đầy đủ. |
 | Thông tư 50/2025/TT-BYT | CONTENT_PENDING | https://www.impe-qn.org.vn/van-ban-cua-bo-y-te/cmb/33 | 2026-11-21 | Chưa có toàn văn chính thức trong lượt kiểm tra. |

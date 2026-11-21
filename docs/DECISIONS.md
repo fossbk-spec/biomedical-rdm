@@ -59,3 +59,12 @@
 
 - Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, Gemini chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
 - `citation-audit.csv` thêm cột `page_check`, `page_check_note`. Chỉ chuyển `VERIFIED_UNAUDITED` → `BIB_PENDING` với 6 mục PARTIAL. Mục MATCH giữ `VERIFIED_UNAUDITED` (chưa đủ điều kiện `VERIFIED`); mục NOT_CHECKED/MISMATCH (trang chặn truy cập hoặc không có URL) cần audit thủ công.
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 2
+
+**Ngày:** 21/11/2026 · **Người quyết định:** Ben
+
+- (a) Không dùng con số SDV; chỉ giữ kết luận định tính theo tóm tắt Sheetz 2014.
+- (b) Hai case study là tình huống giả định minh họa; bỏ số liệu và hậu quả không có nguồn.
+- (c) Giữ lab trong cùng file.
+
+Ba quyết định trên là tạm thời, chờ Ben xác nhận.

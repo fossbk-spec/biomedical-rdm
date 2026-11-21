@@ -15,3 +15,6 @@ next_review: 2027-05-21
 | dbGaP | CONTENT_PENDING | [CẦN KIỂM CHỨNG] | 2026-11-21 | Kho truy cập có kiểm soát, không phải kho mở; cần URL nguồn. |
 | ICH E6(R3) | VERIFIED | https://database.ich.org/sites/default/files/ICH_E6%28R3%29_Step4_FinalGuideline_2025_0106.pdf | 2026-11-21 | Nguồn chính thức đã có trong bibliography; không ghi phiên bản triển khai ngoài tài liệu gốc. |
 | REDCap | VERIFIED_UNAUDITED | https://doi.org/10.1016/j.jbi.2008.08.010 | 2026-11-21 | Metadata bài nền tảng có trong `ref_006`; trạng thái nội dung phụ lục chưa audit độc lập. |
+| REDCap Consortium — số liệu trang tài nguyên | VERIFIED_UNAUDITED | https://projectredcap.org/resources/ | 2026-11-21 | Trang chính thức hiển thị số liệu cập nhật tại ngày kiểm; không dùng bài năm 2019 làm số liệu hiện tại. |
+| REDCap2SDTM | BIB_PENDING | https://doi.org/10.1016/j.jbi.2017.09.011 | 2026-11-21 | Được mô tả là phương pháp chuyển đổi; không kết luận đầu ra đương nhiên được chấp nhận khi nộp hồ sơ. |
+| REDCap2OMOP | BIB_PENDING | https://www.ohdsi.org/wp-content/uploads/2021/09/65_REDCap2OMOP.pdf | 2026-11-21 | Được mô tả là nền tảng/phương pháp chuyển đổi; nguồn hội nghị cần audit độc lập. |
