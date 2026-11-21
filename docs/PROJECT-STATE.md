@@ -1,6 +1,6 @@
 # Trạng thái dự án Biomedical RDM
 
-**Phiên bản:** 2.0.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #5–#14) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
+**Phiên bản:** 2.1.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #5–#16 và dọn nhánh) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
 **Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh.
 
 ## 1. Tóm tắt
@@ -44,7 +44,8 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 | Trích dẫn số `[n]` (1..103) trong literature review; chương dùng khóa `[@ref_NNN]`, danh mục chương dựng từ `references.bib` | Ben, 21/11/2026 |
 | Định nghĩa trạng thái: `VERIFIED`, `BIB_PENDING`, `CONTENT_PENDING`, `BLOCKED_INPUT`; hiện còn thêm `VERIFIED_UNAUDITED` (đã đối chiếu metadata, chưa audit độc lập) | `DECISIONS.md` |
 | Case study dự án thực (DrMayDay) dùng nguyên bản, không ẩn danh, không chuyển file; **chưa đưa vào repo nào** | Ben, 21/11/2026 |
-| Ba quyết định mặc định cho ch02–ch06 và nhóm syllabus (case study ghi minh họa; lab giữ trong chương; không dùng số/khẳng định chưa đọc ở nguồn) | Dùng tạm; chờ Ben xác nhận |
+| Ba quyết định mặc định cho ch02–ch06 và nhóm syllabus: case study ghi "tình huống giả định minh họa"; lab giữ trong cùng file với chương; không dùng số/khẳng định chưa đọc ở nguồn. Nhóm syllabus: quiz cuối là câu khái niệm không dạy dữ kiện có ngày; capstone là tình huống giả định, không dùng tên dự án thật | Ben xác nhận, 22/11/2026 |
+| Các mục `CONTENT_PENDING` được chấp nhận tạm thời; xử lý khi có người đọc nguồn chính thống | Ben, 22/11/2026 |
 
 ## 5. Kết quả kiểm tra
 
@@ -58,7 +59,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 
 | # | Mục | Ghi chú |
 |---|---|---|
-| 1 | Quiz theo bài (4–5 câu/chương) trong repo gốc | Chỉ ch01 có; đang soạn quiz 5 câu cho từng chương. **Cần chốt số câu và quy tắc 34 câu** (24 theo bài + 10 tổng hợp) nếu tổng thay đổi |
+| 1 | Quiz theo bài (5 câu/chương) trong repo gốc | Chỉ ch01 có trong chương. Có ngân hàng câu hỏi nháp (`docs/quizzes/`, ch01–ch04 và ch06, 75 câu; thiếu ch05; chưa commit) đã review: đáp án đúng phân bố lệch (B 77%, không có D), 88% đáp án đúng là phương án dài nhất, một số câu hỏi dữ kiện dễ đổi/chưa kiểm. **Cần chốt số câu và quy tắc 34 câu** (24 theo bài + 10 tổng hợp) nếu tổng thay đổi |
 | 2 | Đồng bộ chương, phụ lục, syllabus, quiz mới sang repo khóa học | Đang mở rộng `sync_from_source.py` (manifest, danh mục tham khảo, sidebar, khớp thứ tự M5/M6) |
 | 3 | NIH: giới hạn 300 từ gắn với yếu tố nào; tên mẫu trên DMPTool production; điều kiện dùng mẫu cũ khi chuyển tiếp (NOT-OD-26-100) | Cần mở bản DOCX/trang NIH bằng trình duyệt; hiện `CONTENT_PENDING` |
 | 4 | Pháp lý Việt Nam chưa đối chiếu | Điều 69 Luật KCB 15/2023; nghĩa vụ DPIA/DPO theo Luật 91/2025 và NĐ 356/2025; TT 50/2025; bảng 30/20 năm của TT 33/2025; QĐ 3218 |
@@ -68,11 +69,11 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 | 8 | Mục tham khảo cần xử lý | `ref_011` trong `.bib` là "Our journey" (2025), không phải "The Book of OHDSI"; `ref_045`, `ref_103` DOI/tiêu đề lệch; `ref_043`, `ref_072` là preprint; 15 `BIB_PENDING`; 3 URL trùng giữa mục cũ và mục mới |
 | 9 | Audit độc lập 47 mục không DOI và chuyển `VERIFIED_UNAUDITED` → `VERIFIED` | Cần audit thủ công |
 | 10 | Case study dự án thực (hai file + file DMPTool nháp) | Chưa đưa vào repo; nếu đăng công khai cần chủ nhiệm đề tài/bệnh viện đồng ý; còn lỗi nội dung đã nêu (giả danh ≠ "Zero-PII"; UAS7 thuộc miền QS của SDTM; căn cứ pháp lý chưa kiểm) |
-| 11 | Ba quyết định mặc định cho ch02–ch06 và nhóm syllabus | Chờ Ben xác nhận |
+| 11 | Ba quyết định mặc định cho ch02–ch06 và nhóm syllabus | Đã xác nhận 22/11/2026 (xem §4) |
 | 12 | Danh mục APA 334 mục; Ethics/CITI/DUA ở mức nâng cao; tài liệu hướng dẫn agent trong `docs/reviews/` | Chưa quyết |
-| 13 | GitHub Pages; workflow CI | Tài khoản làm việc không có quyền Workflows; Ben tự bật/thêm |
-| 14 | Dọn nhánh và worktree đã merge | Chưa làm |
-| 15 | Gộp PR #6 vào `main` | Chưa; điều kiện: các mục trên và quyết định của Ben |
+| 13 | GitHub Pages; workflow CI | Repo khóa học: Pages đã bật (nguồn nhánh `gh-pages`, triển khai thủ công; bản đang công khai là `1ee5b8a`, chưa có giáo trình); merge vào `main` không tự xuất bản. Repo gốc: chưa bật Pages. Tài khoản làm việc không có quyền Workflows |
+| 14 | Dọn nhánh và worktree đã merge | Đã làm 22/11/2026 cho các nhánh `fix/…`, `feat/…`, `docs/…` của PR #7–#16 và các worktree; còn các nhánh cũ của PR #1–#4 và nhánh PR #6 |
+| 15 | Gộp PR #6 vào `main`; xuất bản bản web (gh-pages) | Chưa; điều kiện: các mục trên và quyết định của Ben. PR #5 của hai repo đã đóng (bị thay thế) |
 
 ## 7. Bước tiếp theo đề xuất
 

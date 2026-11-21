@@ -1,5 +1,11 @@
 # Decision log
 
+## 2026-11-22 — Xác nhận các quyết định mặc định và chấp nhận tạm thời các mục chưa kiểm
+
+- **Quyết định:** Ben xác nhận các mặc định đã dùng cho ch02–ch06 và nhóm syllabus (case study ghi "tình huống giả định minh họa"; lab giữ trong cùng file với chương; không dùng số hay khẳng định chưa đọc được ở nguồn; quiz tổng hợp là câu khái niệm không dạy dữ kiện có ngày; capstone là tình huống giả định không dùng tên dự án thật). Các mục `CONTENT_PENDING` được chấp nhận tạm thời.
+- **Người quyết định:** Ben.
+- **Chi tiết:** PR #5 của hai repo đã đóng vì bị thay thế (PR #15 và cơ chế đồng bộ mới). Các nhánh `fix/…`, `feat/…`, `docs/…` đã merge của PR #7–#16 đã được xóa.
+
 ## 2026-11-21 — Khóa học miễn phí tự học: syllabus, M0, trang cuối khóa
 
 - **Người quyết định:** Ben.
