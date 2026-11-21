@@ -68,3 +68,17 @@
 - (c) Giữ lab trong cùng file.
 
 Ba quyết định trên là tạm thời, chờ Ben xác nhận.
+
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 3
+
+- **Quyết định:** Giữ trong thân chương các khái niệm ổn định về lớp miền SDTM, kiến trúc FHIR, mô hình person-centric của OMOP, logic ánh xạ `source_value`/`concept_id` và vai trò bổ trợ của ba chuẩn.
+- **Chuyển phụ lục:** Phiên bản FHIR/OMOP/CDISC, yêu cầu tiếp nhận FDA/PMDA, URL, ngày kiểm, trạng thái Athena và chi tiết ETL được đưa vào `docs/appendices/standards.md` và `docs/appendices/fhir-omop-lab-notes.md`.
+- **Quyết định tạm thời:** Bundle §5.2 là tình huống minh họa tự dựng; Synthea chỉ là gợi ý nguồn dữ liệu tổng hợp; concept chưa đọc trực tiếp từ Athena giữ `CONTENT_PENDING`.
+- **Giới hạn:** R6, yêu cầu PMDA, và các concept `402407000`, `4180186`, `8753/8876` chưa được xác minh đầy đủ trong lượt này; không dùng chúng làm bằng chứng đã kiểm.
+
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 5
+
+- **Quyết định tạm thời:** Giữ trong thân chương các khái niệm ổn định về thuộc tính định danh, k-anonymity, l-diversity, dịch chuyển ngày và cảnh báo rằng Lab 5 không đạt Safe Harbor.
+- **Chuyển phụ lục:** URL, ngày kiểm, trạng thái pháp lý, mốc EHDS, lưu trữ/hủy dữ liệu và kết quả chạy Lab 5 nằm ở `docs/appendices/legal.md`, `retention.md` và `privacy-lab-notes.md`.
+- **Case study:** dùng nhãn tình huống giả định minh họa; không giữ số liệu, chế tài hoặc khẳng định chưa đọc được nguồn.
+- **Giới hạn:** nguồn Five Safes, NIST SP 800-88 Rev. 2 và chi tiết Thông tư 33/2025/TT-BYT vẫn `CONTENT_PENDING`/`BIB_PENDING` cho đến khi đọc được nguồn tương ứng.
