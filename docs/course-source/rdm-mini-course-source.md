@@ -59,7 +59,7 @@ Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trư�
 <!-- page: course/module-1-dmp/index.md -->
 # Bài 1 — Thiết kế nghiên cứu và Kế hoạch quản lý dữ liệu (DMP)
 
-**Mục tiêu:** viết được DMP 2 trang cho một nghiên cứu giả định; phân biệt được DMP, protocol và CRF.
+**Mục tiêu:** viết được DMP theo mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe cho một nghiên cứu giả định; phân biệt được DMP, protocol và CRF.
 
 ## Nội dung chính
 
@@ -67,7 +67,7 @@ Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên su
 
 Một nghiên cứu bắt đầu bằng câu hỏi lâm sàng, nhưng dữ liệu bắt đầu bằng **Data Management Plan (DMP)** — tài liệu mô tả dữ liệu nào sẽ thu thập, ở định dạng nào, lưu ở đâu, ai được truy cập, chia sẻ ra sao, và lưu bao lâu.
 
-Nhà tài trợ lớn yêu cầu DMP từ lúc nộp hồ sơ. NIH yêu cầu **Data Management and Sharing Plan (DMSP) ≤ 2 trang, 6 thành phần**, chính sách có hiệu lực từ 25/01/2023; từ 25/02/2026, NIH ban hành mẫu tinh giản NOT-OD-26-046, bắt buộc với hồ sơ nộp từ 25/05/2026. Horizon Europe yêu cầu DMP đầy đủ chậm nhất vào tháng thứ 6 của dự án, theo nguyên tắc “mở tối đa có thể, đóng tối thiểu khi cần thiết”, dữ liệu mở theo CC BY/CC0.
+Nhà tài trợ lớn yêu cầu DMP từ lúc nộp hồ sơ. Khi soạn thảo, dùng **mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe**; xem `../appendices/funder-templates.md` để biết phạm vi và trạng thái kiểm chứng. Horizon Europe nhấn mạnh nguyên tắc “mở tối đa có thể, đóng tối thiểu khi cần thiết”.
 
 Ba thứ thường bị nhầm với nhau:
 
@@ -89,12 +89,12 @@ Trước khi thu thập, cần thống nhất ba thứ: **từ điển dữ li�
 - D. Hai tài liệu này là một.
 - **Đáp án: A.** Protocol trả lời câu hỏi nghiên cứu; DMP trả lời câu hỏi quản trị dữ liệu.
 
-**1.2. Theo NIH, DMSP có giới hạn nào?**
-- A. Không giới hạn độ dài.
-- B. Tối đa 2 trang, 6 thành phần.
-- C. Chỉ cần 1 trang, không cần kho lưu trữ.
-- D. Chỉ nộp sau khi nghiên cứu kết thúc.
-- **Đáp án: B.** Chính sách NIH có hiệu lực 25/01/2023; mẫu tinh giản 2026 giữ nguyên chính sách này.
+**1.2. Khi soạn DMSP, lựa chọn nào phù hợp với brief khóa học này?**
+- A. Dùng mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe và kiểm tra yêu cầu cụ thể.
+- B. Luôn dùng một mẫu cũ có giới hạn trang cố định.
+- C. Chỉ cần nêu tên kho, không cần mô tả dữ liệu.
+- D. Chờ đến khi nghiên cứu kết thúc mới viết.
+- **Đáp án: A.** Mẫu và yêu cầu cụ thể cần được kiểm tra theo nhà tài trợ; phụ lục mẫu ghi trạng thái kiểm chứng.
 
 **1.3. Vì sao cần metadata?**
 - A. Để ép mọi biến trong dataset về cùng một kiểu dữ liệu.
@@ -142,6 +142,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. Dữ liệu phải được nhập lại nhiều lần để chứng minh tính đầy đủ.
 - D. Dữ liệu phải công khai.
 - **Đáp án: A.**
+- **Giải thích:** Workflow bắt đầu ở thiết kế và DMP, rồi thu thập, chuẩn hóa, FAIR/chia sẻ và kết thúc bằng lưu trữ hoặc hủy an toàn.
 
 **2.2. Vì sao sửa dữ liệu phải để lại audit trail?**
 - A. Để chứng minh rằng mọi thay đổi đều đã được phê duyệt trước khi thực hiện.
@@ -149,6 +150,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. Để file lớn hơn.
 - D. Không cần nếu sửa đúng.
 - **Đáp án: B.**
+- **Giải thích:** Quyết định thượng nguồn bị bỏ qua có thể làm thiếu metadata, không nhất quán biến và hạn chế khả năng chia sẻ về sau.
 
 **2.3. RBQM khác kiểm tra 100% thủ công ở điểm nào?**
 - A. RBQM không kiểm tra gì cả.
@@ -156,6 +158,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. RBQM tập trung nguồn lực vào dữ liệu và quy trình rủi ro cao nhất.
 - D. RBQM rẻ hơn vì bỏ qua lỗi.
 - **Đáp án: C.**
+- **Giải thích:** FHIR phục vụ trao đổi dữ liệu; OMOP phục vụ chuẩn hóa và phân tích dữ liệu quan sát.
 
 **2.4. Tình huống:** Một điều dưỡng ghi nhiệt độ bệnh nhân vào giấy nháp cuối ca rồi hôm sau mới nhập vào hệ thống. Vi phạm nguyên tắc nào nhất?
 - A. Accurate.
@@ -217,6 +220,7 @@ SMART on FHIR là lớp ứng dụng chạy trên FHIR: ứng dụng bên thứ 
 - C. Chỉ OMOP.
 - D. FHIR để trao đổi, OMOP để phân tích — dùng cả hai, mỗi chuẩn một vai trò.
 - **Đáp án: D.**
+- **Giải thích:** Cơ chế khuyết có thể liên quan đến mức độ bệnh; cần ghi giả định, chọn phương pháp phù hợp và kiểm tra độ nhạy.
 
 ---
 
@@ -392,6 +396,7 @@ Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo B
 - C. b → a → d → e → c.
 - D. a → b → d → e → c.
 - **Đáp án: A.**
+- **Giải thích:** Workflow bắt đầu ở thiết kế và DMP, rồi thu thập, chuẩn hóa, FAIR/chia sẻ và kết thúc bằng lưu trữ hoặc hủy an toàn.
 
 **Q2.** Một nghiên cứu không viết DMP, thu thập xong mới nghĩ đến việc chia sẻ dữ liệu. Hậu quả nào có khả năng xảy ra nhất?
 - A. Chỉ mất thêm 1 ngày.
@@ -399,6 +404,7 @@ Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo B
 - C. Không có hậu quả gì.
 - D. Dữ liệu tự động trở nên FAIR.
 - **Đáp án: B.**
+- **Giải thích:** Quyết định thượng nguồn bị bỏ qua có thể làm thiếu metadata, không nhất quán biến và hạn chế khả năng chia sẻ về sau.
 
 **Q3.** Bệnh viện A dùng FHIR để gửi dữ liệu cho bệnh viện B, rồi cả hai cùng phân tích trên OMOP CDM. Nhận định nào đúng?
 - A. Phải chuyển sang CDISC trước.
@@ -406,6 +412,7 @@ Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo B
 - C. Đúng vai trò: FHIR để trao đổi, OMOP để phân tích.
 - D. FHIR và OMOP không thể dùng chung.
 - **Đáp án: C.**
+- **Giải thích:** FHIR phục vụ trao đổi dữ liệu; OMOP phục vụ chuẩn hóa và phân tích dữ liệu quan sát.
 
 **Q4.** Dữ liệu khuyết vì bệnh nhân nặng không lấy được mẫu xét nghiệm. Cách xử lý đúng nhất là gì?
 - A. Xóa toàn bộ bệnh nhân đó.
@@ -413,13 +420,14 @@ Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo B
 - C. Điền giá trị trung bình cho tất cả.
 - D. Nhận diện đây có thể là MNAR, ghi lại giả định, dùng phương pháp phù hợp và phân tích độ nhạy.
 - **Đáp án: D.**
+- **Giải thích:** Cơ chế khuyết có thể liên quan đến mức độ bệnh; cần ghi giả định, chọn phương pháp phù hợp và kiểm tra độ nhạy.
 
-**Q5.** Theo Thông tư 13/2025/TT-BYT, hạn triển khai bệnh án điện tử của bệnh viện là khi nào?
-- A. 30/09/2025.
-- B. 31/12/2026.
-- C. 01/01/2027.
-- D. Không có hạn.
-- **Đáp án: A.** Hạn 31/12/2026 áp cho các cơ sở khác, không phải bệnh viện.
+**Q5.** Khi xử lý dữ liệu cá nhân trong nghiên cứu, nguyên tắc nào phù hợp nhất?
+- A. Chỉ cần áp dụng văn bản pháp luật có tại thời điểm viết đề cương.
+- B. Có thể bỏ qua ngày hiệu lực nếu tên văn bản đã được ghi trong DMP.
+- C. Cần đối chiếu văn bản hiện hành và ngày hiệu lực áp dụng cho bối cảnh nghiên cứu.
+- D. Chỉ cần tuân theo chính sách của phần mềm thu thập dữ liệu.
+- **Đáp án: C.** Tên văn bản không đủ để xác định nghĩa vụ; cần kiểm tra văn bản hiện hành, ngày hiệu lực và phạm vi áp dụng.
 
 **Q6.** Một dataset đạt k-anonymity với k=5. Điều này đảm bảo điều gì?
 - A. Dữ liệu đã được mã hóa.
@@ -427,34 +435,35 @@ Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo B
 - C. Không ai có thể tái định danh bằng bất kỳ cách nào.
 - D. Dữ liệu được phép công khai.
 - **Đáp án: B.**
+- **Giải thích:** k-anonymity giới hạn liên kết trực tiếp, nhưng không loại bỏ mọi nguy cơ tái định danh hoặc suy luận thuộc tính nhạy cảm.
 
-**Q7.** Muốn dữ liệu dùng được cho AI, ngoài sạch, còn cần gì nhất?
-- A. Định dạng Excel.
-- B. Chỉ cần nhiều biến.
-- C. Nguồn gốc rõ ràng (provenance), mô tả đặc tính, và quản trị đạo đức/pháp lý — theo 7 tiêu chí của Bridge2AI (preprint chưa bình duyệt).
-- D. Dung lượng lớn.
-- **Đáp án: C.**
+**Q7.** Nhận định nào mô tả đầy đủ hơn yêu cầu để dữ liệu y sinh sẵn sàng cho AI?
+- A. Dữ liệu cần lớn, sạch và ở định dạng bảng tính phổ biến.
+- B. Dữ liệu chỉ cần có nhiều biến và không có ô trống.
+- C. Dữ liệu cần đáp ứng các tiêu chí về FAIR, provenance, characterization, explainability, ethics/legal/governance, sustainability và computability; nguồn Bridge2AI ở đây là preprint.
+- D. Dữ liệu phải được giữ kín hoàn toàn để tránh mọi rủi ro.
+- **Đáp án: C.** AI-ready là yêu cầu đa chiều về khả năng tìm thấy, hiểu, giải trình, quản trị và tính toán, không chỉ là dung lượng hoặc độ sạch.
 
 **Q8.** Nghiên cứu kết thúc, nhóm xóa file dữ liệu bằng cách xóa thông thường trong hệ điều hành. Đủ chưa?
-- A. Chỉ cần khi dữ liệu lớn.
-- B. Không cần hủy, cứ giữ mãi.
-- C. Đủ.
-- D. Chưa — cần hủy an toàn theo chuẩn như NIST SP 800-88, và ghi lại việc hủy.
-- **Đáp án: D.**
+- A. Chưa chắc; xóa thông thường chưa đồng nghĩa với khử hoặc hủy dữ liệu an toàn.
+- B. Đủ trong mọi trường hợp vì tệp không còn hiển thị.
+- C. Không cần hủy, cứ giữ dữ liệu mãi mãi.
+- D. Chỉ cần quan tâm nếu dataset có kích thước lớn.
+- **Đáp án: A.** Cần có quy trình khử hoặc hủy phù hợp với loại lưu trữ, chính sách và yêu cầu áp dụng; xóa thông thường chưa đủ để kết luận an toàn.
 
-**Q9.** Vì sao bước 1 dựa trên đánh giá FAIR ban đầu và bước 7 đánh giá lại sau triển khai?
-- A. Vì chỉ cần đánh giá ở hai thời điểm đó, các bước giữa không cần theo dõi.
-- B. Vì đánh giá FAIR chỉ nhằm quyết định có công khai toàn bộ dữ liệu hay không.
-- C. Vì đánh giá ban đầu giúp xác định khoảng cách cần cải thiện, còn đánh giá sau triển khai kiểm tra kết quả và mức trưởng thành đạt được.
-- D. Vì bước 7 thay thế cho việc lập kế hoạch ở bước 1.
-- **Đáp án: C.**
+**Q9.** Trong workflow FAIRification 7 bước, đánh giá FAIR được dùng như thế nào?
+- A. Đánh giá ban đầu ở bước 1 để xác định khoảng cách; đánh giá lại ở bước 7 để kiểm tra kết quả sau triển khai.
+- B. Chỉ đánh giá một lần ở bước 7.
+- C. Chỉ đánh giá khi dữ liệu được công khai hoàn toàn.
+- D. Đánh giá FAIR thay thế cho việc lập kế hoạch ở bước 1.
+- **Đáp án: A.** Đánh giá ban đầu định hướng kế hoạch, còn đánh giá lại ở bước 7 kiểm tra mức cải thiện và kết quả đạt được.
 
 **Q10.** Một học viên nói: “Dữ liệu của tôi đã FAIR nên tôi công khai toàn bộ lên mạng.” Sai ở đâu?
 - A. Không sai.
-- B. FAIR không có nghĩa là mở hết; dữ liệu sức khỏe thường FAIR nhưng truy cập có kiểm soát.
-- C. FAIR chỉ áp dụng cho dữ liệu mở.
-- D. Phải công khai mới gọi là FAIR.
-- **Đáp án: B.**
+- B. FAIR chỉ áp dụng cho dữ liệu mở.
+- C. Phải công khai mới gọi là FAIR.
+- D. FAIR không đồng nghĩa với mở hết; dữ liệu sức khỏe có thể cho truy cập có kiểm soát.
+- **Đáp án: D.** FAIR yêu cầu khả năng tìm thấy, truy cập được theo điều kiện, liên thông và tái sử dụng; không buộc dữ liệu nhạy cảm phải mở công khai.
 
 **Cách tính điểm:** mỗi câu 1 điểm, tổng 34 câu (24 câu theo bài + 10 câu tổng hợp). Đạt khi ≥ 24/34 **và đúng ít nhất 2/3 câu Q1–Q3** của quiz tổng hợp. Học viên nên làm quiz tổng hợp tối đa 2 lần như hướng dẫn tự học; site tĩnh không cưỡng chế giới hạn này.
 

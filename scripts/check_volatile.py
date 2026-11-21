@@ -25,7 +25,7 @@ def main() -> int:
     today = dt.date(2026, 11, 21)
     violations: list[str] = []
     terms = load_terms()
-    chapter_paths = sorted((ROOT / "docs" / "chapters").glob("ch0[1-6]_*.md"))
+    chapter_paths = sorted((ROOT / "docs" / "chapters").glob("ch0[0-7]_*.md"))
     for path in chapter_paths:
         paragraphs = re.split(r"\n\s*\n", path.read_text(encoding="utf-8"))
         paragraphs = [p for p in paragraphs if "\n## " in p or p.lstrip().startswith("## ")]
