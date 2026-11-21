@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Audit goi y cho cac muc references.bib khong co DOI.
 
-Script tu tai URL trong .bib (bang chung that), roi Gemini chi so sanh noi dung trang voi thu muc.
-Gemini khong duoc tu tra cuu bang tri nho. Muc khong co URL hoac trang khong tai duoc -> NOT_CHECKED.
+Script tu tai URL trong .bib (bang chung that), roi mo hinh ngon ngu chi so sanh noi dung trang voi thu muc.
+Mo hinh khong duoc tu tra cuu bang tri nho. Muc khong co URL hoac trang khong tai duoc -> NOT_CHECKED.
 
 KET QUA CHI LA GOI Y, khong phai xac nhan. Khong sua .bib hay citation-audit.csv.
 API key doc tu bien moi truong GEMINI_API_KEY (khong ghi vao file). Chi gui tieu de/URL/nam
@@ -14,9 +14,9 @@ from verify_refs import parse_bib
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 KEY = os.environ["GEMINI_API_KEY"]
-OUT = "references/audit-nodoi-gemini.csv"
+OUT = "references/audit-nodoi-pages.csv"
 FIELDS = ["key", "bib_title", "bib_year", "bib_url", "url_resolves", "found_title", "found_authors",
-          "found_year", "found_publisher", "found_doi", "found_url", "match", "notes"]
+          "found_year", "found_publisher", "found_doi", "found_url", "match", "notes", "model", "checked_at"]
 
 PROMPT = """Ban kiem chung thu muc. Duoi day la thong tin thu muc trong danh muc va NOI DUNG THAT cua trang URL (da tai ve). Chi dua vao noi dung trang; khong dung tri nho. Truong nao trang khong cho thay thi de rong.
 THU MUC: title="{title}" year="{year}" author="{author}" type="{type}"
@@ -35,7 +35,7 @@ def fetch(url):
             return r.status, r.geturl(), f"[khong phai HTML: {ct}]"
         t = raw.decode("utf-8", "replace")
         ti = re.search(r"<title[^>]*>(.*?)</title>", t, re.S | re.I)
-        t = re.sub(r"<(script|style)[^>]*>.*?</>", " ", t, flags=re.S | re.I)
+        t = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", t, flags=re.S | re.I)
         t = re.sub(r"<[^>]+>", " ", t); t = re.sub(r"\s+", " ", t)
         return r.status, r.geturl(), "TITLE: " + (ti.group(1).strip() if ti else "") + " | " + t[:4000]
     except urllib.error.HTTPError as ex:
@@ -83,6 +83,7 @@ def main():
             r["url_resolves"] = st
             row = {"key": e["key"], "bib_title": e.get("title", ""), "bib_year": e.get("year", ""), "bib_url": e.get("url", "")}
             row.update({k: r.get(k, "") for k in FIELDS if k in r})
+            row["model"] = MODEL; row["checked_at"] = time.strftime("%Y-%m-%d")
             w.writerow(row); f.flush()
             print(e["key"], row.get("match"), flush=True)
             time.sleep(2)
