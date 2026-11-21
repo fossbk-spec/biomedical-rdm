@@ -325,7 +325,7 @@ example-csu-rdm-package/
 }
 ```
 
-> **Lưu ý kỹ thuật:** ORCID đúng của tác giả là `0000-0002-4603-1297`; cơ quan là `Hanoi University of Science and Technology (HUST), iBME Lab`. Mô tả dữ liệu ghi rõ "dữ liệu giả lập phục vụ học tập" (không dùng cụm "HIPAA Safe Harbor + date shifting" vì hai phương pháp này mâu thuẫn nhau — Safe Harbor yêu cầu loại bỏ ngày tháng, chỉ giữ năm).
+> **Lưu ý kỹ thuật:** trong ví dụ, thay thông tin tác giả bằng ORCID và đơn vị của chính bạn. Mô tả dữ liệu nên ghi rõ "dữ liệu giả lập phục vụ học tập". Không dùng cụm "HIPAA Safe Harbor + date shifting" vì hai phương pháp này mâu thuẫn nhau: Safe Harbor yêu cầu loại bỏ yếu tố ngày tháng, chỉ giữ năm.
 
 ### 5.4. Script Python Phân chia Dữ liệu An toàn cho AI (`train_test_split_safe.py`)
 
