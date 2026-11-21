@@ -20,3 +20,15 @@ PMDA
 Athena
 SMART on FHIR
 Bulk Data Access
+EHDS 2025/327
+45 CFR 164.514
+Safe Harbor
+k-anonymity
+l-diversity
+Five Safes
+patient-level date shifting
+NIST SP 800-88 Rev. 2
+Thông tư 13/2025/TT-BYT
+Thông tư 33/2025/TT-BYT
+Luật 91/2025/QH15
+Nghị định 356/2025/NĐ-CP

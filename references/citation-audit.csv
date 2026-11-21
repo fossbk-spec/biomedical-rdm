@@ -111,3 +111,6 @@
 "110","ref_110","VERIFIED_UNAUDITED","","chapter_only","URL GOV.UK/MHRA đọc được 21/11/2026; hướng dẫn được công bố ngày 09/03/2018.","","",""
 "111","ref_111","VERIFIED_UNAUDITED","","chapter_only","URL EMA đọc được 21/11/2026; bản cuối được GCP IWG thông qua ngày 07/03/2023.","","",""
 "112","ref_112","VERIFIED_UNAUDITED","","chapter_only","eCFR đọc được 21/11/2026; Part 11 nêu phạm vi và các kiểm soát cho hồ sơ điện tử/chữ ký điện tử.","","",""
+"113","ref_113","VERIFIED_UNAUDITED","","chapter_only","EUR-Lex đọc được 21/11/2026; tiêu đề/năm/URL khớp văn bản GDPR. Chưa dùng để xác nhận mọi diễn giải nội dung.","","MATCH",""
+"114","ref_114","VERIFIED_UNAUDITED","","chapter_only","EUR-Lex đọc được 21/11/2026; tiêu đề/năm/URL khớp EHDS; Điều 105 ghi mốc hiệu lực/áp dụng.","","MATCH",""
+"115","ref_115","VERIFIED_UNAUDITED","","chapter_only","eCFR đọc được 21/11/2026; dùng cho danh sách Safe Harbor 164.514(b)(2)(i)(A)-(R).","","MATCH",""
