@@ -11,6 +11,7 @@ book:
     - docs/INPUT-INVENTORY.md
     - docs/DECISIONS.md
     - docs/DATA-USE.md
+    - docs/PROJECT-STATE.md
 
 format:
   html:
