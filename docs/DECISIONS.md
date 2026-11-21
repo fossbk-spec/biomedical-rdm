@@ -7,6 +7,12 @@
 - **Phạm vi:** Chương 2–6 không sửa trong đợt này. Khóa học đăng ở `biomedical-rdm-course`; tài liệu nguồn lưu ở repo gốc `biomedical-rdm`.
 - **Rà soát:** Các phụ lục chốt ngày 21/11/2026 và rà soát tiếp theo ngày 21/05/2027; cờ `CONTENT_PENDING` và `[CẦN KIỂM CHỨNG]` được giữ nguyên khi chưa có bằng chứng đủ.
 
+## 2026-11-21 — Phụ lục mẫu nhà tài trợ
+
+- **Quyết định:** Đưa nội dung DMPTool vào `docs/appendices/funder-templates.md`; coi DMPTool là nguồn thứ cấp/hỗ trợ soạn thảo và giữ `CONTENT_PENDING` cho tên mẫu quan sát từ staging, điều kiện chuyển tiếp của mẫu cũ và mọi chi tiết chưa đối chiếu được.
+- **Căn cứ:** Các yếu tố, giới hạn từ và mốc chuyển tiếp đã được đối chiếu với nguồn NIH chính thức; ngày kiểm 21/11/2026.
+- **Người quyết định:** Ben.
+
 ## 2026-11-21 — Giữ dạng trích dẫn số trong canonical review
 
 - **Quyết định:** Giữ `[n]` trong `docs/literature-review/index.md` cho đợt này; không đổi thân bài canonical và không tạo script chuyển đổi.

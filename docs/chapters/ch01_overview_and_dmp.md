@@ -17,8 +17,8 @@ Sau khi hoàn thành chương này, người học đạt được các năng l�
    * Phân biệt rạch ròi bản chất và vai trò của bộ ba tài liệu: **Protocol (Đề cương)**, **DMP (Kế hoạch quản lý dữ liệu)**, và **CRF (Biểu mẫu thu thập dữ liệu)**.
    * Trình bày được cấu trúc khung quản trị dữ liệu y tế (DAMA-DMBOK, HIMSS AMAM) và mô hình 3 hồ sơ Data Steward chuyên nghiệp (Policy, Research, Infrastructure).
 2. **Áp dụng & Thiết kế (Bloom 3):**
-   * Xác định đúng 6 thành phần cốt lõi của một bản Kế hoạch Quản lý và Chia sẻ Dữ liệu (DMSP) theo hướng dẫn của Viện Y tế Quốc gia Hoa Kỳ (NIH) và Horizon Europe.
-   * Tự tay xây dựng được một bản DMSP hoàn chỉnh ($\le 2$ trang) trên nền tảng trực tuyến **DMPTool** cho một đề tài nghiên cứu y sinh cụ thể.
+   * Nhận diện 7 yếu tố của định dạng DMSP NIH hiện hành và biết khi nào cần đối chiếu yêu cầu riêng của NOFO.
+   * Tự tay xây dựng được một DMSP theo mẫu NIH hiện hành trên nền tảng trực tuyến **DMPTool** cho một đề tài nghiên cứu y sinh cụ thể.
 
 ---
 
@@ -185,14 +185,14 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 
 ---
 
-### **Câu 1.2. Theo chính sách quản lý và chia sẻ dữ liệu của Viện Y tế Quốc gia Hoa Kỳ (NIH DMSP), bản kế hoạch có giới hạn nào về độ dài?**
-- A. Không có bất kỳ giới hạn nào về độ dài văn bản.
-- B. Dung lượng tối đa không vượt quá 2 trang, giải trình đầy đủ các thành phần cốt lõi.
-- C. Chỉ cần viết ngắn gọn trong 1 đoạn văn và không cần nêu tên kho lưu trữ.
-- D. Chỉ cần nộp sau khi đề tài nghiên cứu đã kết thúc và nghiệm thu.
+### **Câu 1.2. Định dạng NIH hiện hành yêu cầu người học làm gì?**
+- A. Chọn mẫu NIH hiện hành, trả lời 7 yếu tố và đối chiếu NOFO cụ thể.
+- B. Luôn dùng một mẫu tường thuật cố định dài không quá 2 trang.
+- C. Chỉ cần nộp tên kho lưu trữ, không cần giải thích giới hạn chia sẻ.
+- D. Chỉ cần lập DMSP sau khi đề tài kết thúc.
 
-> **Đáp án đúng: B.**
-> *Giải thích:* Chính sách NIH DMSP quy định bản kế hoạch theo hướng dẫn hiện hành; chi tiết NOT-OD-26-046 cần xem [Phụ lục funder-templates](../appendices/funder-templates.md).
+> **Đáp án đúng: A.**
+> *Giải thích:* Định dạng NIH 2026 dùng 7 yếu tố; chi tiết về giới hạn chia sẻ, giới hạn từ và trạng thái nguồn xem [Phụ lục funder-templates](../appendices/funder-templates.md).
 
 ---
 
@@ -222,24 +222,18 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 
 ### Bài thực hành tự chọn: Soạn thảo DMSP chuẩn NIH trên DMPTool
 
-* **Mục tiêu:** Đọc mẫu trong [Phụ lục funder-templates](../appendices/funder-templates.md), sau đó sử dụng công cụ trực tuyến **DMPTool** để soạn thảo một bản Kế hoạch Quản lý và Chia sẻ Dữ liệu $\le 2$ trang cho một nghiên cứu giả định.
+* **Mục tiêu:** Đọc hướng dẫn trong [Phụ lục funder-templates](../appendices/funder-templates.md), sau đó sử dụng **DMPTool** để soạn thảo DMSP theo mẫu NIH hiện hành cho một nghiên cứu giả định. Chốt nội dung phụ lục: 21/11/2026.
 * **Đề bài tình huống minh họa:** Bạn là Research Data Steward cho một đề tài giả định về ứng dụng trí tuệ nhân tạo trong theo dõi bệnh mày đay mạn tính tại Việt Nam; không sử dụng dữ liệu thật.
 
 #### Các bước thực hiện:
 1. **Bước 1:** Truy cập `https://dmptool.org` sau khi đọc [Phụ lục funder-templates](../appendices/funder-templates.md), tạo tài khoản (sử dụng email cá nhân hoặc tài khoản ORCID).
-2. **Bước 2:** Trong giao diện hiện có, chọn nhà tài trợ và mẫu phù hợp theo hướng dẫn của [Phụ lục funder-templates](../appendices/funder-templates.md); tên nút và mẫu cần được kiểm tra trước khi dạy (chốt 21/11/2026).
-3. **Bước 3: Hoàn thiện 6 mục nội dung:**
-   - *Data Type:* Nêu rõ dữ liệu số gồm bảng lâm sàng (.csv), ảnh tổn thương sẩn phù (.jpeg, có thước đo chuẩn), kết quả xét nghiệm (.csv). Dự kiến dung lượng: ~50 GB.
-   - *Tools/Code:* Phần mềm REDCap thu thập dữ liệu; Python 3.12 (thư viện PyTorch, OpenCV) để xử lý ảnh; R 4.4 để phân tích thống kê. Mã nguồn công khai trên GitHub.
-   - *Standards:* Chọn chuẩn và phiên bản sau khi đối chiếu [Phụ lục standards](../appendices/standards.md), chốt 21/11/2026.
-   - *Repositories:* Dữ liệu ẩn danh công bố trên kho dữ liệu mở **Zenodo** khi bài báo được chấp nhận xuất bản; cấp DOI cố định.
-   - *Privacy:* Nếu dùng HIPAA Safe Harbor, loại bỏ các định danh theo yêu cầu của phương pháp này; không đồng thời gọi Date Shifting là Safe Harbor. Đối chiếu căn cứ pháp lý tại [Phụ lục legal](../appendices/legal.md), chốt 21/11/2026; việc chia sẻ dữ liệu phải phù hợp với chấp thuận tham gia và phê duyệt đạo đức.
-   - *Oversight:* TS. Nguyễn Văn A (Chủ nhiệm đề tài) và Research Data Steward chịu trách nhiệm kiểm tra định kỳ 6 tháng/lần.
-4. **Bước 4:** Xuất bản tài liệu ra định dạng PDF.
+2. **Bước 2:** Chọn nhà tài trợ và mẫu NIH hiện hành theo [Phụ lục funder-templates](../appendices/funder-templates.md); kiểm tra lại tên mẫu trên production trước khi dạy.
+3. **Bước 3:** Trả lời 7 yếu tố: chia sẻ tối đa phù hợp; thời điểm chia sẻ; thời gian duy trì; giới hạn chia sẻ (có giới hạn từ; xem phụ lục); riêng tư theo NOT-OD-22-213; bảng loại dữ liệu/kho (tối đa 100 từ); và 7a/7b về GDS, genomics và Institutional Certification nếu áp dụng.
+4. **Bước 4:** Với tình huống này, mô tả dữ liệu (.csv, .jpeg), công cụ, chuẩn, kho, quyền riêng tư và giám sát trong đúng trường hỏi; không sử dụng dữ liệu thật và không mặc định chọn kho nếu chưa đối chiếu yêu cầu loại dữ liệu.
+5. **Bước 5:** Xuất tài liệu theo định dạng DMPTool cung cấp và lưu bản kiểm tra.
 
 #### Bảng Tiêu chí Tự đối chiếu Bài Lab 1 (Self-Assessment Checklist /20 điểm):
-- [ ] **Hình thức ($\le 2$ trang):** Bản kế hoạch cô đọng, trình bày rõ ràng, không vượt quá giới hạn độ dài *(4 điểm)*.
-- [ ] **Tính đầy đủ 6 thành tố:** Trả lời đầy đủ 6 câu hỏi cốt lõi của hướng dẫn NIH *(6 điểm)*.
+- [ ] **Đủ 7 yếu tố NIH:** Trả lời đúng các câu hỏi hiện hành; bảng phần 6 không vượt 100 từ và phần giới hạn chia sẻ nằm trong giới hạn từ của mẫu (xem phụ lục) *(6 điểm)*.
 - [ ] **Lựa chọn kho lưu trữ (Repository):** Kho lưu trữ được chỉ định có uy tín, cấp PID/DOI cố định *(4 điểm)*.
 - [ ] **Phương án bảo vệ quyền riêng tư & Căn cứ pháp lý:** Phân định rõ Safe Harbor vs Date Shifting, dẫn chiếu văn bản pháp luật hiện hành *(6 điểm)*.
 
