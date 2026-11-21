@@ -1,8 +1,7 @@
 # CHƯƠNG 3. CHUẨN HÓA DỮ LIỆU Y TẾ QUỐC TẾ: CDISC, HL7 FHIR VÀ OMOP CDM (OHDSI)
 
-> **Mã học phần:** BIO-RDM-2026 | **Thời lượng:** 3 giờ tín chỉ (1 giờ Lý thuyết + 2 giờ Thực hành phòng máy Lab 3)  
-> **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*  
-> **Phiên bản:** `v2.0.0_20261121` | **Chuẩn trích dẫn:** SSoT BibTeX (`references/references.bib`)
+> **Thời lượng ước lượng:** đọc ≈ 35–45 phút; lab tự chọn ≈ 45–60 phút (tùy tốc độ đọc và thao tác).
+> **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*
 
 ---
 
@@ -98,22 +97,13 @@ Nếu không có các chuẩn mở toàn cầu, chi phí kỹ thuật để tíc
 
 ### 3.2. CDISC: Chuẩn mực Đệ trình Nghiên cứu Lâm sàng Quy chuẩn
 
-Hiệp hội Tiêu chuẩn Trao đổi Dữ liệu Lâm sàng (**CDISC - Clinical Data Interchange Standards Consortium**) cung cấp khung tiêu chuẩn quốc tế bắt buộc đối với các thử nghiệm lâm sàng nộp lên Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ (FDA) và Cơ quan Dược phẩm và Thiết bị Y tế Nhật Bản (PMDA).
+Hiệp hội Tiêu chuẩn Trao đổi Dữ liệu Lâm sàng (**CDISC - Clinical Data Interchange Standards Consortium**) cung cấp các mô hình và hướng dẫn được dùng trong nhiều bối cảnh nghiên cứu lâm sàng. Yêu cầu định dạng dữ liệu khi nộp hồ sơ phụ thuộc loại hồ sơ, cơ quan tiếp nhận và hướng dẫn hiện hành; xem [Phụ lục chuẩn](../appendices/standards.md) (chốt 21/11/2026) và không suy ra một yêu cầu chung cho mọi hồ sơ.
 
 #### 3.2.1. Mô hình Dữ liệu Nghiên cứu dạng Bảng (SDTM - Study Data Tabulation Model)
-- **Triết lý:** Dữ liệu thử nghiệm lâm sàng được tổ chức thành các bảng phẳng 2 chiều (bảng quan hệ), mỗi bảng đại diện cho một **miền (Domain)** cụ thể.
-- **Quy ước đặt tên miền (2 ký tự):**
-  - `DM` (*Demographics*): Thông tin nhân khẩu học (tuổi, giới tính, chủng tộc).
-  - `VS` (*Vital Signs*): Chỉ số sinh tồn (huyết áp, mạch, nhiệt độ).
-  - `AE` (*Adverse Events*): Biến cố bất lợi ghi nhận trong quá trình điều trị.
-  - `LB` (*Laboratory Tests*): Kết quả xét nghiệm sinh hóa, huyết học.
-  - `CM` (*Concomitant Medications*): Thuốc dùng đồng thời.
-- **Cấu trúc biến định danh bắt buộc:** Mỗi miền SDTM luôn chứa các cột chuẩn:
-  - `STUDYID`: Mã định danh duy nhất của nghiên cứu.
-  - `USUBJID` (*Unique Subject Identifier*): Mã bệnh nhân duy nhất toàn cầu (ghép từ StudyID-SiteID-SubjectID).
-  - `DOMAIN`: Tên miền (ví dụ: `AE`, `DM`).
-  - `--SEQ`: Số thứ tự thứ cấp của bản ghi trong miền (ví dụ: `AESEQ`).
-  - `--TESTCD` & `--TEST`: Mã viết tắt và tên đầy đủ của phép đo (ví dụ: `VSTESTCD = SYSBP`, `VSTEST = Systolic Blood Pressure`).
+- **Triết lý:** Dữ liệu được tổ chức thành các bảng theo miền (*domain*), dựa trên các lớp quan sát chung của SDTM. CDISC phân loại các miền thành **Special-Purpose**, **Interventions**, **Events**, **Findings** và **Findings About**.
+- **Ví dụ miền:** `DM` (*Demographics*) là miền special-purpose; `AE` (*Adverse Events*) là miền Events; `VS` (*Vital Signs*) và `LB` (*Laboratory Tests*) là miền Findings; `CM` (*Concomitant Medications*) là miền Interventions.
+- **Biến định danh:** `STUDYID`, `USUBJID` và `DOMAIN` là các biến thường dùng để nhận diện nghiên cứu, đối tượng và miền. `USUBJID` có thể được tạo theo quy ước ghép mã nghiên cứu, cơ sở và đối tượng, nhưng cách ghép cụ thể phải do đặc tả nghiên cứu quy định.
+- **Biến theo lớp miền:** `--SEQ` không phải là cột bắt buộc chung cho mọi miền; chẳng hạn `DM` không dùng `--SEQ` như các miền có nhiều bản ghi. `--TESTCD` và `--TEST` thuộc nhóm Findings (ví dụ `VSTESTCD`/`VSTEST` hoặc `LBTESTCD`/`LBTEST`), không áp dụng mặc định cho `DM`, `AE` hoặc `CM`. Chi tiết phiên bản SDTM/IG và quy tắc tiếp nhận được giữ ở [Phụ lục chuẩn](../appendices/standards.md) (chốt 21/11/2026) [CẦN KIỂM CHỨNG: phiên bản IG áp dụng cho từng hồ sơ].
 
 #### 3.2.2. Mô hình Dữ liệu Phân tích (ADaM - Analysis Data Model)
 Trong khi SDTM chứa dữ liệu thô đã chuẩn hóa phản ánh sát thực tế trên phiếu thu thập, **ADaM** được thiết kế riêng để phục vụ các nhà thống kê sinh học chạy mô hình phân tích:
@@ -127,19 +117,19 @@ Trong khi SDTM chứa dữ liệu thô đã chuẩn hóa phản ánh sát thực
 **HL7 FHIR (Fast Healthcare Interoperability Resources)** ra đời nhằm khắc phục sự cồng kềnh, khó triển khai của các chuẩn trước đây (như HL7 v2 và v3) [@ref_009].
 
 #### 3.3.1. Triết lý Thiết kế Hướng Tài nguyên (Resource-Oriented Architecture)
-- FHIR xây dựng dựa trên các công nghệ web hiện đại: giao thức RESTful HTTP, định dạng dữ liệu nhẹ JSON hoặc XML.
+- FHIR xây dựng dựa trên các công nghệ web như HTTP, RESTful APIs và các định dạng JSON hoặc XML.
 - Mọi khái niệm lâm sàng và hành chính được đóng gói thành các **Tài nguyên (Resources)** độc lập. Hiện có hơn 150 tài nguyên chuẩn, ví dụ:
   - `Patient`: Thông tin người bệnh.
   - `Encounter`: Lượt khám hoặc đợt điều trị.
   - `Condition`: Chẩn đoán, bệnh lý, triệu chứng.
   - `Observation`: Kết quả đo lường, xét nghiệm, dấu hiệu sinh tồn.
   - `MedicationRequest`: Đơn thuốc điều trị.
-- **Quy tắc 80/20:** FHIR chỉ chuẩn hóa sẵn 80% các trường dữ liệu phổ biến nhất trong thực tế y khoa toàn cầu. 20% các trường dữ liệu đặc thù hoặc mang tính cục bộ của từng quốc gia/chuyên khoa được mở rộng thông qua cơ chế **Phần mở rộng (Extensions)** và **Hồ sơ hóa (Profiling)**.
+- FHIR cho phép mở rộng và hồ sơ hóa khi yêu cầu triển khai vượt ra ngoài các phần tử chung. Không dùng tỷ lệ 80/20 như một định lượng phổ quát khi chưa có nguồn trực tiếp [CẦN KIỂM CHỨNG].
 
 #### 3.3.2. Trạng thái các Phiên bản FHIR (Release Status)
 - **FHIR R4 (Version 4.0.1 - 2019):** Là phiên bản ổn định mang tính bước ngoặt, chứa các tài nguyên cốt lõi đạt mức độ chuẩn thành thục mức cao (Normative), hiện là tiêu chuẩn thực tế (*de facto standard*) trong hầu hết các hệ thống bệnh viện trên thế giới.
-- **FHIR R5 (Version 5.0.0):** Chính thức ban hành ngày 26/03/2023, bổ sung các cải tiến quan trọng về quản lý vòng đời dữ liệu, nghiên cứu lâm sàng đa trung tâm và phân tích dữ liệu lớn.
-- **FHIR R6:** Hiện đang trong giai đoạn soạn thảo và lấy ý kiến biểu quyết (*ballot*), chưa ban hành chính thức.
+- **FHIR R5 (Version 5.0.0):** Ban hành ngày 26/03/2023 (chi tiết phiên bản và trạng thái: xem [Phụ lục chuẩn dữ liệu](../appendices/standards.md), chốt 21/11/2026).
+- **FHIR R6:** Trạng thái phát hành thay đổi theo lịch HL7; tại ngày chốt của chương, cần đối chiếu trực tiếp lịch phát hành tại [HL7 FHIR Specification](https://hl7.org/fhir/) trước khi dùng. Bản mô tả trạng thái R6 trong chương được giữ `CONTENT_PENDING` cho tới khi kiểm lại.
 
 #### 3.3.3. Hệ sinh thái Ứng dụng SMART on FHIR và Bulk Data Access
 - **SMART on FHIR:** Cung cấp khung ủy quyền bảo mật OAuth2 cho phép các ứng dụng di động hoặc phần mềm của bên thứ ba tích hợp an toàn vào hệ thống bệnh án điện tử EHR mà không cần thay đổi mã nguồn cốt lõi của bệnh viện [@ref_036].
@@ -149,15 +139,15 @@ Trong khi SDTM chứa dữ liệu thô đã chuẩn hóa phản ánh sát thực
 
 ### 3.4. OMOP CDM và Mạng lưới OHDSI: Chuẩn hóa Phân tích Dữ liệu Thế giới thực
 
-**Mô hình Dữ liệu Chung OMOP (OMOP Common Data Model)** được quản lý và phát triển bởi hiệp hội khoa học mở toàn cầu **OHDSI (Observational Health Data Sciences and Informatics)** [@ref_011, @ref_038].
+**Mô hình Dữ liệu Chung OMOP (OMOP Common Data Model)** được quản lý và phát triển bởi hiệp hội khoa học mở toàn cầu **OHDSI (Observational Health Data Sciences and Informatics)** [@ref_011; @ref_038]. `ref_011` hiện còn lệch tiêu đề so với *The Book of OHDSI* và được giữ `BIB_PENDING`.
 
 #### 3.4.1. Kiến trúc Bảng Quan hệ Tập trung vào Người bệnh (Person-Centric Schema)
-OMOP CDM (phiên bản tham chiếu hiện hành là **v5.4**, ban hành tháng 09/2021) chuyển đổi toàn bộ dữ liệu quan sát không đồng nhất từ các bệnh viện và bảo hiểm y tế về một lược đồ quan hệ chuẩn mực gồm các bảng cốt lõi:
+OMOP CDM cung cấp một lược đồ quan hệ person-centric cho dữ liệu quan sát. Chương dùng **v5.4** làm phiên bản minh họa; phiên bản và mốc phát hành phải được chốt theo [đặc tả OMOP](https://ohdsi.github.io/CommonDataModel/cdm54.html) và ghi ở phụ lục.
 - `person`: Thông tin nhân khẩu học duy nhất của cá nhân (`person_id`, `gender_concept_id`, `year_of_birth`).
 - `observation_period`: Khoảng thời gian người bệnh được theo dõi liên tục trong cơ sở dữ liệu.
 - `visit_occurrence`: Đợt khám bệnh (nội trú, ngoại trú, cấp cứu).
 - `condition_occurrence`: Bệnh lý, chẩn đoán xác định (`condition_concept_id`, `condition_start_date`).
-- `drug_exposure`: Quá trình sử dụng thuốc (`drug_concept_id`, `days_supply`, `dose_unit_concept_id`).
+- `drug_exposure`: Quá trình sử dụng thuốc (`drug_concept_id`, `days_supply`, `dose_unit_source_value`); các cột cụ thể phải đối chiếu đúng phiên bản CDM trước khi ETL.
 - `measurement`: Kết quả đo đạc sinh tồn và xét nghiệm cận lâm sàng (`measurement_concept_id`, `value_as_number`, `unit_concept_id`).
 
 #### 3.4.2. Hệ thống Từ vựng Chuẩn hóa (OMOP Standardized Vocabularies)
@@ -171,8 +161,8 @@ Trụ cột làm nên sức mạnh vượt trội của OMOP CDM là từ điể
 Thay vì gom toàn bộ dữ liệu bệnh nhân nhạy cảm về một máy chủ trung tâm (gây rủi ro rò rỉ dữ liệu và vi phạm quy định bảo mật), OHDSI áp dụng mô hình phân tích phân tán:
 - Thuật toán phân tích mã nguồn mở (viết bằng R/SQL) được gửi đồng thời đến các cơ sở y tế thành viên trong mạng lưới.
 - Từng cơ sở tự chạy mã trên kho OMOP CDM cục bộ của mình.
-- Chỉ có kết quả thống kê tổng hợp (*aggregated summary statistics*, không chứa PII) được gửi về điều phối viên trung tâm để phân tích gộp [@ref_039].
-- Nghiên cứu kinh điển **LEGEND-HTN** của Suchard và cộng sự (2019) đã áp dụng mô hình này trên 4,9 triệu bệnh nhân tăng huyết áp từ nhiều quốc gia để đánh giá an toàn và hiệu quả của các nhóm thuốc điều trị bước một [@ref_040].
+- Thông thường, mã phân tích được thực thi tại từng cơ sở và chỉ các kết quả được phép chia sẻ theo giao thức nghiên cứu được gửi về điều phối viên. Không mặc định rằng mọi kết quả đều không thể chứa thông tin nhận dạng; ngưỡng ô nhỏ, kiểm soát tiết lộ và quy tắc quản trị phải được xác định riêng. `ref_039` chỉ dùng cho phần kiểm định CDM, không dùng để chứng minh toàn bộ mô hình phân tán.
+- Nghiên cứu **LEGEND-HTN** của Suchard và cộng sự được giữ làm ví dụ có trích dẫn [@ref_040]; con số cỡ mẫu và mô tả triển khai chỉ được dùng sau khi đọc trực tiếp bài gốc [CẦN KIỂM CHỨNG].
 
 ---
 
@@ -185,7 +175,7 @@ Thay vì gom toàn bộ dữ liệu bệnh nhân nhạy cảm về một máy ch
 | **Định dạng dữ liệu** | XPT (SAS Transport v5), Dataset-XML, JSON | JSON, XML, Turtle (RDF) | Cơ sở dữ liệu quan hệ (PostgreSQL, SQL Server, BigQuery, Oracle) |
 | **Mức độ phức tạp tích hợp** | Tĩnh, cấu trúc cột cố định | Rất linh hoạt, có thể mở rộng bằng Extensions | Cần đường ống chuyển đổi ETL và ánh xạ từ vựng phức tạp |
 | **Từ vựng danh pháp** | CDISC Controlled Terminology, MedDRA, WHODrug | Ràng buộc linh hoạt qua ValueSets (SNOMED, LOINC, ICD-10) | Ánh xạ bắt buộc về Standard Concepts (SNOMED, RxNorm, LOINC) |
-| **Tính tương thích lẫn nhau** | Có cầu nối chuyển đổi qua FHIR-to-CDISC (`ref_034`) | Là nguồn nạp dữ liệu đầu vào cho cả OMOP CDM và CDISC | Được sinh ra từ dữ liệu EHR/FHIR thông qua FHIR-to-OMOP (`ref_010`) |
+| **Tính tương thích lẫn nhau** | Có thể dùng hướng dẫn ánh xạ phù hợp cho từng mục tiêu [@ref_034] | Có thể là một nguồn dữ liệu cho các đường ống chuyển đổi, tùy triển khai | Có thể nhận dữ liệu từ nhiều nguồn sau ETL và ánh xạ từ vựng [@ref_010] |
 
 > **Nguyên tắc cốt lõi:** Người làm nghiên cứu không nên hỏi *"Nên dùng chuẩn nào trong ba chuẩn trên?"*, mà phải xác định: *"Dữ liệu cần phục vụ cho mục đích gì?"*:
 > - Muốn kết nối trực tiếp với bệnh án điện tử để lấy dữ liệu lâm sàng thời gian thực $\rightarrow$ Dùng **HL7 FHIR**.
@@ -197,15 +187,15 @@ Thay vì gom toàn bộ dữ liệu bệnh nhân nhạy cảm về một máy ch
 ## 4. NGHIÊN CỨU TÌNH HUỐNG VÀ BÀI HỌC THẤT BẠI (FAILURE ANALYSIS)
 
 ### Case Study 1: Sai lầm khi ép một chuẩn làm nhiệm vụ không phù hợp
-- **Bối cảnh:** Một viện nghiên cứu quốc gia tại Châu Âu quyết định xây dựng một hệ thống dữ liệu tập trung phục vụ cả hai mục đích: (1) hỗ trợ bác sĩ tra cứu bệnh án thời gian thực và (2) phục vụ các nhà dịch tễ học chạy phân tích hồi quy sống còn trên 10 triệu bệnh nhân. Nhóm kỹ thuật quyết định lưu trữ toàn bộ dữ liệu dưới dạng các tệp tài nguyên HL7 FHIR JSON thuần túy trên cơ sở dữ liệu NoSQL (Document Store).
+- **Bối cảnh:** Một viện nghiên cứu quốc gia tại Châu Âu quyết định xây dựng một hệ thống dữ liệu phục vụ cả hai mục đích: (1) hỗ trợ bác sĩ tra cứu bệnh án thời gian thực và (2) phục vụ các nhà dịch tễ học chạy phân tích hồi quy sống còn. Nhóm kỹ thuật quyết định lưu trữ toàn bộ dữ liệu dưới dạng các tài nguyên HL7 FHIR JSON trên cơ sở dữ liệu tài liệu.
 - **Điểm nghẽn phát sinh:**
   - Khi bác sĩ tra cứu từng cá nhân bệnh nhân, hệ thống hoạt động xuất sắc qua FHIR RESTful API.
-  - Tuy nhiên, khi nhóm dịch tễ chạy truy vấn phân tích: *"Tìm tất cả bệnh nhân trên 50 tuổi được chẩn đoán hen phế quản có sử dụng Corticoid dạng hít và tính thời gian đến khi có đợt kịch phát đầu tiên"*, hệ thống buộc phải quét và bóc tách hàng triệu tệp JSON lồng ghép phức tạp. Truy vấn mất hơn 18 giờ đồng hồ để hoàn thành và thường xuyên làm tràn bộ nhớ máy chủ.
-- **Bài học khắc phục:** Nhóm kỹ sư đã phải tái cấu trúc hệ thống: duy trì tầng FHIR API cho giao tiếp thời gian thực, đồng thời xây dựng một đường ống ETL tự động chuyển đổi dữ liệu từ FHIR sang lược đồ **OMOP CDM** trên kho dữ liệu phân tích cột. Kết quả: cùng câu truy vấn trên chỉ mất chưa đầy 12 giây để thực thi trên OMOP CDM.
+- Tuy nhiên, các truy vấn phân tích trên tài liệu JSON lồng ghép có thể phải quét và bóc tách nhiều bản ghi, làm tăng chi phí xử lý và độ phức tạp vận hành.
+- **Bài học khắc phục:** Duy trì tầng FHIR API cho giao tiếp thời gian thực, đồng thời xây dựng một đường ống ETL chuyển đổi dữ liệu cần phân tích sang lược đồ **OMOP CDM**. Hiệu năng thực tế phải được đo trên dữ liệu, hạ tầng và truy vấn cụ thể.
 
 ### Case Study 2: Bài học về Trôi dạt Ngữ nghĩa (Semantic Drift) khi ánh xạ không chuẩn
 - **Bối cảnh:** Một đề tài nghiên cứu ung thư phối hợp giữa 3 bệnh viện ghi nhận biến số "Tình trạng hút thuốc lá".
-- **Sai sót:** Cơ sở A mã hóa `0 = Không hút, 1 = Đang hút, 2 = Đã bỏ`. Cơ sở B mã hóa `1 = Không hút, 2 = Đang hút`. Cơ sở C lưu dạng văn bản tự do: `"Bệnh nhân hút 1 bao/ngày từ năm 20 tuổi"`. Khi nhóm tổng hợp dữ liệu gộp các cơ sở lại mà không thông qua từ điển chuẩn hóa, giá trị `1` của cơ sở A đã bị gộp chung với giá trị `1` của cơ sở B, dẫn tới việc hàng trăm bệnh nhân chưa từng hút thuốc bị thống kê thành người đang nghiện thuốc nặng.
+- **Sai sót:** Cơ sở A và B dùng các mã số khác nghĩa cho cùng biến, còn cơ sở C lưu văn bản tự do. Khi nhóm tổng hợp dữ liệu mà không thông qua từ điển chuẩn hóa, cùng một giá trị số có thể bị diễn giải khác nhau và làm sai phân loại tình trạng hút thuốc.
 - **Bài học:** Việc sử dụng các chuẩn danh pháp như SNOMED CT và quy tắc ánh xạ của OMOP/CDISC là biện pháp sống còn để ngăn ngừa sai lệch tai hại này.
 
 ---
@@ -213,10 +203,10 @@ Thay vì gom toàn bộ dữ liệu bệnh nhân nhạy cảm về một máy ch
 ## 5. HƯỚNG DẪN THỰC HÀNH PHÒNG MÁY - LAB 3 (2 GIỜ)
 
 ### 5.1. Bối cảnh Nghiên cứu và Đề bài
-Trong bài thực hành này, học viên sử dụng dữ liệu bệnh nhân tổng hợp từ dự án mã nguồn mở **Synthea** [@ref_093] để thực hiện việc khảo sát, bóc tách và đối chiếu giữa hai định dạng dữ liệu y tế chuẩn: **HL7 FHIR (JSON Bundle)** và **OMOP CDM (CSV Tables)**.
+Trong bài thực hành này, học viên khảo sát, bóc tách và đối chiếu giữa hai định dạng dữ liệu y tế chuẩn: **HL7 FHIR (JSON Bundle)** và **OMOP CDM (CSV Tables)**. Bundle ở §5.2 là tình huống minh họa tự dựng cho bài học; Synthea chỉ là gợi ý về nguồn dữ liệu tổng hợp có thể dùng để luyện tập [@ref_093], không phải nguồn tạo ra bundle này.
 
 **Mục tiêu bài Lab:**
-1. Khảo sát cấu trúc một gói dữ liệu lâm sàng **FHIR Bundle** dạng JSON đại diện cho một bệnh nhân mày đay/dị ứng.
+1. Khảo sát cấu trúc một gói dữ liệu lâm sàng **FHIR Bundle** dạng JSON minh họa.
 2. Trích xuất thông tin các tài nguyên cốt lõi: `Patient`, `Condition`, `Observation`.
 3. Ánh xạ các trường dữ liệu trên sang lược đồ bảng quan hệ chuẩn của OMOP CDM: `person`, `condition_occurrence`, `measurement`.
 4. Viết script Python thực thi việc chuyển đổi và chuẩn hóa ngữ nghĩa từ mã nguồn sang mã khái niệm chuẩn (Standard Concept ID).
@@ -314,7 +304,7 @@ Dựa trên hướng dẫn của **HL7/OHDSI FHIR-to-OMOP Implementation Guide**
 | `Observation` | `code.coding.code` | `measurement` | `measurement_source_value` | Lưu mã gốc LOINC: `8480-6` |
 | `Observation` | `code.coding.code` | `measurement` | `measurement_concept_id` | Tra cứu Athena/OMOP Concept ID của Systolic BP: `3004249` |
 | `Observation` | `valueQuantity.value` | `measurement` | `value_as_number` | Ép kiểu số thực: `128.0` |
-| `Observation` | `valueQuantity.code` | `measurement` | `unit_concept_id` | Mã chuẩn OMOP của đơn vị `mmHg`: `8753` |
+| `Observation` | `valueQuantity.code` | `measurement` | `unit_concept_id` | Mã chuẩn OMOP của đơn vị `mmHg`: **chưa đối chiếu**; cần tra Athena trước khi nạp |
 | `Observation` | `effectiveDateTime` | `measurement` | `measurement_date` | Lấy phần ngày: `2026-02-15` |
 
 ---
@@ -342,11 +332,11 @@ omop_person = []
 omop_condition = []
 omop_measurement = []
 
-# Từ điển ánh xạ tĩnh cho bài thực hành (Dựa trên OHDSI Athena Vocabularies)
+# Từ điển ánh xạ minh họa. Chỉ các mã đã được đối chiếu với nguồn được phép đưa vào.
 GENDER_MAP = {'female': 8532, 'male': 8507}
-SNOMED_TO_OMOP = {'402407000': 4180186}  # Chronic urticaria
-LOINC_TO_OMOP = {'8480-6': 3004249}      # Systolic blood pressure
-UNIT_MAP = {'mm[Hg]': 8753}              # millimeter of mercury
+SNOMED_TO_OMOP = {}  # 402407000: chưa đối chiếu Athena/nguồn SNOMED
+LOINC_TO_OMOP = {'8480-6': 3004249}  # cần ghi nguồn tra cứu trong lab notes
+UNIT_MAP = {}  # mm[Hg]: cần tra Athena; không dùng 8753/8876 khi chưa đối chiếu
 
 person_counter = 1
 source_to_person_id = {}
@@ -363,13 +353,22 @@ for entry in bundle.get('entry', []):
         source_to_person_id[f"Patient/{src_id}"] = pid
         person_counter += 1
 
-        bdate_str = res.get('birthDate', '1900-01-01')
-        bdate = datetime.strptime(bdate_str, '%Y-%m-%d')
+        bdate_str = res.get('birthDate')
+        if not bdate_str:
+            print(f"Cảnh báo: bỏ qua Patient/{src_id} vì thiếu birthDate")
+            continue
+        try:
+            bdate = datetime.strptime(bdate_str, '%Y-%m-%d')
+        except ValueError:
+            print(f"Cảnh báo: bỏ qua Patient/{src_id} vì birthDate không hợp lệ")
+            continue
         gender_code = res.get('gender', 'unknown')
 
         omop_person.append({
             'person_id': pid,
-            'gender_concept_id': GENDER_MAP.get(gender_code, 0),
+            'gender_concept_id': GENDER_MAP.get(gender_code, 0),  # 0 = chưa ánh xạ
+            'race_concept_id': 0,  # chưa có trong bundle
+            'ethnicity_concept_id': 0,  # chưa có trong bundle
             'year_of_birth': bdate.year,
             'month_of_birth': bdate.month,
             'day_of_birth': bdate.day,
@@ -384,15 +383,19 @@ for entry in bundle.get('entry', []):
         
         coding = res.get('code', {}).get('coding', [{}])[0]
         snomed_code = coding.get('code')
-        concept_id = SNOMED_TO_OMOP.get(snomed_code, 0)
+        concept_id = SNOMED_TO_OMOP.get(snomed_code, 0)  # 0 = chưa ánh xạ
         
-        onset_str = res.get('onsetDateTime', '2026-01-01T00:00:00Z')
+        onset_str = res.get('onsetDateTime')
+        if not onset_str:
+            print(f"Cảnh báo: bỏ qua Condition/{res.get('id')} vì thiếu onsetDateTime")
+            continue
         onset_date = onset_str.split('T')[0]
 
         omop_condition.append({
             'condition_occurrence_id': len(omop_condition) + 1,
             'person_id': pid,
             'condition_concept_id': concept_id,
+            'condition_type_concept_id': 0,  # chưa ánh xạ nguồn type
             'condition_start_date': onset_date,
             'condition_source_value': snomed_code
         })
@@ -404,22 +407,29 @@ for entry in bundle.get('entry', []):
         
         coding = res.get('code', {}).get('coding', [{}])[0]
         loinc_code = coding.get('code')
-        concept_id = LOINC_TO_OMOP.get(loinc_code, 0)
+        concept_id = LOINC_TO_OMOP.get(loinc_code, 0)  # 0 = chưa ánh xạ
         
-        obs_str = res.get('effectiveDateTime', '2026-01-01T00:00:00Z')
+        obs_str = res.get('effectiveDateTime')
+        if not obs_str:
+            print(f"Cảnh báo: bỏ qua Observation/{res.get('id')} vì thiếu effectiveDateTime")
+            continue
         obs_date = obs_str.split('T')[0]
         
         val_qty = res.get('valueQuantity', {})
-        val_num = val_qty.get('value', 0.0)
+        val_num = val_qty.get('value')
+        if val_num is None:
+            print(f"Cảnh báo: bỏ qua Observation/{res.get('id')} vì thiếu valueQuantity.value")
+            continue
         unit_code = val_qty.get('code', '')
 
         omop_measurement.append({
             'measurement_id': len(omop_measurement) + 1,
             'person_id': pid,
             'measurement_concept_id': concept_id,
+            'measurement_type_concept_id': 0,  # chưa ánh xạ nguồn type
             'measurement_date': obs_date,
             'value_as_number': val_num,
-            'unit_concept_id': UNIT_MAP.get(unit_code, 0),
+            'unit_concept_id': UNIT_MAP.get(unit_code, 0),  # 0 = chưa ánh xạ
             'measurement_source_value': loinc_code
         })
 
@@ -429,11 +439,11 @@ def save_csv(filename, data, fieldnames):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
-    print(f"Đã xuất thành công: {filename} ({len(data)} bản ghi)")
+    print(f"Exported: {filename} ({len(data)} rows)")
 
-save_csv('person.csv', omop_person, ['person_id', 'gender_concept_id', 'year_of_birth', 'month_of_birth', 'day_of_birth', 'person_source_value', 'gender_source_value'])
-save_csv('condition_occurrence.csv', omop_condition, ['condition_occurrence_id', 'person_id', 'condition_concept_id', 'condition_start_date', 'condition_source_value'])
-save_csv('measurement.csv', omop_measurement, ['measurement_id', 'person_id', 'measurement_concept_id', 'measurement_date', 'value_as_number', 'unit_concept_id', 'measurement_source_value'])
+save_csv('person.csv', omop_person, ['person_id', 'gender_concept_id', 'year_of_birth', 'month_of_birth', 'day_of_birth', 'race_concept_id', 'ethnicity_concept_id', 'person_source_value', 'gender_source_value'])
+save_csv('condition_occurrence.csv', omop_condition, ['condition_occurrence_id', 'person_id', 'condition_concept_id', 'condition_type_concept_id', 'condition_start_date', 'condition_source_value'])
+save_csv('measurement.csv', omop_measurement, ['measurement_id', 'person_id', 'measurement_concept_id', 'measurement_type_concept_id', 'measurement_date', 'value_as_number', 'unit_concept_id', 'measurement_source_value'])
 ```
 
 ---
@@ -468,17 +478,17 @@ Bệnh viện Đa khoa Trung tâm dự định tham gia một nghiên cứu th�
 
 ## 7. TÀI LIỆU THAM KHẢO CHUẨN (REFERENCES)
 
-Toàn bộ các chuẩn mực và công trình trích dẫn trong chương được đối chiếu từ cơ sở dữ liệu thư mục SSoT (`references/references.bib`):
+Danh mục dưới đây được dựng từ các entry dùng trong chương của `references/references.bib`; không bổ sung trường thư mục ngoài `.bib`. Các entry còn `BIB_PENDING` hoặc chưa audit nội dung được giữ nguyên trạng thái trong sổ audit.
 
-1. **HL7 International.** (2023). *Fast Healthcare Interoperability Resources (FHIR) Specification, Release 5 (v5.0.0)*. Health Level Seven International. `[@ref_009]`.
-2. **HL7 & OHDSI Collaborative Workgroup.** (2023). *FHIR to OMOP Implementation Guide*. Health Level Seven International & OHDSI. `[@ref_010]`.
-3. **OHDSI Community.** (2021). *The Book of OHDSI: Observational Health Data Sciences and Informatics*. OHDSI Consortium. `[@ref_011]`.
-4. **Hripcsak, G., Duke, J. D., Shah, N. H., Reich, C. G., Huser, V., Schuemie, M. J., Suchard, M. A., Park, R. W., Wong, I. C., Rijnbeek, P. R., van der Lei, J., Pratt, N., Norén, G. N., Li, Y. C., Stang, P. E., Madigan, D., & Ryan, P. B.** (2015). Observational Health Data Sciences and Informatics (OHDSI): Opportunities for observational researchers. *Studies in Health Technology and Informatics*, 216, 574–578. `[@ref_038]`.
-5. **Suchard, M. A., Schuemie, M. J., Krumholz, H. M., You, S. C., Chen, R., Pratt, N., Reich, C. G., Duke, J., Choi, N. K., Lai, E. C., Xu, H., Pratt, N., & Ryan, P. B.** (2019). Comprehensive comparative effectiveness and safety of first-line antihypertensive drug classes: A systematic, multinational, large-scale analysis. *The Lancet*, 394(10211), 1816–1826. DOI: [10.1016/S0140-6736(19)32317-7](https://doi.org/10.1016/S0140-6736(19)32317-7) `[@ref_040]`.
-6. **Ryan, P. B., Schuemie, M. J., Welebob, E., Duke, J., Valentine, S., & Hartzema, A. G.** (2013). Validation of a common data model for active safety surveillance research. *Journal of the American Medical Informatics Association*, 20(4), 725–731. DOI: [10.1136/amiajnl-2012-001223](https://doi.org/10.1136/amiajnl-2012-001223) `[@ref_039]`.
-7. **Mandel, J. C., Kreda, D. A., Mandl, K. D., Kohane, I. S., & Ramoni, R. B.** (2016). SMART on FHIR: A standards-based, interoperable apps platform for electronic health records. *Journal of the American Medical Informatics Association*, 23(5), 899–908. DOI: [10.1093/jamia/ocv189](https://doi.org/10.1093/jamia/ocv189) `[@ref_036]`.
-8. **Bender, D., & Sartipi, K.** (2013). HL7 FHIR: An Agile and RESTful approach to healthcare information exchange. *Proceedings of the IEEE International Conference on Healthcare Informatics*, 326–331. `[@ref_037]`.
-9. **CDISC & HL7 International.** (2020). *FHIR to CDISC Joint Mapping Implementation Guide*. Austin, TX: CDISC. `[@ref_034]`.
-10. **Yamamoto, K., Ota, K., Akiya, I., & Shintani, A.** (2017). A pragmatic method for transforming clinical research data from the research electronic data capture “REDCap” to Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM): Development and evaluation of REDCap2SDTM. *Journal of Biomedical Informatics*, 75, 78–87. DOI: [10.1016/j.jbi.2017.09.011](https://doi.org/10.1016/j.jbi.2017.09.011) `[@ref_026]`.
-11. **Gurley, M. J., Warner, J., Bushmanova, Y., & Wehbe, F.** (2021). REDCap2OMOP: A platform for ETLing REDCap projects into the OMOP CDM. *OHDSI Symposium 2021*. `[@ref_027]`.
-12. **Walonoski, J., Kramer, M., Nichols, J., Quina, A., Moesel, C., Hall, D., Duffett, C., Dube, K., Gallagher, T., & McLachlan, S.** (2018). Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record. *Journal of the American Medical Informatics Association*, 25(3), 230–238. DOI: [10.1093/jamia/ocx079](https://doi.org/10.1093/jamia/ocx079) `[@ref_093]`.
+1. **HL7 International.** (2023). *FHIR*. https://hl7.org/fhir/ `[@ref_009]`.
+2. **HL7 International.** (n.d.). *FHIR to OMOP Implementation Guide*. http://hl7.org/fhir/uv/omop/ `[@ref_010]`.
+3. **Sachson, C.** (2025). *Our journey*. Observational Health Data Sciences and Informatics. https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf `[@ref_011]`.
+4. **Yamamoto, K., Ota, K., Akiya, I., & Shintani, A.** (2017). *A pragmatic method for transforming clinical research data from the research electronic data capture “REDCap” to Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM): Development and evaluation of REDCap2SDTM*. *Journal of Biomedical Informatics*, 70, 65–76. DOI: 10.1016/j.jbi.2017.05.003 `[@ref_026]`.
+5. **Gurley, M. J., Warner, J., Bushmanova, Y., & Wehbe, F.** (2021). *REDCap2OMOP: A platform for ETLing REDCap projects into the OMOP CDM*. https://www.ohdsi.org/wp-content/uploads/2021/09/65_REDCap2OMOP.pdf `[@ref_027]`.
+6. **CDISC, & HL7 International.** (2021). *FHIR to CDISC Joint Mapping Implementation Guide*. https://www.cdisc.org/standards/real-world-data/fhir-cdisc-joint-mapping-implementation-guide-v1-0 `[@ref_034]`.
+7. **Mandel, J. C., Kreda, D. A., Mandl, K. D., Kohane, I. S., & Ramoni, R. B.** (2016). *SMART on FHIR: A standards-based, interoperable apps platform for electronic health records*. *Journal of the American Medical Informatics Association*, 23, 899–908. DOI: 10.1093/jamia/ocv189 `[@ref_036]`.
+8. **Mandl, K. D., Gottlieb, D., & Mandel, J. C.** (2020). *Push Button Population Health: The SMART/HL7 FHIR Bulk Data Access API*. *npj Digital Medicine*, 3, 151. DOI: 10.1038/s41746-020-00358-4 `[@ref_037]`.
+9. **Hripcsak, G., et al.** (2015). *Observational Health Data Sciences and Informatics (OHDSI): Opportunities for observational researchers*. *Studies in Health Technology and Informatics*, 216, 574–578. https://pmc.ncbi.nlm.nih.gov/articles/PMC4815923/ `[@ref_038]`.
+10. **Overhage, J. M., Ryan, P. B., Reich, C. G., Hartzema, A. G., & Stang, P. E.** (2012). *Validation of a common data model for active safety surveillance research*. *Journal of the American Medical Informatics Association*, 19, 54–60. DOI: 10.1136/amiajnl-2011-000376 `[@ref_039]`.
+11. **Suchard, M. A., et al.** (2019). *Comprehensive comparative effectiveness and safety of first-line antihypertensive drug classes: A systematic, multinational, large-scale analysis*. *The Lancet*, 394, 1816–1826. DOI: 10.1016/S0140-6736(19)32317-7 `[@ref_040]`.
+12. **Walonoski, J., et al.** (2018). *Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record*. *Journal of the American Medical Informatics Association*, 25, 230–238. DOI: 10.1093/jamia/ocx079 `[@ref_093]`.
