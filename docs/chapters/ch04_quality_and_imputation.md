@@ -39,13 +39,13 @@ Khung Weiskopf & Weng (2013) — 5 chiều
 ├── Plausibility    ──▶ Hợp lý sinh học và y học
 └── Currency        ──▶ Dữ liệu cập nhật theo thời điểm sự kiện
 
-OHDSI DQD — Hơn 3.300 quy tắc kiểm tra SQL (xem Phụ lục D)
-└── 20 loại kiểm tra có tham số → 3.351 quy tắc SQL thực thi
+OHDSI DQD — Hơn 3.300 quy tắc kiểm tra SQL (xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026))
+└── 20 loại kiểm tra có tham số → 3.351 quy tắc SQL thực thi (minh họa, không phải số đo)
 
 Dữ liệu khuyết — Phân loại Rubin (1976)
 ├── MCAR ──▶ Phân tích ca hoàn chỉnh chấp nhận được (giảm cỡ mẫu)
 ├── MAR  ──▶ MICE là lựa chọn ưu tiên
-└── MNAR ──▶ Phân tích độ nhạy bắt buộc; không có phương pháp hoàn hảo
+└── MNAR ──▶ Nên thực hiện phân tích độ nhạy; không có phương pháp giải quyết hoàn toàn
 
 MICE (Multiple Imputation by Chained Equations)
 ├── Bước 1 — Imputation: Tạo m=5 tập dữ liệu hoàn chỉnh
@@ -122,26 +122,28 @@ Kiểm tra dữ liệu cần thiết có được ghi lại không.
 
 ### 3.3. OHDSI Data Quality Dashboard (DQD)
 
-DQD [@ref_038, @ref_011] là công cụ R mã nguồn mở triển khai khung Kahn tự động trên OMOP CDM.
+DQD [@ref_038; @ref_011] là công cụ R mã nguồn mở triển khai khung Kahn tự động trên OMOP CDM. `ref_011` là tài liệu *Our Journey* (2025), không phải *The Book of OHDSI*; nội dung dùng làm căn cứ cần [CẦN KIỂM CHỨNG].
 
 **Cơ chế hoạt động:**
 
-Từ **20 loại kiểm tra có tham số hóa**, DQD tự động tạo ra **hơn 3.300 quy tắc kiểm tra cụ thể** (3.351 theo tài liệu DQD; phiên bản và số chính xác xem **Phụ lục D — Phiên bản chuẩn, chốt 21/11/2026**), bao phủ toàn bộ các bảng trong lược đồ OMOP CDM.
+Từ **20 loại kiểm tra có tham số hóa**, DQD có thể tạo ra **hơn 3.300 quy tắc kiểm tra cụ thể**. Các con số dưới đây là **số minh họa, không phải số đo**; số DQD thực tế, phiên bản và ngày chốt phải được kiểm tra trong [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026) và tài liệu OHDSI DQD chính thức.
 
 **Cách đọc báo cáo DQD:**
 
 ```
-Tổng số quy tắc: 3.351
+Tổng số quy tắc (minh họa): 3.351
 ├── PASS (Đạt):     3.098  (92.4%)
 ├── FAIL (Không đạt): 232 (6.9%)
 └── ERROR (Lỗi kỹ thuật):  21 (0.6%)
 ```
 
-**Phân tích kết quả:**
+Các số trên chỉ là **số minh họa, không phải số đo**.
 
-- **Pass Rate 98–100%:** Dữ liệu chất lượng cao, phù hợp cho phân tích đa trung tâm OHDSI.
-- **Pass Rate 90–97%:** Cần kiểm tra thủ công các quy tắc FAIL, đặc biệt trong miền Plausibility.
-- **Pass Rate < 90%:** Cần ETL review toàn bộ; không nên dùng trong nghiên cứu đa trung tâm chưa xử lý.
+**Ngưỡng diễn giải (ví dụ/quy ước, không phải tiêu chuẩn):**
+
+- **Pass Rate 98–100%:** Ví dụ quy ước để gợi ý dữ liệu cần được xem xét kỹ hơn; không phải tiêu chuẩn OHDSI.
+- **Pass Rate 90–97%:** Ví dụ quy ước, nên kiểm tra thủ công các quy tắc FAIL, đặc biệt trong miền Plausibility.
+- **Pass Rate < 90%:** Ví dụ quy ước, nên xem xét ETL toàn bộ; không tự suy ra quyết định sử dụng.
 
 **Lưu ý về tính bắt buộc:** DQD **được khuyến nghị** (không bắt buộc theo quy định) chạy và công bố cùng dữ liệu trong các nghiên cứu thuộc mạng lưới OHDSI. Nhiều tạp chí và mạng lưới nghiên cứu ngày càng yêu cầu báo cáo DQD như điều kiện nộp dữ liệu tham gia.
 
@@ -205,13 +207,13 @@ Xác suất khuyết phụ thuộc vào chính giá trị bị khuyết, ngay c�
 
 **Ví dụ:** Bệnh nhân đau nặng thường bỏ lịch khám — điểm đau cao nhất là những giá trị bị khuyết nhiều nhất.
 
-**Hệ quả:** Không có phương pháp imputation nào giải quyết hoàn toàn MNAR. **Bắt buộc** thực hiện Sensitivity Analysis (phân tích độ nhạy) để kiểm định tính vững của kết luận dưới các giả định khuyết khác nhau.
+**Hệ quả:** Không có phương pháp imputation nào giải quyết hoàn toàn MNAR. Nên thực hiện Sensitivity Analysis (phân tích độ nhạy) để kiểm định tính vững của kết luận dưới các giả định khuyết khác nhau.
 
 ---
 
 ### 3.5. Multiple Imputation by Chained Equations (MICE)
 
-MICE [@ref_032] là tiêu chuẩn vàng cho dữ liệu khuyết dưới cơ chế MAR. Phương pháp gồm **3 bước**:
+MICE [@ref_032] là phương pháp được khuyến nghị rộng rãi cho dữ liệu khuyết dưới cơ chế MAR. Phương pháp gồm **3 bước**:
 
 **Bước 1 — Imputation (Tạo m tập dữ liệu hoàn chỉnh):**
 Với mỗi lần lặp i từ 1 đến m (thường m = 5–10):
@@ -248,11 +250,11 @@ $$T = \bar{U} + \left(1 + \frac{1}{m}\right)B \quad \text{(tổng phương sai �
 
 | ID vấn đề | Loại theo Kahn | Mô tả | Tỷ lệ |
 | :--- | :--- | :--- | :--- |
-| Q-01 | **Plausibility** (Atemporal) | Tuổi âm hoặc > 130 | 0.4% |
-| Q-02 | **Plausibility** (Atemporal) | Huyết áp tâm thu < 60 hoặc > 250 mmHg | 0.2% |
-| Q-03 | **Completeness** | Trường `uas7` (thang điểm ngứa) bị khuyết | 23% |
-| Q-04 | **Completeness** | Trường `ige_level` (nồng độ IgE) bị khuyết | 31% |
-| Q-05 | **Conformance** (Value) | Mã giới tính nhận giá trị ngoài bộ từ vựng chuẩn | 1.1% |
+| Q-01 | **Plausibility** (Atemporal) | Tuổi âm hoặc > 130 | 0.4% (minh họa, không phải số đo) |
+| Q-02 | **Plausibility** (Atemporal) | Huyết áp tâm thu < 60 hoặc > 250 mmHg | 0.2% (minh họa, không phải số đo) |
+| Q-03 | **Completeness** | Trường `uas7` (thang điểm ngứa) bị khuyết | 23% (minh họa, không phải số đo) |
+| Q-04 | **Completeness** | Trường `ige_level` (nồng độ IgE) bị khuyết | 31% (minh họa, không phải số đo) |
+| Q-05 | **Conformance** (Value) | Mã giới tính nhận giá trị ngoài bộ từ vựng chuẩn | 1.1% (minh họa, không phải số đo) |
 
 **Phân tích cơ chế khuyết cho Q-03 (uas7):**
 
@@ -261,14 +263,14 @@ Phỏng vấn điều tra viên cho thấy: Bệnh nhân có triệu chứng n�
 **Quyết định xử lý:**
 
 1. Q-01, Q-02: Chuyển giá trị vi phạm thành `NaN` → đưa vào pipeline imputation.
-2. Q-03 (MNAR): Báo cáo rõ cơ chế MNAR; phân tích chính với MICE (giả định MAR tạm thời); **bắt buộc** có Sensitivity Analysis theo kịch bản worst-case.
+2. Q-03 (MNAR): Báo cáo rõ cơ chế MNAR; phân tích chính với MICE (giả định MAR tạm thời); nên có Sensitivity Analysis theo kịch bản worst-case.
 3. Q-04 (MAR, giả định hợp lý): Xử lý bằng MICE.
 
 ---
 
 ## 5. THỰC HÀNH (LAB 4) — TÙY CHỌN
 
-> **Lưu ý:** Lab này là tùy chọn. Phiên bản thư viện Python và mô tả tập dữ liệu mẫu xem **Phụ lục E — Mục 5**.
+> **Lưu ý:** Lab này là tùy chọn. Phiên bản thư viện Python và mô tả tập dữ liệu mẫu xem **[Phụ lục ghi chú lab](../appendices/quality-ai-lab-notes.md) (chốt 21/11/2026)**.
 
 ### 5.1. Mục tiêu Lab
 
@@ -290,7 +292,6 @@ Yêu cầu: Python ≥ 3.10; scikit-learn ≥ 1.3 (cần `enable_iterative_imput
 """
 Lab 4 — Chất lượng Dữ liệu & Multiple Imputation (MICE)
 Khóa học RDM Y sinh học — TS. Hoàng Quang Huy, HUST iBME Lab
-Đã kiểm thử: 21/11/2026, Python 3.10+
 
 Triển khai MICE đúng chuẩn thống kê:
   - m=5 lần gán, mỗi lần dùng random_state khác
@@ -375,7 +376,7 @@ print(f"UAS7 — Mean: {mean_mi:.2f}, SD: {std_mi:.2f} (bị giảm giả tạo)
 
 # ─────────────────────────────────────────────────────────
 # 5. PHƯƠNG PHÁP 3: MICE ĐÚNG CHUẨN (m=5, Rubin's Rules)
-#    Tiêu chuẩn vàng cho MAR — Sterne et al. (2009), Rubin (1976)
+#    phương pháp được khuyến nghị rộng rãi cho MAR — Sterne et al. (2009), Rubin (1976)
 # ─────────────────────────────────────────────────────────
 print(f"\n--- PHƯƠNG PHÁP 3: MICE ĐÚNG CHUẨN (m=5, Rubin's Rules) ---")
 
@@ -434,7 +435,7 @@ comparison = pd.DataFrame({
     'Cỡ mẫu (N)':   [len(df_listwise), len(df_mean_imp), len(df_num)],
     'Mean UAS7':     [round(mean_lw, 2), round(mean_mi, 2), round(mean_mice, 2)],
     'SD UAS7':       [round(std_lw, 2), round(std_mi, 2), 'N/A (xem pooled SE)'],
-    'SE Mean UAS7':  [round(se_lw, 3), round(se_mi, 3), '(từ Rubin's Rules)'],
+    'SE Mean UAS7':  [round(se_lw, 3), round(se_mi, 3), "(từ Rubin's Rules)"],
     'Rủi ro thống kê': [
         'Chệch nếu MAR/MNAR; giảm cỡ mẫu',
         'Phương sai giả tạo thấp; bóp méo quan hệ',
@@ -444,7 +445,7 @@ comparison = pd.DataFrame({
 
 print("\n--- BẢNG ĐỐI CHIẾU HIỆU NĂNG BA PHƯƠNG PHÁP ---")
 print(comparison.to_string(index=False))
-print("\n✅ Lab hoàn thành. Xem Phụ lục E — Mục 5 để biết chi tiết thư viện và dữ liệu mẫu.")
+print("\n✅ Lab hoàn thành. Xem [Phụ lục ghi chú lab](../appendices/quality-ai-lab-notes.md) (chốt 21/11/2026) để biết chi tiết thư viện và dữ liệu mẫu.")
 ```
 
 ### 5.4. Checklist Tự Đánh Giá (không chấm điểm)
@@ -493,8 +494,8 @@ Trong một nghiên cứu sổ bộ về hiệu quả điều trị bệnh mày 
 | **3. DQD không thay thế clinical validation** | Pass Rate cao chứng minh Verification (đúng định dạng), không chứng minh Validation (đúng lâm sàng). |
 | **4. MCAR ≠ MAR ≠ MNAR** | Ba cơ chế đòi hỏi ba chiến lược xử lý khác nhau. Sai cơ chế → sai kết luận. |
 | **5. MICE là 3 bước** | Imputation → Analysis → Pooling. Chỉ chạy IterativeImputer một lần là **đơn gán** (single imputation), không phải MICE. |
-| **6. Rubin's Rules bắt buộc** | SE_pooled từ MICE lớn hơn mean imputation — đây là điểm cộng, không phải điểm trừ; nó phản ánh trung thực bất định do missing data. |
-| **7. MNAR → Sensitivity Analysis** | Không có phương pháp imputation nào giải quyết MNAR. Bắt buộc báo cáo kịch bản worst-case. |
+| **6. Rubin's Rules** | SE_pooled từ MICE lớn hơn mean imputation — đây là điểm cộng, không phải điểm trừ; nó phản ánh trung thực bất định do missing data. |
+| **7. MNAR → Sensitivity Analysis** | Không có phương pháp imputation nào giải quyết MNAR. Nên báo cáo kịch bản worst-case. |
 
 ---
 
@@ -518,7 +519,7 @@ Trong một nghiên cứu sổ bộ về hiệu quả điều trị bệnh mày 
 - C. Vì không có phần mềm xử lý.
 - D. Vì MNAR không xảy ra trong thực tế.
 
-**→ Đáp án: B.** MNAR đặc biệt khó vì cơ chế khuyết ẩn trong chính giá trị không quan sát được — không thể kiểm chứng bằng dữ liệu hiện có. Phân tích độ nhạy là cách tiếp cận bắt buộc.
+**→ Đáp án: B.** MNAR đặc biệt khó vì cơ chế khuyết ẩn trong chính giá trị không quan sát được — không thể kiểm chứng bằng dữ liệu hiện có. Phân tích độ nhạy là cách tiếp cận nên dùng.
 
 ---
 
@@ -548,16 +549,16 @@ Trong một nghiên cứu sổ bộ về hiệu quả điều trị bệnh mày 
 
 Toàn bộ luận điểm khoa học trong chương được đối chiếu từ cơ sở dữ liệu thư mục SSoT (`references/references.bib`):
 
-1. **Kahn, M. G., Callahan, T. J., Barnard, J., Bauck, A. E., Brown, J., Davidson, B. N., Estiri, H., Goerg, C., Holve, E., Johnson, S. G., Liaw, S.-T., Hamilton-Lopez, M., Meeker, D., Ong, T. C., Ryan, P., Shang, N., Weiskopf, N. G., Weng, C., Zozus, M. N., & Schilling, L.** (2016). A harmonized data quality assessment terminology and framework for the secondary use of electronic health record data. *eGEMs (Generating Evidence & Methods to improve patient outcomes)*, 4(1), 1244. DOI: [10.13063/2327-9214.1244](https://doi.org/10.13063/2327-9214.1244). PMID: 27713905. `[@ref_030]`
+1. **Kahn, M. G., Callahan, T. J., Barnard, J., Bauck, A. E., Brown, J., Davidson, B. N., Estiri, H., Goerg, C., Holve, E., Johnson, S. G., Liaw, S.-T., Hamilton-Lopez, M., Meeker, D., Ong, T. C., Ryan, P., Shang, N., Weiskopf, N. G., Weng, C., Zozus, M. N., & Schilling, L.** (2016). A harmonized data quality assessment terminology and framework for the secondary use of electronic health record data. *eGEMs (Generating Evidence & Methods to improve patient outcomes)*, 4(1), 1244. DOI: [10.13063/2327-9214.1244](https://doi.org/10.13063/2327-9214.1244). PMID: 27713905. [@ref_030] [CẦN KIỂM CHỨNG: ref_030 đang BIB_PENDING]
 
-2. **Weiskopf, N. G., & Weng, C.** (2013). Methods and dimensions of electronic health record data quality assessment: Enabling reuse for clinical research. *Journal of the American Medical Informatics Association*, 20(1), 144–151. DOI: [10.1136/amiajnl-2011-000681](https://doi.org/10.1136/amiajnl-2011-000681). `[@ref_028]`
+2. **Weiskopf, N. G., & Weng, C.** (2013). Methods and dimensions of electronic health record data quality assessment: Enabling reuse for clinical research. *Journal of the American Medical Informatics Association*, 20(1), 144–151. DOI: [10.1136/amiajnl-2011-000681](https://doi.org/10.1136/amiajnl-2011-000681). [@ref_028]
 
-3. **Rubin, D. B.** (1976). Inference and missing data. *Biometrika*, 63(3), 581–592. DOI: [10.1093/biomet/63.3.581](https://doi.org/10.1093/biomet/63.3.581). `[@ref_031]`
+3. **Rubin, D. B.** (1976). Inference and missing data. *Biometrika*, 63(3), 581–592. DOI: [10.1093/biomet/63.3.581](https://doi.org/10.1093/biomet/63.3.581). [@ref_031]
 
-4. **Sterne, J. A. C., White, I. R., Carlin, J. B., Spratt, M., Royston, P., Kenward, M. G., Wood, A. M., & Carpenter, J. R.** (2009). Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. *BMJ*, 338, b2393. DOI: [10.1136/bmj.b2393](https://doi.org/10.1136/bmj.b2393). `[@ref_032]`
+4. **Sterne, J. A. C., White, I. R., Carlin, J. B., Spratt, M., Royston, P., Kenward, M. G., Wood, A. M., & Carpenter, J. R.** (2009). Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. *BMJ*, 338, b2393. DOI: [10.1136/bmj.b2393](https://doi.org/10.1136/bmj.b2393). [@ref_032]
 
-5. **Baker, M.** (2016). 1,500 scientists lift the lid on reproducibility. *Nature*, 533(7604), 452–454. DOI: [10.1038/533452a](https://doi.org/10.1038/533452a). `[@ref_033]`
+5. **Baker, M.** (2016). 1,500 scientists lift the lid on reproducibility. *Nature*, 533(7604), 452–454. DOI: [10.1038/533452a](https://doi.org/10.1038/533452a). [@ref_033]
 
-6. **Hripcsak, G., Duke, J. D., Shah, N. H., Reich, C. G., Huser, V., Schuemie, M. J., Suchard, M. A., Park, R. W., Wong, I. C. K., Rijnbeek, P. R., van der Lei, J., Pratt, N., Norén, G. N., Li, Y.-C., Stang, P. E., Madigan, D., & Ryan, P. B.** (2015). Observational Health Data Sciences and Informatics (OHDSI): Opportunities for observational researchers. *Studies in Health Technology and Informatics*, 216, 574–578. `[@ref_038]`
+6. **Hripcsak, G., Duke, J. D., Shah, N. H., Reich, C. G., Huser, V., Schuemie, M. J., Suchard, M. A., Park, R. W., Wong, I. C. K., Rijnbeek, P. R., van der Lei, J., Pratt, N., Norén, G. N., Li, Y.-C., Stang, P. E., Madigan, D., & Ryan, P. B.** (2015). Observational Health Data Sciences and Informatics (OHDSI): Opportunities for observational researchers. *Studies in Health Technology and Informatics*, 216, 574–578. [@ref_038]
 
-7. **OHDSI Community.** (2025). *Our Journey*. Observational Health Data Sciences and Informatics. URL: [https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf](https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf). `[@ref_011]`
+7. **OHDSI Community.** (2025). *Our Journey*. Observational Health Data Sciences and Informatics. URL: [https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf](https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf). [@ref_011]

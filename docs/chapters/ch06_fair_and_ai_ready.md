@@ -91,7 +91,7 @@ Năm 2016, **Wilkinson và cộng sự** công bố **FAIR Guiding Principles** 
 
 Dữ liệu sức khỏe là dữ liệu cá nhân nhạy cảm — công khai mở hoàn toàn dữ liệu thô bệnh nhân vi phạm pháp luật và đạo đức nghiên cứu.
 
-**FAIR không yêu cầu dữ liệu phải mở hoàn toàn.** Phương châm của Horizon Europe [@ref_003]:
+**FAIR không yêu cầu dữ liệu phải mở hoàn toàn.** Phương châm của Horizon Europe [@ref_003] [CẦN KIỂM CHỨNG: ref_003 đang BIB_PENDING]:
 
 > *"As open as possible, as closed as necessary"*  
 > (Mở tối đa trong khả năng, đóng chặt khi cần thiết)
@@ -111,14 +111,14 @@ Jacobsen và cộng sự (2020) [@ref_021] và tài liệu hướng dẫn thực
 
 **Giai đoạn 1 — Tiền FAIRification:**
 
-1. **Bước 1 — Xác định mục tiêu & Đánh giá FAIR ban đầu:** Khảo sát tập dữ liệu bằng các bộ công cụ đánh giá (như FAIR Maturity Indicators [@ref_043]) để xác định các tiêu chí còn thiếu.
+1. **Bước 1 — Xác định mục tiêu & Đánh giá FAIR ban đầu:** Khảo sát tập dữ liệu bằng các bộ công cụ đánh giá (như FAIR Maturity Indicators [@ref_043] [CẦN KIỂM CHỨNG: ref_043 là preprint]) để xác định các tiêu chí còn thiếu.
 2. **Bước 2 — Khảo sát dữ liệu và yêu cầu pháp lý:** Rà soát thuộc tính nhạy cảm, xác định trường định danh cần loại bỏ, quyết định mức độ mở.
 
 **Giai đoạn 2 — Thực thi FAIRification:**
 
 3. **Bước 3 — Xây dựng mô hình dữ liệu ngữ nghĩa:** Xác định thực thể và mối quan hệ (Bệnh nhân → Thăm khám → Đơn thuốc → Biến cố bất lợi).
 4. **Bước 4 — Chuẩn hóa danh pháp bằng Ontologies:** Ánh xạ biến tự do sang mã chuẩn (SNOMED CT, LOINC, RxNorm, NCIt).
-5. **Bước 5 — Tạo siêu dữ liệu máy đọc được & Gắn PID:** Biên soạn tệp mô tả theo **DataCite Metadata Schema** [@ref_022] dưới định dạng JSON-LD; đăng ký DOI. *(Phiên bản và số mục phụ lục: xem **Phụ lục D**, chốt 21/11/2026.)*
+5. **Bước 5 — Tạo siêu dữ liệu máy đọc được & Gắn PID:** Biên soạn tệp mô tả theo **DataCite Metadata Schema** [@ref_022] dưới định dạng JSON-LD; đăng ký DOI. *(Phiên bản và số mục phụ lục: xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)*
 6. **Bước 6 — Cấp phép & Lưu ký trên kho tin cậy:** Đính kèm `LICENSE.txt` và tải lên kho lưu trữ số đạt chuẩn.
 
 **Giai đoạn 3 — Hậu FAIRification:**
@@ -135,7 +135,7 @@ Jacobsen và cộng sự (2020) [@ref_021] và tài liệu hướng dẫn thực
 
 | Kho | Đặc điểm |
 | :--- | :--- |
-| **Zenodo** | CERN/OpenAIRE; miễn phí; hỗ trợ versioning; tự động cấp DOI DataCite; cung cấp **Zenodo Sandbox** cho đào tạo. *(Giới hạn dung lượng và chính sách: xem **Phụ lục D**.)* |
+| **Zenodo** | CERN/OpenAIRE; miễn phí; hỗ trợ versioning; tự động cấp DOI DataCite; cung cấp **Zenodo Sandbox** cho đào tạo. *(Giới hạn dung lượng và chính sách: xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)* |
 | **Dryad** | Liên kết trực tiếp với nhà xuất bản lớn; quy trình bình duyệt dữ liệu bởi chuyên gia (*curated*). |
 | **OSF** | Nền tảng toàn vòng đời nghiên cứu mở; tích hợp với GitHub, Google Drive, Zenodo. |
 
@@ -152,7 +152,7 @@ Jacobsen và cộng sự (2020) [@ref_021] và tài liệu hướng dẫn thực
 
 ### 3.5. Chuẩn Đóng gói Đối tượng Nghiên cứu: RO-Crate
 
-**RO-Crate (Research Object Crate)** là cấu trúc thư mục tự mô tả (*self-describing directory*) dùng chuẩn web ngữ nghĩa **JSON-LD** thông qua tệp duy nhất: `ro-crate-metadata.json`. *(Phiên bản đặc tả hiện hành: xem **Phụ lục D**, chốt 21/11/2026.)*
+**RO-Crate (Research Object Crate)** là cấu trúc thư mục tự mô tả (*self-describing directory*) dùng chuẩn web ngữ nghĩa **JSON-LD** thông qua tệp duy nhất: `ro-crate-metadata.json`. *(Phiên bản đặc tả hiện hành: xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)*
 
 Tệp siêu dữ liệu liên kết toàn bộ:
 - Dữ liệu thô và sạch (`.csv`, `.parquet`)
@@ -167,9 +167,9 @@ Tệp siêu dữ liệu liên kết toàn bộ:
 
 Một tập dữ liệu chỉ đạt chuẩn "sạch" và "FAIR" là **chưa đủ để huấn luyện mô hình AI an toàn**.
 
-**Bridge2AI** (Clark và cộng sự, 2024) [@ref_072] đề xuất **7 tiêu chí** dữ liệu AI-ready:
+**Bridge2AI** (Clark và cộng sự, 2024) [@ref_072] [CẦN KIỂM CHỨNG: ref_072 là preprint] đề xuất **7 tiêu chí** dữ liệu AI-ready:
 
-> ⚠️ **Lưu ý:** Bridge2AI là **preprint trên bioRxiv** (doi:10.1101/2024.10.23.619844), chưa qua bình duyệt đồng nghiệp. Các tiêu chí có thể thay đổi khi bài được xuất bản chính thức. *(Trạng thái cập nhật: xem **Phụ lục D**, chốt 21/11/2026.)*
+> ⚠️ **Lưu ý:** Bridge2AI là **preprint trên bioRxiv** (doi:10.1101/2024.10.23.619844), chưa qua bình duyệt đồng nghiệp. Các tiêu chí có thể thay đổi khi bài được xuất bản chính thức. *(Trạng thái cập nhật: xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)*
 
 | # | Tiêu chí | Mô tả |
 | :--- | :--- | :--- |
@@ -192,7 +192,7 @@ Một tập dữ liệu chỉ đạt chuẩn "sạch" và "FAIR" là **chưa đ�
 
 **Patient-Level Split — Quy tắc vàng:**
 
-Trong dữ liệu y tế theo dõi dọc, **bắt buộc phân chia ở cấp bệnh nhân**, không phân chia ngẫu nhiên theo dòng bản ghi. Toàn bộ dữ liệu của một bệnh nhân (dù có 10 lần tái khám) chỉ được nằm **hoàn toàn trong Train HOẶC Test**, không bao giờ ở cả hai.
+Trong dữ liệu y tế theo dõi dọc, **nên phân chia ở cấp bệnh nhân**, không phân chia ngẫu nhiên theo dòng bản ghi. Toàn bộ dữ liệu của một bệnh nhân (dù có 10 lần tái khám) chỉ được nằm **hoàn toàn trong Train HOẶC Test**, không bao giờ ở cả hai.
 
 **Lựa chọn giấy phép cho dữ liệu y sinh:**
 
@@ -229,17 +229,19 @@ Trong dữ liệu y tế theo dõi dọc, **bắt buộc phân chia ở cấp b�
 
 **Nguyên nhân:** Tập dữ liệu huấn luyện chủ yếu từ Bắc Âu và Bắc Mỹ, thiếu đa dạng loại da. Thuật toán không khái quát hóa được sang da sẫm màu.
 
-**Bài học:** Tài liệu Datasheets for Datasets và kiểm định STANDING Together là yêu cầu đạo đức và an toàn bắt buộc — không phải tùy chọn.
+**Bài học:** Tài liệu Datasheets for Datasets và kiểm định STANDING Together là khuyến nghị đạo đức và thực hành tốt về an toàn — cần áp dụng phù hợp với bối cảnh.
 
 ---
 
 ## 5. THỰC HÀNH (LAB 6) — TÙY CHỌN
 
-> **Lưu ý:** Lab này là tùy chọn. Phiên bản phụ thuộc và trạng thái kiểm thử script: xem **Phụ lục E — Mục 6**.
+> **Lưu ý:** Lab này là tùy chọn. Phiên bản phụ thuộc và trạng thái kiểm thử script: xem [Phụ lục ghi chú lab](../appendices/quality-ai-lab-notes.md) (chốt 21/11/2026).
 
 ### 5.1. Bối cảnh và Nhiệm vụ
 
-Người học đóng vai **Lead Research Data Steward**, tiếp nhận tập dữ liệu đã được làm sạch và khử định danh từ Lab 4–5 (đề tài DrMayDay Cohort, `csu_deidentified_lab5.csv`).
+Người học đóng vai **Lead Research Data Steward**, tiếp nhận tập dữ liệu đã được làm sạch và khử định danh từ Lab 4–5 (ví dụ minh họa, `csu_deidentified_lab5.csv`).
+
+> **Cảnh báo dữ liệu:** Đầu ra Lab 5 không đạt HIPAA Safe Harbor vì vẫn giữ city và ngày đã dịch chuyển (xem `privacy-lab-notes.md`). Không dùng tệp này để đăng công khai trên Zenodo trước khi kiểm tra rủi ro tái định danh; Zenodo Sandbox chỉ dành cho thực hành.
 
 **Nhiệm vụ:**
 1. Đóng gói thành **Gói Dữ liệu Nghiên cứu Đạt Chuẩn FAIR (RO-Crate Package)**.
@@ -249,13 +251,13 @@ Người học đóng vai **Lead Research Data Steward**, tiếp nhận tập d�
 ### 5.2. Cấu trúc Thư mục Gói Dữ liệu (RO-Crate)
 
 ```
-dr-mayday-csu-rdm-package/
+example-csu-rdm-package/
 ├── ro-crate-metadata.json      ← Siêu dữ liệu JSON-LD chuẩn máy đọc được
 ├── DATASHEET.md                ← Hồ sơ đặc tả theo chuẩn Gebru et al. 2021
 ├── LICENSE.md                  ← CC-BY 4.0 + Data Use Agreement
 ├── README.md                   ← Hướng dẫn tổng quan dành cho con người
 ├── data/
-│   └── csu_deidentified_cohort.csv  ← Dữ liệu lâm sàng đã khử định danh
+│   └── csu_deidentified_lab5.csv  ← Dữ liệu lâm sàng đã khử định danh
 ├── metadata/
 │   └── data_dictionary.csv     ← Từ điển biến số 18 cột của REDCap
 └── scripts/
@@ -281,7 +283,7 @@ dr-mayday-csu-rdm-package/
     {
       "@id": "./",
       "@type": "Dataset",
-      "name": "DrMayDay Chronic Urticaria Clinical Research Data Package",
+      "name": "Ví dụ minh họa — Clinical Research Data Package",
       "description": "Bộ dữ liệu giả lập lâm sàng theo dõi dọc bệnh nhân mày đay mạn tính đã khử định danh theo phương pháp k-anonymity/Expert Determination, phục vụ học tập và nghiên cứu dịch tễ học.",
       "datePublished": "2026-11-21",
       "license": {
@@ -298,7 +300,7 @@ dr-mayday-csu-rdm-package/
       ],
       "hasPart": [
         {
-          "@id": "data/csu_deidentified_cohort.csv"
+          "@id": "data/csu_deidentified_lab5.csv"
         },
         {
           "@id": "DATASHEET.md"
@@ -306,7 +308,7 @@ dr-mayday-csu-rdm-package/
       ]
     },
     {
-      "@id": "data/csu_deidentified_cohort.csv",
+      "@id": "data/csu_deidentified_lab5.csv",
       "@type": "File",
       "name": "De-identified Clinical Cohort Data",
       "encodingFormat": "text/csv",
@@ -338,7 +340,7 @@ import pandas as pd
 import numpy as np
 
 # 1. Nạp dữ liệu lâm sàng theo dõi dọc
-df = pd.read_csv('data/csu_deidentified_cohort.csv')
+df = pd.read_csv('data/csu_deidentified_lab5.csv')
 print(f"Tổng số bản ghi: {len(df)}")
 
 # 2. Lấy danh sách mã bệnh nhân duy nhất
@@ -374,7 +376,7 @@ print(f"Train ∩ Test: {len(overlap_tt)} bệnh nhân")
 print(f"Val   ∩ Test: {len(overlap_vt)} bệnh nhân")
 
 if len(overlap_tv) == 0 and len(overlap_tt) == 0 and len(overlap_vt) == 0:
-    print("✅ XÁC NHẬN: Patient-Level Split hoàn hảo! Zero Data Leakage.")
+    print("✅ XÁC NHẬN: Patient-Level Split không có giao nhau giữa các tập. Zero Data Leakage.")
 else:
     raise ValueError("❌ CẢNH BÁO: Phát hiện rò rỉ dữ liệu!")
 
@@ -395,14 +397,14 @@ print("Đã xuất thành công 3 tệp dữ liệu AI sẵn sàng!")
 1. Đăng nhập vào [https://sandbox.zenodo.org/](https://sandbox.zenodo.org/) bằng tài khoản ORCID.
 2. **New Upload** → Kéo thả tệp nén `dr-mayday-csu-rdm-package.zip`.
    - *Resource Type:* Dataset
-   - *Title:* `DrMayDay Chronic Urticaria Clinical Research Data Package (Synthetic De-identified Cohort)`
+   - *Title:* `Ví dụ minh họa — Clinical Research Data Package (Synthetic De-identified Cohort)`
    - *Authors:* Khai báo tên và ORCID cá nhân
 3. **Access Rights:** Chọn **Restricted Access** + điền điều kiện yêu cầu truy cập.
 4. **License:** Chọn **CC-BY 4.0** (kèm DUA trong tệp `LICENSE.md`).
 5. **Get a DOI now!** → Hệ thống cấp mã thử nghiệm `10.5072/zenodo.xxxxxx`.
 6. **Save → Publish.**
 
-> *(Giới hạn dung lượng file và chính sách kho Zenodo thay đổi theo thời gian: xem **Phụ lục D**, chốt 21/11/2026.)*
+> *(Giới hạn dung lượng file và chính sách kho Zenodo thay đổi theo thời gian: xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)*
 
 ### 5.6. Checklist Tự Đánh Giá (không chấm điểm)
 
@@ -433,7 +435,7 @@ Một nhóm nghiên cứu chuẩn bị bàn giao đề tài thử nghiệm lâm 
 1. Đóng gói toàn bộ sản phẩm theo chuẩn RO-Crate.
 2. Lựa chọn kho lưu trữ phù hợp cho từng loại dữ liệu (bệnh án số → PhysioNet/Zenodo; ảnh nội soi → Zenodo Restricted; mã nguồn → GitHub + Zenodo DOI).
 3. Thiết lập chính sách bảo mật và cấp phép phù hợp với **Luật 91/2025/QH15**, **Nghị định 356/2025/NĐ-CP** và nguyên tắc FAIR quốc tế.  
-   *(Căn cứ pháp lý hiện hành: xem **Phụ lục A**, chốt 21/11/2026. Lưu ý: Nghị định 13/2023/NĐ-CP đã hết hiệu lực từ 01/01/2026.)*
+   *(Căn cứ pháp lý hiện hành: xem [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).)*
 
 ---
 
@@ -445,9 +447,9 @@ Một nhóm nghiên cứu chuẩn bị bàn giao đề tài thử nghiệm lâm 
 | **2. 2 đánh giá FAIR** | Đánh giá FAIR ở cả bước 1 (baseline) và bước 7 (sau triển khai) — đây là vòng lặp liên tục. |
 | **3. CC0 không dùng cho dữ liệu sức khỏe** | CC0 từ bỏ toàn bộ quyền, không ràng buộc được trách nhiệm bảo vệ bệnh nhân. Dùng CC-BY 4.0 + DUA. |
 | **4. 7 tiêu chí Bridge2AI** | FAIR, Deep Provenance, Deep Characterisation, Pre-Model Explainability, Ethics/Legal/Governance, Sustainability, Computability. |
-| **5. Patient-Level Split** | Bắt buộc trong dữ liệu longitudinal. Record-level split gây Data Leakage → ảo ảnh khoa học. |
+| **5. Patient-Level Split** | Được khuyến nghị trong dữ liệu longitudinal. Record-level split gây Data Leakage → ảo ảnh khoa học. |
 | **6. Hugging Face ≠ PhysioNet** | HF Hub dùng cho model/dataset đã ẩn danh; PhysioNet dùng cho dữ liệu lâm sàng có kiểm soát. |
-| **7. Nghị định 13/2023 đã hết hiệu lực** | Từ 01/01/2026 thay bởi Luật 91/2025/QH15 + Nghị định 356/2025/NĐ-CP. |
+| **7. Pháp lý hiện hành** | Xem [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026); các mốc và diễn giải cần được kiểm tra theo nguồn chính thức. |
 
 ---
 
@@ -501,22 +503,22 @@ Một nhóm nghiên cứu chuẩn bị bàn giao đề tài thử nghiệm lâm 
 
 Toàn bộ luận điểm khoa học trong chương được đối chiếu từ cơ sở dữ liệu thư mục SSoT (`references/references.bib`):
 
-1. **Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne, P. E., et al.** (2016). The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data*, 3, 160018. DOI: [10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18). `[@ref_012]`
+1. **Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne, P. E., et al.** (2016). The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data*, 3, 160018. DOI: [10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18). [@ref_012]
 
-2. **European Commission.** (n.d.). *Horizon Europe FAIR Data Management Plan*. CASRAI. URL: [https://casrai.org/guides/horizon-europe-fair-data-management-plan](https://casrai.org/guides/horizon-europe-fair-data-management-plan). `[@ref_003]`
+2. **European Commission.** (n.d.). *Horizon Europe FAIR Data Management Plan*. CASRAI. URL: [https://casrai.org/guides/horizon-europe-fair-data-management-plan](https://casrai.org/guides/horizon-europe-fair-data-management-plan). [@ref_003]
 
-3. **Jacobsen, A., Kaliyaperumal, R., Bonino da Silva Santos, L. O., Mons, B., Schultes, E., Roos, M., & Thompson, M.** (2020). A generic workflow for the data FAIRification process. *Data Intelligence*, 2(1–2), 56–65. DOI: [10.1162/dint_a_00028](https://doi.org/10.1162/dint_a_00028). `[@ref_021]`
+3. **Jacobsen, A., Kaliyaperumal, R., Bonino da Silva Santos, L. O., Mons, B., Schultes, E., Roos, M., & Thompson, M.** (2020). A generic workflow for the data FAIRification process. *Data Intelligence*, 2(1–2), 56–65. DOI: [10.1162/dint_a_00028](https://doi.org/10.1162/dint_a_00028). [@ref_021]
 
-4. **DataCite Metadata Working Group.** (2024). *DataCite Metadata Schema for the publication and citation of research data and other research outputs*. DataCite e.V. DOI: [10.14454/mzv1-5b55](https://doi.org/10.14454/mzv1-5b55). `[@ref_022]`
+4. **DataCite Metadata Working Group.** (2024). *DataCite Metadata Schema for the publication and citation of research data and other research outputs*. DataCite e.V. DOI: [10.14454/mzv1-5b55](https://doi.org/10.14454/mzv1-5b55). [@ref_022]
 
-5. **Rocca-Serra, P., Grenon, P., Capella-Gutierrez, S., Sansone, S.-A., et al.** (2023). The FAIR Cookbook — The essential resource for and by FAIR doers. *Scientific Data*, 10, 292. DOI: [10.1038/s41597-023-02166-3](https://doi.org/10.1038/s41597-023-02166-3). `[@ref_044]`
+5. **Rocca-Serra, P., Grenon, P., Capella-Gutierrez, S., Sansone, S.-A., et al.** (2023). The FAIR Cookbook — The essential resource for and by FAIR doers. *Scientific Data*, 10, 292. DOI: [10.1038/s41597-023-02166-3](https://doi.org/10.1038/s41597-023-02166-3). [@ref_044]
 
-6. **Kasbohm, E., Inau, E. T., Zeleke, A. A., Shiferaw, K. B., Abaza, H., Clemens, V., Golebiewski, M., Gonzalez-Ocanto, M., Klopfenstein, S. A. I., Vorisek, C. N., Waltemath, D., & Schmidt, C. O.** (2025). Lessons learned from evaluating the NFDI4Health metadata schema for health studies using the Research Data Alliance's FAIR data maturity model. *medRxiv*. DOI: [10.1101/2025.09.26.25336637](https://doi.org/10.1101/2025.09.26.25336637). *(Preprint, chưa bình duyệt.)* `[@ref_043]`
+6. **Kasbohm, E., Inau, E. T., Zeleke, A. A., Shiferaw, K. B., Abaza, H., Clemens, V., Golebiewski, M., Gonzalez-Ocanto, M., Klopfenstein, S. A. I., Vorisek, C. N., Waltemath, D., & Schmidt, C. O.** (2025). Lessons learned from evaluating the NFDI4Health metadata schema for health studies using the Research Data Alliance's FAIR data maturity model. *medRxiv*. DOI: [10.1101/2025.09.26.25336637](https://doi.org/10.1101/2025.09.26.25336637). *(Preprint, chưa bình duyệt.)* [@ref_043]
 
-7. **Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé III, H., & Crawford, K.** (2021). Datasheets for datasets. *Communications of the ACM*, 64(12), 86–92. DOI: [10.1145/3458723](https://doi.org/10.1145/3458723). `[@ref_074]`
+7. **Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé III, H., & Crawford, K.** (2021). Datasheets for datasets. *Communications of the ACM*, 64(12), 86–92. DOI: [10.1145/3458723](https://doi.org/10.1145/3458723). [@ref_074]
 
-8. **Clark, T., Caufield, J. H., Parker, J. A., Al Manir, S., Amorim, E., Eddy, J., Gim, N., Gow, B., Goar, W., Haendel, M., Hansen, J. N., Harris, N., Hermjakob, H., Joachimiak, M., Jordan, G., Lee, I.-H., McWeeney, S. K., Nebeker, C., Nikolov, M., … Munoz-Torres, M. C.** (2024). AI-readiness criteria for biomedical data. *bioRxiv*. DOI: [10.1101/2024.10.23.619844](https://doi.org/10.1101/2024.10.23.619844). *(Preprint, chưa bình duyệt — trạng thái xem Phụ lục D.)* `[@ref_072]`
+8. **Clark, T., Caufield, J. H., Parker, J. A., Al Manir, S., Amorim, E., Eddy, J., Gim, N., Gow, B., Goar, W., Haendel, M., Hansen, J. N., Harris, N., Hermjakob, H., Joachimiak, M., Jordan, G., Lee, I.-H., McWeeney, S. K., Nebeker, C., Nikolov, M., … Munoz-Torres, M. C.** (2024). AI-readiness criteria for biomedical data. *bioRxiv*. DOI: [10.1101/2024.10.23.619844](https://doi.org/10.1101/2024.10.23.619844). *(Preprint, chưa bình duyệt — trạng thái xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026).)* [@ref_072]
 
-9. **Alderman, J. E., Palmer, J., Laws, E., McCradden, M. D., Ordish, J., Ghassemi, M., Pfohl, S. R., Rostamzadeh, N., Cole-Lewis, H., Glocker, B., Calvert, M., Pollard, T. J., Gill, J., Gath, J., Adebajo, A., Beng, J., Leung, C. H., Kuku, S., Farmer, L.-A., … Liu, X.** (2025). Tackling algorithmic bias and promoting transparency in health datasets: The STANDING Together consensus recommendations. *The Lancet Digital Health*, 7, e64–e88. DOI: [10.1016/s2589-7500(24)00224-3](https://doi.org/10.1016/s2589-7500(24)00224-3). `[@ref_073]`
+9. **Alderman, J. E., Palmer, J., Laws, E., McCradden, M. D., Ordish, J., Ghassemi, M., Pfohl, S. R., Rostamzadeh, N., Cole-Lewis, H., Glocker, B., Calvert, M., Pollard, T. J., Gill, J., Gath, J., Adebajo, A., Beng, J., Leung, C. H., Kuku, S., Farmer, L.-A., … Liu, X.** (2025). Tackling algorithmic bias and promoting transparency in health datasets: The STANDING Together consensus recommendations. *The Lancet Digital Health*, 7, e64–e88. DOI: [10.1016/s2589-7500(24)00224-3](https://doi.org/10.1016/s2589-7500(24)00224-3). [@ref_073]
 
-10. **Goldacre, B.** (2022). *Better, broader, safer: Using health data for research and analysis*. UK Department of Health and Social Care. `[@ref_097]`
+10. **Goldacre, B.** (2022). *Better, broader, safer: Using health data for research and analysis*. UK Department of Health and Social Care. [@ref_097]

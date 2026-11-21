@@ -13,4 +13,5 @@ next_review: 2027-05-21
 | 2026-11-21 | Cập nhật phụ lục pháp lý/chuẩn cho chương 2 và thêm ghi chú lab REDCap; các chi tiết cấu hình/mã ánh xạ chưa đối chiếu giữ `CONTENT_PENDING`. | CONTENT_PENDING | [Phụ lục pháp lý](legal.md); [Phụ lục standards](standards.md); [Ghi chú lab](redcap-lab-notes.md) | 2026-11-21 | Ben |
 | 2026-11-21 | Bổ sung phụ lục chuẩn và ghi chú lab cho chương 3: trạng thái FHIR/OMOP/CDISC/FDA/PMDA, giới hạn concept mapping và kết quả chạy ETL minh họa. | CONTENT_PENDING | [Phụ lục standards](standards.md); [Ghi chú FHIR–OMOP](fhir-omop-lab-notes.md) | 2026-11-21 | Ben |
 | 2026-11-21 | Cập nhật pháp lý và lưu trữ cho chương 5; thêm ghi chú Lab 5 với trạng thái nguồn, cảnh báo seed và kết quả chạy dữ liệu tổng hợp. | CONTENT_PENDING | [Phụ lục pháp lý](legal.md); [Phụ lục lưu trữ](retention.md); [Ghi chú Lab 5](privacy-lab-notes.md) | 2026-11-21 | Ben |
+| 2026-11-21 | Bổ sung ghi chú Lab 4/6; chốt trạng thái nguồn DQD, RO-Crate, DataCite và Zenodo; ghi rõ số DQD minh họa và giới hạn preprint. | CONTENT_PENDING | [Ghi chú Lab 4/6](quality-ai-lab-notes.md); [Phụ lục standards](standards.md) | 2026-11-21 | Ben |
 
