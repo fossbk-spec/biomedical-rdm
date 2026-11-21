@@ -21,6 +21,38 @@ AUDIT = ROOT / "references" / "citation-audit.csv"
 OUT334 = ROOT / "references" / "references-334.bib"
 OUT103 = ROOT / "references" / "references.bib"
 
+EXTENSIONS = [
+    (104, "article", {
+        "title": "Gene name errors are widespread in the scientific literature",
+        "author": "Ziemann, M., Eren, Y., & El-Osta, A.",
+        "year": "2016", "journal": "Genome Biology", "volume": "17", "pages": "177",
+        "doi": "10.1186/s13059-016-1044-7",
+    }),
+    (105, "article", {
+        "title": "Drug development: Raise standards for preclinical cancer research",
+        "author": "Begley, C. G., & Ellis, L. M.", "year": "2012", "journal": "Nature",
+        "volume": "483", "pages": "531–533", "doi": "10.1038/483531a",
+    }),
+    (106, "article", {
+        "title": "The economics of reproducibility in preclinical research",
+        "author": "Freedman, L. P., Cockburn, I. M., & Simcoe, T. S.", "year": "2015",
+        "journal": "PLoS Biology", "volume": "13", "number": "6", "pages": "e1002165",
+        "doi": "10.1371/journal.pbio.1002165",
+    }),
+    (107, "article", {
+        "title": "Retraction—Hydroxychloroquine or chloroquine with or without a macrolide for treatment of COVID-19: a multinational registry analysis",
+        "author": "Mehra, M. R., Ruschitzka, F., & Patel, A. N.", "year": "2020",
+        "journal": "The Lancet", "volume": "395", "pages": "1820",
+        "doi": "10.1016/S0140-6736(20)31324-6",
+    }),
+    (108, "article", {
+        "title": "Retraction: Cardiovascular disease, drug therapy, and mortality in Covid-19",
+        "author": "Mehra, M. R., Desai, S. S., Kuy, S., Henry, T. D., & Patel, A. N.",
+        "year": "2020", "journal": "New England Journal of Medicine", "volume": "382",
+        "pages": "e102", "doi": "10.1056/NEJMc2021225",
+    }),
+]
+
 EXCLUSIONS = {
     1: "draft input file, not a citation source",
     2: "draft input file, not a citation source",
@@ -248,6 +280,8 @@ def write_103(entries: list[dict]) -> None:
     blocks = []
     for e in entries:
         blocks.append(bib_entry(f"ref_{e['number']:03d}", e["type"], e["fields"], e["pending"]))
+    for number, typ, fields in EXTENSIONS:
+        blocks.append(bib_entry(f"ref_{number:03d}", typ, fields))
     OUT103.write_text("\n\n".join(blocks) + "\n", encoding="utf-8")
 
 
@@ -275,12 +309,22 @@ def update_audit(mapping: dict[int, int]) -> None:
     with AUDIT.open(encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
         fieldnames = list(rows[0]) if rows else ["source_number", "citation_key", "status", "missing_field", "used_in", "action"]
+    rows = [row for row in rows if int(row["source_number"]) < 104]
     if "source334_number" not in fieldnames:
         fieldnames.append("source334_number")
     for row in rows:
         n = int(row["source_number"])
         row["citation_key"] = f"ref_{n:03d}"
         row["source334_number"] = str(mapping.get(n, ""))
+    existing = {int(row["source_number"]) for row in rows}
+    for number, _typ, _fields in EXTENSIONS:
+        if number not in existing:
+            rows.append({
+                "source_number": str(number), "citation_key": f"ref_{number:03d}",
+                "status": "VERIFIED_UNAUDITED", "missing_field": "",
+                "used_in": "chapter_only", "action": "Metadata checked against Crossref; content audit remains open.",
+                "source334_number": "", "page_check": "", "page_check_note": "",
+            })
     with AUDIT.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
@@ -332,11 +376,13 @@ def main() -> int:
         update_audit(map_sources(refs, sources))
         replace_blocked_flag()
     n334, _ = check_bib(OUT334, 334)
-    n103, pending = check_bib(OUT103, 103)
+    # The canonical bibliography currently contains 103 core entries plus
+    # chapter-only entries 104–115 added by approved chapter revisions.
+    n103, pending = check_bib(OUT103, 115)
     sources = source_entries()
     counts = {k: sum(1 for e in sources if k in e) for k in ("pmid", "pmcid", "doi")}
     print(f"references-334.bib: {n334} entries; pmid={counts['pmid']} pmcid={counts['pmcid']} doi={counts['doi']}")
-    print(f"references.bib: {n103} entries; pending={pending}")
+    print(f"references.bib: {n103} entries (103 core + {n103 - 103} chapter-only); pending={pending}")
     print(f"citation-audit.csv: source334_number mapping updated")
     return 0
 

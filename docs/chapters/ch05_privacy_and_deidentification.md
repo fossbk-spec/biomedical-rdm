@@ -1,6 +1,6 @@
 # CHƯƠNG 5. BẢO MẬT DỮ LIỆU Y TẾ, KHỬ ĐỊNH DANH (DE-IDENTIFICATION) VÀ KHUNG PHÁP LÝ VIỆT NAM
 
-> **Mã học phần:** BIO-RDM-2026 | **Thời lượng:** 3 giờ tín chỉ (1 giờ Lý thuyết + 2 giờ Thực hành phòng máy Lab 5)  
+> **Thời lượng ước lượng:** 3 giờ (1 giờ lý thuyết và 2 giờ thực hành Lab 5)
 > **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*  
 > **Phiên bản:** `v2.0.0_20261121` | **Chuẩn trích dẫn:** SSoT BibTeX (`references/references.bib`)
 
@@ -11,9 +11,9 @@
 Sau khi hoàn thành Chương 5, người học đạt được các chuẩn năng lực đầu ra (CLOs):
 
 1. **Hiểu và Phân biệt (Bloom Mức 2 - CLO1):**
-   - Phân tích cặn kẽ khung pháp lý quốc tế về quyền riêng tư dữ liệu y tế: Tiêu chuẩn **HIPAA Privacy Rule** (Hoa Kỳ) với hai lộ trình *Safe Harbor* và *Expert Determination* [@ref_052]; Quy định bảo vệ dữ liệu chung Châu Âu (**GDPR** - Regulation 2016/679 [@ref_051]) và Không gian Dữ liệu Y tế Châu Âu (**EHDS** - Regulation 2025/327 [@ref_053]).
+   - Phân tích khung pháp lý quốc tế về quyền riêng tư dữ liệu y tế: **HIPAA Privacy Rule** [@ref_115], **GDPR** [@ref_113] và **EHDS** [@ref_114].
    - Phân biệt rõ sự khác nhau về mặt pháp lý và kỹ thuật giữa: Dữ liệu định danh (*Identifiable*), Dữ liệu giả danh (*Pseudonymized*), và Dữ liệu ẩn danh hoàn toàn (*Anonymized*).
-   - Làm chủ các quy định pháp luật hiện hành của Việt Nam: **Luật Khám bệnh, chữa bệnh số 15/2023/QH15**; **Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15**; **Nghị định 13/2023/NĐ-CP** và **Nghị định 356/2025/NĐ-CP**; Thông tư 46/2018/TT-BYT và Thông tư 13/2025/TT-BYT về bệnh án điện tử.
+   - Nhận diện các nguyên tắc pháp lý hiện hành của Việt Nam; chi tiết cập nhật xem [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).
 
 2. **Áp dụng và Thực hành (Bloom Mức 3 - CLO3):**
    - Phân loại chính xác 4 nhóm thuộc tính trong tập dữ liệu y sinh: Định danh trực tiếp (*Direct Identifiers*), Thuộc tính bán định danh (*Quasi-Identifiers - QIs*), Thuộc tính nhạy cảm (*Sensitive Attributes*), và Thuộc tính không nhạy cảm.
@@ -22,7 +22,7 @@ Sau khi hoàn thành Chương 5, người học đạt được các chuẩn nă
 
 3. **Phân tích và Đánh giá (Bloom Mức 4 - CLO3):**
    - Đánh giá các rủi ro bị tấn công liên kết dữ liệu (*Linkage Attack*) và tái định danh người bệnh khi chia sẻ dữ liệu nghiên cứu ra cộng đồng khoa học mở.
-   - Thiết kế mô hình quản trị dữ liệu an toàn dựa trên khung **Five Safes** và kiến trúc Môi trường Nghiên cứu Tin cậy (**Trusted Research Environments - TREs**) [@ref_075].
+   - Thiết kế mô hình quản trị dữ liệu an toàn dựa trên khung **Five Safes** và kiến trúc Môi trường Nghiên cứu Tin cậy (**Trusted Research Environments - TREs**); nguồn Five Safes cụ thể vẫn `CONTENT_PENDING`.
 
 ---
 
@@ -34,8 +34,8 @@ Sơ đồ dưới đây minh họa hệ thống các lớp phòng vệ bảo m�
 flowchart TD
     subgraph LAW["TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC (LEGAL & ETHICS)"]
         direction TB
-        VN["Pháp luật Việt Nam:<br/>• Luật Khám bệnh, chữa bệnh 2023 (Điều 69: Bí mật hồ sơ)<br/>• Luật Bảo vệ DLCN 91/2025/QH15 & NĐ 13/2023/NĐ-CP<br/>• Yêu cầu Đánh giá tác động dữ liệu cá nhân (DPIA)"]
-        INT["Chuẩn mực Quốc tế:<br/>• HIPAA 45 CFR §164.514 (Safe Harbor: 18 Identifiers)<br/>• GDPR (Dữ liệu sức khỏe là danh mục nhạy cảm đặc biệt)<br/>• EHDS (Regulation EU 2025/327: Khung chia sẻ dữ liệu thứ cấp)"]
+        VN["Pháp luật Việt Nam:<br/>• Nguyên tắc bảo mật hồ sơ bệnh án và dữ liệu sức khỏe<br/>• Bảo vệ dữ liệu cá nhân và đánh giá tác động<br/>• Chi tiết: phụ lục pháp lý"]
+        INT["Chuẩn mực quốc tế:<br/>• HIPAA Safe Harbor<br/>• GDPR<br/>• EHDS và chia sẻ dữ liệu thứ cấp"]
         IRB["Hội đồng Đạo đức Y sinh (IRB / IEC)<br/>(Chấp thuận đề cương, Informed Consent, Miễn trừ đồng thuận)"]
     end
 
@@ -87,35 +87,27 @@ Trong kỷ nguyên Y học Chính xác (*Precision Medicine*) và Trí tuệ Nh�
 ### 3.2. Khung Pháp lý Quốc tế về Dữ liệu Y tế
 
 #### 3.2.1. Đạo luật HIPAA và Tiêu chuẩn 45 CFR §164.514 (Hoa Kỳ)
-Đạo luật về Trách nhiệm giải trình và Khả năng chuyển đổi Bảo hiểm Y tế của Hoa Kỳ (**HIPAA**) đặt ra các quy định nghiêm ngặt về Thông tin Y tế được Bảo vệ (**PHI - Protected Health Information**) [@ref_052]. Để một tập dữ liệu y tế được coi là đã khử định danh và có thể chia sẻ tự do cho nghiên cứu, HIPAA đưa ra hai phương pháp:
+Đạo luật HIPAA đặt ra các quy định về Thông tin Y tế được Bảo vệ (**PHI**). 45 CFR 164.514 nêu hai phương pháp khử định danh; việc áp dụng cụ thể phải đối chiếu văn bản gốc [@ref_115].
 
-1. **Phương pháp Safe Harbor (Bến đỗ an toàn):** Yêu cầu loại bỏ bắt buộc **18 yếu tố định danh** trực tiếp và gián tiếp của bệnh nhân và thân nhân:
-   - (1) Họ và tên;
-   - (2) Tất cả các đơn vị địa lý nhỏ hơn một bang (địa chỉ nhà, thành phố, quận huyện, mã bưu chính ZIP code — ngoại trừ 3 chữ số đầu của ZIP code nếu khu vực đó có trên 20.000 dân);
-   - (3) Mọi yếu tố ngày tháng liên quan trực tiếp đến một cá nhân (ngày sinh, ngày nhập viện, ngày xuất viện, ngày tử vong) — chỉ được phép giữ lại **Năm**;
-   - (4) Giới hạn tuổi: Mọi lứa tuổi từ **90 trở lên** phải được gộp chung thành một nhóm duy nhất mang nhãn `90+` để tránh việc nhận diện các cụ già đại thọ hiếm có trong cộng đồng;
-   - (5) Số điện thoại;
-   - (6) Số Fax;
-   - (7) Địa chỉ thư điện tử (Email);
-   - (8) Số an sinh xã hội (SSN / CCCD);
-   - (9) Số hồ sơ bệnh án (Medical Record Number - MRN);
-   - (10) Số thẻ bảo hiểm y tế;
-   - (11) Số tài khoản ngân hàng;
-   - (12) Số chứng chỉ / bằng lái xe;
-   - (13) Biển số xe hoặc số định danh phương tiện;
-   - (14) Số seri hoặc định danh thiết bị y tế cấy ghép;
-   - (15) Địa chỉ URL trang web cá nhân;
-   - (16) Địa chỉ Giao thức Internet (IP Address);
-   - (17) Dấu vân tay, hình ảnh võng mạc hoặc dữ liệu sinh trắc học;
-   - (18) Ảnh chụp khuôn mặt có thể nhận diện được; và bất kỳ mã định danh duy nhất nào khác.
+1. **Safe Harbor:** loại bỏ các nhóm định danh được liệt kê trong 45 CFR 164.514(b)(2)(i)(A)–(R): tên; địa chỉ địa lý nhỏ hơn bang; mọi yếu tố ngày tháng (trừ năm) và tuổi trên 89; số điện thoại; fax; email; số an sinh xã hội; số hồ sơ y tế; số bảo hiểm y tế; số tài khoản; số giấy phép/chứng chỉ; biển số và định danh phương tiện; định danh thiết bị; URL; địa chỉ IP; định danh sinh trắc học; ảnh toàn mặt; và mọi mã định danh duy nhất khác. Quy định có ngoại lệ giới hạn cho ba chữ số đầu của ZIP khi khu vực tương ứng có hơn 20.000 dân. Điều kiện đi kèm gồm không có hiểu biết thực tế rằng thông tin còn lại có thể nhận diện cá nhân.
+   - (A) Họ và tên;
+   - (B) Mọi đơn vị địa lý nhỏ hơn một bang (địa chỉ, thành phố, quận/huyện, mã bưu chính ZIP và mã địa lý tương đương). Ngoại lệ: được giữ 3 chữ số đầu của ZIP nếu đơn vị địa lý gộp mọi ZIP có cùng 3 chữ số đầu có trên 20.000 dân theo dữ liệu Census công bố hiện hành; 3 chữ số đầu của các đơn vị có từ 20.000 dân trở xuống phải đổi thành `000`;
+   - (C) Mọi yếu tố ngày tháng (trừ năm) liên quan trực tiếp đến cá nhân (ngày sinh, nhập viện, xuất viện, tử vong); mọi độ tuổi trên 89 và mọi yếu tố ngày (kể cả năm) cho biết độ tuổi đó, trừ khi gộp thành một nhóm duy nhất "90 tuổi trở lên";
+   - (D) Số điện thoại; (E) Số fax; (F) Địa chỉ thư điện tử;
+   - (G) Số an sinh xã hội; (H) Số hồ sơ y tế; (I) Số thẻ bảo hiểm/thụ hưởng; (J) Số tài khoản;
+   - (K) Số chứng chỉ/giấy phép; (L) Định danh và số seri phương tiện, kể cả biển số xe; (M) Định danh và số seri thiết bị;
+   - (N) Địa chỉ URL; (O) Địa chỉ IP;
+   - (P) Định danh sinh trắc học, gồm vân tay và dấu giọng nói; (Q) Ảnh chụp toàn khuôn mặt và ảnh tương tự;
+   - (R) Mọi số, đặc điểm hoặc mã định danh duy nhất khác (trừ mã tái định danh được phép theo mục (c) của điều khoản).
+   - **Điều kiện bổ sung:** đơn vị chịu điều chỉnh không có hiểu biết thực tế rằng thông tin còn lại có thể dùng riêng lẻ hoặc kết hợp để nhận diện cá nhân (45 CFR 164.514(b)(2)(ii)) [@ref_115].
 
 2. **Phương pháp Expert Determination (Thẩm định Chuyên gia):** Một chuyên gia có kiến thức khoa học và thống kê sâu rộng tiến hành áp dụng các thuật toán toán học và chứng minh bằng văn bản rằng xác suất để một người nhận được dữ liệu có thể tái định danh đối tượng nghiên cứu là "cực kỳ nhỏ" (*very small risk*).
 
 #### 3.2.2. Quy định GDPR (Châu Âu) và Khái niệm Dữ liệu Giả danh
-Quy định Bảo vệ Dữ liệu Chung của Liên minh Châu Âu (**GDPR** - Regulation 2016/679) [@ref_051] thiết lập một sự phân biệt pháp lý cốt tử:
+Quy định Bảo vệ Dữ liệu Chung của Liên minh Châu Âu (**GDPR** - Regulation 2016/679) [@ref_113] thiết lập một sự phân biệt pháp lý cốt tử:
 - **Dữ liệu giả danh (Pseudonymised Data):** Dữ liệu đã thay thế họ tên bệnh nhân bằng một mã số nghiên cứu (Subject ID), nhưng nhà nghiên cứu vẫn giữ một "Bảng liên kết đối chiếu" (*Key file / Master linking log*) ở một nơi an toàn. **GDPR khẳng định: Dữ liệu giả danh VẪN LÀ DỮ LIỆU CÁ NHÂN** và phải tuân thủ đầy đủ các quy định ngặt nghèo của luật, bởi vì người giữ chìa khóa vẫn có khả năng tái định danh người bệnh.
 - **Dữ liệu ẩn danh hoàn toàn (Anonymised Data):** Dữ liệu đã bị xóa bỏ liên kết vĩnh viễn, không một ai (kể cả nhóm nghiên cứu ban đầu) có thể tái định danh được cá nhân bằng bất kỳ biện pháp kỹ thuật hợp lý nào. Chỉ có dữ liệu ẩn danh hoàn toàn mới nằm ngoài phạm vi điều chỉnh của GDPR.
-- **Không gian Dữ liệu Y tế Châu Âu (EHDS - Regulation (EU) 2025/327):** Có hiệu lực từ 26/03/2025 và áp dụng bắt buộc từ 26/03/2027 [@ref_053], thiết lập hành lang pháp lý thống nhất toàn khối cho việc khai thác thứ cấp (*secondary use*) dữ liệu sức khỏe trong các môi trường điện toán an toàn.
+- **EHDS:** Quy định có hiệu lực ngày 26/03/2025 và áp dụng từ 26/03/2027; một số phần áp dụng theo các mốc 2029, 2031 và 2035. Lộ trình chi tiết nằm trong [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026) [@ref_114].
 
 ---
 
@@ -123,23 +115,15 @@ Quy định Bảo vệ Dữ liệu Chung của Liên minh Châu Âu (**GDPR** - 
 
 Tại Việt Nam, các quy định pháp luật về bảo mật dữ liệu y tế đã có bước chuyển mình mang tính lịch sử, chuyển từ các quy định hành chính đơn lẻ sang một khung pháp lý hoàn chỉnh, đồng bộ và có chế tài nghiêm khắc:
 
-1. **Luật Khám bệnh, chữa bệnh số 15/2023/QH15 (Có hiệu lực từ 01/01/2024):**
-   - **Điều 69 (Hồ sơ bệnh án):** Quy định hồ sơ bệnh án là tài liệu pháp lý và tài sản bảo mật nghiêm ngặt.
-   - Nghiêm cấm mọi hành vi tự ý sao chép, làm lộ lọt thông tin của người bệnh.
-   - Khoản 4 Điều 69 quy định rõ: Người đứng đầu cơ sở khám bệnh, chữa bệnh chỉ được cho phép khai thác hồ sơ bệnh án phục vụ nghiên cứu khoa học khi thông tin định danh cá nhân của người bệnh **đã được mã hóa an toàn** và nghiên cứu viên cam kết bảo mật tuyệt đối.
+1. **Pháp luật về khám bệnh, chữa bệnh:** hồ sơ bệnh án và thông tin sức khỏe phải được bảo mật; việc khai thác cho nghiên cứu cần căn cứ nguồn chính thống và phê duyệt phù hợp. Chi tiết điều khoản được giữ ở [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).
 
-2. **Luật Bảo vệ Dữ liệu Cá nhân số 91/2025/QH15 và Nghị định 13/2023/NĐ-CP / Nghị định 356/2025/NĐ-CP:**
-   - Phân loại rõ ràng: **Dữ liệu về tình trạng sức khỏe, hồ sơ bệnh án, đời tư y tế và dữ liệu sinh trắc học là DỮ LIỆU CÁ NHÂN NHẠY CẢM** (Điều 2 Nghị định 13/2023/NĐ-CP và Luật 91/2025/QH15).
-   - **Nguyên tắc Đồng thuận Tường minh (Informed Consent):** Mọi hoạt động thu thập, phân tích và chia sẻ dữ liệu y tế cho nghiên cứu đều phải có sự đồng ý bằng văn bản của chủ thể dữ liệu, nêu rõ phạm vi, mục đích và thời hạn xử lý.
-   - **Hồ sơ Đánh giá Tác động Xử lý Dữ liệu Cá nhân (DPIA):** Tổ chức chủ trì nghiên cứu y sinh học bắt buộc phải lập Hồ sơ DPIA và gửi về Cục An ninh mạng và Phòng, chống tội phạm sử dụng công nghệ cao (A05 - Bộ Công an) trong vòng 60 ngày kể từ khi tiến hành xử lý dữ liệu.
-   - Bổ nhiệm **Cán bộ Bảo vệ Dữ liệu Cá nhân (DPO)** chuyên trách tại cơ sở nghiên cứu.
+2. **Bảo vệ dữ liệu cá nhân:** dữ liệu sức khỏe cần được xử lý theo mục đích, quyền truy cập, bảo mật, đánh giá tác động và trách nhiệm giải trình theo nguồn hiện hành. Xem trạng thái kiểm chứng, giới hạn và URL ở [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).
 
-3. **Thông tư 46/2018/TT-BYT & Thông tư 13/2025/TT-BYT về Bệnh án Điện tử (EMR):**
-   - Quy định lộ trình các bệnh viện hạng I và đặc biệt phải triển khai hoàn tất bệnh án điện tử, đồng thời thiết lập hệ thống tường lửa, phân quyền truy cập và kiểm toán an ninh mạng để ngăn chặn rò rỉ dữ liệu y tế sang các mục đích thương mại trái phép.
+3. **Bệnh án điện tử:** các yêu cầu về hệ thống, phân quyền và kiểm soát truy cập phải được đối chiếu theo văn bản hiện hành ở [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026).
 
 4. **Vai trò của Hội đồng Đạo đức trong Nghiên cứu Y sinh học (IRB / IEC):**
    - Mọi đề cương nghiên cứu y sinh học có liên quan đến việc thu thập hoặc khai thác dữ liệu bệnh nhân đều phải được thông qua Hội đồng Đạo đức cấp cơ sở hoặc cấp Quốc gia.
-   - Hội đồng Đạo đức xem xét cẩn trọng: Quy trình xin phiếu chấp thuận tham gia nghiên cứu (Informed Consent Form - ICF); cơ chế mã hóa và khử định danh dữ liệu; nơi lưu trữ khóa giải mã; và kế hoạch tiêu hủy dữ liệu an toàn theo **NIST SP 800-88 Rev. 2** (Clear / Purge / Destroy) sau khi kết thúc thời hạn lưu trữ quy định tại **Thông tư 33/2025/TT-BYT**.
+   - Hội đồng Đạo đức xem xét: chấp thuận tham gia, cơ chế mã hóa và khử định danh, nơi lưu trữ khóa, quyền truy cập và kế hoạch lưu trữ/hủy dữ liệu. Chi tiết cập nhật xem [Phụ lục lưu trữ](../appendices/retention.md) (chốt 21/11/2026).
 
 ---
 
@@ -179,7 +163,7 @@ Mặc dù $k$-anonymity bảo vệ danh tính, nó không thể chống lại **
 - **Giải pháp $l$-Diversity:** Yêu cầu trong mỗi nhóm tương đương, thuộc tính nhạy cảm phải chứa ít nhất **$l$ giá trị khác nhau** và phân bố đều nhau [@ref_069].
 
 #### 3.4.5. Bảo Mật Vi Sai (Differential Privacy - Cynthia Dwork 2008)
-Được xem là tiêu chuẩn vàng toán học về quyền riêng tư hiện đại [@ref_070]:
+Là một mô hình toán học với tham số và giả định phải được công bố; không có một mô hình duy nhất phù hợp cho mọi bối cảnh [@ref_070]:
 - Đảm bảo rằng việc có mặt hay vắng mặt của một cá nhân duy nhất trong cơ sở dữ liệu sẽ không làm thay đổi đáng kể xác suất xuất hiện của kết quả truy vấn thống kê đầu ra.
 - Cơ chế thực hiện: Thêm nhiễu ngẫu nhiên được điều chỉnh cẩn thận (Laplace Noise hoặc Gaussian Noise) vào kết quả tổng hợp dựa trên **Độ nhạy của truy vấn (Sensitivity)** và **Ngân sách bảo mật $\epsilon$ (Epsilon)**.
 
@@ -187,7 +171,7 @@ Mặc dù $k$-anonymity bảo vệ danh tính, nó không thể chống lại **
 
 ### 3.5. Kiến trúc Môi trường Nghiên cứu Tin cậy (TREs) và Khung Five Safes
 
-Trong các nghiên cứu lâm sàng quy mô quốc gia, xu hướng toàn cầu hiện nay là chuyển từ mô hình "chia sẻ dữ liệu tải về" (*data sharing / downloading*) sang mô hình **"đưa thuật toán đến dữ liệu" (Code-to-Data)** thông qua các **Môi trường Nghiên cứu Tin cậy (Trusted Research Environments - TREs)**, vận hành trên nguyên tắc **Five Safes** [@ref_075]:
+Trong các nghiên cứu lâm sàng, có thể tổ chức quyền truy cập theo mô hình **"đưa thuật toán đến dữ liệu" (Code-to-Data)** thông qua **Môi trường Nghiên cứu Tin cậy (Trusted Research Environments - TREs)** và nguyên tắc **Five Safes**. Nguồn cụ thể cho Five Safes chưa được chốt, nên không suy rộng thành yêu cầu pháp lý:
 
 1. **Safe People (Con người an toàn):** Chỉ những nhà nghiên cứu đã được đào tạo, sát hạch về đạo đức dữ liệu y sinh và ký cam kết pháp lý mới được cấp tài khoản truy cập.
 2. **Safe Projects (Dự án an toàn):** Dự án phải có đề cương nghiên cứu rõ ràng, phục vụ lợi ích công cộng và được Hội đồng Đạo đức (IRB) phê duyệt.
@@ -199,35 +183,34 @@ Trong các nghiên cứu lâm sàng quy mô quốc gia, xu hướng toàn cầu 
 
 ## 4. NGHIÊN CỨU TÌNH HUỐNG VÀ BÀI HỌC THẤT BẠI (FAILURE ANALYSIS)
 
-### Case Study 1: Vụ tái định danh Thống đốc bang Massachusetts của Latanya Sweeney (2002)
+### Case Study 1: Minh họa tấn công liên kết
 - **Bối cảnh:** Cơ quan Bảo hiểm Y tế bang Massachusetts (GIC) quyết định công bố một bộ dữ liệu đã được "khử định danh" bao gồm thông tin khám chữa bệnh của toàn bộ công chức bang cho các nhà nghiên cứu học thuật. GIC đã xóa bỏ tên, địa chỉ, số an sinh xã hội và mã bệnh án của bệnh nhân, và khẳng định công khai rằng quyền riêng tư của mọi người đã được bảo vệ tuyệt đối.
 - **Cuộc tấn công của Sweeney:**
   1. Tiến sĩ Latanya Sweeney (lúc đó là nghiên cứu sinh tại MIT) biết rằng Thống đốc bang lúc bấy giờ là ông William Weld cư trú tại thành phố Cambridge.
   2. Sweeney bỏ ra \$20 để mua danh sách cử tri công khai của thành phố Cambridge (trong đó có chứa họ tên, địa chỉ, mã bưu chính ZIP code, ngày tháng năm sinh và giới tính của cử tri).
   3. Sweeney tiến hành **Tấn công liên kết (Linkage Attack)** giữa tập dữ liệu y tế của GIC và danh sách cử tri thông qua 3 thuộc tính bán định danh chung: **Mã ZIP (5 chữ số), Ngày sinh đầy đủ (ngày/tháng/năm), và Giới tính**.
   4. *Kết quả gây sốc:* Chỉ duy nhất một người trong toàn bộ thành phố Cambridge có tổ hợp 3 thuộc tính này trùng khớp với Thống đốc. Sweeney đã trích xuất được toàn bộ hồ sơ chẩn đoán bệnh, các toa thuốc điều trị và các đợt nằm viện phẫu thuật bí mật của Thống đốc Weld và gửi thẳng hồ sơ y tế này tới văn phòng của ông.
-- **Tác động lịch sử:** Nghiên cứu của Sweeney chứng minh rằng **87% dân số Hoa Kỳ có thể bị định danh duy nhất chỉ bằng bộ 3 thuộc tính: Mã ZIP + Ngày sinh + Giới tính**. Đây chính là bằng chứng thực nghiệm quan trọng nhất dẫn tới việc Bộ Y tế Hoa Kỳ đưa ra quy tắc nghiêm ngặt của HIPAA Safe Harbor.
+- **Bài học:** xóa tên không đủ để loại bỏ rủi ro liên kết; kết quả định danh phụ thuộc vào dữ liệu đối chiếu, bối cảnh và giả định tấn công. Không sử dụng tỷ lệ phần trăm khi chưa đọc và kiểm chứng nguồn gốc trực tiếp.
 
-### Case Study 2: Bài học về chia sẻ dữ liệu y tế qua mạng xã hội tại Việt Nam
+### Case Study 2: Tình huống giả định minh họa về chia sẻ dữ liệu
 - **Bối cảnh:** Một nhóm nghiên cứu tại một bệnh viện thực hiện đề tài đánh giá đáp ứng điều trị mày đay mạn tính kháng thuốc. Để tiện trao đổi công việc hàng ngày giữa nghiên cứu viên và điều phối viên lâm sàng (CRC), nhóm đã tạo một nhóm chat Zalo.
-- **Sai sót:** Nghiên cứu viên đã chụp ảnh các phiếu xét nghiệm sinh hóa và gửi trực tiếp tệp Excel danh sách 150 bệnh nhân (chứa đầy đủ Họ tên, Số điện thoại, Mã BHYT và kết quả xét nghiệm IgE) lên nhóm Zalo không bật tính năng mã hóa đầu cuối. Một thành viên trong nhóm bị mất điện thoại và toàn bộ danh sách dữ liệu bệnh nhân bị phát tán trên một diễn đàn mạng xã hội.
-- **Hậu quả pháp lý:** Cơ sở y tế bị xử phạt vi phạm hành chính về an toàn an ninh mạng và bảo vệ dữ liệu cá nhân theo quy định pháp luật; đề tài nghiên cứu bị Hội đồng Đạo đức đình chỉ vĩnh viễn; nghiên cứu viên chính bị kỷ luật và công khai xin lỗi các bệnh nhân bị lộ lọt thông tin.
+- **Sai sót cần thảo luận:** dữ liệu sức khỏe được chia sẻ qua kênh không phù hợp, thiếu kiểm soát quyền truy cập và thiếu đánh giá rủi ro. Người học xác định biện pháp giảm thiểu và căn cứ pháp lý cần kiểm chứng; không suy đoán chế tài hay hậu quả thực tế.
 
 ---
 
 ## 5. HƯỚNG DẪN THỰC HÀNH PHÒNG MÁY - LAB 5 (2 GIỜ)
 
 ### 5.1. Bối cảnh Nghiên cứu và Đề bài
-Trong bài thực hành này, học viên đóng vai trò là **Chuyên viên Bảo mật Dữ liệu Nghiên cứu Y sinh học (Healthcare Data Privacy Officer)**. Học viên được giao xử lý tập dữ liệu lâm sàng thô chứa thông tin định danh của 1.000 bệnh nhân Mày đay Mạn tính (**DrMayDay Cohort** - tệp `csu_raw_identifiable_lab5.csv`).
+Trong bài thực hành này, người học xử lý một tập dữ liệu tổng hợp minh họa về mày đay mạn tính (tệp `csu_raw_identifiable_lab5.csv`).
 
 **Nhiệm vụ:**
 1. Lập danh mục phân loại thuộc tính (Direct Identifiers, Quasi-Identifiers, Sensitive Attributes).
-2. Xây dựng đường ống khử định danh tự động bằng Python:
+2. Xây dựng đường ống khử định danh tự động bằng Python; đây là bài tập minh họa, không phải kết luận rằng đầu ra đạt Safe Harbor.
    - Loại bỏ triệt để các trường định danh trực tiếp theo HIPAA.
    - Ứng dụng kỹ thuật **Generalization** (Top-coding tuổi: các bệnh nhân tuổi $> 89$ được chuyển thành `90+`).
    - Cài đặt thuật toán **Dịch chuyển ngày ngẫu nhiên theo từng bệnh nhân (Patient-Level Date Shifting)** với biên độ $[-180, +180]$ ngày.
-3. Đo lường mức độ an toàn quyền riêng tư: Tính toán chỉ số $k$ trong mô hình **$k$-Anonymity** trên các thuộc tính bán định danh (`gender`, `age_group`, `city`).
-4. Kiểm chứng tính bảo toàn của dữ liệu lâm sàng: Chứng minh rằng khoảng cách thời gian giữa ngày khám đầu tiên và ngày tái khám của mỗi bệnh nhân không bị thay đổi sau khi dịch chuyển ngày.
+3. Đo lường mức độ an toàn quyền riêng tư: Tính toán chỉ số $k$ trên các thuộc tính bán định danh (`gender`, `age_group`, `city`).
+4. Kiểm chứng tính bảo toàn của dữ liệu lâm sàng: chứng minh khoảng cách thời gian giữa ngày khám đầu tiên và ngày tái khám không đổi sau dịch chuyển ngày. Dữ liệu giữ city và ngày đã dịch nên đầu ra **không đạt Safe Harbor**; Safe Harbor thật chỉ giữ năm và bỏ city/ZIP.
 
 ---
 
@@ -276,7 +259,7 @@ df_clean['dob_dt'] = pd.to_datetime(df_clean['dob'])
 ref_date = pd.to_datetime('2026-01-01')
 df_clean['age_years'] = ((ref_date - df_clean['dob_dt']).dt.days // 365.25).astype(int)
 
-# Quy tắc HIPAA: Tuổi > 89 phải gộp thành '90+'
+# Quy tắc minh họa theo Safe Harbor: Tuổi > 89 phải gộp thành '90+'
 df_clean['age_display'] = df_clean['age_years'].apply(lambda x: '90+' if x > 89 else str(x))
 
 # Tạo nhóm tuổi (Age Bins) 10 năm để hỗ trợ k-Anonymity
@@ -285,7 +268,7 @@ labels = ['<18', '18-29', '30-44', '45-59', '60-74', '75-89', '90+']
 df_clean['age_group'] = pd.cut(df_clean['age_years'], bins=bins, labels=labels, right=True)
 
 # 4. BƯỚC 3: THUẬT TOÁN DỊCH CHUYỂN NGÀY NGẪU NHIÊN THEO BỆNH NHÂN (DATE SHIFTING)
-np.random.seed(42)  # Cố định seed để có thể kiểm chứng tái lập
+np.random.seed(42)  # Seed cố định chỉ để tái lập bài lab; không dùng trong vận hành thực tế
 
 # Tạo bảng tra cứu ngày dịch chuyển ngẫu nhiên cho từng bệnh nhân (-180 đến +180 ngày)
 unique_records = df_clean['record_id'].unique()
@@ -321,7 +304,7 @@ print(f"Mức k-Anonymity đạt được của tập dữ liệu: k = {k_anonym
 print("Phân phối kích thước các nhóm tương đương:")
 print(grouped_qi[grouped_qi['count'] > 0].sort_values(by='count').head(5))
 
-# 7. XUẤT TẬP DỮ LIỆU ĐÃ KHỬ ĐỊNH DANH ĐẠT CHUẨN (DE-IDENTIFIED DATASET)
+# 7. Xuất dữ liệu minh họa; đầu ra không được gọi là đạt Safe Harbor
 final_columns = [
     'record_id', 'gender', 'city', 'age_display', 'age_group',
     'initial_visit_date_shifted_str', 'followup_visit_date_shifted_str',
@@ -338,7 +321,7 @@ print("\nĐã xuất thành công tệp khử định danh: csu_deidentified_lab
 
 ---
 
-### 5.4. Rubric Tự Đánh Giá Kết Quả Thực Hành Lab 5 (Thang điểm 20)
+### 5.4. Rubric tự đối chiếu kết quả thực hành Lab 5 (20 điểm)
 
 | Tiêu chí | Trọng số | Mức Đạt Tối Đa (Xuất sắc - 100%) | Mức Đạt Trung Bình (Cần bổ sung - 50%) | Mức Không Đạt (0%) |
 | :--- | :---: | :--- | :--- | :--- |
@@ -346,14 +329,14 @@ print("\nĐã xuất thành công tệp khử định danh: csu_deidentified_lab
 | **2. Thuật toán Dịch chuyển Ngày (Date Shifting)** | **5 điểm** | Cài đặt đúng thuật toán dịch chuyển ngẫu nhiên ở cấp độ từng cá nhân ($\delta_i$ duy nhất cho mỗi người); chứng minh được khoảng cách lâm sàng ($\Delta t$) bảo toàn 100%. | Dịch chuyển ngày bằng một số cố định chung cho toàn bộ bảng dữ liệu, hoặc làm sai lệch khoảng cách giữa các lần khám. | Xóa bỏ toàn bộ cột ngày tháng hoặc không dịch chuyển ngày. |
 | **3. Tổng quát hóa & Xử lý Tuổi Cao (Top-coding)** | **4 điểm** | Áp dụng đúng quy định Safe Harbor: che giấu tuổi $> 89$ thành `90+`; tạo được các nhóm tuổi (Age Bins) khoa học phục vụ nghiên cứu. | Có tính tuổi nhưng không che giấu độ tuổi $> 89$. | Để nguyên ngày sinh chi tiết hoặc tính sai tuổi. |
 | **4. Đo lường $k$-Anonymity & Đánh giá Rủi ro** | **4 điểm** | Tính toán chính xác giá trị $k$ của tập dữ liệu; chỉ ra được nhóm tương đương có kích thước nhỏ nhất và đề xuất cách tăng $k$ (ứng dụng Suppression/Generalization). | Tính được $k$ nhưng chưa phân tích được ý nghĩa bảo mật của nhóm tương đương. | Không tính toán được chỉ số $k$-Anonymity. |
-| **5. Tuân thủ Pháp lý Việt Nam (DPIA / Quy trình)** | **3 điểm** | Trình bày thuyết phục quy trình xin phép Hội đồng Đạo đức và các bước lập Hồ sơ DPIA theo Nghị định 13/2023/NĐ-CP và Luật 91/2025/QH15. | Có đề cập đến luật nhưng chưa nắm được khái niệm dữ liệu cá nhân nhạy cảm. | Hoàn toàn không liên hệ với pháp luật Việt Nam. |
+| **5. Tuân thủ nguyên tắc pháp lý Việt Nam** | **3 điểm** | Đối chiếu đúng nguyên tắc bảo mật, mục đích, quyền truy cập và đánh giá tác động với [Phụ lục pháp lý](../appendices/legal.md) (chốt 21/11/2026). | Có nêu nguyên tắc nhưng chưa chỉ ra giới hạn nguồn. | Suy đoán nghĩa vụ hoặc chế tài. |
 
 ---
 
 ## 6. CÂU HỎI THẢO LUẬN VÀ BÀI TẬP TÌNH HUỐNG (DISCUSSION & EXERCISES)
 
 ### 6.1. Câu hỏi Thảo luận trên Lớp
-1. *"Một nghiên cứu sinh cho rằng: 'Sau khi tôi xóa cột Họ và tên và Số điện thoại của bệnh nhân trong tệp Excel, tập dữ liệu của tôi đã trở thành dữ liệu ẩn danh hoàn toàn và tôi có quyền tự do gửi tệp này cho đồng nghiệp ở nước ngoài'. Dựa trên nghiên cứu của Latanya Sweeney (2002) và quy định của Nghị định 13/2023/NĐ-CP, bạn hãy phản biện luận điểm trên?"*
+1. *"Một nghiên cứu sinh cho rằng: 'Sau khi tôi xóa cột Họ và tên và Số điện thoại, tập dữ liệu đã ẩn danh hoàn toàn'. Hãy phản biện bằng khái niệm thuộc tính bán định danh, nguy cơ liên kết và các nguyên tắc pháp lý đang có hiệu lực; nêu rõ nguồn nào cần kiểm chứng trước khi kết luận."*
 2. *"Tại sao trong mô hình $k$-Anonymity, việc tăng giá trị $k$ lên quá cao (ví dụ $k = 50$) sẽ giúp bảo vệ quyền riêng tư tốt hơn nhưng lại làm suy giảm nghiêm trọng giá trị sử dụng khoa học (Data Utility) của tập dữ liệu? Nhà quản trị dữ liệu cần cân bằng bài toán này như thế nào?"*
 
 ### 6.2. Bài tập Tình huống Nâng cao (Hospital Data Governance Audit)
@@ -371,13 +354,13 @@ Bệnh viện Đa khoa Tỉnh dự định phối hợp với một công ty cô
 
 Toàn bộ các chuẩn mực pháp lý và công trình khoa học trong chương được đối chiếu từ cơ sở dữ liệu thư mục SSoT (`references/references.bib`):
 
-1. **U.S. Department of Health and Human Services (HHS).** (2012). *Guidance Regarding Methods for De-identification of Protected Health Information in Accordance with the Health Insurance Portability and Accountability Act (HIPAA) Privacy Rule*. 45 CFR §164.514. `[@ref_052]`.
-2. **European Parliament & Council of the European Union.** (2016). *Regulation (EU) 2016/679 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation - GDPR)*. `[@ref_051]`.
-3. **European Parliament & Council of the European Union.** (2025). *Regulation (EU) 2025/327 on the European Health Data Space (EHDS)*. `[@ref_053]`.
+1. **European Parliament & Council of the European Union.** (2016). *Regulation (EU) 2016/679 (General Data Protection Regulation - GDPR)*. `[@ref_113]`.
+2. **European Parliament & Council of the European Union.** (2025). *Regulation (EU) 2025/327 on the European Health Data Space (EHDS)*. `[@ref_114]`.
+3. **U.S. Department of Health and Human Services.** (current). *45 CFR 164.514 — Other requirements relating to uses and disclosures of protected health information*. `[@ref_115]`.
 4. **Sweeney, L.** (2002). k-Anonymity: A model for protecting privacy. *International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems*, 10(05), 557–570. DOI: [10.1142/S0218488502001648](https://doi.org/10.1142/S0218488502001648) `[@ref_068]`.
 5. **Machanavajjhala, A., Kifer, D., Gehrke, J., & Venkitasubramaniam, M.** (2007). ℓ-Diversity: Privacy beyond k-anonymity. *ACM Transactions on Knowledge Discovery from Data (TKDD)*, 1(1), 3-es. DOI: [10.1145/1217299.1217302](https://doi.org/10.1145/1217299.1217302) `[@ref_069]`.
 6. **Dwork, C.** (2008). Differential privacy: A survey of results. *International Conference on Theory and Applications of Models of Computation*, 1–19. Springer. `[@ref_070]`.
-7. **UK Health Data Research Alliance.** (2021). *Trusted research environments & Five Safes framework: Design principles for health data services*. `[@ref_075]`.
+7. **Five Safes:** khung được dùng như một mô hình quản trị minh họa; nguồn thư mục cụ thể `CONTENT_PENDING`.
 8. **Ban Chấp hành Trung ương Đảng.** (2024). *Nghị quyết số 57-NQ/TW về đột phá phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số quốc gia*. `[@ref_079]`.
 9. **Ban Chấp hành Trung ương Đảng.** (2025). *Nghị quyết số 72-NQ/TW về một số giải pháp đột phá, tăng cường bảo vệ, chăm sóc và nâng cao sức khỏe nhân dân*. `[@ref_080]`.
 10. **Thủ tướng Chính phủ.** (2024). *Quyết định số 1308/QĐ-TTg phê duyệt Chiến lược dữ liệu quốc gia giai đoạn 2026–2030, tầm nhìn đến năm 2045*. `[@ref_081]`.

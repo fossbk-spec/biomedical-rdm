@@ -1,0 +1,34 @@
+Nghị định 13/2023
+Thông tư 46/2018
+NOT-OD-26-046
+FHIR R4
+FHIR R5
+FHIR R6
+v5.4
+https://
+http://
+21 CFR Part 11
+ICH E6(R3)
+REDCap2SDTM
+REDCap2OMOP
+ALCOA++
+CONTENT_PENDING
+OMOP CDM v5.4
+CDISC SDTM
+FDA Data Standards Catalog
+PMDA
+Athena
+SMART on FHIR
+Bulk Data Access
+EHDS 2025/327
+45 CFR 164.514
+Safe Harbor
+k-anonymity
+l-diversity
+Five Safes
+patient-level date shifting
+NIST SP 800-88 Rev. 2
+Thông tư 13/2025/TT-BYT
+Thông tư 33/2025/TT-BYT
+Luật 91/2025/QH15
+Nghị định 356/2025/NĐ-CP

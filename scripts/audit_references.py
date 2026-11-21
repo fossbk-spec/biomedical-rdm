@@ -17,7 +17,8 @@ INDEX = ROOT / "docs" / "literature-review" / "index.md"
 BIB = ROOT / "references" / "references.bib"
 CSV = ROOT / "references" / "citation-audit.csv"
 REPORT = ROOT / "references" / "AUDIT-REPORT.md"
-EXPECTED = set(range(1, 104))
+CORE_EXPECTED = set(range(1, 104))
+EXTENDED_MIN = 104
 NUMBER_RE = re.compile(r"\[(\d+(?:\s*,\s*\d+)*)\]")
 ENTRY_RE = re.compile(r"^@[^\{]+\{(ref_(\d{3})),", re.MULTILINE)
 FIELD_RE = re.compile(r"^\s*(doi|url|title)\s*=\s*\{(.*?)\}\s*,?\s*$", re.IGNORECASE | re.MULTILINE)
@@ -39,7 +40,7 @@ def citation_numbers() -> tuple[list[int], list[str]]:
     for match in NUMBER_RE.finditer(text):
         values = [int(x.strip()) for x in match.group(1).split(",")]
         numbers.extend(values)
-        if any(value not in EXPECTED for value in values):
+        if any(value not in CORE_EXPECTED for value in values):
             malformed.append(match.group(0))
     return numbers, malformed
 
@@ -88,11 +89,13 @@ def main() -> int:
     bib, fields, strange = bib_entries()
     audit, audit_malformed = csv_entries()
 
-    missing_bib = sorted(EXPECTED - bib)
-    missing_csv = sorted(EXPECTED - audit)
+    missing_bib = sorted(CORE_EXPECTED - bib)
+    missing_csv = sorted(CORE_EXPECTED - audit)
     missing_cited_bib = sorted(cited_set - bib)
     missing_cited_csv = sorted(cited_set - audit)
-    uncited = sorted(EXPECTED - cited_set)
+    uncited = sorted(CORE_EXPECTED - cited_set)
+    extensions = sorted(n for n in bib if n >= EXTENDED_MIN)
+    extension_csv = sorted(n for n in audit if n >= EXTENDED_MIN)
     duplicates: list[str] = []
     for field, keys in sorted(fields.items()):
         if len(set(keys)) > 1:
@@ -107,6 +110,9 @@ def main() -> int:
     if out_of_range:
         required_errors.append("(f) có số trích dẫn ngoài khoảng 1..103")
 
+    if extensions != extension_csv or extensions != list(range(EXTENDED_MIN, max(extensions, default=EXTENDED_MIN - 1) + 1)):
+        required_errors.append("(g) các mục chapter-only từ ref_104 phải liên tục và có dòng audit tương ứng")
+
     report = f"""# Báo cáo audit tham khảo
 
 **Ngày chạy:** {date.today().isoformat()}  
@@ -116,6 +122,7 @@ def main() -> int:
 
 - Số lần xuất hiện trích dẫn đã quét: **{len(cited)}**
 - Số trích dẫn khác nhau: **{len(cited_set)}**
+- Mục chapter-only: **{extensions or 'không có'}** (không thuộc bộ lõi 1..103)
 - Mã thoát dự kiến: **{"1 — có lỗi bắt buộc" if required_errors else "0 — không có lỗi bắt buộc"}**
 
 ## (a) Trích dẫn thân bài không có mục tương ứng
@@ -141,6 +148,10 @@ def main() -> int:
 ## (f) Số trích dẫn ngoài khoảng
 
 {md_lines(out_of_range)}
+
+## (g) Mục chapter-only
+
+{md_lines([f'BibTeX: {extensions}', f'CSV: {extension_csv}'] if extensions or extension_csv else [])}
 
 ## Ghi chú
 

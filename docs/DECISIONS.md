@@ -1,5 +1,12 @@
 # Decision log
 
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 1
+
+- **Quyết định:** Giữ khái niệm, nguyên lý và phương pháp ổn định trong thân chương 1; chuyển pháp lý, mẫu tài trợ, thời hạn lưu trữ, phiên bản chuẩn, công cụ và URL vào `docs/appendices/`.
+- **Người quyết định:** Ben.
+- **Phạm vi:** Chương 2–6 không sửa trong đợt này. Khóa học đăng ở `biomedical-rdm-course`; tài liệu nguồn lưu ở repo gốc `biomedical-rdm`.
+- **Rà soát:** Các phụ lục chốt ngày 21/11/2026 và rà soát tiếp theo ngày 21/05/2027; cờ `CONTENT_PENDING` và `[CẦN KIỂM CHỨNG]` được giữ nguyên khi chưa có bằng chứng đủ.
+
 ## 2026-11-21 — Giữ dạng trích dẫn số trong canonical review
 
 - **Quyết định:** Giữ `[n]` trong `docs/literature-review/index.md` cho đợt này; không đổi thân bài canonical và không tạo script chuyển đổi.
@@ -52,3 +59,26 @@
 
 - Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, Gemini chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
 - `citation-audit.csv` thêm cột `page_check`, `page_check_note`. Chỉ chuyển `VERIFIED_UNAUDITED` → `BIB_PENDING` với 6 mục PARTIAL. Mục MATCH giữ `VERIFIED_UNAUDITED` (chưa đủ điều kiện `VERIFIED`); mục NOT_CHECKED/MISMATCH (trang chặn truy cập hoặc không có URL) cần audit thủ công.
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 2
+
+**Ngày:** 21/11/2026 · **Người quyết định:** Ben
+
+- (a) Không dùng con số SDV; chỉ giữ kết luận định tính theo tóm tắt Sheetz 2014.
+- (b) Hai case study là tình huống giả định minh họa; bỏ số liệu và hậu quả không có nguồn.
+- (c) Giữ lab trong cùng file.
+
+Ba quyết định trên là tạm thời, chờ Ben xác nhận.
+
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 3
+
+- **Quyết định:** Giữ trong thân chương các khái niệm ổn định về lớp miền SDTM, kiến trúc FHIR, mô hình person-centric của OMOP, logic ánh xạ `source_value`/`concept_id` và vai trò bổ trợ của ba chuẩn.
+- **Chuyển phụ lục:** Phiên bản FHIR/OMOP/CDISC, yêu cầu tiếp nhận FDA/PMDA, URL, ngày kiểm, trạng thái Athena và chi tiết ETL được đưa vào `docs/appendices/standards.md` và `docs/appendices/fhir-omop-lab-notes.md`.
+- **Quyết định tạm thời:** Bundle §5.2 là tình huống minh họa tự dựng; Synthea chỉ là gợi ý nguồn dữ liệu tổng hợp; concept chưa đọc trực tiếp từ Athena giữ `CONTENT_PENDING`.
+- **Giới hạn:** R6, yêu cầu PMDA, và các concept `402407000`, `4180186`, `8753/8876` chưa được xác minh đầy đủ trong lượt này; không dùng chúng làm bằng chứng đã kiểm.
+
+## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 5
+
+- **Quyết định tạm thời:** Giữ trong thân chương các khái niệm ổn định về thuộc tính định danh, k-anonymity, l-diversity, dịch chuyển ngày và cảnh báo rằng Lab 5 không đạt Safe Harbor.
+- **Chuyển phụ lục:** URL, ngày kiểm, trạng thái pháp lý, mốc EHDS, lưu trữ/hủy dữ liệu và kết quả chạy Lab 5 nằm ở `docs/appendices/legal.md`, `retention.md` và `privacy-lab-notes.md`.
+- **Case study:** dùng nhãn tình huống giả định minh họa; không giữ số liệu, chế tài hoặc khẳng định chưa đọc được nguồn.
+- **Giới hạn:** nguồn Five Safes, NIST SP 800-88 Rev. 2 và chi tiết Thông tư 33/2025/TT-BYT vẫn `CONTENT_PENDING`/`BIB_PENDING` cho đến khi đọc được nguồn tương ứng.
