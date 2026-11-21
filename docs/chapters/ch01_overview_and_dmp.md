@@ -51,7 +51,7 @@ flowchart TD
 ### 3.1. Khủng hoảng khả năng tái lập và sự ra đời của RDM y sinh
 Trong suốt hai thập kỷ qua, cộng đồng khoa học y sinh toàn cầu đối mặt với **cuộc khủng hoảng khả năng tái lập (Reproducibility Crisis)**. Một khảo sát thực hiện bởi Baker (2016) trên tạp chí *Nature* trên 1.576 nhà nghiên cứu cho thấy hơn **70% nhà khoa học thừa nhận từng thất bại khi cố gắng tái lập thí nghiệm của người khác**, và hơn 50% cảm nhận sâu sắc về cuộc khủng hoảng độ tin cậy trong các công bố khoa học [@ref_033].
 
-Các con số thường được dẫn về Begley & Ellis (2012) — gồm 6/53 công trình có thể tái lập — và Freedman và cộng sự (2015) — gồm 28 tỷ USD mỗi năm — chưa có mục tương ứng trong `references/references.bib`; vì vậy đây là các khẳng định cần đối chiếu [CẦN KIỂM CHỨNG: thiếu nguồn trong references.bib].
+Begley & Ellis (2012) báo cáo chỉ 6/53 công trình tiền lâm sàng ung thư được đánh giá có thể tái lập [@ref_105]. Freedman và cộng sự (2015) ước tính chi phí nghiên cứu tiền lâm sàng không tái lập được ở Hoa Kỳ khoảng 28 tỷ USD mỗi năm [@ref_106]. Đây là các ước tính/bằng chứng lịch sử, không phải chỉ tiêu hiện hành.
 
 Nguyên nhân cốt lõi không chỉ nằm ở sai số sinh học hay thiết kế thực nghiệm, mà phần lớn xuất phát từ những thiếu sót trong quản trị dữ liệu:
 - Dữ liệu thô bị thất lạc sau khi học viên tốt nghiệp hoặc sau khi bài báo xuất bản.
@@ -155,8 +155,8 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 * **Bối cảnh:** Trong giai đoạn đầu đại dịch COVID-19 năm 2020, hai bài báo quan trọng được xuất bản trên hai tạp chí y khoa hàng đầu:
   1. Bài báo trên *The Lancet* phân tích dữ liệu trên khoảng 96.000 bệnh nhân từ hàng trăm bệnh viện về hiệu quả của thuốc Hydroxychloroquine.
   2. Bài báo trên *The New England Journal of Medicine (NEJM)* phân tích dữ liệu trên khoảng 8.900 bệnh nhân về tác dụng của nhóm thuốc tim mạch (ức chế men chuyển ACEi và chẹn thụ thể angiotensin ARB).
-* **Khủng hoảng:** Các công trình sử dụng nguồn dữ liệu do Surgisphere cung cấp; việc kiểm chứng độc lập nguồn gốc và tính toàn vẹn dữ liệu gặp trở ngại [CẦN KIỂM CHỨNG: thiếu nguồn trong references.bib].
-* **Hậu quả được nêu trong tình huống:** Các bài báo liên quan bị rút; chi tiết và phạm vi ảnh hưởng cần đối chiếu nguồn gốc [CẦN KIỂM CHỨNG: thiếu nguồn trong references.bib].
+* **Khủng hoảng:** Các công trình sử dụng dữ liệu do Surgisphere cung cấp; các tác giả cho biết họ không thể xác nhận nguồn dữ liệu khi dữ liệu thô và tài liệu cần thiết không được cung cấp cho kiểm toán độc lập [@ref_107] [@ref_108].
+* **Hậu quả được nêu trong tình huống:** Bài trên *The Lancet* và bài trên *NEJM* đều có thông báo rút bài năm 2020 [@ref_107] [@ref_108]. Các con số quy mô mẫu của bài gốc không được dùng ở đây vì chưa được đối chiếu trực tiếp trong đợt này.
 * **Bài học RDM cốt lõi:** Một công trình nghiên cứu cần cơ chế truy vết nguồn gốc dữ liệu, Kế hoạch Quản lý Dữ liệu minh bạch và khả năng kiểm chứng độc lập.
 
 ---
@@ -265,3 +265,7 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 9. **Association of American Medical Colleges. (2015).** *Data governance in academic medicine*. [@ref_015]
 10. **Jetten, M., Grootveld, M., Mordant, A., Jansen, M., Bloemers, M., Miedema, M., \& van Gelder, C. W. G. (2021).** *Professionalising data stewardship in the Netherlands: Competences, training and education. Dutch roadmap towards national implementation of FAIR data stewardship*. [@ref_017]
 11. **Baker, M. (2016).** *1,500 scientists lift the lid on reproducibility*. [@ref_033]
+12. **Begley, C. G., \& Ellis, L. M. (2012).** *Drug development: Raise standards for preclinical cancer research*. [@ref_105]
+13. **Freedman, L. P., Cockburn, I. M., \& Simcoe, T. S. (2015).** *The economics of reproducibility in preclinical research*. [@ref_106]
+14. **Mehra, M. R., Ruschitzka, F., \& Patel, A. N. (2020).** *Retraction—Hydroxychloroquine or chloroquine with or without a macrolide for treatment of COVID-19*. [@ref_107]
+15. **Mehra, M. R., Desai, S. S., Kuy, S., Henry, T. D., \& Patel, A. N. (2020).** *Retraction: Cardiovascular disease, drug therapy, and mortality in Covid-19*. [@ref_108]

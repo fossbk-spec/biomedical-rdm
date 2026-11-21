@@ -102,3 +102,8 @@
 "101","ref_101","PENDING_UNDETERMINED","undetermined from text flag","§11.4;§Ghi chú về trích dẫn và giới hạn của bản tổng hợp","Rà soát theo trạng thái hiện có; không thay đổi trạng thái.","300","MATCH","Nội dung trang khớp với tiêu đề và tác giả trong thư mục. Năm xuất bản không được đề cập trên trang."
 "102","ref_102","VERIFIED_UNAUDITED","","§12;§Phụ lục A","Không có cờ trong văn bản; cần audit độc lập trước khi xuất bản.","","",""
 "103","ref_103","VERIFIED_UNAUDITED","","§Phụ lục A","Không có cờ trong văn bản; cần audit độc lập trước khi xuất bản. | DOI trỏ tới bài có tiêu đề khác (OpenAlex): đối chiếu bản gốc trước khi dùng số liệu ở Phụ lục A; xem references/VERIFICATION.md","","",""
+"104","ref_104","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
+"105","ref_105","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
+"106","ref_106","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
+"107","ref_107","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
+"108","ref_108","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""

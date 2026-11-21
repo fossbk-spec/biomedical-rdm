@@ -7,6 +7,7 @@
 
 - Số lần xuất hiện trích dẫn đã quét: **366**
 - Số trích dẫn khác nhau: **103**
+- Mục chapter-only: **[104, 105, 106, 107, 108]** (không thuộc bộ lõi 1..103)
 - Mã thoát dự kiến: **0 — không có lỗi bắt buộc**
 
 ## (a) Trích dẫn thân bài không có mục tương ứng
@@ -35,6 +36,11 @@
 ## (f) Số trích dẫn ngoài khoảng
 
 - Không phát hiện.
+
+## (g) Mục chapter-only
+
+- BibTeX: [104, 105, 106, 107, 108]
+- CSV: [104, 105, 106, 107, 108]
 
 ## Ghi chú
 

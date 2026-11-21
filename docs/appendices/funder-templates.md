@@ -13,3 +13,4 @@ next_review: 2027-05-21
 | NOT-OD-26-100 | CONTENT_PENDING | https://grants.nih.gov/grants/guide/notice-files/NOT-OD-26-100.html | 2026-11-21 | Cần đối chiếu phạm vi áp dụng trực tiếp. [CẦN KIỂM CHỨNG] |
 | NOT-OD-21-014 | BIB_PENDING | https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-014.html | 2026-11-21 | Ghi “cập nhật mẫu”, không ghi “thay thế”. Quan hệ với 26-046 chưa xác nhận. |
 | Horizon Europe | BIB_PENDING | https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e519589e89&appId=PPGMS | 2026-11-21 | Chi tiết mẫu và mốc nộp cần kiểm theo tài liệu gốc. |
+| FAIR Cookbook | BIB_PENDING | https://faircookbook.elixir-europe.org/ | 2026-11-21 | Tài liệu hỗ trợ thực hành FAIR; phiên bản/phạm vi áp dụng chưa được chốt trong đợt này. |
