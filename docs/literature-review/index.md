@@ -605,7 +605,7 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 44. Rocca-Serra, P., Gu, W., Ioannidis, V., Abbassi-Daloii, T., Capella-Gutierrez, S., Chandramouliswaran, I., Splendiani, A., Burdett, T., Giessmann, R. T., Henderson, D., Batista, D., Emam, I., Gadiya, Y., Giovanni, L., Willighagen, E., Evelo, C., Gray, A. J. G., Gribbon, P., Juty, N., … Sansone, S.-A. (2023). The FAIR Cookbook — the essential resource for and by FAIR doers. *Scientific Data*, *10*, 292. https://doi.org/10.1038/s41597-023-02166-3
 
-45. Wilkinson, M. D., Dumontier, M., Sansone, S.-A., Bonino da Silva Santos, L. O., Prieto, M., Batista, D., McQuilton, P., Kuhn, T., Rocca-Serra, P., Crosas, M., Schultes, E., & … (2019). Evaluating FAIR data maturity using the FAIR Data Maturity Model. *Scientific Data*, *6*, 174. https://doi.org/10.1038/s41597-019-0184-5
+45. Wilkinson, M. D., Dumontier, M., Sansone, S.-A., Bonino da Silva Santos, L. O., Prieto, M., Batista, D., McQuilton, P., Kuhn, T., Rocca-Serra, P., Crosas, M., Schultes, E., & … (2019). Evaluating FAIR maturity through a scalable, automated, community-governed framework. *Scientific Data*, *6*, 174. https://doi.org/10.1038/s41597-019-0184-5
 
 46. UNESCO. (2021). *UNESCO Recommendation on Open Science* (adopted 23 November 2021, 41st session of the General Conference). https://www.unesco.org/en/open-science/about
 
@@ -659,7 +659,7 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 71. Sadilek, A., Liu, L., Nguyen, D., Kamruzzaman, M., Serghiou, S., Rader, B., Ingerman, A., Mellem, S., Kairouz, P., Nsoesie, E. O., MacFarlane, J., Vullikanti, A., Marathe, M., Eastham, P., Brownstein, J. S., Aguera y Arcas, B., Howell, M. D., & Hernandez, J. (2021). Privacy-first health research with federated learning. *npj Digital Medicine*, *4*, 132. https://doi.org/10.1038/s41746-021-00489-2
 
-72. Clark, T., Caufield, J. H., Parker, J. A., Al Manir, S., Amorim, E., Eddy, J., Gim, N., Gow, B., Goar, W., Haendel, M., Hansen, J. N., Harris, N., Hermjakob, H., Joachimiak, M., Jordan, G., Lee, I.-H., McWeeney, S. K., Nebeker, C., Nikolov, M., … Munoz-Torres, M. C. (2024). AI-readiness criteria for biomedical data. *bioRxiv*. https://doi.org/10.1101/2024.10.23.619844
+72. Clark, T., Caufield, J. H., Parker, J. A., Al Manir, S., Amorim, E., Eddy, J., Gim, N., Gow, B., Goar, W., Haendel, M., Hansen, J. N., Harris, N., Hermjakob, H., Joachimiak, M., Jordan, G., Lee, I.-H., McWeeney, S. K., Nebeker, C., Nikolov, M., … Munoz-Torres, M. C. (2024). AI-readiness criteria for biomedical data in functional genomics and clinical care. *bioRxiv*. https://doi.org/10.1101/2024.10.23.619844
 
 73. Alderman, J. E., Palmer, J., Laws, E., McCradden, M. D., Ordish, J., Ghassemi, M., Pfohl, S. R., Rostamzadeh, N., Cole-Lewis, H., Glocker, B., Calvert, M., Pollard, T. J., Gill, J., Gath, J., Adebajo, A., Beng, J., Leung, C. H., Kuku, S., Farmer, L.-A., … Liu, X. (2025). Tackling algorithmic bias and promoting transparency in health datasets: The STANDING Together consensus recommendations. *The Lancet Digital Health*, *7*(1), e64–e88. https://doi.org/10.1016/S2589-7500(24)00224-3
 
@@ -721,4 +721,4 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 102. Harris, P. A., et al. (2019). The REDCap consortium: Building an international community of software platform partners. *Journal of Biomedical Informatics*, *95*, 103208. https://doi.org/10.1016/j.jbi.2019.103208
 
-103. Lane, J. C. E., Weaver, J., Kostka, K., Duarte-Salles, T., Abrahao, M. T. F., Alghoul, H., Alser, O., Alshammari, T. M., Biedermann, P., Banda, J. M., Burn, E., Casajust, P., Conover, M. M., Culhane, A. C., Davydov, A., DuVall, S. L., Dymshyts, D., Fernandez-Bertolin, S., Fišter, K., … Prieto-Alhambra, D. (2020). Safety of hydroxychloroquine, alone and in combination with azithromycin, in light of rapid wide-spread use for COVID-19: A multinational, network cohort and self-controlled case series study. *The Lancet Rheumatology*, *2*(11), e698–e711. https://doi.org/10.1016/S2665-9913(20)30276-9
+103. Lane, J. C. E., Weaver, J., Kostka, K., Duarte-Salles, T., Abrahao, M. T. F., Alghoul, H., Alser, O., Alshammari, T. M., Biedermann, P., Banda, J. M., Burn, E., Casajust, P., Conover, M. M., Culhane, A. C., Davydov, A., DuVall, S. L., Dymshyts, D., Fernandez-Bertolin, S., Fišter, K., … Prieto-Alhambra, D. (2020). Risk of hydroxychloroquine alone and in combination with azithromycin in patients with rheumatoid arthritis: A multinational, retrospective propensity score matched cohort study. *The Lancet Rheumatology*, *2*(11), e698–e711. https://doi.org/10.1016/S2665-9913(20)30276-9
