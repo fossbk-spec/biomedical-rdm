@@ -605,7 +605,7 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 44. Rocca-Serra, P., Gu, W., Ioannidis, V., Abbassi-Daloii, T., Capella-Gutierrez, S., Chandramouliswaran, I., Splendiani, A., Burdett, T., Giessmann, R. T., Henderson, D., Batista, D., Emam, I., Gadiya, Y., Giovanni, L., Willighagen, E., Evelo, C., Gray, A. J. G., Gribbon, P., Juty, N., … Sansone, S.-A. (2023). The FAIR Cookbook — the essential resource for and by FAIR doers. *Scientific Data*, *10*, 292. https://doi.org/10.1038/s41597-023-02166-3
 
-45. Wilkinson, M. D., Dumontier, M., Sansone, S.-A., Bonino da Silva Santos, L. O., Prieto, M., Batista, D., McQuilton, P., Kuhn, T., Rocca-Serra, P., Crosas, M., Schultes, E., & … (2019). Evaluating FAIR data maturity using the FAIR Data Maturity Model. *Scientific Data*, *6*, 174. https://doi.org/10.1038/s41597-019-0184-5
+45. Wilkinson, M. D., Dumontier, M., Sansone, S.-A., Bonino da Silva Santos, L. O., Prieto, M., Batista, D., McQuilton, P., Kuhn, T., Rocca-Serra, P., Crosas, M., Schultes, E., & … (2019). Evaluating FAIR maturity through a scalable, automated, community-governed framework. *Scientific Data*, *6*, 174. https://doi.org/10.1038/s41597-019-0184-5
 
 46. UNESCO. (2021). *UNESCO Recommendation on Open Science* (adopted 23 November 2021, 41st session of the General Conference). https://www.unesco.org/en/open-science/about
 
@@ -721,4 +721,4 @@ Tổng quan giai đoạn 2015–2026 cho thấy quản lý dữ liệu nghiên c
 
 102. Harris, P. A., et al. (2019). The REDCap consortium: Building an international community of software platform partners. *Journal of Biomedical Informatics*, *95*, 103208. https://doi.org/10.1016/j.jbi.2019.103208
 
-103. Lane, J. C. E., Weaver, J., Kostka, K., Duarte-Salles, T., Abrahao, M. T. F., Alghoul, H., Alser, O., Alshammari, T. M., Biedermann, P., Banda, J. M., Burn, E., Casajust, P., Conover, M. M., Culhane, A. C., Davydov, A., DuVall, S. L., Dymshyts, D., Fernandez-Bertolin, S., Fišter, K., … Prieto-Alhambra, D. (2020). Safety of hydroxychloroquine, alone and in combination with azithromycin, in light of rapid wide-spread use for COVID-19: A multinational, network cohort and self-controlled case series study. *The Lancet Rheumatology*, *2*(11), e698–e711. https://doi.org/10.1016/S2665-9913(20)30276-9
+103. Lane, J. C. E., Weaver, J., Kostka, K., Duarte-Salles, T., Abrahao, M. T. F., Alghoul, H., Alser, O., Alshammari, T. M., Biedermann, P., Banda, J. M., Burn, E., Casajust, P., Conover, M. M., Culhane, A. C., Davydov, A., DuVall, S. L., Dymshyts, D., Fernandez-Bertolin, S., Fišter, K., … Prieto-Alhambra, D. (2020). Risk of hydroxychloroquine alone and in combination with azithromycin in the treatment of rheumatoid arthritis: a multinational, retrospective study. *The Lancet Rheumatology*, *2*(11), e698–e711. https://doi.org/10.1016/S2665-9913(20)30276-9

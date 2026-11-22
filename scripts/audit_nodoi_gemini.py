@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 """Audit goi y cho cac muc references.bib khong co DOI.
 
-Script tu tai URL trong .bib (bang chung that), roi mo hinh ngon ngu chi so sanh noi dung trang voi thu muc.
-Mo hinh khong duoc tu tra cuu bang tri nho. Muc khong co URL hoac trang khong tai duoc -> NOT_CHECKED.
+Script tu tai URL trong .bib (bang chung that), roi Gemini chi so sanh noi dung trang voi thu muc.
+Gemini khong duoc tu tra cuu bang tri nho. Muc khong co URL hoac trang khong tai duoc -> NOT_CHECKED.
 
 KET QUA CHI LA GOI Y, khong phai xac nhan. Khong sua .bib hay citation-audit.csv.
 API key doc tu bien moi truong GEMINI_API_KEY (khong ghi vao file). Chi gui tieu de/URL/nam
 cua tai lieu; khong gui thong tin ca nhan.
 """
-import csv, json, os, re, sys, time, urllib.request, urllib.error
+import csv, ipaddress, json, os, re, socket, sys, time, urllib.parse, urllib.request, urllib.error
 sys.path.insert(0, os.path.dirname(__file__))
 from verify_refs import parse_bib
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
-KEY = os.environ["GEMINI_API_KEY"]
-OUT = "references/audit-nodoi-pages.csv"
+KEY = os.environ.get("GEMINI_API_KEY") or sys.exit("Thieu bien moi truong GEMINI_API_KEY")
+OUT = "references/audit-nodoi-gemini.csv"
 FIELDS = ["key", "bib_title", "bib_year", "bib_url", "url_resolves", "found_title", "found_authors",
-          "found_year", "found_publisher", "found_doi", "found_url", "match", "notes", "model", "checked_at"]
+          "found_year", "found_publisher", "found_doi", "found_url", "match", "notes"]
 
 PROMPT = """Ban kiem chung thu muc. Duoi day la thong tin thu muc trong danh muc va NOI DUNG THAT cua trang URL (da tai ve). Chi dua vao noi dung trang; khong dung tri nho. Truong nao trang khong cho thay thi de rong.
 THU MUC: title="{title}" year="{year}" author="{author}" type="{type}"
@@ -25,14 +25,29 @@ TRANG: final_url={furl} http_status={status}
 Tra ve DUY NHAT mot JSON (khong markdown) voi khoa: found_title, found_authors, found_year, found_publisher, found_doi, match (MATCH neu trang dung la tai lieu nay, PARTIAL neu cung chu de nhung khac ban/tieu de/nam, MISMATCH neu la tai lieu khac, NOT_CHECKED neu trang khong du thong tin), notes (ngan, tieng Viet, neu lech thi noi lech o dau)."""
 
 
+def is_public(url):
+    """Chi cho phep http/https toi host cong cong (chan SSRF)."""
+    u = urllib.parse.urlparse(url)
+    if u.scheme not in ("http", "https") or not u.hostname:
+        return False
+    try:
+        return all(ipaddress.ip_address(i[4][0]).is_global for i in socket.getaddrinfo(u.hostname, None))
+    except Exception:
+        return False
+
+
 def fetch(url):
+    if not is_public(url):
+        return None, url, ""
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 rdm-reference-check"})
         r = urllib.request.urlopen(req, timeout=30)
         ct = r.headers.get("Content-Type", "")
         raw = r.read(600000)
         if "html" not in ct and "text" not in ct:
-            return r.status, r.geturl(), f"[khong phai HTML: {ct}]"
+            return r.status, r.geturl(), ""  # PDF/khac: khong co van ban de doi chieu -> NOT_CHECKED
+        if not is_public(r.geturl()):
+            return None, url, ""
         t = raw.decode("utf-8", "replace")
         ti = re.search(r"<title[^>]*>(.*?)</title>", t, re.S | re.I)
         t = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", t, flags=re.S | re.I)
@@ -60,7 +75,7 @@ def ask(e, status, furl, text):
             if ex.code in (429, 500, 503): time.sleep(10 * (i + 1)); continue
             return {"match": "ERROR", "notes": f"Gemini HTTP {ex.code}"}
         except Exception as ex:
-            if i == 3: return {"match": "ERROR", "notes": str(ex)[:120]}
+            if i == 3: return {"match": "ERROR", "notes": type(ex).__name__}
             time.sleep(5)
     return {"match": "ERROR", "notes": "Gemini het luot thu"}
 
@@ -72,18 +87,19 @@ def main():
         w = csv.DictWriter(f, FIELDS); w.writeheader()
         for e in es:
             u = e.get("url", "")
+            furl, text = "", ""
             if not u:
                 r, st = {"match": "NOT_CHECKED", "notes": "Khong co URL; can audit thu cong"}, ""
             else:
                 st, furl, text = fetch(u)
                 if not text:
-                    r = {"match": "NOT_CHECKED", "notes": f"Khong tai duoc trang (status {st})"}
+                    r = {"match": "NOT_CHECKED", "notes": f"Khong co van ban HTML de doi chieu (status {st}); audit thu cong"}
                 else:
                     r = ask(e, st, furl, text)
             r["url_resolves"] = st
+            r["found_url"] = furl if u and text else ""
             row = {"key": e["key"], "bib_title": e.get("title", ""), "bib_year": e.get("year", ""), "bib_url": e.get("url", "")}
             row.update({k: r.get(k, "") for k in FIELDS if k in r})
-            row["model"] = MODEL; row["checked_at"] = time.strftime("%Y-%m-%d")
             w.writerow(row); f.flush()
             print(e["key"], row.get("match"), flush=True)
             time.sleep(2)
