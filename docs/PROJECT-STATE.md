@@ -1,6 +1,6 @@
 # Trạng thái dự án Biomedical RDM
 
-**Phiên bản:** 2.3.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #18–#19, triển khai web, sửa hiển thị công thức và sơ đồ) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
+**Phiên bản:** 2.4.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #20–#23, gộp PR #6 vào `main`, thiết kế lại sơ đồ, triển khai lại web) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
 **Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh.
 
 ## 1. Tóm tắt
@@ -9,21 +9,21 @@ Dự án có **hai repo công khai** của tài khoản `fossbk-spec`:
 
 | Repo | Vai trò | Trạng thái (22/11/2026) |
 |---|---|---|
-| `biomedical-rdm` | **Repo gốc**, nguồn chân lý: literature review, danh mục tham khảo, nguồn khóa học, giáo trình (chương, phụ lục, syllabus, quiz), hướng dẫn dùng chung | `main`: PR #1–#4 đã merge; PR #5 đã đóng (nội dung gộp qua PR #15). **PR #6 (draft)** là nhánh tích hợp giáo trình; các PR con #7–#19 đã merge vào nhánh này, **chưa vào `main`**. Repo chưa bật Pages |
-| `biomedical-rdm-course` | **Web khóa học** (VitePress); nội dung đồng bộ một chiều từ repo gốc | `main`: PR #1–#4, #6–#9 đã merge (#6 đồng bộ giáo trình, #7 loại trang `AGENTS`, #8 hiển thị công thức và sơ đồ, #9 đồng bộ quiz); PR #5 đã đóng. **Pages đã bật** (nhánh `gh-pages`, triển khai thủ công), bản công khai hiện là `a976252` tại https://fossbk-spec.github.io/biomedical-rdm-course/ |
+| `biomedical-rdm` | **Repo gốc**, nguồn chân lý: literature review, danh mục tham khảo, nguồn khóa học, giáo trình (chương, phụ lục, syllabus, quiz), hướng dẫn dùng chung | `main` (merge commit `8286c2c`): PR #1–#4 đã merge; PR #5 đã đóng (nội dung gộp qua PR #15). **PR #6 đã merge vào `main` (22/11/2026)** cùng các PR con #7–#23; khi gộp, giữ quy tắc audit của `main` (PR #21: trạng thái `status` không đổi do đối chiếu trang). Repo chưa bật Pages |
+| `biomedical-rdm-course` | **Web khóa học** (VitePress); nội dung đồng bộ một chiều từ repo gốc | `main`: PR #1–#4, #6–#10 đã merge (#6 đồng bộ giáo trình, #7 loại trang `AGENTS`, #8 hiển thị công thức và sơ đồ, #9 đồng bộ quiz, #10 sơ đồ mới và lọc thẻ HTML trong nhãn); PR #5 đã đóng. **Pages đã bật** (nhánh `gh-pages`, triển khai thủ công), bản công khai hiện được dựng từ `395e6d1` (commit deploy `ab29041`) tại https://fossbk-spec.github.io/biomedical-rdm-course/ |
 
 Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở `biomedical-rdm-course`**, tài liệu lưu ở **repo gốc** (sửa ở repo gốc, đồng bộ một chiều sang repo khóa học). Khóa học là **miễn phí, tự học theo nhịp người đọc**, không phải học phần có tín chỉ.
 
-## 2. Nội dung repo gốc `biomedical-rdm` (nhánh PR #6)
+## 2. Nội dung repo gốc `biomedical-rdm` (`main`)
 
 - **Giáo trình:** `docs/chapters/ch00_getting_started.md` (M0), `ch01`–`ch06` (6 chương đã sửa theo mẫu tách nội dung cố định/cập nhật), `ch07_completion_and_capstone.md` (quiz tổng hợp 10 câu, capstone tự đánh giá, bảng tự nghiệm thu); `docs/syllabus/BIOMEDICAL_RDM_FREE_SELF_PACED_SYLLABUS.md` (syllabus tự học, thay bản 2 tín chỉ v2.0.0; bản cũ còn trong lịch sử git). Tổng giáo trình + phụ lục + syllabus khoảng 44.000 từ.
 - **Phụ lục cập nhật** (`docs/appendices/`, đặt tên theo slug, có `reviewed`/`next_review`, bảng Trạng thái/URL/Ngày kiểm): `legal`, `funder-templates`, `retention`, `standards`, `redcap-lab-notes`, `fhir-omop-lab-notes`, `privacy-lab-notes`, `quality-ai-lab-notes`, `appendices-CHANGELOG`; sổ kiểm chứng pháp lý `docs/legal-verification.md`.
 - **Literature review:** `docs/literature-review/index.md` (tổng hợp tường thuật có kiểm chứng, **không** phải systematic review theo PRISMA; trích dẫn số `[n]`, 1..103) và `CHANGES.md`.
 - **Nguồn khóa học mini:** `docs/course-source/rdm-mini-course-source.md` + `README.md` (17 trang tách bằng marker `<!-- page: <path> -->`; quiz cuối khóa 10 câu đã làm lại: đáp án phân bố A3/B2/C3/D2, câu khái niệm không phụ thuộc ngày/số hiệu).
 - **Danh mục tham khảo:** `references/references.bib` **115 mục** = 103 mục lõi (`ref_001`–`ref_103`, khớp số `[n]` của literature review) + 12 mục riêng của chương (`ref_104`–`ref_115`, `used_in = chapter_only`); `references-334.bib` (334 mục, chỉ tiêu đề + URL); `citation-audit.csv` (115 dòng); `VERIFICATION.md`, `AUDIT-REPORT.md`, `audit-nodoi-gemini.csv`.
-- **Script:** `build_bib.py` (`--check`; 103 lõi + mục mở rộng), `verify_refs.py`, `audit_references.py`, `audit_nodoi_gemini.py` (kiểm trang nguồn cho mục không DOI, tư vấn), `check_quizzes.py` (kiểm cấu trúc, số câu, phân bố đáp án, độ dài phương án và từ tuyệt đối của quiz ch01–ch07), `check_volatile.py` + `volatile_terms.txt` (cảnh báo khẳng định dễ hết hạn trong thân chương không trỏ phụ lục; quét ch00–ch07 và phụ lục).
+- **Script:** `build_bib.py` (`--check`; 103 lõi + mục mở rộng), `verify_refs.py`, `audit_references.py`, `audit_nodoi_gemini.py` (kiểm trang nguồn cho mục không DOI, tư vấn), `check_quizzes.py` (kiểm cấu trúc, số câu, phân bố đáp án, độ dài phương án và từ tuyệt đối của quiz ch01–ch07), `check_volatile.py` + `volatile_terms.txt` (cảnh báo khẳng định dễ hết hạn trong thân chương không trỏ phụ lục; quét ch00–ch07, phụ lục và **cả nhãn trong khối Mermaid**: thẻ HTML ngoài `<br/>`, số hiệu luật, phiên bản, năm; có self-test).
 - **Tài liệu quản trị:** `docs/DECISIONS.md`, `docs/PROJECT-STATE.md`, `docs/INPUT-INVENTORY.md`, `docs/DATA-USE.md`, `docs/plans/` (kế hoạch 10 ngày; kế hoạch tích hợp pipeline v1.1.0; kế hoạch tách nội dung cố định/cập nhật v1.1.0), `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE` (CC BY 4.0), `LICENSE-CODE` (MIT), `_quarto.yml` (sách Quarto 22+ trang: chương, phụ lục, sổ kiểm chứng, tài liệu dự án), `index.qmd`, `README.md`.
-- **Hướng dẫn dùng chung:** `docs/guides/diagrams-math-quiz-web.md` (giữ Mermaid làm nguồn sơ đồ, quy tắc thiết kế sơ đồ, công thức MathJax, quy tắc quiz chống lộ đáp án, quy trình triển khai web, checklist cho sách khác); bản dùng chung đã đồng bộ sang HDBS (`fossbk-spec/HDBS`, PR #6, `knowledge_base/GUIDE_DIAGRAMS_MATH_QUIZ_WEB.md`).
+- **Hướng dẫn dùng chung:** `docs/guides/diagrams-math-quiz-web.md` v1.1.0 (giữ Mermaid làm nguồn sơ đồ; mục 2.1 quy tắc thiết kế sơ đồ: chỉ `<br/>`, nhãn ngắn, không dữ kiện hết hạn, bảng 5 màu kèm tỷ số tương phản, kích thước mục tiêu ≤ ~950 × ~1000 px; công thức MathJax, quy tắc quiz chống lộ đáp án, quy trình triển khai web, checklist cho sách khác); bản dùng chung đã đồng bộ sang HDBS (`fossbk-spec/HDBS`, PR #6 và #7 đã merge, `knowledge_base/GUIDE_DIAGRAMS_MATH_QUIZ_WEB.md`).
 - **Quiz:** ch01–ch06 có mục `Quiz tự kiểm tra` (ch01 5, ch02 4, ch03 5, ch04 5, ch05 4, ch06 6 = 29 câu) và ch07 có quiz tổng hợp 10 câu: tổng 39 câu.
 
 ## 3. Nội dung repo khóa học `biomedical-rdm-course` (main)
@@ -57,7 +57,8 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 ## 5. Kết quả kiểm tra
 
 - **Render (repo gốc):** `quarto render`: 25/25 trang, không cảnh báo, không trích dẫn chưa phân giải, không liên kết nội bộ hỏng (22/11/2026). Sách Quarto gồm ch00–ch07, phụ lục, sổ kiểm chứng và tài liệu dự án; `docs/guides/` không nằm trong sách.
-- **Web (repo khóa học):** kiểm bằng trình duyệt trên bản preview và trên site công khai: 6/6 sơ đồ Mermaid dựng được (ch01 2, ch02 2, ch03 1, ch05 1), 67 công thức MathJax không lỗi, không còn cặp `$...$` thô; thử phóng to, toàn màn hình và Esc; trang quiz tổng hợp có 10 câu 4 phương án, chọn đáp án hiện kết quả đúng. Chưa kiểm điện thoại, Safari/Firefox, chế độ tối bằng ảnh chụp, in/xuất PDF.
+- **Sơ đồ (22/11/2026):** 9 sơ đồ Mermaid (ch01 2, ch02 3, ch03 2, ch05 2), đo thật trên bản preview web: tất cả dựng được, không còn chữ thẻ HTML; kích thước tự nhiên từ 224 × 743 đến 1.014 × 385 px (hai sơ đồ ch05 417 × 675 và 738 × 677; ch02 hình 3b 672 × 679). Sau khi deploy chỉ kiểm được bằng HTML tĩnh (có Hình 6a/6b); trình duyệt kiểm thử bị đóng nên chưa xem trực tiếp site công khai. `quarto render` sau thiết kế lại: exit 0.
+- **Web (repo khóa học):** kiểm bằng trình duyệt trên bản preview và trên site công khai (đợt trước sơ đồ mới): 67 công thức MathJax không lỗi, không còn cặp `$...$` thô; thử phóng to, toàn màn hình và Esc; trang quiz tổng hợp có 10 câu 4 phương án, chọn đáp án hiện kết quả đúng. Chưa kiểm điện thoại, Safari/Firefox, chế độ tối bằng ảnh chụp, in/xuất PDF.
 - **Script:** `build_bib.py --check` (115 mục), `audit_references.py` (cấu trúc), `check_volatile.py --check` (0 vi phạm), `check_quizzes.py --check` (39 câu; đáp án A/B/C/D = 10/9/11/9; đáp án đúng là phương án dài nhất 9/39), `git diff --check origin/main`: 19 cảnh báo khoảng trắng cuối dòng/dòng trống cuối file (đa số là hai dấu cách ngắt dòng Markdown có chủ ý; có từ trước khi gộp, chưa dọn).
 - **Trạng thái danh mục** (`citation-audit.csv`, 115 dòng): 103 `VERIFIED_UNAUDITED` (gồm 12 mục riêng của chương), 9 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`. **Chưa audit độc lập; không mục nào được coi là `VERIFIED` đầy đủ.**
 - **Đối chiếu OpenAlex/Semantic Scholar** (chỉ thư mục): xem `references/VERIFICATION.md`; 12 mục riêng của chương đối chiếu Crossref/URL chính thống (21/11/2026).
@@ -68,7 +69,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 | # | Mục | Ghi chú |
 |---|---|---|
 | 1 | Quiz 6 bài của mini-course (trong `course-source`) | Chưa kiểm cùng lỗi độ dài đáp án và từ tuyệt đối như quiz mới; hai quy tắc tự đánh giá đang song song (giáo trình: tỷ lệ; mini-course: 24/34) |
-| 2 | Sơ đồ | Thiết kế lại 2–3 sơ đồ (ch03, ch05: nhãn quá dài, ch05 cao khoảng 1.700 px, ch03 chỉ còn khoảng 40% khi vừa khung); thêm tiêu đề và mô tả bằng văn bản; cân nhắc dựng sẵn SVG khi build (bản in/PDF/offline) |
+| 2 | Sơ đồ | Đã thiết kế lại và thêm tiêu đề, mô tả (PR #22). Còn: cân nhắc dựng sẵn SVG khi build (bản in/PDF/offline); kiểm lại nhãn cạnh và tiêu đề subgraph ở chế độ tối; xem trực tiếp site công khai bằng trình duyệt |
 | 3 | Kiểm hiển thị web | Điện thoại, Safari/Firefox, chế độ tối, in/xuất PDF |
 | 4 | Mini-course Bài 5 chứa phần AI-ready | Syllabus đặt AI-ready ở M6; cần tách nội dung ở `course-source` |
 | 5 | NIH: giới hạn 300 từ gắn với yếu tố nào; tên mẫu trên DMPTool production; điều kiện dùng mẫu cũ khi chuyển tiếp (NOT-OD-26-100) | Cần mở bản DOCX/trang NIH bằng trình duyệt; hiện `CONTENT_PENDING` |
@@ -82,14 +83,14 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 | 13 | Danh mục APA 334 mục; Ethics/CITI/DUA ở mức nâng cao; tài liệu hướng dẫn agent trong `docs/reviews/` | Chưa quyết |
 | 14 | Lab 2 (CSV REDCap) chưa chạy thử trên REDCap Sandbox; một số phương án quiz hơi mơ hồ ("thường", "chủ yếu") | Chưa xử lý |
 | 15 | Workflow CI; Pages cho repo gốc | Tài khoản làm việc không có quyền Workflows; Ben tự thêm. Repo khóa học triển khai thủ công |
-| 16 | Gộp PR #6 vào `main` của repo gốc | Chưa; điều kiện: các mục trên và quyết định của Ben |
+| 16 | Gộp PR #6 vào `main` của repo gốc | **Xong** (22/11/2026, `8286c2c`). Các mục còn mở ở trên không chặn việc này; tiếp tục theo dõi trên `main`. Cách gộp: giữ quy tắc audit của `main` (6 mục PARTIAL trở lại `VERIFIED_UNAUDITED`) |
 | 17 | HDBS: `KNOWLEDGE_BASE_PUBLISHING_PITFALLS_AND_FIXES.md` có hai bản giống hệt (gốc repo và `knowledge_base/`) | Chờ chủ repo HDBS quyết giữ bản nào |
 
 ## 7. Bước tiếp theo đề xuất
 
-1. Thiết kế lại các sơ đồ phức tạp và thêm tiêu đề, mô tả (mục 2); kiểm hiển thị trên thiết bị khác (mục 3).
+1. Kiểm hiển thị web trên thiết bị khác và chế độ tối; xem trực tiếp các sơ đồ mới trên site công khai (mục 2–3).
 2. Kiểm quiz mini-course và thống nhất quy tắc tự đánh giá (mục 1); tách nội dung AI-ready (mục 4).
 3. Người đọc nguồn chính thống xử lý các mục `CONTENT_PENDING` (mục 5–9) bằng trình duyệt; cập nhật phụ lục và đồng bộ lại web.
 4. Audit độc lập danh mục (mục 10–11).
 5. Sau mỗi đợt: chạy `quarto render`, `npm run build`, `audit_references.py`, `check_volatile.py --check`, `check_quizzes.py --check`, `sync_from_source.py --check`; triển khai lại `gh-pages` nếu nội dung web đổi.
-6. Khi đủ điều kiện, rà soát lần cuối và quyết định gộp PR #6 vào `main`.
+6. Dọn nhánh remote đã merge của repo gốc khi Ben đồng ý (`audit/nodoi-gemini`, `fix/ref-titles-doi`, `chore/refs-workflow-20261121`, `docs/project-state`, `docs/chapters-draft-20261121`); chuyển clone chính `biomedical-rdm` về `main` (hiện đứng ở nhánh cũ, các file chưa theo dõi cục bộ vẫn còn).
