@@ -59,7 +59,7 @@ Các quy tắc dưới đây là nguồn chân lý cho sơ đồ Mermaid trong g
 | Toán học & tiêu chuẩn | `mathStyle` | `#E8F5E9` | `#2E7D32` | Riêng tư, FAIR, chuẩn |
 | Cảnh báo & rủi ro | `warnStyle` | `#FFEBEE` | `#C62828` | Rò rỉ, lỗi, nguy cơ |
 
-6. Mục tiêu kích thước tự nhiên ở 100% là rộng và cao khoảng không quá 900 px; ưu tiên `TD` hoặc chia chuỗi rộng thành hai dòng.
+6. Mục tiêu kích thước tự nhiên ở 100% là rộng khoảng ≤ 950 px và cao khoảng ≤ 1000 px (số đo thực tế trên web); ưu tiên `TD` hoặc chia chuỗi rộng thành hai dòng.
 7. Mỗi sơ đồ phải có tiêu đề hình và mô tả văn bản ngay dưới khối để làm văn bản thay thế; không sửa các đoạn văn khác chỉ để lặp lại sơ đồ.
 
 ### Lỗi bố cục và giới hạn kiểm chứng
