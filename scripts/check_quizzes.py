@@ -16,6 +16,8 @@ ABSOLUTE = re.compile(
 
 
 ROOT = Path(__file__).resolve().parents[1]
+COURSE_SOURCE = ROOT / "docs" / "course-source" / "rdm-mini-course-source.md"
+VOLATILE_TERMS = ROOT / "scripts" / "volatile_terms.txt"
 CHAPTERS = [ROOT / "docs" / "chapters" / f"ch0{i}_" for i in range(1, 7)]
 EXPECTED = {1: 5, 2: 4, 3: 5, 4: 5, 5: 4, 6: 6}
 LETTERS = "ABCD"
@@ -74,7 +76,58 @@ def question_records(text: str, chapter: int) -> list[dict[str, object]]:
     return records
 
 
-def validate(records: list[dict[str, object]], label: str, expected: int | None, errors: list[str]) -> Counter[str]:
+def course_question_records(text: str, label: str) -> list[dict[str, object]]:
+    """Parse a quiz page from the canonical mini-course source."""
+    if label == "aggregate":
+        pattern = re.compile(r"^\*\*(Q\d+)\.\*\*\s*(.*?)\s*$", re.M)
+    else:
+        pattern = re.compile(r"^\*\*(\d+\.\d+)\.\s*(.*?)\s*$", re.M)
+    matches = list(pattern.finditer(text))
+    records = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        block = text[match.end() : end]
+        options = {letter: option for letter, option in re.findall(r"^- ([A-D])\.\s*(.+?)\s*$", block, re.M)}
+        answer_match = re.search(r"^- \*\*Đáp án: ([A-D])\.\*\*(.*)$", block, re.M)
+        standalone = bool(re.search(r"^- \*\*Giải thích:\*\*", block, re.M))
+        records.append(
+            {
+                "id": match.group(1),
+                "options": options,
+                "answer": answer_match.group(1) if answer_match else None,
+                "explanation": answer_match.group(2).strip() if answer_match else "",
+                "inline": bool(answer_match and answer_match.group(2)),
+                "standalone": standalone,
+            }
+        )
+    return records
+
+
+def course_pages(text: str) -> dict[str, str]:
+    markers = list(re.finditer(r"^<!-- page: (course/[^ ]+) -->\s*$", text, re.M))
+    pages: dict[str, str] = {}
+    for index, marker in enumerate(markers):
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(text)
+        pages[marker.group(1)] = text[marker.end() : end]
+    return pages
+
+
+def volatile_quiz_terms() -> list[str]:
+    stable = {"CDISC SDTM", "k-anonymity", "l-diversity", "Five Safes", "ALCOA++"}
+    return [
+        term.strip()
+        for term in VOLATILE_TERMS.read_text(encoding="utf-8").splitlines()
+        if term.strip() and not term.startswith("#") and term.strip() not in stable
+    ]
+
+
+def validate(
+    records: list[dict[str, object]],
+    label: str,
+    expected: int | None,
+    errors: list[str],
+    require_inline: bool = False,
+) -> Counter[str]:
     if expected is not None and len(records) != expected:
         errors.append(f"{label}: declared/expected {expected} questions but found {len(records)}")
     answers: Counter[str] = Counter()
@@ -89,11 +142,15 @@ def validate(records: list[dict[str, object]], label: str, expected: int | None,
             errors.append(f"{question}: requires exactly four A-D options")
             continue
         answer = record["answer"]
-        if answer not in LETTERS:
+        if not isinstance(answer, str) or answer not in LETTERS:
             errors.append(f"{question}: missing or invalid correct answer")
             continue
         if not record["explanation"]:
             errors.append(f"{question}: missing explanation")
+        if require_inline and not record.get("inline"):
+            errors.append(f"{question}: explanation must be on the answer line")
+        if require_inline and record.get("standalone"):
+            errors.append(f"{question}: standalone explanation bullet is not allowed")
         answers[answer] += 1
         correct_length = len(str(options[answer]))
         wrong_lengths = [len(str(options[letter])) for letter in LETTERS if letter != answer]
@@ -144,6 +201,41 @@ def main() -> int:
     all_answers.update(counts)
     rows.append(("ch07", len(records), counts))
 
+    pages = course_pages(COURSE_SOURCE.read_text(encoding="utf-8"))
+    course_total = Counter()
+    module_total = Counter()
+    for number in range(1, 7):
+        page = pages.get(f"course/module-{number}-" + {
+            1: "dmp",
+            2: "collection",
+            3: "standards",
+            4: "quality",
+            5: "privacy",
+            6: "fair-ai",
+        }[number] + "/quiz.md")
+        if page is None:
+            errors.append(f"course module {number}: quiz page marker not found")
+            continue
+        records = course_question_records(page, f"module-{number}")
+        counts = validate(records, f"course {number}", 4, errors, require_inline=True)
+        course_total.update(counts)
+        module_total.update(counts)
+        for term in volatile_quiz_terms():
+            if re.search(term, page, re.IGNORECASE):
+                errors.append(f"course module {number}: volatile term {term!r} in quiz")
+    aggregate = pages.get("course/final-quiz.md")
+    if aggregate is None:
+        errors.append("course aggregate: quiz page marker not found")
+    else:
+        records = course_question_records(aggregate, "aggregate")
+        counts = validate(records, "course aggregate", 10, errors, require_inline=True)
+        course_total.update(counts)
+        for term in volatile_quiz_terms():
+            if re.search(term, aggregate, re.IGNORECASE):
+                errors.append(f"course aggregate: volatile term {term!r} in quiz")
+    if sum(module_total.values()) and any(module_total[letter] != 6 for letter in LETTERS):
+        errors.append(f"course modules: expected A/B/C/D = 6/6/6/6 ({dict(module_total)})")
+
     total = sum(all_answers.values())
     if total and any(not 0.20 <= all_answers[letter] / total <= 0.30 for letter in LETTERS):
         errors.append(f"all quizzes: answer distribution outside 20-30% ({dict(all_answers)}, total={total})")
@@ -153,6 +245,8 @@ def main() -> int:
     for label, count, answers in rows:
         print(f"{label:7} {count:10}  " + "  ".join(str(answers[letter]) for letter in LETTERS))
     print(f"total   {total:10}  " + "  ".join(str(all_answers[letter]) for letter in LETTERS))
+    print("mini-course  24       " + "  ".join(str(module_total[letter]) for letter in LETTERS))
+    print("course final 10       " + "  ".join(str(course_total[letter] - module_total[letter]) for letter in LETTERS))
     if errors:
         print("\nVIOLATIONS")
         print("\n".join(f"- {error}" for error in errors))
