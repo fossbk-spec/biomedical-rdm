@@ -33,45 +33,55 @@ Sơ đồ dưới đây minh họa mối quan hệ giữa các quy định pháp
 ```mermaid
 flowchart TD
     subgraph ST["TẦNG 1: KHUNG PHÁP LÝ & NGUYÊN TẮC (GOVERNANCE & INTEGRITY)"]
-        GCP["ICH E6(R3) GCP (Step 4)<br/>Data governance [CẦN KIỂM CHỨNG: số mục]"]
-        CFR["FDA 21 CFR Part 11<br/>Electronic Records & Signatures"]
-        ALCOA["Khung Toàn vẹn ALCOA+ / ALCOA++<br/>Attributable, Contemporaneous, Original..."]
+        direction LR
+        GCP["<b>ICH E6(R3) GCP</b><br/>Quản trị rủi ro & Dữ liệu lâm sàng"]
+        CFR["<b>FDA 21 CFR Part 11</b><br/>Electronic Records & Signatures"]
+        ALCOA["<b>Khung Toàn vẹn ALCOA+</b><br/>Attributable, Contemporaneous, Original..."]
     end
 
     subgraph RISK["TẦNG 2: ĐỐI CHIẾU CÔNG CỤ (SPREADSHEET VS EDC)"]
-        EXCEL["Bảng tính thủ công (Excel/Sheets)<br/>❌ Không audit trail, dễ gõ đè, lỗi định dạng gen"]
-        EDC["Hệ thống EDC (REDCap / Castor)<br/>✅ Ràng buộc nhập liệu, vết kiểm toán bất biến"]
+        direction LR
+        EXCEL["<b>Bảng tính thủ công (Excel/Sheets)</b><br/>❌ Không audit trail, dễ gõ đè, lỗi tên gen"]
+        EDC["<b>Hệ thống EDC (REDCap / Castor)</b><br/>✅ Ràng buộc nhập liệu, vết kiểm toán bất biến"]
     end
 
     subgraph REDCAP["TẦNG 3: HIỆN THỰC HÓA TRÊN REDCAP (METADATA-DRIVEN ARCHITECTURE)"]
-        PROJ["REDCap Project<br/>(Classic vs Longitudinal)"]
-        INST["Instruments (eCRF)<br/>Demographics | Clinical Visit | Adverse Events"]
-        DD["Từ điển dữ liệu (Data Dictionary 18 cột)<br/>Biến, Nhãn, Kiểu, Ràng buộc, Rẽ nhánh"]
+        direction LR
+        PROJ["<b>REDCap Project</b><br/>Classic vs Longitudinal"]
+        INST["<b>Instruments (eCRF)</b><br/>Demographics | Visit | Adverse Events"]
+        DD["<b>Từ điển Dữ liệu (18 cột)</b><br/>Biến, Nhãn, Kiểu, Ràng buộc, Rẽ nhánh"]
+        PROJ --> INST --> DD
     end
 
     subgraph CTRL["TẦNG 4: CƠ CHẾ KIỂM SOÁT TẠI NGUỒN (SOURCE DATA CONTROL)"]
-        VAL["Validation & Range Checks<br/>(Chặn nhập sai huyết áp, nhịp tim)"]
-        BR["Branching Logic<br/>(Chỉ hiện form SAE khi sae_yn = 1)"]
-        AUDIT["Audit Trail / Logging<br/>(Ghi vết: Ai sửa? Giờ nào? Giá trị cũ/mới? Lý do?)"]
-        RBAC["Phân quyền người dùng & Đánh dấu PHI<br/>(Data Access Groups, Export Restrictions)"]
+        direction LR
+        VAL["<b>Validation & Range Checks</b><br/>Chặn nhập sai huyết áp, nhịp tim"]
+        BR["<b>Branching Logic</b><br/>Chỉ hiện form khi thỏa mãn điều kiện"]
+        AUDIT["<b>Immutable Audit Trail</b><br/>Ai sửa? Giờ nào? Giá trị cũ/mới?"]
+        RBAC["<b>Phân quyền & Đánh dấu PHI</b><br/>Data Access Groups, Chặn export"]
+        VAL --> BR --> AUDIT --> RBAC
     end
 
     subgraph DOWN["TẦNG 5: HẠ TẦNG KẾ THỪA (DOWNSTREAM INTEROPERABILITY)"]
-        SDTM["REDCap2SDTM<br/>Phương pháp chuyển đổi sang CDISC SDTM"]
-        OMOP["REDCap2OMOP<br/>Nền tảng chuyển đổi sang OMOP CDM"]
+        direction LR
+        SDTM["<b>REDCap2SDTM</b><br/>Chuyển đổi sang CDISC SDTM"]
+        OMOP["<b>REDCap2OMOP</b><br/>Chuyển đổi sang OMOP CDM"]
     end
 
-    ST --> RISK
-    EDC --> REDCAP
-    REDCAP --> CTRL
-    CTRL --> DOWN
+    %% LIÊN KẾT NODE-TO-NODE CHUẨN XÁC
+    ALCOA -->|"Định hướng yêu cầu"| EDC
+    EDC -->|"Triển khai thiết kế"| PROJ
+    DD -->|"Cấu hình quy tắc kiểm soát"| VAL
+    RBAC -->|"Xuất dữ liệu chuẩn hóa"| SDTM
+    RBAC -->|"Xuất dữ liệu chuẩn hóa"| OMOP
 
-    classDef primary fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef warn fill:#ffebee,stroke:#c62828,stroke-width:2px;
-    classDef success fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
-    class ST,REDCAP primary;
+    classDef primary fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef warn fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    classDef success fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+
+    class GCP,CFR,ALCOA,PROJ,INST,DD primary;
     class EXCEL warn;
-    class EDC,CTRL,DOWN success;
+    class EDC,VAL,BR,AUDIT,RBAC,SDTM,OMOP success;
 ```
 
 ---
@@ -142,7 +152,7 @@ flowchart LR
     C -->|"Người dùng nhập liệu lâm sàng"| D["Bảng dữ liệu lưu trữ hợp nhất<br/>(EAV Model: redcap_data)"]
     D -->|"Kiểm toán tự động từng giao dịch"| E["Bảng Vết kiểm toán<br/>(redcap_log_event)"]
 
-    classDef core fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef core fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
     class A,B,C,D,E core;
 ```
 

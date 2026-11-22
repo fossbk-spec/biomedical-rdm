@@ -31,54 +31,73 @@ Sơ đồ dưới đây minh họa hệ sinh thái ba chuẩn dữ liệu y tế
 
 ```mermaid
 flowchart TD
+    %% ==========================================
+    %% TẦNG 1: NGUỒN DỮ LIỆU THỰC TẾ
+    %% ==========================================
     subgraph SOURCE["NGUỒN DỮ LIỆU THỰC TẾ (CLINICAL SOURCE DATA)"]
-        EHR["Bệnh án điện tử bệnh viện<br/>(HIS / LIS / PACS / EMR)"]
-        CT["Thử nghiệm lâm sàng có can thiệp<br/>(Clinical Trials / eCRF / EDC)"]
-        REG["Cơ sở dữ liệu thanh toán & Sổ bộ<br/>(Claims / Registries / Wearables)"]
+        direction LR
+        EHR["<b>Bệnh án Điện tử Bệnh viện</b><br/>HIS / LIS / PACS / EMR"]
+        CT["<b>Thử nghiệm Lâm sàng</b><br/>eCRF / EDC (REDCap, Castor)"]
+        REG["<b>Dữ liệu Bảo hiểm & Sổ bộ</b><br/>Claims / Registries / Wearables"]
     end
 
+    %% ==========================================
+    %% TẦNG 2: BA CHUẨN DỮ LIỆU CỐT LÕI
+    %% ==========================================
     subgraph STANDARDS["BA CHUẨN DỮ LIỆU CỐT LÕI (THREE CORE PILLARS)"]
         direction TB
-        FHIR["HL7 FHIR (Fast Healthcare Interoperability Resources)<br/>• Bản chất: Hướng tài nguyên RESTful API (JSON/XML)<br/>• Sứ mệnh: Trao đổi dữ liệu lâm sàng thời gian thực giữa các hệ thống"]
-        CDISC["CDISC (SDTM & ADaM Standards)<br/>• Bản chất: Bảng 2D phẳng phân theo miền nghiên cứu (Domain-based)<br/>• Sứ mệnh: Đóng gói và nộp hồ sơ xin cấp phép thuốc lên FDA / PMDA"]
-        OMOP["OMOP Common Data Model (OHDSI Network)<br/>• Bản chất: Quan hệ thực thể tập trung người bệnh (Person-centric RDBMS)<br/>• Sứ mệnh: Phân tích dịch tễ học và dữ liệu thế giới thực (RWD/RWE)"]
+        FHIR["<b>HL7 FHIR (R4 / R5)</b><br/>• Bản chất: Tài nguyên RESTful API (JSON)<br/>• Sứ mệnh: Trao đổi dữ liệu thời gian thực"]
+        CDISC["<b>CDISC (SDTM & ADaM)</b><br/>• Bản chất: Bảng 2D phẳng theo miền (Domains)<br/>• Sứ mệnh: Nộp hồ sơ pháp lý (FDA/PMDA)"]
+        OMOP["<b>OMOP CDM v5.4 (OHDSI)</b><br/>• Bản chất: RDBMS tập trung người bệnh<br/>• Sứ mệnh: Phân tích dịch tễ & dữ liệu thế giới thực"]
     end
 
+    %% ==========================================
+    %% TẦNG 3: CẦU NỐI LIÊN THÔNG NGỮ NGHĨA
+    %% ==========================================
     subgraph BRIDGES["CẦU NỐI CHUYỂN ĐỔI NGỮ NGHĨA (INTEROPERABILITY BRIDGES)"]
-        F2O["FHIR-to-OMOP IG<br/>Chuyển dữ liệu trao đổi sang phân tích"]
-        F2C["FHIR-to-CDISC Joint Mapping<br/>Rút trích dữ liệu EHR vào nghiên cứu lâm sàng"]
-        R2C["REDCap2SDTM / REDCap2OMOP<br/>Biến đổi dữ liệu EDC sang chuẩn phân tích"]
+        direction LR
+        F2O["<b>FHIR-to-OMOP IG</b><br/>Trao đổi lâm sàng ➔ Phân tích"]
+        F2C["<b>FHIR-to-CDISC Mapping</b><br/>Rút trích EHR ➔ Thử nghiệm lâm sàng"]
+        R2O["<b>REDCap2OMOP / REDCap2SDTM</b><br/>Dữ liệu EDC ➔ Chuẩn quốc tế"]
     end
 
+    %% ==========================================
+    %% TẦNG 4: MỤC TIÊU ỨNG DỤNG CUỐI CÙNG
+    %% ==========================================
     subgraph USECASES["MỤC TIÊU SỬ DỤNG CUỐI CÙNG (END-USER APPLICATIONS)"]
-        APP["Ứng dụng SMART on FHIR<br/>Hỗ trợ quyết định lâm sàng (CDS) tại giường bệnh"]
-        REG_SUB["Hồ sơ Đăng ký Thuốc Quốc tế<br/>Nộp cơ quan quản lý dược (FDA/EMA eSubmissions)"]
-        FED_RES["Mạng lưới Nghiên cứu Phân tán OHDSI<br/>Phân tích hàng triệu hồ sơ bảo vệ quyền riêng tư"]
+        direction LR
+        APP["<b>SMART on FHIR Apps</b><br/>Hỗ trợ quyết định lâm sàng tại giường"]
+        REG_SUB["<b>Hồ sơ Đăng ký Thuốc (eSubmissions)</b><br/>Nộp cơ quan quản lý (FDA / EMA / PMDA)"]
+        FED_RES["<b>Nghiên cứu Phân tán OHDSI</b><br/>Phân tích hàng trăm triệu hồ sơ an toàn"]
     end
 
-    EHR -->|"REST API / Webhooks"| FHIR
-    CT -->|"EDC Data Pipeline"| CDISC
-    EHR -.->|"Batch Export"| REG
+    %% ==========================================
+    %% DÒNG DỮ LIỆU LIÊN THÔNG (NODE-TO-NODE)
+    %% ==========================================
+    EHR -->|"RESTful API / Webhooks"| FHIR
+    CT -->|"REDCap2SDTM"| CDISC
     REG -->|"ETL Mapping"| OMOP
 
-    FHIR <-->|"Chuyển đổi"| F2O
-    F2O --> OMOP
-    FHIR <-->|"Chuyển đổi"| F2C
-    F2C --> CDISC
+    FHIR --> F2O --> OMOP
+    FHIR --> F2C --> CDISC
+    CT --> R2O --> OMOP
 
     FHIR --> APP
     CDISC --> REG_SUB
     OMOP --> FED_RES
 
-    classDef src fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
-    classDef std fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef brg fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
-    classDef use fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    %% ==========================================
+    %% BẢNG MÀU TƯƠNG PHẢN CAO CHO DARK/LIGHT MODE
+    %% ==========================================
+    classDef srcStyle fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#0D1117;
+    classDef stdStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef brgStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef useStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
 
-    class EHR,CT,REG src;
-    class FHIR,CDISC,OMOP std;
-    class F2O,F2C,R2C brg;
-    class APP,REG_SUB,FED_RES use;
+    class EHR,CT,REG srcStyle;
+    class FHIR,CDISC,OMOP stdStyle;
+    class F2O,F2C,R2O brgStyle;
+    class APP,REG_SUB,FED_RES useStyle;
 ```
 
 ---

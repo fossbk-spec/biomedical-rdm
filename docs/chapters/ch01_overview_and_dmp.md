@@ -27,21 +27,31 @@ Sau khi hoàn thành chương này, người học đạt được các năng l�
 ```mermaid
 flowchart TD
     subgraph VONG_DOI["VÒNG ĐỜI 7 GIAI ĐOẠN DỮ LIỆU Y SINH"]
-        G1["1. Thiết kế & DMP<br/>(Quyết định thượng nguồn)"] --> G2["2. Thu thập dữ liệu<br/>(ALCOA+, GCP, EDC)"]
-        G2 --> G3["3. Xử lý & Làm sạch<br/>(Validation, DQD)"]
-        G3 --> G4["4. Chuẩn hóa dữ liệu<br/>(CDISC, FHIR, OMOP)"]
-        G4 --> G5["5. Phân tích & AI<br/>(AI-ready, SSoT)"]
-        G5 --> G6["6. FAIR & Chia sẻ<br/>(Zenodo, PID, License)"]
-        G6 --> G7["7. Lưu trữ & Hủy an toàn<br/>(Retention Policy)"]
+        direction TB
+        G1["<b>1. Thiết kế & DMP</b><br/>Quyết định thượng nguồn"] --> G2["<b>2. Thu thập dữ liệu</b><br/>ALCOA+, GCP, REDCap EDC"]
+        G2 --> G3["<b>3. Xử lý & Làm sạch</b><br/>Validation, DQD checks"]
+        G3 --> G4["<b>4. Chuẩn hóa dữ liệu</b><br/>CDISC, FHIR, OMOP CDM"]
+        G4 --> G5["<b>5. Phân tích & AI</b><br/>AI-ready, SSoT, Tái lập"]
+        G5 --> G6["<b>6. FAIR & Chia sẻ</b><br/>Zenodo, PID/DOI, DUA"]
+        G6 --> G7["<b>7. Lưu trữ & Hủy an toàn</b><br/>Retention Policy, NIST SP 800-88"]
     end
 
-    subgraph NEN_TANG["LỚP KIỂM SOÁT XUYÊN SUỐT"]
-        GOV["Quản trị dữ liệu (Data Governance)<br/>- DAMA-DMBOK & HIMSS AMAM<br/>- Cơ cấu 3 tầng: Điều hành - Chiến lược - Thực thi"]
-        STEWARD["Đội ngũ Data Steward chuyên nghiệp<br/>- Policy Data Steward (Pháp lý/Đạo đức)<br/>- Research Data Steward (Y sinh/CRF)<br/>- Infrastructure Data Steward (IT/API/TRE)"]
-        LAW["Ranh giới Pháp lý & Đạo đức<br/>- Luật Bảo vệ DLCN 91/2025/QH15 & NĐ 356/2025/NĐ-CP<br/>- HIPAA, GDPR, ICH E6(R3) (xem Phụ lục pháp lý)"]
+    subgraph NEN_TANG["LỚP KIỂM SOÁT XUYÊN SUỐT (FOUNDATIONAL GOVERNANCE)"]
+        direction TB
+        GOV["<b>Quản trị Dữ liệu (Governance)</b><br/>• DAMA-DMBOK & HIMSS AMAM<br/>• Điều hành - Chiến lược - Thực thi"]
+        STEWARD["<b>Đội ngũ Data Steward</b><br/>• Policy (Pháp lý/Đạo đức)<br/>• Research (Y sinh/eCRF)<br/>• Infrastructure (IT/API/TRE)"]
+        LAW["<b>Pháp lý & Đạo đức</b><br/>• Luật 91/2025/QH15 & NĐ 356/2025<br/>• HIPAA, GDPR, ICH E6(R3)"]
     end
 
-    NEN_TANG -.-> VONG_DOI
+    GOV -.->|"Định hướng chiến lược"| G1
+    STEWARD -.->|"Giám sát & Hỗ trợ kỹ thuật"| G2
+    LAW -.->|"Ranh giới tuân thủ bắt buộc"| G7
+
+    classDef stageStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef govStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+
+    class G1,G2,G3,G4,G5,G6,G7 stageStyle;
+    class GOV,STEWARD,LAW govStyle;
 ```
 
 ---
@@ -74,9 +84,17 @@ Dữ liệu y sinh không phải là một tập tin tĩnh được lưu trữ m
 6. **Bảo mật, lưu trữ & Hủy an toàn (Secure, Preserve & Dispose):** Duy trì kho lưu trữ bảo mật và áp dụng thời hạn theo [Phụ lục thời hạn lưu trữ](../appendices/retention.md) (chốt 21/11/2026), hoặc tiêu hủy an toàn theo chuẩn phù hợp.
 
 ```mermaid
-graph LR
-    A["Lỗi thượng nguồn:<br/>Không chuẩn hóa biến lúc lập DMP"] -->|Minh họa khuếch đại| B["Pha làm sạch:<br/>Mất hàng trăm giờ chỉnh tay dữ liệu"]
-    B -->|Minh họa khuếch đại| C["Pha công bố/AI:<br/>Bài báo bị từ chối / Model AI sai lệch"]
+flowchart LR
+    A["<b>Lỗi Thượng nguồn</b><br/>Không chuẩn hóa biến lúc lập DMP<br/><i>(Chi phí: 1x)</i>"] -->|"Khuếch đại lỗi x10"| B["<b>Pha Làm sạch</b><br/>Mất hàng trăm giờ chỉnh tay dữ liệu<br/><i>(Chi phí: 10x)</i>"]
+    B -->|"Khuếch đại lỗi x100"| C["<b>Pha Công bố & AI</b><br/>Bài báo bị rút / Model AI chệch<br/><i>(Chi phí: 100x - Hủy hoại uy tín)</i>"]
+
+    classDef warnLow fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef warnMed fill:#FFE0B2,stroke:#EF6C00,stroke-width:2px,color:#0D1117;
+    classDef warnHigh fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+
+    class A warnLow;
+    class B warnMed;
+    class C warnHigh;
 ```
 
 > **Nguyên lý:** *Hiệu ứng khuếch đại lỗi từ thượng nguồn (Upstream Error Amplification).* Sơ đồ trên minh họa logic chi phí: một thiếu sót ở giai đoạn lập kế hoạch có thể làm tăng gánh nặng ở khâu làm sạch và làm giảm giá trị tái sử dụng của tập dữ liệu.

@@ -32,43 +32,70 @@ Sơ đồ dưới đây minh họa hệ thống các lớp phòng vệ bảo m�
 
 ```mermaid
 flowchart TD
-    subgraph LAW["TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC (LEGAL & ETHICS)"]
+    %% ==========================================
+    %% TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC
+    %% ==========================================
+    subgraph LAW["TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC Y SINH"]
         direction TB
-        VN["Pháp luật Việt Nam:<br/>• Nguyên tắc bảo mật hồ sơ bệnh án và dữ liệu sức khỏe<br/>• Bảo vệ dữ liệu cá nhân và đánh giá tác động<br/>• Chi tiết: phụ lục pháp lý"]
-        INT["Chuẩn mực quốc tế:<br/>• HIPAA Safe Harbor<br/>• GDPR<br/>• EHDS và chia sẻ dữ liệu thứ cấp"]
-        IRB["Hội đồng Đạo đức Y sinh (IRB / IEC)<br/>(Chấp thuận đề cương, Informed Consent, Miễn trừ đồng thuận)"]
+        subgraph LAW_CORES[" "]
+            direction LR
+            VN["<b>Pháp luật Việt Nam</b><br/>• Luật 91/2025/QH15 & NĐ 356/2025<br/>• Bảo mật hồ sơ bệnh án"]
+            INT["<b>Chuẩn mực Quốc tế</b><br/>• HIPAA Safe Harbor / Expert Det.<br/>• GDPR (EU) & EHDS"]
+            IRB["<b>Hội đồng Đạo đức (IRB/IEC)</b><br/>• Chấp thuận đề cương<br/>• Giám sát Informed Consent"]
+        end
     end
 
+    %% ==========================================
+    %% TẦNG 2: MÔ HÌNH QUẢN TRỊ AN TOÀN
+    %% ==========================================
     subgraph ARCH["TẦNG 2: MÔ HÌNH QUẢN TRỊ AN TOÀN (FIVE SAFES & TRE)"]
-        TRE["Môi trường Nghiên cứu Tin cậy (TRE / SDE)"]
-        FS["Khung Five Safes:<br/>1. Safe People | 2. Safe Projects | 3. Safe Settings<br/>4. Safe Data | 5. Safe Outputs"]
+        direction LR
+        FS["<b>Khung Five Safes</b><br/>1. Safe People | 2. Safe Projects<br/>3. Safe Settings | 4. Safe Data<br/>5. Safe Outputs"]
+        TRE["<b>Môi trường Nghiên cứu Tin cậy</b><br/>(TRE / Secure Data Environment)<br/>• Tường lửa cô lập & Vùng phân tích an toàn<br/>• Không cho phép sao chép dữ liệu thô"]
+        FS -->|"Hiện thực hóa hạ tầng"| TRE
     end
 
-    subgraph TECH["TẦNG 3: KỸ THUẬT KHỬ ĐỊNH DANH (DE-IDENTIFICATION PIPELINE)"]
-        DIRECT["1. Loại bỏ Định danh trực tiếp (Tên, SĐT, Số CCCD, Địa chỉ)"]
-        SHIFT["2. Dịch chuyển ngày ngẫu nhiên theo bệnh nhân (Date Shifting)<br/>(Bảo toàn 100% khoảng cách thời gian giữa các biến cố)"]
-        GEN["3. Tổng quát hóa & Ức chế (Generalization / Top-coding > 89)"]
+    %% ==========================================
+    %% TẦNG 3: PIPELINE KHỬ ĐỊNH DANH
+    %% ==========================================
+    subgraph TECH["TẦNG 3: ĐƯỜNG ỐNG KHỬ ĐỊNH DANH (DE-IDENTIFICATION PIPELINE)"]
+        direction LR
+        STEP1["<b>Bước 1: Bỏ Định danh Trực tiếp</b><br/>• Tên, SĐT, Số CCCD, Địa chỉ<br/>• Mã hóa ID ngẫu nhiên"]
+        STEP2["<b>Bước 2: Dịch chuyển Ngày</b><br/>• Date Shifting ngẫu nhiên<br/>• Bảo toàn khoảng cách thời gian"]
+        STEP3["<b>Bước 3: Tổng quát hóa & Ức chế</b><br/>• Gom nhóm tuổi (Top-coding > 89)<br/>• Rút gọn mã bưu chính"]
+        
+        STEP1 -->|"Dữ liệu bán ẩn danh"| STEP2
+        STEP2 -->|"Dữ liệu đồng nhất thời gian"| STEP3
     end
 
-    subgraph MATH["TẦNG 4: MÔ HÌNH TOÁN HỌC BẢO VỆ QUYỀN RIÊNG TƯ"]
-        KANON["k-Anonymity (Sweeney 2002)<br/>Nhóm tương đương có kích thước ≥ k"]
-        LDIV["l-Diversity (Machanavajjhala 2007)<br/>Mỗi nhóm có ít nhất l giá trị bệnh nhạy cảm"]
-        DIFF["Differential Privacy (Dwork 2008)<br/>Thêm nhiễu Laplace có kiểm soát"]
+    %% ==========================================
+    %% TẦNG 4: BẢO VỆ TOÁN HỌC
+    %% ==========================================
+    subgraph MATH["TẦNG 4: BẢO VỆ BẰNG MÔ HÌNH TOÁN HỌC (PRIVACY METRICS)"]
+        direction LR
+        KANON["<b>k-Anonymity</b> (Sweeney 2002)<br/>Nhóm tương đương ≥ k cá nhân"]
+        LDIV["<b>l-Diversity</b> (Machanavajjhala 2007)<br/>Mỗi nhóm có ít nhất l bệnh nhạy cảm"]
+        DIFF["<b>Differential Privacy</b> (Dwork 2008)<br/>Bơm nhiễu toán học Laplace có kiểm soát"]
+        
+        KANON -->|"Khắc phục thiếu đa dạng"| LDIV
+        LDIV -->|"Phân tích dữ liệu lớn/AI"| DIFF
     end
 
-    LAW --> ARCH
-    ARCH --> TECH
-    TECH --> MATH
+    %% LIÊN KẾT NODE-TO-NODE CHUẨN XÁC
+    IRB -->|"Phê duyệt điều kiện"| FS
+    TRE -->|"Triển khai xử lý tại chỗ"| STEP1
+    STEP3 -->|"Kiểm định toán học"| KANON
 
-    classDef law fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px;
-    classDef arch fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef tech fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
-    classDef math fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    %% MÀU SẮC ĐỘ TƯƠNG PHẢN CAO CHO DARK/LIGHT MODE
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
 
-    class VN,INT,IRB law;
-    class TRE,FS arch;
-    class DIRECT,SHIFT,GEN tech;
-    class KANON,LDIV,DIFF math;
+    class VN,INT,IRB lawStyle;
+    class FS,TRE archStyle;
+    class STEP1,STEP2,STEP3 techStyle;
+    class KANON,LDIV,DIFF mathStyle;
 ```
 
 ---
