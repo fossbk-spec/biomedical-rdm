@@ -51,4 +51,4 @@
 ## 2026-11-21 — Audit trang nguồn cho 47 mục không DOI
 
 - Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, Gemini chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
-- `citation-audit.csv` thêm cột `page_check`, `page_check_note`. Chỉ chuyển `VERIFIED_UNAUDITED` → `BIB_PENDING` với 6 mục PARTIAL. Mục MATCH giữ `VERIFIED_UNAUDITED` (chưa đủ điều kiện `VERIFIED`); mục NOT_CHECKED/MISMATCH (trang chặn truy cập hoặc không có URL) cần audit thủ công.
+- `citation-audit.csv` thêm cột `page_check`, `page_check_note` (chỉ để tham khảo). **Cột `status` không đổi** do kiểm tra trang: kết quả này không đủ căn cứ để đổi trạng thái theo định nghĩa ở trên. Chỉ trang HTML được đối chiếu; PDF và trang chặn truy cập là `NOT_CHECKED` (script không trích xuất PDF). Sửa sau review của Codex: regex lọc script/style, chặn URL không phải http(s) hoặc IP nội bộ, điền `found_url`.
