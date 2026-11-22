@@ -1,6 +1,6 @@
 # Hướng dẫn sơ đồ, công thức và quiz cho sách/khóa học web (dùng lại cho các sách khác)
 
-**Người nghiệm thu:** TS. Hoàng Quang Huy (Ben) · **Phiên bản:** 1.0.0 · **Ngày:** 22/11/2026
+**Người nghiệm thu:** TS. Hoàng Quang Huy (Ben) · **Phiên bản:** 1.1.0 · **Ngày:** 22/11/2026
 **Nguồn kinh nghiệm:** dự án Biomedical RDM (repo gốc `biomedical-rdm` dùng Quarto; web `biomedical-rdm-course` dùng VitePress, Pages từ nhánh `gh-pages`).
 **Mục đích:** lưu các đề xuất để cập nhật vào quy trình biên soạn các sách khác (hmyt-book, ai4l-book, tdtk…).
 
@@ -40,6 +40,35 @@
 - Nhãn HTML (foreignObject) bị cắt chữ vì Mermaid đo bằng phông khác phông của trang. Cách sửa: `htmlLabels: false` ở **cấp gốc** của cấu hình (từ Mermaid 11, `flowchart.htmlLabels` đã lỗi thời) và đợi `document.fonts.ready`.
 - Máy chủ `vitepress preview` lưu danh sách tệp lúc khởi động: build lại tệp có hash mới thì phải khởi động lại preview, nếu không trình duyệt nhận 404 và hiển thị bản cũ.
 - Bộ nhớ đệm trình duyệt tự động hóa có thể giữ trang cũ: thêm tham số `?v=n` khi kiểm.
+
+## 2.1. Quy tắc thiết kế sơ đồ Mermaid
+
+Các quy tắc dưới đây là nguồn chân lý cho sơ đồ Mermaid trong giáo trình:
+
+1. Chỉ dùng `<br/>` để xuống dòng; không dùng thẻ HTML khác. Nhấn mạnh tiêu đề bằng chữ IN HOA ngắn hoặc văn bản thường.
+2. Nhãn nút tối đa 3 dòng ngắn (tiêu đề và tối đa 2 ý); mỗi dòng nên khoảng 32 ký tự trở xuống.
+3. Không đưa số hiệu pháp luật, ngày, phiên bản chuẩn/công cụ hoặc dữ kiện dễ hết hạn vào nhãn; dùng nhãn trung tính và trỏ về phụ lục.
+4. Nối nút với nút, không nối subgraph với subgraph; các bước quy trình phải có mũi tên theo thứ tự và nhãn cạnh ngắn.
+5. Mỗi `classDef` phải khai báo `fill`, `stroke` và `color:#0D1117`. Dùng năm lớp màu ngữ nghĩa sau:
+
+| Miền | `classDef` | Nền | Viền | Dùng cho |
+|---|---|---|---|---|
+| Pháp lý & đạo đức | `lawStyle` | `#E8EAF6` | `#283593` | Pháp luật, đạo đức, IRB |
+| Kiến trúc & quản trị | `archStyle` | `#E0F2FE` | `#0277BD` | Five Safes, TRE, hạ tầng |
+| Kỹ thuật & pipeline | `techStyle` | `#FFF3E0` | `#E65100` | ETL, khử định danh, kiểm tra |
+| Toán học & tiêu chuẩn | `mathStyle` | `#E8F5E9` | `#2E7D32` | Riêng tư, FAIR, chuẩn |
+| Cảnh báo & rủi ro | `warnStyle` | `#FFEBEE` | `#C62828` | Rò rỉ, lỗi, nguy cơ |
+
+6. Mục tiêu kích thước tự nhiên ở 100% là rộng và cao khoảng không quá 900 px; ưu tiên `TD` hoặc chia chuỗi rộng thành hai dòng.
+7. Mỗi sơ đồ phải có tiêu đề hình và mô tả văn bản ngay dưới khối để làm văn bản thay thế; không sửa các đoạn văn khác chỉ để lặp lại sơ đồ.
+
+### Lỗi bố cục và giới hạn kiểm chứng
+
+Nối subgraph với subgraph có thể tạo khoảng trống hoặc kéo giãn khung trong một số trình dựng. Đây là quan sát phụ thuộc phiên bản và môi trường; hiện chưa tái hiện được trên Mermaid 12 trên web, nên quy tắc nối nút với nút được dùng như khuyến nghị thực hành. Các chuỗi một hàng dài và nhãn quá tải cũng dễ làm đảo thứ tự hoặc vượt khung.
+
+Tỷ số tương phản của chữ `#0D1117` trên các nền lần lượt là: `#E8EAF6` **15,80:1**, `#E0F2FE` **16,49:1**, `#FFF3E0` **17,26:1**, `#E8F5E9` **16,82:1**, `#FFEBEE` **16,55:1**. Các tỷ số này đạt AA cho chữ thường theo ngưỡng 4,5:1; phép tính mới bao phủ chữ trong nút, chưa kiểm chế độ tối đầy đủ ở nhãn cạnh và tiêu đề subgraph.
+
+Chưa có ảnh chụp hoặc tên công cụ IDE trong kho làm bằng chứng; kiểm chứng render trực tiếp vẫn cần ghi riêng khi thực hiện.
 
 ## 3. Công thức
 
