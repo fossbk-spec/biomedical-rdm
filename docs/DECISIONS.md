@@ -1,5 +1,11 @@
 # Decision log
 
+## 2026-11-22 — Quy tắc sơ đồ Mermaid
+
+- **Quyết định:** Dùng nguồn Mermaid không HTML ngoài `<br/>`, nhãn gọn, không đưa dữ kiện dễ hết hạn vào nhãn, và trình bày các biện pháp song song khi chúng không phải quy trình tuần tự.
+- **Người quyết định:** Ben.
+- **Nguồn chân lý:** `docs/guides/diagrams-math-quiz-web.md`.
+
 ## 2026-11-22 — Xác nhận các quyết định mặc định và chấp nhận tạm thời các mục chưa kiểm
 
 - **Quyết định:** Ben xác nhận các mặc định đã dùng cho ch02–ch06 và nhóm syllabus (case study ghi "tình huống giả định minh họa"; lab giữ trong cùng file với chương; không dùng số hay khẳng định chưa đọc được ở nguồn; quiz tổng hợp là câu khái niệm không dạy dữ kiện có ngày; capstone là tình huống giả định không dùng tên dự án thật). Các mục `CONTENT_PENDING` được chấp nhận tạm thời.

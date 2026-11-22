@@ -13,6 +13,14 @@ REDCap2SDTM
 REDCap2OMOP
 ALCOA++
 CONTENT_PENDING
+Luật \d
+NĐ \d
+Nghị định
+Thông tư
+\bR[456]\b
+v\d+\.\d+
+NOT-OD
+20\d\d
 OMOP CDM v5.4
 CDISC SDTM
 FDA Data Standards Catalog

@@ -26,33 +26,30 @@ Sau khi hoàn thành chương này, người học đạt được các năng l�
 
 ```mermaid
 flowchart TD
-    subgraph VONG_DOI["VÒNG ĐỜI 7 GIAI ĐOẠN DỮ LIỆU Y SINH"]
+    subgraph VONG_DOI["VÒNG ĐỜI DỮ LIỆU Y SINH"]
         direction TB
-        G1["<b>1. Thiết kế & DMP</b><br/>Quyết định thượng nguồn"] --> G2["<b>2. Thu thập dữ liệu</b><br/>ALCOA+, GCP, REDCap EDC"]
-        G2 --> G3["<b>3. Xử lý & Làm sạch</b><br/>Validation, DQD checks"]
-        G3 --> G4["<b>4. Chuẩn hóa dữ liệu</b><br/>CDISC, FHIR, OMOP CDM"]
-        G4 --> G5["<b>5. Phân tích & AI</b><br/>AI-ready, SSoT, Tái lập"]
-        G5 --> G6["<b>6. FAIR & Chia sẻ</b><br/>Zenodo, PID/DOI, DUA"]
-        G6 --> G7["<b>7. Lưu trữ & Hủy an toàn</b><br/>Retention Policy, NIST SP 800-88"]
+        G1["1. Thiết kế & DMP<br/>Quyết định thượng nguồn"] --> G2["2. Thu thập dữ liệu<br/>ALCOA+, GCP, EDC"]
+        G2 --> G3["3. Xử lý & làm sạch<br/>Kiểm tra chất lượng"]
+        G3 --> G4["4. Chuẩn hóa dữ liệu<br/>CDISC, FHIR, OMOP"]
+        G4 --> G5["5. Phân tích & tái lập<br/>Sẵn sàng cho phân tích"]
+        G5 --> G6["6. FAIR & chia sẻ<br/>Định danh, thỏa thuận"]
+        G6 --> G7["7. Lưu trữ & hủy an toàn<br/>Theo chính sách lưu trữ"]
     end
+    GOV["QUẢN TRỊ DỮ LIỆU<br/>Chiến lược và thực thi"] -.->|"Định hướng"| G1
+    STEWARD["DATA STEWARD<br/>Chính sách, nghiên cứu, hạ tầng"] -.->|"Giám sát"| G2
+    LAW["PHÁP LÝ & ĐẠO ĐỨC<br/>Bảo vệ dữ liệu và người bệnh"] -.->|"Ranh giới tuân thủ"| G7
 
-    subgraph NEN_TANG["LỚP KIỂM SOÁT XUYÊN SUỐT (FOUNDATIONAL GOVERNANCE)"]
-        direction TB
-        GOV["<b>Quản trị Dữ liệu (Governance)</b><br/>• DAMA-DMBOK & HIMSS AMAM<br/>• Điều hành - Chiến lược - Thực thi"]
-        STEWARD["<b>Đội ngũ Data Steward</b><br/>• Policy (Pháp lý/Đạo đức)<br/>• Research (Y sinh/eCRF)<br/>• Infrastructure (IT/API/TRE)"]
-        LAW["<b>Pháp lý & Đạo đức</b><br/>• Luật 91/2025/QH15 & NĐ 356/2025<br/>• HIPAA, GDPR, ICH E6(R3)"]
-    end
-
-    GOV -.->|"Định hướng chiến lược"| G1
-    STEWARD -.->|"Giám sát & Hỗ trợ kỹ thuật"| G2
-    LAW -.->|"Ranh giới tuân thủ bắt buộc"| G7
-
-    classDef stageStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
-    classDef govStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
-
-    class G1,G2,G3,G4,G5,G6,G7 stageStyle;
-    class GOV,STEWARD,LAW govStyle;
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    class G1,G2,G3,G4,G5,G6,G7 archStyle;
+    class GOV,LAW lawStyle;
+    class STEWARD techStyle;
 ```
+
+**Hình 1. Bản đồ vòng đời dữ liệu y sinh và lớp kiểm soát.** Sơ đồ mô tả bảy giai đoạn liên tiếp của dữ liệu, cùng các điểm quản trị, stewardship và tuân thủ tác động vào chuỗi.
 
 ---
 
@@ -85,17 +82,21 @@ Dữ liệu y sinh không phải là một tập tin tĩnh được lưu trữ m
 
 ```mermaid
 flowchart LR
-    A["<b>Lỗi Thượng nguồn</b><br/>Không chuẩn hóa biến lúc lập DMP<br/><i>(Chi phí: 1x)</i>"] -->|"Khuếch đại lỗi x10"| B["<b>Pha Làm sạch</b><br/>Mất hàng trăm giờ chỉnh tay dữ liệu<br/><i>(Chi phí: 10x)</i>"]
-    B -->|"Khuếch đại lỗi x100"| C["<b>Pha Công bố & AI</b><br/>Bài báo bị rút / Model AI chệch<br/><i>(Chi phí: 100x - Hủy hoại uy tín)</i>"]
+    A["LỖI THƯỢNG NGUỒN<br/>Biến chưa chuẩn hóa<br/>Chi phí 1x"] -->|"Khuếch đại"| B["LÀM SẠCH<br/>Chỉnh tay dữ liệu<br/>Chi phí 10x"]
+    B -->|"Khuếch đại"| C["CÔNG BỐ & PHÂN TÍCH<br/>Sai lệch kết quả<br/>Chi phí 100x"]
 
-    classDef warnLow fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
-    classDef warnMed fill:#FFE0B2,stroke:#EF6C00,stroke-width:2px,color:#0D1117;
-    classDef warnHigh fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
 
-    class A warnLow;
-    class B warnMed;
-    class C warnHigh;
+    class A techStyle;
+    class B warnStyle;
+    class C warnStyle;
 ```
+
+**Hình 2. Khuếch đại lỗi từ thượng nguồn.** Sơ đồ cho thấy một thiếu sót ở khâu lập kế hoạch có thể làm tăng gánh nặng làm sạch và ảnh hưởng đến độ tin cậy của kết quả cuối.
 
 > **Nguyên lý:** *Hiệu ứng khuếch đại lỗi từ thượng nguồn (Upstream Error Amplification).* Sơ đồ trên minh họa logic chi phí: một thiếu sót ở giai đoạn lập kế hoạch có thể làm tăng gánh nặng ở khâu làm sạch và làm giảm giá trị tái sử dụng của tập dữ liệu.
 

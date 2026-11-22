@@ -28,75 +28,48 @@ Sau khi hoàn thành Chương 5, người học đạt được các chuẩn nă
 
 ## 2. BẢN ĐỒ KHÁI NIỆM (CONCEPT MAP)
 
-Sơ đồ dưới đây minh họa hệ thống các lớp phòng vệ bảo mật dữ liệu y tế từ khung pháp lý, đạo đức, kiến trúc hạ tầng cho đến các thuật toán khử định danh chuyên sâu:
+Hai sơ đồ dưới đây tách quản trị an toàn khỏi đường ống khử định danh và các mô hình bảo vệ toán học:
 
 ```mermaid
 flowchart TD
-    %% ==========================================
-    %% TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC
-    %% ==========================================
-    subgraph LAW["TẦNG 1: KHUNG PHÁP LÝ & ĐẠO ĐỨC Y SINH"]
-        direction TB
-        subgraph LAW_CORES[" "]
-            direction LR
-            VN["<b>Pháp luật Việt Nam</b><br/>• Luật 91/2025/QH15 & NĐ 356/2025<br/>• Bảo mật hồ sơ bệnh án"]
-            INT["<b>Chuẩn mực Quốc tế</b><br/>• HIPAA Safe Harbor / Expert Det.<br/>• GDPR (EU) & EHDS"]
-            IRB["<b>Hội đồng Đạo đức (IRB/IEC)</b><br/>• Chấp thuận đề cương<br/>• Giám sát Informed Consent"]
-        end
-    end
+    VN["PHÁP LUẬT<br/>Bảo mật hồ sơ"] --> IRB["ĐẠO ĐỨC<br/>Phê duyệt và giám sát"]
+    INT["CHUẨN MỰC QUỐC TẾ<br/>Bảo vệ dữ liệu"] --> IRB
+    IRB -->|"Quản trị"| FS["FIVE SAFES<br/>Người, dự án, nơi, dữ liệu, đầu ra"]
+    FS -->|"Hiện thực hóa"| TRE["TRE<br/>Cô lập và kiểm soát xuất"]
+    TRE -->|"Cho phép"| ACCESS["TRUY CẬP AN TOÀN<br/>Theo vai trò và đầu ra"]
 
-    %% ==========================================
-    %% TẦNG 2: MÔ HÌNH QUẢN TRỊ AN TOÀN
-    %% ==========================================
-    subgraph ARCH["TẦNG 2: MÔ HÌNH QUẢN TRỊ AN TOÀN (FIVE SAFES & TRE)"]
-        direction LR
-        FS["<b>Khung Five Safes</b><br/>1. Safe People | 2. Safe Projects<br/>3. Safe Settings | 4. Safe Data<br/>5. Safe Outputs"]
-        TRE["<b>Môi trường Nghiên cứu Tin cậy</b><br/>(TRE / Secure Data Environment)<br/>• Tường lửa cô lập & Vùng phân tích an toàn<br/>• Không cho phép sao chép dữ liệu thô"]
-        FS -->|"Hiện thực hóa hạ tầng"| TRE
-    end
-
-    %% ==========================================
-    %% TẦNG 3: PIPELINE KHỬ ĐỊNH DANH
-    %% ==========================================
-    subgraph TECH["TẦNG 3: ĐƯỜNG ỐNG KHỬ ĐỊNH DANH (DE-IDENTIFICATION PIPELINE)"]
-        direction LR
-        STEP1["<b>Bước 1: Bỏ Định danh Trực tiếp</b><br/>• Tên, SĐT, Số CCCD, Địa chỉ<br/>• Mã hóa ID ngẫu nhiên"]
-        STEP2["<b>Bước 2: Dịch chuyển Ngày</b><br/>• Date Shifting ngẫu nhiên<br/>• Bảo toàn khoảng cách thời gian"]
-        STEP3["<b>Bước 3: Tổng quát hóa & Ức chế</b><br/>• Gom nhóm tuổi (Top-coding > 89)<br/>• Rút gọn mã bưu chính"]
-        
-        STEP1 -->|"Dữ liệu bán ẩn danh"| STEP2
-        STEP2 -->|"Dữ liệu đồng nhất thời gian"| STEP3
-    end
-
-    %% ==========================================
-    %% TẦNG 4: BẢO VỆ TOÁN HỌC
-    %% ==========================================
-    subgraph MATH["TẦNG 4: BẢO VỆ BẰNG MÔ HÌNH TOÁN HỌC (PRIVACY METRICS)"]
-        direction LR
-        KANON["<b>k-Anonymity</b> (Sweeney 2002)<br/>Nhóm tương đương ≥ k cá nhân"]
-        LDIV["<b>l-Diversity</b> (Machanavajjhala 2007)<br/>Mỗi nhóm có ít nhất l bệnh nhạy cảm"]
-        DIFF["<b>Differential Privacy</b> (Dwork 2008)<br/>Bơm nhiễu toán học Laplace có kiểm soát"]
-        
-        KANON -->|"Khắc phục thiếu đa dạng"| LDIV
-        LDIV -->|"Phân tích dữ liệu lớn/AI"| DIFF
-    end
-
-    %% LIÊN KẾT NODE-TO-NODE CHUẨN XÁC
-    IRB -->|"Phê duyệt điều kiện"| FS
-    TRE -->|"Triển khai xử lý tại chỗ"| STEP1
-    STEP3 -->|"Kiểm định toán học"| KANON
-
-    %% MÀU SẮC ĐỘ TƯƠNG PHẢN CAO CHO DARK/LIGHT MODE
     classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
     classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
     classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
     classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
 
     class VN,INT,IRB lawStyle;
-    class FS,TRE archStyle;
-    class STEP1,STEP2,STEP3 techStyle;
-    class KANON,LDIV,DIFF mathStyle;
+    class FS,TRE,ACCESS archStyle;
 ```
+
+**Hình 6a. Khung pháp lý, đạo đức và quản trị an toàn.** Sơ đồ nối pháp luật, chuẩn mực quốc tế và giám sát đạo đức với Five Safes, TRE và quyền truy cập có điều kiện.
+
+```mermaid
+flowchart TD
+    STEP1["BỎ ĐỊNH DANH<br/>Tên, liên hệ, địa chỉ"] -->|"Mã hóa"| STEP2["DỊCH CHUYỂN NGÀY<br/>Giữ khoảng cách thời gian"]
+    STEP2 -->|"Tổng quát hóa"| STEP3["ỨC CHẾ<br/>Nhóm tuổi và địa chỉ"]
+    STEP3 -->|"Đánh giá"| METRIC["ĐO VÀ BẢO VỆ<br/>Chọn biện pháp phù hợp"]
+    METRIC --> KANON["k-ANONYMITY<br/>Nhóm tương đương"]
+    METRIC --> LDIV["l-DIVERSITY<br/>Đa dạng thuộc tính nhạy cảm"]
+    METRIC --> DIFF["DIFFERENTIAL PRIVACY<br/>Nhiễu có kiểm soát"]
+
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+
+    class STEP1,STEP2,STEP3 techStyle;
+    class METRIC,KANON,LDIV,DIFF mathStyle;
+```
+
+**Hình 6b. Đường ống khử định danh và các mô hình bảo vệ.** Sơ đồ thể hiện ba bước xử lý tại nguồn, sau đó tách thành ba lựa chọn song song: k-anonymity, l-diversity và differential privacy.
 
 ---
 

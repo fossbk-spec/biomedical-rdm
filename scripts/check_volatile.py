@@ -1,4 +1,13 @@
-"""Check volatile chapter terms and appendix review dates."""
+"""Check volatile chapter terms, Mermaid labels, and appendix review dates.
+
+Usage:
+    python scripts/check_volatile.py --check
+
+With ``--check``, exit status 1 means that a violation was found. Mermaid
+blocks in chapters ch01--ch06 are checked for HTML other than ``<br/>`` and
+for volatile terms listed in ``scripts/volatile_terms.txt``. The built-in
+self-test proves that a deliberately bad sample is detected.
+"""
 from __future__ import annotations
 
 import argparse
@@ -16,6 +25,29 @@ def load_terms() -> list[str]:
     return [x.strip() for x in TERMS.read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")]
 
 
+def scan_mermaid(text: str, terms: list[str], path: Path) -> list[str]:
+    violations: list[str] = []
+    blocks = re.findall(r"```mermaid\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
+    allowed_years = ("Sweeney 2002", "Machanavajjhala 2007", "Dwork 2008")
+    allowed_stable_terms = {"ALCOA++", "CDISC SDTM", "k-anonymity", "l-diversity", "Five Safes"}
+    for number, block in enumerate(blocks, 1):
+        html_hits = re.findall(r"<(?!br\s*/?>)[^>]+>", block, flags=re.IGNORECASE)
+        if html_hits:
+            violations.append(f"{path.relative_to(ROOT)} Mermaid block {number}: HTML tag(s) other than <br/>: {', '.join(sorted(set(html_hits)))}")
+        stable_block = block
+        for allowed in allowed_years:
+            stable_block = stable_block.replace(allowed, "")
+        hits = [term for term in terms if term not in allowed_stable_terms and re.search(term, stable_block, re.IGNORECASE)]
+        if hits:
+            violations.append(f"{path.relative_to(ROOT)} Mermaid block {number}: {', '.join(hits)}")
+    return violations
+
+
+def self_test(terms: list[str]) -> bool:
+    sample = 'flowchart TD\n  A["<b>Luật 91/2025</b>"]'
+    return bool(scan_mermaid(f"```mermaid\n{sample}\n```", terms, ROOT / "docs" / "chapters" / "ch01_test.md"))
+
+
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -25,9 +57,16 @@ def main() -> int:
     today = dt.date(2026, 11, 21)
     violations: list[str] = []
     terms = load_terms()
+    if not self_test(terms):
+        print("SELF-TEST: FAILED (sample violation was not detected)")
+        return 2
+    print("SELF-TEST: passed (sample Mermaid violation detected)")
     chapter_paths = sorted((ROOT / "docs" / "chapters").glob("ch0[0-7]_*.md"))
     for path in chapter_paths:
-        paragraphs = re.split(r"\n\s*\n", path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        if path.name.startswith(("ch01_", "ch02_", "ch03_", "ch04_", "ch05_", "ch06_")):
+            violations.extend(scan_mermaid(text, terms, path))
+        paragraphs = re.split(r"\n\s*\n", text)
         paragraphs = [p for p in paragraphs if "\n## " in p or p.lstrip().startswith("## ")]
         for number, paragraph in enumerate(paragraphs, 1):
             hits = [term for term in terms if re.search(term, paragraph, re.IGNORECASE)]

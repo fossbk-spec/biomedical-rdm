@@ -31,74 +31,40 @@ Sơ đồ dưới đây minh họa hệ sinh thái ba chuẩn dữ liệu y tế
 
 ```mermaid
 flowchart TD
-    %% ==========================================
-    %% TẦNG 1: NGUỒN DỮ LIỆU THỰC TẾ
-    %% ==========================================
-    subgraph SOURCE["NGUỒN DỮ LIỆU THỰC TẾ (CLINICAL SOURCE DATA)"]
-        direction LR
-        EHR["<b>Bệnh án Điện tử Bệnh viện</b><br/>HIS / LIS / PACS / EMR"]
-        CT["<b>Thử nghiệm Lâm sàng</b><br/>eCRF / EDC (REDCap, Castor)"]
-        REG["<b>Dữ liệu Bảo hiểm & Sổ bộ</b><br/>Claims / Registries / Wearables"]
-    end
-
-    %% ==========================================
-    %% TẦNG 2: BA CHUẨN DỮ LIỆU CỐT LÕI
-    %% ==========================================
-    subgraph STANDARDS["BA CHUẨN DỮ LIỆU CỐT LÕI (THREE CORE PILLARS)"]
-        direction TB
-        FHIR["<b>HL7 FHIR (R4 / R5)</b><br/>• Bản chất: Tài nguyên RESTful API (JSON)<br/>• Sứ mệnh: Trao đổi dữ liệu thời gian thực"]
-        CDISC["<b>CDISC (SDTM & ADaM)</b><br/>• Bản chất: Bảng 2D phẳng theo miền (Domains)<br/>• Sứ mệnh: Nộp hồ sơ pháp lý (FDA/PMDA)"]
-        OMOP["<b>OMOP CDM v5.4 (OHDSI)</b><br/>• Bản chất: RDBMS tập trung người bệnh<br/>• Sứ mệnh: Phân tích dịch tễ & dữ liệu thế giới thực"]
-    end
-
-    %% ==========================================
-    %% TẦNG 3: CẦU NỐI LIÊN THÔNG NGỮ NGHĨA
-    %% ==========================================
-    subgraph BRIDGES["CẦU NỐI CHUYỂN ĐỔI NGỮ NGHĨA (INTEROPERABILITY BRIDGES)"]
-        direction LR
-        F2O["<b>FHIR-to-OMOP IG</b><br/>Trao đổi lâm sàng ➔ Phân tích"]
-        F2C["<b>FHIR-to-CDISC Mapping</b><br/>Rút trích EHR ➔ Thử nghiệm lâm sàng"]
-        R2O["<b>REDCap2OMOP / REDCap2SDTM</b><br/>Dữ liệu EDC ➔ Chuẩn quốc tế"]
-    end
-
-    %% ==========================================
-    %% TẦNG 4: MỤC TIÊU ỨNG DỤNG CUỐI CÙNG
-    %% ==========================================
-    subgraph USECASES["MỤC TIÊU SỬ DỤNG CUỐI CÙNG (END-USER APPLICATIONS)"]
-        direction LR
-        APP["<b>SMART on FHIR Apps</b><br/>Hỗ trợ quyết định lâm sàng tại giường"]
-        REG_SUB["<b>Hồ sơ Đăng ký Thuốc (eSubmissions)</b><br/>Nộp cơ quan quản lý (FDA / EMA / PMDA)"]
-        FED_RES["<b>Nghiên cứu Phân tán OHDSI</b><br/>Phân tích hàng trăm triệu hồ sơ an toàn"]
-    end
-
-    %% ==========================================
-    %% DÒNG DỮ LIỆU LIÊN THÔNG (NODE-TO-NODE)
-    %% ==========================================
-    EHR -->|"RESTful API / Webhooks"| FHIR
-    CT -->|"REDCap2SDTM"| CDISC
-    REG -->|"ETL Mapping"| OMOP
-
-    FHIR --> F2O --> OMOP
-    FHIR --> F2C --> CDISC
-    CT --> R2O --> OMOP
-
-    FHIR --> APP
-    CDISC --> REG_SUB
-    OMOP --> FED_RES
-
-    %% ==========================================
-    %% BẢNG MÀU TƯƠNG PHẢN CAO CHO DARK/LIGHT MODE
-    %% ==========================================
-    classDef srcStyle fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#0D1117;
-    classDef stdStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
-    classDef brgStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
-    classDef useStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
-
-    class EHR,CT,REG srcStyle;
-    class FHIR,CDISC,OMOP stdStyle;
-    class F2O,F2C,R2O brgStyle;
-    class APP,REG_SUB,FED_RES useStyle;
+    EHR["BỆNH ÁN ĐIỆN TỬ<br/>HIS, LIS, PACS, EMR"] -->|"Trao đổi"| FHIR["FHIR<br/>Tài nguyên trao đổi"]
+    CT["THỬ NGHIỆM LÂM SÀNG<br/>eCRF và EDC"] -->|"Cấu trúc miền"| CDISC["CDISC<br/>Bảng theo miền"]
+    REG["BẢO HIỂM VÀ SỔ BỘ<br/>Claims, registry, thiết bị"] -->|"Ánh xạ"| OMOP["OMOP<br/>Mô hình người bệnh"]
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    class EHR,CT,REG lawStyle;
+    class FHIR,CDISC,OMOP archStyle;
 ```
+
+**Hình 5a. Nguồn dữ liệu và ba chuẩn cốt lõi.** Sơ đồ đặt FHIR, CDISC và OMOP cạnh nhau như ba vai trò bổ trợ, mỗi chuẩn nhận dữ liệu từ các loại nguồn phù hợp.
+
+```mermaid
+flowchart TD
+    FHIR["FHIR<br/>Trao đổi lâm sàng"] --> F2O["CẦU FHIR → OMOP<br/>Trao đổi sang phân tích"] --> OMOP["OMOP<br/>Phân tích dữ liệu"]
+    FHIR --> F2C["CẦU FHIR → CDISC<br/>Rút trích sang thử nghiệm"] --> CDISC["CDISC<br/>Nộp và phân tích thử nghiệm"]
+    CT["DỮ LIỆU EDC<br/>Biểu mẫu nghiên cứu"] --> R2O["CẦU EDC → CHUẨN<br/>Ánh xạ dữ liệu nghiên cứu"] --> OMOP
+    FHIR --> APP["ỨNG DỤNG LÂM SÀNG<br/>Hỗ trợ quyết định"]
+    CDISC --> SUB["HỒ SƠ ĐĂNG KÝ<br/>Đầu ra quản lý"]
+    OMOP --> FED["NGHIÊN CỨU PHÂN TÁN<br/>Phân tích đa cơ sở"]
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    class FHIR,CDISC,OMOP archStyle;
+    class F2O,F2C,R2O techStyle;
+    class CT lawStyle;
+    class APP,SUB,FED mathStyle;
+```
+
+**Hình 5b. Cầu nối chuyển đổi và đích sử dụng.** Sơ đồ tách các hướng ánh xạ FHIR–OMOP, FHIR–CDISC và EDC–chuẩn khỏi các ứng dụng lâm sàng, hồ sơ đăng ký và nghiên cứu phân tán.
 
 ---
 

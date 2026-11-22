@@ -28,61 +28,52 @@ Sau khi hoàn thành Chương 2, người học có khả năng đạt được 
 
 ## 2. BẢN ĐỒ KHÁI NIỆM (CONCEPT MAP)
 
-Sơ đồ dưới đây minh họa mối quan hệ giữa các quy định pháp lý, nguyên tắc toàn vẹn dữ liệu và quy trình hiện thực hóa kỹ thuật trên nền tảng EDC / REDCap:
+Hai sơ đồ dưới đây tách khung quản trị khỏi kiến trúc REDCap để làm rõ đường đi từ yêu cầu toàn vẹn đến kiểm soát và chuyển đổi dữ liệu:
+
+```mermaid
+flowchart LR
+    GCP["GCP<br/>Quản trị rủi ro"] -->|"Yêu cầu"| ALCOA["ALCOA+<br/>Toàn vẹn dữ liệu"]
+    CFR["HỒ SƠ ĐIỆN TỬ<br/>Chữ ký và toàn vẹn"] -->|"Ràng buộc"| EDC["HỆ THỐNG EDC<br/>Kiểm soát và kiểm toán"]
+    ALCOA -->|"Đối chiếu"| EXCEL["BẢNG TÍNH<br/>Thiếu vết kiểm toán"]
+    ALCOA -->|"Đáp ứng"| EDC
+
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+
+    class GCP,CFR,ALCOA lawStyle;
+    class EDC archStyle;
+    class EXCEL warnStyle;
+```
+
+**Hình 3a. Khung toàn vẹn và lựa chọn công cụ.** Sơ đồ đối chiếu yêu cầu GCP, hồ sơ điện tử và ALCOA+ với rủi ro của bảng tính và kiểm soát của hệ thống EDC.
 
 ```mermaid
 flowchart TD
-    subgraph ST["TẦNG 1: KHUNG PHÁP LÝ & NGUYÊN TẮC (GOVERNANCE & INTEGRITY)"]
-        direction LR
-        GCP["<b>ICH E6(R3) GCP</b><br/>Quản trị rủi ro & Dữ liệu lâm sàng"]
-        CFR["<b>FDA 21 CFR Part 11</b><br/>Electronic Records & Signatures"]
-        ALCOA["<b>Khung Toàn vẹn ALCOA+</b><br/>Attributable, Contemporaneous, Original..."]
-    end
+    PROJ["DỰ ÁN REDCap<br/>Cấu hình nghiên cứu"] -->|"Khai báo"| FORM["BIỂU MẪU eCRF<br/>Đối tượng và lượt thăm"]
+    FORM -->|"Mô tả"| DD["TỪ ĐIỂN DỮ LIỆU<br/>Biến và ràng buộc"]
+    DD --> VAL["KIỂM TRA GIÁ TRỊ<br/>Chặn dữ liệu sai"]
+    DD --> LOGIC["LOGIC RẼ NHÁNH<br/>Trường theo điều kiện"]
+    PROJ --> AUDIT["VẾT KIỂM TOÁN<br/>Ai, khi nào, giá trị gì"]
+    PROJ --> RBAC["PHÂN QUYỀN<br/>Giới hạn truy cập"]
+    VAL --> STD["CHUẨN HÓA ĐẦU RA<br/>Chuyển sang chuẩn dữ liệu"]
+    LOGIC --> STD
+    AUDIT --> STD
+    RBAC --> STD
 
-    subgraph RISK["TẦNG 2: ĐỐI CHIẾU CÔNG CỤ (SPREADSHEET VS EDC)"]
-        direction LR
-        EXCEL["<b>Bảng tính thủ công (Excel/Sheets)</b><br/>❌ Không audit trail, dễ gõ đè, lỗi tên gen"]
-        EDC["<b>Hệ thống EDC (REDCap / Castor)</b><br/>✅ Ràng buộc nhập liệu, vết kiểm toán bất biến"]
-    end
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
 
-    subgraph REDCAP["TẦNG 3: HIỆN THỰC HÓA TRÊN REDCAP (METADATA-DRIVEN ARCHITECTURE)"]
-        direction LR
-        PROJ["<b>REDCap Project</b><br/>Classic vs Longitudinal"]
-        INST["<b>Instruments (eCRF)</b><br/>Demographics | Visit | Adverse Events"]
-        DD["<b>Từ điển Dữ liệu (18 cột)</b><br/>Biến, Nhãn, Kiểu, Ràng buộc, Rẽ nhánh"]
-        PROJ --> INST --> DD
-    end
-
-    subgraph CTRL["TẦNG 4: CƠ CHẾ KIỂM SOÁT TẠI NGUỒN (SOURCE DATA CONTROL)"]
-        direction LR
-        VAL["<b>Validation & Range Checks</b><br/>Chặn nhập sai huyết áp, nhịp tim"]
-        BR["<b>Branching Logic</b><br/>Chỉ hiện form khi thỏa mãn điều kiện"]
-        AUDIT["<b>Immutable Audit Trail</b><br/>Ai sửa? Giờ nào? Giá trị cũ/mới?"]
-        RBAC["<b>Phân quyền & Đánh dấu PHI</b><br/>Data Access Groups, Chặn export"]
-        VAL --> BR --> AUDIT --> RBAC
-    end
-
-    subgraph DOWN["TẦNG 5: HẠ TẦNG KẾ THỪA (DOWNSTREAM INTEROPERABILITY)"]
-        direction LR
-        SDTM["<b>REDCap2SDTM</b><br/>Chuyển đổi sang CDISC SDTM"]
-        OMOP["<b>REDCap2OMOP</b><br/>Chuyển đổi sang OMOP CDM"]
-    end
-
-    %% LIÊN KẾT NODE-TO-NODE CHUẨN XÁC
-    ALCOA -->|"Định hướng yêu cầu"| EDC
-    EDC -->|"Triển khai thiết kế"| PROJ
-    DD -->|"Cấu hình quy tắc kiểm soát"| VAL
-    RBAC -->|"Xuất dữ liệu chuẩn hóa"| SDTM
-    RBAC -->|"Xuất dữ liệu chuẩn hóa"| OMOP
-
-    classDef primary fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
-    classDef warn fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
-    classDef success fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
-
-    class GCP,CFR,ALCOA,PROJ,INST,DD primary;
-    class EXCEL warn;
-    class EDC,VAL,BR,AUDIT,RBAC,SDTM,OMOP success;
+    class PROJ,FORM,DD archStyle;
+    class VAL,LOGIC,AUDIT,RBAC,STD techStyle;
 ```
+
+**Hình 3b. Kiến trúc REDCap và kiểm soát tại nguồn.** Sơ đồ đi từ dự án, biểu mẫu và từ điển dữ liệu qua kiểm tra, logic rẽ nhánh, vết kiểm toán và phân quyền đến đầu ra CDISC SDTM và OMOP.
 
 ---
 
@@ -146,15 +137,21 @@ Hiệp hội Quản lý Dữ liệu Lâm sàng (Society for Clinical Data Manage
 **REDCap (Research Electronic Data Capture)** được khởi xướng và phát triển từ năm 2004 tại Đại học Vanderbilt (Hoa Kỳ) bởi Paul A. Harris và các cộng sự [@ref_006]. Khác với các hệ thống cơ sở dữ liệu lâm sàng thương mại đắt đỏ (như Medidata Rave hay Oracle InForm) hoặc các phần mềm độc quyền đòi hỏi lập trình viên chuyên trách cấu hình bảng SQL riêng cho từng nghiên cứu, REDCap tạo ra một cuộc cách mạng trong tin học y sinh nhờ **Kiến trúc hướng siêu dữ liệu (Metadata-Driven Architecture)**:
 
 ```mermaid
-flowchart LR
-    A["Thiết kế viên / Data Manager"] -->|"Khai báo biểu mẫu qua UI hoặc File CSV"| B["Từ điển Siêu dữ liệu<br/>(Metadata Dictionary Table)"]
-    B -->|"Động hóa cấu trúc hiển thị & logic"| C["Giao diện eCRF / Khảo sát Web"]
-    C -->|"Người dùng nhập liệu lâm sàng"| D["Bảng dữ liệu lưu trữ hợp nhất<br/>(EAV Model: redcap_data)"]
-    D -->|"Kiểm toán tự động từng giao dịch"| E["Bảng Vết kiểm toán<br/>(redcap_log_event)"]
+flowchart TD
+    A["THIẾT KẾ BIỂU MẪU<br/>Quản lý dữ liệu"] -->|"Khai báo"| B["TỪ ĐIỂN SIÊU DỮ LIỆU<br/>Cấu trúc và logic"]
+    B -->|"Sinh giao diện"| C["eCRF / KHẢO SÁT WEB<br/>Nhập dữ liệu lâm sàng"]
+    C -->|"Lưu bản ghi"| D["BẢNG DỮ LIỆU<br/>Mô hình EAV"]
+    D -->|"Ghi giao dịch"| E["VẾT KIỂM TOÁN<br/>Lịch sử thay đổi"]
 
-    classDef core fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
-    class A,B,C,D,E core;
+    classDef lawStyle fill:#E8EAF6,stroke:#283593,stroke-width:2px,color:#0D1117;
+    classDef archStyle fill:#E0F2FE,stroke:#0277BD,stroke-width:2px,color:#0D1117;
+    classDef techStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#0D1117;
+    classDef mathStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#0D1117;
+    classDef warnStyle fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#0D1117;
+    class A,B,C,D,E archStyle;
 ```
+
+**Hình 4. Luồng siêu dữ liệu của biểu mẫu điện tử.** Sơ đồ mô tả cách khai báo biểu mẫu tạo ra giao diện, bản ghi EAV và vết kiểm toán cho từng giao dịch.
 
 Trong REDCap:
 - Toàn bộ cấu hình của một nghiên cứu (tên biến, loại câu hỏi, giới hạn kiểm tra, logic nhảy) được lưu trữ dưới dạng các hàng dữ liệu mô tả (*metadata*) trong các bảng hệ thống, thay vì tạo mới các cột hoặc bảng SQL trong cơ sở dữ liệu quan hệ truyền thống.
