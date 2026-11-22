@@ -35,8 +35,8 @@ Tổng số 34 câu. Học viên đạt khi đúng ít nhất 24/34 câu và đ�
 
 ```
 1. Thiết kế & DMP → 2. Thu thập → 3. Làm sạch & kiểm tra
-→ 4. Chuẩn hóa (CDISC / FHIR / OMOP) → 5. FAIR & chia sẻ
-→ 6. Bảo mật & pháp lý → 7. Kết thúc: lưu trữ / hủy an toàn
+→ 4. Chuẩn hóa (CDISC / FHIR / OMOP) → 5. Bảo mật & khử định danh
+→ 6. FAIR & AI-ready → 7. Kết thúc: lưu trữ / hủy an toàn
 ```
 
 Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trường dữ liệu không định nghĩa ở bước 1 sẽ thành dữ liệu khuyết, không so sánh được, hoặc không dùng được cho AI ở bước 5–7. DMP không phải thủ tục hành chính — nó là bản hợp đồng về dữ liệu của cả nghiên cứu.
@@ -50,8 +50,8 @@ Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trư�
 | Làm sạch & kiểm tra | Xử lý và chuẩn hóa |
 | Chuẩn hóa | Xử lý và chuẩn hóa |
 | Phân tích | Bước 3–4: làm sạch, kiểm tra và chuẩn hóa để phân tích |
-| FAIR & chia sẻ | Chia sẻ và công bố |
-| Bảo mật & pháp lý | Áp dụng xuyên suốt |
+| Bảo mật & khử định danh | Áp dụng xuyên suốt |
+| FAIR & AI-ready | Chia sẻ, công bố và tái sử dụng |
 | Kết thúc: lưu trữ / hủy an toàn | Lưu trữ dài hạn hoặc tiêu hủy |
 
 ---
@@ -59,7 +59,7 @@ Quy tắc xuyên suốt: **quyết định càng sớm càng rẻ**. Một trư�
 <!-- page: course/module-1-dmp/index.md -->
 # Bài 1 — Thiết kế nghiên cứu và Kế hoạch quản lý dữ liệu (DMP)
 
-**Mục tiêu:** viết được DMP 2 trang cho một nghiên cứu giả định; phân biệt được DMP, protocol và CRF.
+**Mục tiêu:** viết được DMP theo mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe cho một nghiên cứu giả định; phân biệt được DMP, protocol và CRF.
 
 ## Nội dung chính
 
@@ -67,7 +67,7 @@ Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên su
 
 Một nghiên cứu bắt đầu bằng câu hỏi lâm sàng, nhưng dữ liệu bắt đầu bằng **Data Management Plan (DMP)** — tài liệu mô tả dữ liệu nào sẽ thu thập, ở định dạng nào, lưu ở đâu, ai được truy cập, chia sẻ ra sao, và lưu bao lâu.
 
-Nhà tài trợ lớn yêu cầu DMP từ lúc nộp hồ sơ. NIH yêu cầu **Data Management and Sharing Plan (DMSP) ≤ 2 trang, 6 thành phần**, chính sách có hiệu lực từ 25/01/2023; từ 25/02/2026, NIH ban hành mẫu tinh giản NOT-OD-26-046, bắt buộc với hồ sơ nộp từ 25/05/2026. Horizon Europe yêu cầu DMP đầy đủ chậm nhất vào tháng thứ 6 của dự án, theo nguyên tắc “mở tối đa có thể, đóng tối thiểu khi cần thiết”, dữ liệu mở theo CC BY/CC0.
+Nhà tài trợ lớn yêu cầu DMP từ lúc nộp hồ sơ. Khi soạn thảo, dùng **mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe**; xem `../appendices/funder-templates.md` để biết phạm vi và trạng thái kiểm chứng. Horizon Europe nhấn mạnh nguyên tắc “mở tối đa có thể, đóng tối thiểu khi cần thiết”.
 
 Ba thứ thường bị nhầm với nhau:
 
@@ -89,12 +89,12 @@ Trước khi thu thập, cần thống nhất ba thứ: **từ điển dữ li�
 - D. Hai tài liệu này là một.
 - **Đáp án: A.** Protocol trả lời câu hỏi nghiên cứu; DMP trả lời câu hỏi quản trị dữ liệu.
 
-**1.2. Theo NIH, DMSP có giới hạn nào?**
-- A. Không giới hạn độ dài.
-- B. Tối đa 2 trang, 6 thành phần.
-- C. Chỉ cần 1 trang, không cần kho lưu trữ.
-- D. Chỉ nộp sau khi nghiên cứu kết thúc.
-- **Đáp án: B.** Chính sách NIH có hiệu lực 25/01/2023; mẫu tinh giản 2026 giữ nguyên chính sách này.
+**1.2. Khi soạn DMSP, lựa chọn nào phù hợp với brief khóa học này?**
+- A. Dùng mẫu NIH hiện hành (7 yếu tố) hoặc Horizon Europe và kiểm tra yêu cầu cụ thể.
+- B. Luôn dùng một mẫu cũ có giới hạn trang cố định.
+- C. Chỉ cần nêu tên kho, không cần mô tả dữ liệu.
+- D. Chờ đến khi nghiên cứu kết thúc mới viết.
+- **Đáp án: A.** Mẫu và yêu cầu cụ thể cần được kiểm tra theo nhà tài trợ; phụ lục mẫu ghi trạng thái kiểm chứng.
 
 **1.3. Vì sao cần metadata?**
 - A. Để ép mọi biến trong dataset về cùng một kiểu dữ liệu.
@@ -142,6 +142,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. Dữ liệu phải được nhập lại nhiều lần để chứng minh tính đầy đủ.
 - D. Dữ liệu phải công khai.
 - **Đáp án: A.**
+- **Giải thích:** Workflow bắt đầu ở thiết kế và DMP, rồi thu thập, chuẩn hóa, FAIR/chia sẻ và kết thúc bằng lưu trữ hoặc hủy an toàn.
 
 **2.2. Vì sao sửa dữ liệu phải để lại audit trail?**
 - A. Để chứng minh rằng mọi thay đổi đều đã được phê duyệt trước khi thực hiện.
@@ -149,6 +150,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. Để file lớn hơn.
 - D. Không cần nếu sửa đúng.
 - **Đáp án: B.**
+- **Giải thích:** Quyết định thượng nguồn bị bỏ qua có thể làm thiếu metadata, không nhất quán biến và hạn chế khả năng chia sẻ về sau.
 
 **2.3. RBQM khác kiểm tra 100% thủ công ở điểm nào?**
 - A. RBQM không kiểm tra gì cả.
@@ -156,6 +158,7 @@ Ba sai lầm phổ biến ở bước này:
 - C. RBQM tập trung nguồn lực vào dữ liệu và quy trình rủi ro cao nhất.
 - D. RBQM rẻ hơn vì bỏ qua lỗi.
 - **Đáp án: C.**
+- **Giải thích:** FHIR phục vụ trao đổi dữ liệu; OMOP phục vụ chuẩn hóa và phân tích dữ liệu quan sát.
 
 **2.4. Tình huống:** Một điều dưỡng ghi nhiệt độ bệnh nhân vào giấy nháp cuối ca rồi hôm sau mới nhập vào hệ thống. Vi phạm nguyên tắc nào nhất?
 - A. Accurate.
@@ -217,6 +220,7 @@ SMART on FHIR là lớp ứng dụng chạy trên FHIR: ứng dụng bên thứ 
 - C. Chỉ OMOP.
 - D. FHIR để trao đổi, OMOP để phân tích — dùng cả hai, mỗi chuẩn một vai trò.
 - **Đáp án: D.**
+- **Giải thích:** Cơ chế khuyết có thể liên quan đến mức độ bệnh; cần ghi giả định, chọn phương pháp phù hợp và kiểm tra độ nhạy.
 
 ---
 
@@ -276,8 +280,61 @@ Cuối cùng là tái lập: khảo sát của Baker (2016) trên 1.500 nhà kho
 
 ---
 
-<!-- page: course/module-5-fair/index.md -->
-# Bài 5 — FAIR, chia sẻ và kết thúc nghiên cứu
+<!-- page: course/module-5-privacy/index.md -->
+# Bài 5 — Bảo mật, pháp lý và dữ liệu sẵn sàng cho AI
+
+**Mục tiêu:** kể được các lớp pháp lý áp dụng ở Việt Nam và quốc tế; biết khi nào dữ liệu “đủ tốt cho AI”.
+
+## Nội dung chính
+
+Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên suốt mọi giai đoạn của vòng đời dữ liệu.
+
+Bảo mật dữ liệu y sinh có nhiều lớp, không chỉ một luật:
+
+- **Quốc tế:** GDPR (EU 2016/679) — dữ liệu giả danh vẫn là dữ liệu cá nhân; dữ liệu sức khỏe là dữ liệu đặc biệt. EHDS (EU 2025/327) — có hiệu lực 26/03/2025, áp dụng từ 26/03/2027. HIPAA (Mỹ) — Safe Harbor (loại 18 định danh) hoặc Expert Determination.
+- **Việt Nam:** Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** (hiệu lực 01/01/2026); Nghị định **356/2025/NĐ-CP** (31/12/2025) hướng dẫn luật này và thay thế Nghị định 13/2023 từ 01/01/2026; Luật Dữ liệu 60/2024/QH15; Thông tư 13/2025/TT-BYT về bệnh án điện tử (bệnh viện chậm nhất 30/09/2025, cơ sở khác chậm nhất 31/12/2026); Thông tư 50/2025/TT-BYT về thử thuốc trên lâm sàng (hiệu lực 27/02/2026); Nghị quyết 72-NQ/TW (09/09/2025) về khám sức khỏe định kỳ miễn phí và sổ sức khỏe điện tử.
+
+Về kỹ thuật ẩn danh: **k-anonymity** (Sweeney, 2002) **[CẦN KIỂM CHỨNG thư mục]** — mỗi tổ hợp quasi-identifier xuất hiện ít nhất k lần; **l-diversity** (Machanavajjhala và cộng sự, 2007) — khắc phục điểm yếu của k-anonymity khi giá trị nhạy cảm thiếu đa dạng; **differential privacy** — thêm nhiễu có kiểm soát để bảo vệ cá nhân trong kết quả tổng hợp. Không có kỹ thuật nào là tuyệt đối — k-anonymity vẫn có thể bị tấn công nếu biết thêm thông tin nền.
+
+Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo Bridge2AI (**preprint chưa bình duyệt**), cần 7 tiêu chí: FAIR, Deep Provenance (nguồn gốc sâu), Characterization (mô tả đặc tính), Pre-Model Explainability, Ethics/Legal/Governance, Sustainability, Computability. Dữ liệu không có nguồn gốc rõ ràng thì mô hình AI huấn luyện trên đó cũng không thể giải trình được.
+
+**Điểm cần nhớ:** pháp lý là sàn, không phải trần. Tuân thủ luật là điều kiện cần; quản trị tốt — ai truy cập, vì mục đích gì, ghi lại ra sao — mới là điều kiện đủ.
+
+<!-- page: course/module-5-privacy/quiz.md -->
+# Quiz — Bài 5
+
+**5.1. Theo GDPR, dữ liệu giả danh (pseudonymised) có còn là dữ liệu cá nhân không?**
+- A. Có — vẫn là dữ liệu cá nhân vì có thể tái định danh bằng khóa riêng.
+- B. Không, đã ẩn danh hoàn toàn.
+- C. Chỉ khi có tên.
+- D. Chỉ ở Việt Nam.
+- **Đáp án: A.**
+
+**5.2. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 có hiệu lực khi nào?**
+- A. 01/01/2025.
+- B. 01/01/2026.
+- C. 01/07/2025.
+- D. Chưa có hiệu lực.
+- **Đáp án: B.** Nghị định 356/2025 hướng dẫn luật này và thay thế Nghị định 13/2023 từ cùng ngày.
+
+**5.3. l-Diversity ra đời để khắc phục điểm yếu nào của k-anonymity?**
+- A. k-Anonymity quá chậm.
+- B. k-Anonymity không dùng được cho dữ liệu lớn.
+- C. k-Anonymity không bảo vệ được khi giá trị nhạy cảm trong một nhóm thiếu đa dạng (ví dụ: cả nhóm cùng một chẩn đoán).
+- D. k-Anonymity đã bị cấm.
+- **Đáp án: C.**
+
+**5.4. Tình huống:** Một nhóm muốn huấn luyện AI trên dữ liệu EHR nhưng không có ghi chép nào về nguồn gốc, phiên bản và quy trình làm sạch dữ liệu. Vấn đề lớn nhất là gì?
+- A. Thiếu dữ liệu.
+- B. Thiếu máy tính mạnh.
+- C. Không có vấn đề gì.
+- D. Thiếu Deep Provenance — không giải trình được mô hình, không tái lập được, và có thể vi phạm yêu cầu quản trị.
+- **Đáp án: D.**
+
+---
+
+<!-- page: course/module-6-fair-ai/index.md -->
+# Bài 6 — FAIR, chia sẻ và kết thúc nghiên cứu
 
 **Mục tiêu:** áp dụng được 4 nguyên tắc FAIR; biết khi nào chia sẻ, khi nào đóng, và kết thúc nghiên cứu thế nào.
 
@@ -297,31 +354,31 @@ Kết thúc nghiên cứu không phải là “xong thì thôi”. Cần có:
 
 **Điểm cần nhớ:** một nghiên cứu chỉ hoàn thành khi dữ liệu của nó có thể được tìm lại, hiểu lại và kiểm tra lại sau nhiều năm.
 
-<!-- page: course/module-5-fair/quiz.md -->
-# Quiz — Bài 5
+<!-- page: course/module-6-fair-ai/quiz.md -->
+# Quiz — Bài 6
 
-**5.1. FAIR có nghĩa là dữ liệu phải công khai không?**
+**6.1. FAIR có nghĩa là dữ liệu phải công khai không?**
 - A. Không — FAIR nghĩa là tìm được, truy cập được (có thể có kiểm soát), liên thông được và tái sử dụng được.
 - B. Có, FAIR = mở hết.
 - C. Chỉ đúng với dữ liệu không phải y tế.
 - D. FAIR chỉ áp dụng cho ảnh.
 - **Đáp án: A.**
 
-**5.2. Bước cuối cùng trong FAIRification 7 bước là gì?**
+**6.2. Bước cuối cùng trong FAIRification 7 bước là gì?**
 - A. Thu thập dữ liệu.
 - B. Xóa dữ liệu.
 - C. Công bố bài báo.
 - D. Đánh giá lại mức độ trưởng thành FAIR sau triển khai.
 - **Đáp án: D.**
 
-**5.3. Vì sao xóa file thông thường chưa đủ khi hủy dữ liệu nghiên cứu?**
+**6.3. Vì sao xóa file thông thường chưa đủ khi hủy dữ liệu nghiên cứu?**
 - A. Vì file quá lớn.
 - B. Vì luật cấm xóa file.
 - C. Vì file vẫn có thể khôi phục được; cần hủy theo chuẩn như NIST SP 800-88 (Clear/Purge/Destroy).
 - D. Không có lý do gì.
 - **Đáp án: C.**
 
-**5.4. Tình huống:** Một nhóm muốn chia sẻ dữ liệu bệnh nhân cho nhóm khác nhưng không muốn công khai. Cách làm đúng theo FAIR là gì?
+**6.4. Tình huống:** Một nhóm muốn chia sẻ dữ liệu bệnh nhân cho nhóm khác nhưng không muốn công khai. Cách làm đúng theo FAIR là gì?
 - A. Không chia sẻ.
 - B. Công khai toàn bộ lên mạng.
 - C. Chỉ gửi qua email cá nhân.
@@ -330,131 +387,83 @@ Kết thúc nghiên cứu không phải là “xong thì thôi”. Cần có:
 
 ---
 
-<!-- page: course/module-6-privacy-ai/index.md -->
-# Bài 6 — Bảo mật, pháp lý và dữ liệu sẵn sàng cho AI
-
-**Mục tiêu:** kể được các lớp pháp lý áp dụng ở Việt Nam và quốc tế; biết khi nào dữ liệu “đủ tốt cho AI”.
-
-## Nội dung chính
-
-Lớp kiểm soát bảo mật, đạo đức và pháp lý áp dụng xuyên suốt mọi giai đoạn của vòng đời dữ liệu.
-
-Bảo mật dữ liệu y sinh có nhiều lớp, không chỉ một luật:
-
-- **Quốc tế:** GDPR (EU 2016/679) — dữ liệu giả danh vẫn là dữ liệu cá nhân; dữ liệu sức khỏe là dữ liệu đặc biệt. EHDS (EU 2025/327) — có hiệu lực 26/03/2025, áp dụng từ 26/03/2027. HIPAA (Mỹ) — Safe Harbor (loại 18 định danh) hoặc Expert Determination.
-- **Việt Nam:** Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** (hiệu lực 01/01/2026); Nghị định **356/2025/NĐ-CP** (31/12/2025) hướng dẫn luật này và thay thế Nghị định 13/2023 từ 01/01/2026; Luật Dữ liệu 60/2024/QH15; Thông tư 13/2025/TT-BYT về bệnh án điện tử (bệnh viện chậm nhất 30/09/2025, cơ sở khác chậm nhất 31/12/2026); Thông tư 50/2025/TT-BYT về thử thuốc trên lâm sàng (hiệu lực 27/02/2026); Nghị quyết 72-NQ/TW (09/09/2025) về khám sức khỏe định kỳ miễn phí và sổ sức khỏe điện tử.
-
-Về kỹ thuật ẩn danh: **k-anonymity** (Sweeney, 2002) **[CẦN KIỂM CHỨNG thư mục]** — mỗi tổ hợp quasi-identifier xuất hiện ít nhất k lần; **l-diversity** (Machanavajjhala và cộng sự, 2007) — khắc phục điểm yếu của k-anonymity khi giá trị nhạy cảm thiếu đa dạng; **differential privacy** — thêm nhiễu có kiểm soát để bảo vệ cá nhân trong kết quả tổng hợp. Không có kỹ thuật nào là tuyệt đối — k-anonymity vẫn có thể bị tấn công nếu biết thêm thông tin nền.
-
-Dữ liệu “sẵn sàng cho AI” không chỉ là dữ liệu sạch. Theo Bridge2AI (**preprint chưa bình duyệt**), cần 7 tiêu chí: FAIR, Deep Provenance (nguồn gốc sâu), Characterization (mô tả đặc tính), Pre-Model Explainability, Ethics/Legal/Governance, Sustainability, Computability. Dữ liệu không có nguồn gốc rõ ràng thì mô hình AI huấn luyện trên đó cũng không thể giải trình được.
-
-**Điểm cần nhớ:** pháp lý là sàn, không phải trần. Tuân thủ luật là điều kiện cần; quản trị tốt — ai truy cập, vì mục đích gì, ghi lại ra sao — mới là điều kiện đủ.
-
-<!-- page: course/module-6-privacy-ai/quiz.md -->
-# Quiz — Bài 6
-
-**6.1. Theo GDPR, dữ liệu giả danh (pseudonymised) có còn là dữ liệu cá nhân không?**
-- A. Có — vẫn là dữ liệu cá nhân vì có thể tái định danh bằng khóa riêng.
-- B. Không, đã ẩn danh hoàn toàn.
-- C. Chỉ khi có tên.
-- D. Chỉ ở Việt Nam.
-- **Đáp án: A.**
-
-**6.2. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 có hiệu lực khi nào?**
-- A. 01/01/2025.
-- B. 01/01/2026.
-- C. 01/07/2025.
-- D. Chưa có hiệu lực.
-- **Đáp án: B.** Nghị định 356/2025 hướng dẫn luật này và thay thế Nghị định 13/2023 từ cùng ngày.
-
-**6.3. l-Diversity ra đời để khắc phục điểm yếu nào của k-anonymity?**
-- A. k-Anonymity quá chậm.
-- B. k-Anonymity không dùng được cho dữ liệu lớn.
-- C. k-Anonymity không bảo vệ được khi giá trị nhạy cảm trong một nhóm thiếu đa dạng (ví dụ: cả nhóm cùng một chẩn đoán).
-- D. k-Anonymity đã bị cấm.
-- **Đáp án: C.**
-
-**6.4. Tình huống:** Một nhóm muốn huấn luyện AI trên dữ liệu EHR nhưng không có ghi chép nào về nguồn gốc, phiên bản và quy trình làm sạch dữ liệu. Vấn đề lớn nhất là gì?
-- A. Thiếu dữ liệu.
-- B. Thiếu máy tính mạnh.
-- C. Không có vấn đề gì.
-- D. Thiếu Deep Provenance — không giải trình được mô hình, không tái lập được, và có thể vi phạm yêu cầu quản trị.
-- **Đáp án: D.**
-
----
-
 <!-- page: course/final-quiz.md -->
 # Quiz tổng hợp — Workflow (10 câu, làm sau 6 bài)
 
 **Q1.** Sắp xếp đúng thứ tự workflow: (a) Chuẩn hóa, (b) Thiết kế & DMP, (c) Kết thúc/lưu trữ, (d) Thu thập, (e) FAIR & chia sẻ.
-- A. b → d → a → e → c.
-- B. d → b → a → c → e.
-- C. b → a → d → e → c.
-- D. a → b → d → e → c.
+- A. b → d → a → e → c, theo tiến trình từ thiết kế đến lưu trữ.
+- B. d → b → a → c → e, bắt đầu bằng thu thập trước khi hoàn thiện kế hoạch.
+- C. b → a → d → e → c, đặt chuẩn hóa sớm hơn thu thập dữ liệu.
+- D. a → b → d → e → c, đặt chuẩn hóa trước phần thiết kế.
 - **Đáp án: A.**
+- **Giải thích:** Workflow bắt đầu ở thiết kế và DMP, rồi thu thập, chuẩn hóa, FAIR/chia sẻ và kết thúc bằng lưu trữ hoặc hủy an toàn.
 
 **Q2.** Một nghiên cứu không viết DMP, thu thập xong mới nghĩ đến việc chia sẻ dữ liệu. Hậu quả nào có khả năng xảy ra nhất?
-- A. Chỉ mất thêm 1 ngày.
-- B. Thiếu metadata, biến không thống nhất, không xin được phê duyệt chia sẻ — phải làm lại phần lớn công việc quản trị.
-- C. Không có hậu quả gì.
-- D. Dữ liệu tự động trở nên FAIR.
+- A. Có thể mất thêm thời gian, nhưng nhiều quyết định quản trị khác vẫn giữ nguyên.
+- B. Thiếu metadata và biến không thống nhất, làm khó phê duyệt chia sẻ.
+- C. Có ít hậu quả vì quyết định chia sẻ có thể đưa ra ở cuối nghiên cứu.
+- D. Dữ liệu tự động trở nên FAIR vì đã được thu thập đầy đủ trong nghiên cứu.
 - **Đáp án: B.**
+- **Giải thích:** Quyết định thượng nguồn bị bỏ qua có thể làm thiếu metadata, không nhất quán biến và hạn chế khả năng chia sẻ về sau.
 
 **Q3.** Bệnh viện A dùng FHIR để gửi dữ liệu cho bệnh viện B, rồi cả hai cùng phân tích trên OMOP CDM. Nhận định nào đúng?
-- A. Phải chuyển sang CDISC trước.
-- B. Dùng thừa chuẩn, chỉ cần một.
+- A. Phải chuyển sang CDISC trước, dù mục tiêu là trao đổi rồi phân tích quan sát.
+- B. Dùng thừa chuẩn; một chuẩn thường đủ cho cả trao đổi và phân tích.
 - C. Đúng vai trò: FHIR để trao đổi, OMOP để phân tích.
-- D. FHIR và OMOP không thể dùng chung.
+- D. FHIR và OMOP thường khó dùng chung trong một quy trình liên cơ sở.
 - **Đáp án: C.**
+- **Giải thích:** FHIR phục vụ trao đổi dữ liệu; OMOP phục vụ chuẩn hóa và phân tích dữ liệu quan sát.
 
 **Q4.** Dữ liệu khuyết vì bệnh nhân nặng không lấy được mẫu xét nghiệm. Cách xử lý đúng nhất là gì?
-- A. Xóa toàn bộ bệnh nhân đó.
-- B. Bỏ qua, không ghi lại.
-- C. Điền giá trị trung bình cho tất cả.
-- D. Nhận diện đây có thể là MNAR, ghi lại giả định, dùng phương pháp phù hợp và phân tích độ nhạy.
+- A. Xóa toàn bộ bệnh nhân đó để bộ dữ liệu không còn ô khuyết.
+- B. Bỏ qua và không ghi lại nguyên nhân vì mẫu xét nghiệm chưa từng được lấy.
+- C. Điền giá trị trung bình cho nhiều bệnh nhân để giữ kích thước mẫu.
+- D. Xem xét MNAR, ghi giả định, chọn phương pháp và phân tích độ nhạy.
 - **Đáp án: D.**
+- **Giải thích:** Cơ chế khuyết có thể liên quan đến mức độ bệnh; cần ghi giả định, chọn phương pháp phù hợp và kiểm tra độ nhạy.
 
-**Q5.** Theo Thông tư 13/2025/TT-BYT, hạn triển khai bệnh án điện tử của bệnh viện là khi nào?
-- A. 30/09/2025.
-- B. 31/12/2026.
-- C. 01/01/2027.
-- D. Không có hạn.
-- **Đáp án: A.** Hạn 31/12/2026 áp cho các cơ sở khác, không phải bệnh viện.
+**Q5.** Khi xử lý dữ liệu cá nhân trong nghiên cứu, nguyên tắc nào phù hợp nhất?
+- A. Chủ yếu áp dụng văn bản có tại thời điểm viết đề cương, ít rà soát về sau.
+- B. Có thể bỏ qua ngày hiệu lực nếu tên văn bản đã ghi trong DMP của nghiên cứu.
+- C. Đối chiếu văn bản hiện hành và ngày hiệu lực áp dụng cho bối cảnh nghiên cứu.
+- D. Chủ yếu tuân theo chính sách phần mềm thu thập dữ liệu, ít căn cứ khác.
+- **Đáp án: C.** Tên văn bản không đủ để xác định nghĩa vụ; cần kiểm tra văn bản hiện hành, ngày hiệu lực và phạm vi áp dụng.
 
 **Q6.** Một dataset đạt k-anonymity với k=5. Điều này đảm bảo điều gì?
-- A. Dữ liệu đã được mã hóa.
-- B. Mỗi tổ hợp quasi-identifier xuất hiện ít nhất 5 lần, nên không thể phân biệt một cá nhân chỉ bằng liên kết trực tiếp — nhưng vẫn có thể bị tấn công bằng thông tin nền hoặc thiếu đa dạng giá trị nhạy cảm.
-- C. Không ai có thể tái định danh bằng bất kỳ cách nào.
-- D. Dữ liệu được phép công khai.
+- A. Dữ liệu đã được mã hóa và nhiều khóa liên kết đã bị loại bỏ.
+- B. Mỗi quasi-identifier xuất hiện ít nhất 5 lần; vẫn còn nguy cơ từ thông tin nền.
+- C. Không ai có thể tái định danh bằng bất kỳ cách nào, kể cả liên kết nguồn khác.
+- D. Dữ liệu được phép công khai mà không cần xét duyệt hoặc kiểm soát truy cập.
 - **Đáp án: B.**
+- **Giải thích:** k-anonymity giới hạn liên kết trực tiếp, nhưng không loại bỏ mọi nguy cơ tái định danh hoặc suy luận thuộc tính nhạy cảm.
 
-**Q7.** Muốn dữ liệu dùng được cho AI, ngoài sạch, còn cần gì nhất?
-- A. Định dạng Excel.
-- B. Chỉ cần nhiều biến.
-- C. Nguồn gốc rõ ràng (provenance), mô tả đặc tính, và quản trị đạo đức/pháp lý — theo 7 tiêu chí của Bridge2AI (preprint chưa bình duyệt).
-- D. Dung lượng lớn.
-- **Đáp án: C.**
+**Q7.** Nhận định nào mô tả đầy đủ hơn yêu cầu để dữ liệu y sinh sẵn sàng cho AI?
+- A. Dữ liệu cần lớn, sạch và ở định dạng bảng tính phổ biến để mô hình đọc được.
+- B. Dữ liệu chủ yếu cần có nhiều biến và ít ô trống, không cần provenance.
+- C. AI-ready cần FAIR, provenance, giải trình, quản trị và khả năng tính toán.
+- D. Dữ liệu nên được giữ kín để tránh rủi ro, không cần khả năng tái sử dụng.
+- **Đáp án: C.** AI-ready là yêu cầu đa chiều về khả năng tìm thấy, hiểu, giải trình, quản trị và tính toán, không chỉ là dung lượng hoặc độ sạch.
 
 **Q8.** Nghiên cứu kết thúc, nhóm xóa file dữ liệu bằng cách xóa thông thường trong hệ điều hành. Đủ chưa?
-- A. Chỉ cần khi dữ liệu lớn.
-- B. Không cần hủy, cứ giữ mãi.
-- C. Đủ.
-- D. Chưa — cần hủy an toàn theo chuẩn như NIST SP 800-88, và ghi lại việc hủy.
-- **Đáp án: D.**
+- A. Chưa chắc; xóa thông thường chưa đồng nghĩa khử hoặc hủy an toàn.
+- B. Đủ trong nhiều trường hợp vì tệp không còn hiển thị trong thư mục.
+- C. Không cần hủy, cứ giữ dữ liệu mãi mãi bất kể chính sách lưu giữ.
+- D. Cần quan tâm khi dataset có kích thước lớn hoặc nhiều tệp.
+- **Đáp án: A.** Cần có quy trình khử hoặc hủy phù hợp với loại lưu trữ, chính sách và yêu cầu áp dụng; xóa thông thường chưa đủ để kết luận an toàn.
 
-**Q9.** Vì sao bước 1 dựa trên đánh giá FAIR ban đầu và bước 7 đánh giá lại sau triển khai?
-- A. Vì chỉ cần đánh giá ở hai thời điểm đó, các bước giữa không cần theo dõi.
-- B. Vì đánh giá FAIR chỉ nhằm quyết định có công khai toàn bộ dữ liệu hay không.
-- C. Vì đánh giá ban đầu giúp xác định khoảng cách cần cải thiện, còn đánh giá sau triển khai kiểm tra kết quả và mức trưởng thành đạt được.
-- D. Vì bước 7 thay thế cho việc lập kế hoạch ở bước 1.
-- **Đáp án: C.**
+**Q9.** Trong workflow FAIRification 7 bước, đánh giá FAIR được dùng như thế nào?
+- A. Đánh giá bước 1 để tìm khoảng cách và bước 7 để kiểm tra cải thiện.
+- B. Thường đánh giá một lần ở bước 7, sau khi đã hoàn tất nhiều thay đổi.
+- C. Chủ yếu đánh giá khi dữ liệu được công khai và không còn hạn chế.
+- D. Đánh giá FAIR thay thế cho việc lập kế hoạch và quản trị ở bước 1.
+- **Đáp án: A.** Đánh giá ban đầu định hướng kế hoạch, còn đánh giá lại ở bước 7 kiểm tra mức cải thiện và kết quả đạt được.
 
 **Q10.** Một học viên nói: “Dữ liệu của tôi đã FAIR nên tôi công khai toàn bộ lên mạng.” Sai ở đâu?
-- A. Không sai.
-- B. FAIR không có nghĩa là mở hết; dữ liệu sức khỏe thường FAIR nhưng truy cập có kiểm soát.
-- C. FAIR chỉ áp dụng cho dữ liệu mở.
-- D. Phải công khai mới gọi là FAIR.
-- **Đáp án: B.**
+- A. Không sai, vì nhiều dữ liệu FAIR được công khai trên mạng.
+- B. FAIR chủ yếu áp dụng cho dữ liệu mở và không áp dụng cho dữ liệu sức khỏe.
+- C. Phải công khai mới gọi là FAIR, bất kể ràng buộc đạo đức hay pháp lý.
+- D. FAIR không đồng nghĩa mở hết; dữ liệu sức khỏe có thể kiểm soát truy cập.
+- **Đáp án: D.** FAIR yêu cầu khả năng tìm thấy, truy cập được theo điều kiện, liên thông và tái sử dụng; không buộc dữ liệu nhạy cảm phải mở công khai.
 
 **Cách tính điểm:** mỗi câu 1 điểm, tổng 34 câu (24 câu theo bài + 10 câu tổng hợp). Đạt khi ≥ 24/34 **và đúng ít nhất 2/3 câu Q1–Q3** của quiz tổng hợp. Học viên nên làm quiz tổng hợp tối đa 2 lần như hướng dẫn tự học; site tĩnh không cưỡng chế giới hạn này.
 

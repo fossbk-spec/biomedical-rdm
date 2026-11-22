@@ -1,0 +1,562 @@
+---
+title: "Bài 4 — Chất lượng Dữ liệu & Xử lý Dữ liệu Khuyết"
+subtitle: "Khóa học Quản lý Dữ liệu Nghiên cứu Y sinh học"
+author: "TS. Hoàng Quang Huy — Đại học Bách khoa Hà Nội (HUST), iBME Lab"
+orcid: "0000-0002-4603-1297"
+date: "2026-11-21"
+format: html
+---
+
+> **Hình thức:** Khóa học mở miễn phí, tự học  
+> **Thời gian đọc ước tính:** 35–45 phút (lý thuyết) + 45 phút (Lab tùy chọn)
+
+---
+
+## 1. MỤC TIÊU HỌC TẬP (LEARNING OUTCOMES)
+
+Sau khi hoàn thành bài này, người học có thể:
+
+1. **Phân tích** chất lượng dữ liệu EHR theo khung 3 trục của Kahn et al. (2016) [@ref_030] và 5 chiều của Weiskopf & Weng (2013) [@ref_028].
+2. **Vận hành** OHDSI Data Quality Dashboard (DQD) và diễn giải kết quả báo cáo.
+3. **Phân loại** cơ chế dữ liệu khuyết theo Rubin (1976) [@ref_031]: MCAR, MAR và MNAR; lựa chọn chiến lược xử lý phù hợp.
+4. **Triển khai** kỹ thuật Multiple Imputation by Chained Equations (MICE) đúng chuẩn thống kê với m=5 tập dữ liệu và gộp kết quả theo Rubin's Rules.
+5. **Phân biệt** trường hợp được phép và không được phép sử dụng Listwise Deletion và Mean Imputation.
+
+---
+
+## 2. BẢN ĐỒ KHÁI NIỆM (CONCEPT MAP)
+
+```
+Khung Kahn et al. (2016)
+├── Plausibility    ──▶ Giá trị hợp lý về mặt sinh học
+├── Conformance     ──▶ Dữ liệu đúng định dạng / chuẩn
+└── Completeness    ──▶ Dữ liệu đủ, không bị mất
+
+Khung Weiskopf & Weng (2013) — 5 chiều
+├── Completeness    ──▶ Mức độ hiện diện đầy đủ
+├── Correctness     ──▶ Đúng sự thật lâm sàng
+├── Concordance     ──▶ Nhất quán giữa nguồn / thời điểm
+├── Plausibility    ──▶ Hợp lý sinh học và y học
+└── Currency        ──▶ Dữ liệu cập nhật theo thời điểm sự kiện
+
+OHDSI DQD — Hơn 3.300 quy tắc kiểm tra SQL (xem [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026))
+└── 20 loại kiểm tra có tham số → 3.351 quy tắc SQL thực thi (minh họa, không phải số đo)
+
+Dữ liệu khuyết — Phân loại Rubin (1976)
+├── MCAR ──▶ Phân tích ca hoàn chỉnh chấp nhận được (giảm cỡ mẫu)
+├── MAR  ──▶ MICE là lựa chọn ưu tiên
+└── MNAR ──▶ Nên thực hiện phân tích độ nhạy; không có phương pháp giải quyết hoàn toàn
+
+MICE (Multiple Imputation by Chained Equations)
+├── Bước 1 — Imputation: Tạo m=5 tập dữ liệu hoàn chỉnh
+├── Bước 2 — Analysis:   Chạy mô hình phân tích trên từng tập
+└── Bước 3 — Pooling:    Gộp kết quả theo Rubin's Rules
+
+⚠️ Không khuyến nghị dưới MAR/MNAR (gây chệch):
+   - Listwise Deletion: Chỉ chấp nhận được dưới MCAR với chi phí giảm cỡ mẫu
+   - Mean Imputation: Làm giảm phương sai giả tạo, bóp méo quan hệ giữa các biến
+```
+
+---
+
+## 3. LÝ THUYẾT (THEORY)
+
+### 3.1. Các Chiều Chất Lượng Dữ liệu EHR — Weiskopf & Weng (2013)
+
+Weiskopf & Weng (2013) [@ref_028] tổng hợp 95 nghiên cứu về chất lượng EHR và xác định **5 chiều cốt lõi**:
+
+| Chiều | Mô tả |
+| :--- | :--- |
+| **Completeness** | Mức độ hiện diện đầy đủ dữ liệu — dữ liệu cần thiết có được ghi lại không? |
+| **Correctness** | Dữ liệu đúng với sự thật lâm sàng — giá trị ghi lại có chính xác không? |
+| **Concordance** | Nhất quán giữa các nguồn hoặc thời điểm khác nhau — ví dụ, chẩn đoán ở ICD và ở ghi chú bác sĩ có trùng khớp không? |
+| **Plausibility** | Hợp lý về mặt sinh học và y học — ví dụ, tuổi không âm, huyết áp trong dải sinh lý. |
+| **Currency** | Dữ liệu cập nhật và phù hợp với thời điểm sự kiện lâm sàng thực tế. |
+
+> **Lưu ý so sánh khung:** Plausibility và Completeness của Weiskopf & Weng trùng lặp trực tiếp với hai trục tương ứng trong khung Kahn (2016). Correctness và Concordance là hai chiều bổ sung, không được đặt tên riêng trong Kahn nhưng được bao hàm ngầm.
+
+---
+
+### 3.2. Khung Đánh giá Chất lượng Dữ liệu Kahn et al. (2016) — 3 Trục
+
+Kahn et al. (2016) [@ref_030] đề xuất khung phân loại thống nhất cho nghiên cứu sử dụng thứ cấp EHR, gồm **3 trục chính**:
+
+#### 3.2.1. Plausibility — Tính Hợp lý Sinh học
+
+Kiểm tra xem giá trị dữ liệu có hợp lý về mặt y sinh học không.
+
+**Các loại kiểm tra Plausibility:**
+
+| Loại kiểm tra | Ví dụ |
+| :--- | :--- |
+| **Atemporal** | Tuổi không thể âm hoặc lớn hơn 130; huyết áp tâm thu trong dải 60–250 mmHg |
+| **Temporal** | Ngày kết thúc điều trị phải sau ngày bắt đầu; ngày xét nghiệm không thể trước ngày sinh |
+| **Relational** | Nồng độ creatinine tăng cao khi BUN cũng cao (tương quan sinh học) |
+
+> **Ngưỡng tuổi:** Ngưỡng kiểm tra plausibility là tuổi > 130 (không phải 120) vì kỷ lục tuổi thọ được xác nhận là 122 tuổi. Dùng ngưỡng > 130 để phân biệt lỗi nhập liệu với các trường hợp cực đoan hiếm gặp.
+
+#### 3.2.2. Conformance — Tính Tuân thủ Định dạng
+
+Kiểm tra dữ liệu có đúng định dạng, chuẩn mã hóa và cấu trúc được quy định.
+
+**Các loại kiểm tra Conformance:**
+
+| Loại kiểm tra | Ví dụ |
+| :--- | :--- |
+| **Value** | Mã giới tính chỉ nhận giá trị từ bộ từ vựng chuẩn (SNOMED, OMOP) |
+| **Relational** | Mỗi bản ghi `condition_occurrence` phải có `person_id` tồn tại trong bảng `person` |
+| **Computational** | Điểm BMI phải = cân nặng (kg) / chiều cao² (m) |
+
+#### 3.2.3. Completeness — Tính Đầy đủ
+
+Kiểm tra dữ liệu cần thiết có được ghi lại không.
+
+**Các loại kiểm tra Completeness:**
+
+| Loại kiểm tra | Ví dụ |
+| :--- | :--- |
+| **Thresholds** | Tỷ lệ NULL của trường `gender_concept_id` phải < 1% |
+| **Plausible values** | Trường `drug_concept_id` không được nhận giá trị 0 (không xác định) quá 10% |
+
+---
+
+### 3.3. OHDSI Data Quality Dashboard (DQD)
+
+DQD [@ref_038; @ref_011] là công cụ R mã nguồn mở triển khai khung Kahn tự động trên OMOP CDM. `ref_011` là tài liệu *Our Journey* (2025), không phải *The Book of OHDSI*; nội dung dùng làm căn cứ cần [CẦN KIỂM CHỨNG].
+
+**Cơ chế hoạt động:**
+
+Từ **20 loại kiểm tra có tham số hóa**, DQD có thể tạo ra **hơn 3.300 quy tắc kiểm tra cụ thể**. Các con số dưới đây là **số minh họa, không phải số đo**; số DQD thực tế, phiên bản và ngày chốt phải được kiểm tra trong [Phụ lục standards](../appendices/standards.md) (chốt 21/11/2026) và tài liệu OHDSI DQD chính thức.
+
+**Cách đọc báo cáo DQD:**
+
+```
+Tổng số quy tắc (minh họa): 3.351
+├── PASS (Đạt):     3.098  (92.4%)
+├── FAIL (Không đạt): 232 (6.9%)
+└── ERROR (Lỗi kỹ thuật):  21 (0.6%)
+```
+
+Các số trên chỉ là **số minh họa, không phải số đo**.
+
+**Ngưỡng diễn giải (ví dụ/quy ước, không phải tiêu chuẩn):**
+
+- **Pass Rate 98–100%:** Ví dụ quy ước để gợi ý dữ liệu cần được xem xét kỹ hơn; không phải tiêu chuẩn OHDSI.
+- **Pass Rate 90–97%:** Ví dụ quy ước, nên kiểm tra thủ công các quy tắc FAIL, đặc biệt trong miền Plausibility.
+- **Pass Rate < 90%:** Ví dụ quy ước, nên xem xét ETL toàn bộ; không tự suy ra quyết định sử dụng.
+
+**Lưu ý về tính bắt buộc:** DQD **được khuyến nghị** (không bắt buộc theo quy định) chạy và công bố cùng dữ liệu trong các nghiên cứu thuộc mạng lưới OHDSI. Nhiều tạp chí và mạng lưới nghiên cứu ngày càng yêu cầu báo cáo DQD như điều kiện nộp dữ liệu tham gia.
+
+---
+
+### 3.4. Phân loại Cơ chế Dữ liệu Khuyết — Rubin (1976)
+
+Rubin (1976) [@ref_031] phân loại dữ liệu khuyết thành 3 cơ chế dựa trên mối quan hệ giữa xác suất khuyết và giá trị dữ liệu:
+
+```
+Phát hiện dữ liệu khuyết
+         │
+         ▼
+┌─────────────────────────────────────────────────────────────┐
+│  Cơ chế khuyết có phụ thuộc vào giá trị bị khuyết không?   │
+└─────────────────────────────────────────────────────────────┘
+         │                               │
+        KHÔNG                           CÓ
+         │                               │
+         ▼                               ▼
+┌─────────────────┐              ┌─────────────────────────────┐
+│ Phụ thuộc vào   │              │        MNAR                 │
+│ biến quan sát   │              │  Ví dụ: Bệnh nhân nặng      │
+│ khác không?     │              │  không đo được xét nghiệm   │
+└─────────────────┘              │  vì chính tình trạng bệnh   │
+    │         │                  │                             │
+   KHÔNG     CÓ                 │  Chiến lược:                │
+    │         │                  │  → Phân tích độ nhạy       │
+    ▼         ▼                  │    (Sensitivity Analysis)  │
+ MCAR       MAR                 │  → Pattern mixture model    │
+            │                   │  → KHÔNG dùng imputation    │
+ Chiến lược:│ Chiến lược:        │    đơn thuần               │
+ → Phân tích│ → MICE là lựa     └─────────────────────────────┘
+   ca hoàn  │   chọn ưu tiên
+   chỉnh    │ → Phân tích ca
+   chấp     │   hoàn chỉnh
+   nhận được│   không khuyến
+   (giảm cỡ │   nghị (gây
+   mẫu)     │   chệch dưới MAR)
+```
+
+#### 3.4.1. MCAR — Missing Completely At Random
+
+Xác suất khuyết không phụ thuộc vào bất kỳ biến nào (quan sát hay chưa quan sát).
+
+**Ví dụ:** Máy đo huyết áp bị lỗi ngẫu nhiên, mất dữ liệu không liên quan đến sức khỏe bệnh nhân.
+
+**Hệ quả:** Phân tích ca hoàn chỉnh (complete-case analysis / listwise deletion) **chấp nhận được** dưới MCAR — ước lượng không bị chệch, nhưng **giảm cỡ mẫu** và tăng sai số chuẩn.
+
+#### 3.4.2. MAR — Missing At Random
+
+Xác suất khuyết phụ thuộc vào các biến đã quan sát, không phụ thuộc vào giá trị bị khuyết sau khi kiểm soát biến quan sát.
+
+**Ví dụ:** Điểm UAS7 (mức độ ngứa) khuyết nhiều hơn ở bệnh nhân lớn tuổi (biến quan sát được là `age`), nhưng trong nhóm cùng độ tuổi, dữ liệu khuyết ngẫu nhiên.
+
+**Hệ quả:** Phân tích ca hoàn chỉnh **gây chệch** vì dữ liệu còn lại không đại diện. MICE là lựa chọn ưu tiên.
+
+#### 3.4.3. MNAR — Missing Not At Random
+
+Xác suất khuyết phụ thuộc vào chính giá trị bị khuyết, ngay cả sau khi kiểm soát biến quan sát.
+
+**Ví dụ:** Bệnh nhân đau nặng thường bỏ lịch khám — điểm đau cao nhất là những giá trị bị khuyết nhiều nhất.
+
+**Hệ quả:** Không có phương pháp imputation nào giải quyết hoàn toàn MNAR. Nên thực hiện Sensitivity Analysis (phân tích độ nhạy) để kiểm định tính vững của kết luận dưới các giả định khuyết khác nhau.
+
+---
+
+### 3.5. Multiple Imputation by Chained Equations (MICE)
+
+MICE [@ref_032] là phương pháp được khuyến nghị rộng rãi cho dữ liệu khuyết dưới cơ chế MAR. Phương pháp gồm **3 bước**:
+
+**Bước 1 — Imputation (Tạo m tập dữ liệu hoàn chỉnh):**
+Với mỗi lần lặp i từ 1 đến m (thường m = 5–10):
+- Khởi tạo giá trị khuyết bằng mean
+- Với mỗi biến có giá trị khuyết: Hồi quy biến đó lên các biến còn lại → lấy mẫu từ phân phối dự đoán (predictive distribution) → điền vào ô khuyết
+- Lặp lại (chain) đến hội tụ (thường 10 vòng)
+- Thu được 1 tập dữ liệu hoàn chỉnh $\mathbf{D}_i$
+
+**Bước 2 — Analysis (Phân tích trên từng tập):**
+Chạy mô hình thống kê quan tâm trên từng tập $\mathbf{D}_i$:
+$$\hat{\theta}_i, \hat{V}_i \quad \forall i = 1, \ldots, m$$
+
+**Bước 3 — Pooling (Gộp kết quả theo Rubin's Rules):**
+
+$$\bar{\theta} = \frac{1}{m}\sum_{i=1}^{m}\hat{\theta}_i \quad \text{(ước lượng gộp)}$$
+
+$$\bar{U} = \frac{1}{m}\sum_{i=1}^{m}\hat{V}_i \quad \text{(phương sai trong mỗi lần gán — within)}$$
+
+$$B = \frac{1}{m-1}\sum_{i=1}^{m}(\hat{\theta}_i - \bar{\theta})^2 \quad \text{(phương sai giữa các lần gán — between)}$$
+
+$$T = \bar{U} + \left(1 + \frac{1}{m}\right)B \quad \text{(tổng phương sai — total variance)}$$
+
+> **Tại sao SE từ MICE lớn hơn mean imputation?** Bởi vì MICE phản ánh trung thực độ bất định do dữ liệu khuyết thông qua thành phần $B$ (between-imputation variance). Mean imputation giả vờ không có bất định, làm giảm SE một cách giả tạo và tạo ra kết quả có vẻ chính xác hơn thực tế.
+
+---
+
+## 4. TÌNH HUỐNG THỰC TẾ (CASE STUDY 1)
+
+*(Tình huống giả định minh họa phục vụ học tập, không phải nghiên cứu có thật)*
+
+**Bối cảnh:** Một nghiên cứu đoàn hệ về bệnh mày đay mạn tính (Chronic Spontaneous Urticaria — CSU) tại bệnh viện đại học, theo dõi 500 bệnh nhân trong 6 tháng. Dữ liệu được thu thập qua REDCap và chuyển vào cơ sở dữ liệu OMOP CDM.
+
+**Các vấn đề chất lượng dữ liệu phát hiện khi chạy DQD:**
+
+| ID vấn đề | Loại theo Kahn | Mô tả | Tỷ lệ |
+| :--- | :--- | :--- | :--- |
+| Q-01 | **Plausibility** (Atemporal) | Tuổi âm hoặc > 130 | 0.4% (minh họa, không phải số đo) |
+| Q-02 | **Plausibility** (Atemporal) | Huyết áp tâm thu < 60 hoặc > 250 mmHg | 0.2% (minh họa, không phải số đo) |
+| Q-03 | **Completeness** | Trường `uas7` (thang điểm ngứa) bị khuyết | 23% (minh họa, không phải số đo) |
+| Q-04 | **Completeness** | Trường `ige_level` (nồng độ IgE) bị khuyết | 31% (minh họa, không phải số đo) |
+| Q-05 | **Conformance** (Value) | Mã giới tính nhận giá trị ngoài bộ từ vựng chuẩn | 1.1% (minh họa, không phải số đo) |
+
+**Phân tích cơ chế khuyết cho Q-03 (uas7):**
+
+Phỏng vấn điều tra viên cho thấy: Bệnh nhân có triệu chứng nặng (UAS7 cao) thường bỏ lịch tái khám hoặc không hoàn thành bảng câu hỏi vì quá khó chịu. Đây là dấu hiệu của **MNAR** — xác suất khuyết phụ thuộc vào chính giá trị UAS7 bị khuyết.
+
+**Quyết định xử lý:**
+
+1. Q-01, Q-02: Chuyển giá trị vi phạm thành `NaN` → đưa vào pipeline imputation.
+2. Q-03 (MNAR): Báo cáo rõ cơ chế MNAR; phân tích chính với MICE (giả định MAR tạm thời); nên có Sensitivity Analysis theo kịch bản worst-case.
+3. Q-04 (MAR, giả định hợp lý): Xử lý bằng MICE.
+
+---
+
+## 5. THỰC HÀNH (LAB 4) — TÙY CHỌN
+
+> **Lưu ý:** Lab này là tùy chọn. Phiên bản thư viện Python và mô tả tập dữ liệu mẫu xem **[Phụ lục ghi chú lab](../appendices/quality-ai-lab-notes.md) (chốt 21/11/2026)**.
+
+### 5.1. Mục tiêu Lab
+
+- Phát hiện lỗi chất lượng dữ liệu theo khung Kahn và xử lý bằng Python.
+- So sánh thực nghiệm 3 phương pháp: Listwise Deletion, Mean Imputation, MICE đúng chuẩn (m=5, Rubin's Rules).
+- Quan sát và diễn giải sự khác biệt về ước lượng và sai số chuẩn.
+
+### 5.2. Cài đặt Môi trường
+
+```bash
+pip install pandas scikit-learn statsmodels
+```
+
+Yêu cầu: Python ≥ 3.10; scikit-learn ≥ 1.3 (cần `enable_iterative_imputer`); statsmodels ≥ 0.14.
+
+### 5.3. Script Python — Phân tích Chất lượng Dữ liệu & MICE Đúng Chuẩn
+
+```python
+"""
+Lab 4 — Chất lượng Dữ liệu & Multiple Imputation (MICE)
+Khóa học RDM Y sinh học — TS. Hoàng Quang Huy, HUST iBME Lab
+
+Triển khai MICE đúng chuẩn thống kê:
+  - m=5 lần gán, mỗi lần dùng random_state khác
+  - Chạy mô hình hồi quy trên từng tập dữ liệu gán
+  - Gộp kết quả theo Rubin's Rules (1976)
+"""
+
+import numpy as np
+import pandas as pd
+from sklearn.experimental import enable_iterative_imputer  # noqa: F401
+from sklearn.impute import IterativeImputer, SimpleImputer
+import statsmodels.formula.api as smf
+import warnings
+warnings.filterwarnings('ignore')
+
+# ─────────────────────────────────────────────────────────
+# 0. ĐỌC DỮ LIỆU
+# ─────────────────────────────────────────────────────────
+df = pd.read_csv('csu_quality_lab4.csv')
+print(f"Tổng số bản ghi ban đầu: {len(df)}")
+
+# ─────────────────────────────────────────────────────────
+# 1. BƯỚC 1: KIỂM ĐỊNH TÍNH HỢP LÝ (PLAUSIBILITY CHECK)
+#    Theo khung Kahn et al. (2016) — Atemporal Plausibility
+#    Ngưỡng tuổi: > 130 (không phải 120) vì kỷ lục sống thọ là 122 tuổi
+# ─────────────────────────────────────────────────────────
+invalid_age = df[(df['age'] < 0) | (df['age'] > 130)]
+invalid_bp  = df[(df['sys_bp'] < 60) | (df['sys_bp'] > 250)]
+
+print("\n--- PHÁT HIỆN LỖI PLAUSIBILITY (KHUNG KAHN) ---")
+print(f"Bản ghi sai tuổi (< 0 hoặc > 130):         {len(invalid_age)} trường hợp")
+print(f"Bản ghi sai huyết áp tâm thu (< 60 hoặc > 250 mmHg): {len(invalid_bp)} trường hợp")
+
+# Chuyển giá trị vi phạm sinh lý thành NaN để xử lý chuẩn tắc
+df.loc[(df['age'] < 0) | (df['age'] > 130), 'age'] = np.nan
+df.loc[(df['sys_bp'] < 60) | (df['sys_bp'] > 250), 'sys_bp'] = np.nan
+
+# ─────────────────────────────────────────────────────────
+# 2. BƯỚC 2: BÁO CÁO TỶ LỆ DỮ LIỆU KHUYẾT (COMPLETENESS CHECK)
+# ─────────────────────────────────────────────────────────
+print("\n--- BÁO CÁO TỶ LỆ DỮ LIỆU KHUYẾT (MISSING RATE) ---")
+missing_summary = df.isnull().sum()
+missing_percent = (df.isnull().sum() / len(df)) * 100
+missing_report  = pd.DataFrame({
+    'Missing Count': missing_summary,
+    'Percentage (%)': missing_percent.round(1)
+})
+print(missing_report[missing_report['Missing Count'] > 0])
+
+# LƯU Ý: Biến response_status là biến kết quả nhị phân (0/1).
+# Không đưa vào mô hình gán MICE để tránh rò rỉ thông tin (data leakage).
+cols_to_impute = ['age', 'sys_bp', 'uas7', 'ige_level']
+df_num = df[cols_to_impute].copy()
+
+# ─────────────────────────────────────────────────────────
+# 3. PHƯƠNG PHÁP 1: LISTWISE DELETION (XÓA DÒNG BỎ SÓT)
+#    Chỉ chấp nhận được dưới MCAR — gây chệch dưới MAR/MNAR
+# ─────────────────────────────────────────────────────────
+df_listwise = df_num.dropna()
+n_dropped = len(df_num) - len(df_listwise)
+print(f"\n--- PHƯƠNG PHÁP 1: LISTWISE DELETION ---")
+print(f"Bản ghi bị loại: {n_dropped} ({n_dropped/len(df_num)*100:.1f}%)")
+print(f"Cỡ mẫu còn lại: {len(df_listwise)}")
+mean_lw = df_listwise['uas7'].mean()
+std_lw  = df_listwise['uas7'].std()
+se_lw   = std_lw / np.sqrt(len(df_listwise))
+print(f"UAS7 — Mean: {mean_lw:.2f}, SD: {std_lw:.2f}, SE: {se_lw:.3f}")
+
+# ─────────────────────────────────────────────────────────
+# 4. PHƯƠNG PHÁP 2: MEAN IMPUTATION (ĐIỀN TRUNG BÌNH)
+#    Không khuyến nghị — làm giảm phương sai giả tạo
+# ─────────────────────────────────────────────────────────
+mean_imp = SimpleImputer(strategy='mean')
+df_mean_imp = pd.DataFrame(
+    mean_imp.fit_transform(df_num), columns=cols_to_impute
+)
+mean_mi = df_mean_imp['uas7'].mean()
+std_mi  = df_mean_imp['uas7'].std()
+se_mi   = std_mi / np.sqrt(len(df_mean_imp))
+print(f"\n--- PHƯƠNG PHÁP 2: MEAN IMPUTATION ---")
+print(f"UAS7 — Mean: {mean_mi:.2f}, SD: {std_mi:.2f} (bị giảm giả tạo), SE: {se_mi:.3f}")
+
+# ─────────────────────────────────────────────────────────
+# 5. PHƯƠNG PHÁP 3: MICE ĐÚNG CHUẨN (m=5, Rubin's Rules)
+#    phương pháp được khuyến nghị rộng rãi cho MAR — Sterne et al. (2009), Rubin (1976)
+# ─────────────────────────────────────────────────────────
+print(f"\n--- PHƯƠNG PHÁP 3: MICE ĐÚNG CHUẨN (m=5, Rubin's Rules) ---")
+
+M = 5  # Số lần gán (thường 5–10)
+betas     = []   # Ước lượng từng tập
+variances = []   # Phương sai từng tập
+
+for i in range(M):
+    # Tạo tập dữ liệu gán thứ i với random_state = i
+    imp = IterativeImputer(max_iter=10, random_state=i)
+    df_imp = pd.DataFrame(
+        imp.fit_transform(df_num), columns=cols_to_impute
+    )
+
+    # Chạy mô hình hồi quy tuyến tính trên tập gán thứ i
+    # Mô hình: uas7 ~ ige_level + age
+    model = smf.ols('uas7 ~ ige_level + age', data=df_imp).fit()
+    betas.append(model.params)
+    variances.append(model.bse ** 2)   # Lưu phương sai (SE²)
+
+# ---- Rubin's Rules (1976) ----
+betas_arr = np.array(betas)      # shape: (M, n_params)
+vars_arr  = np.array(variances)  # shape: (M, n_params)
+
+Q_bar = betas_arr.mean(axis=0)                            # Ước lượng gộp
+U_bar = vars_arr.mean(axis=0)                             # Phương sai within
+B     = betas_arr.var(axis=0, ddof=1)                     # Phương sai between
+T     = U_bar + (1 + 1/M) * B                             # Tổng phương sai
+SE_pooled = np.sqrt(T)                                    # SE gộp
+
+param_names = model.params.index.tolist()
+print(f"\nMô hình: uas7 ~ ige_level + age")
+print(f"{'Tham số':<20} {'β_pooled':>10} {'SE_pooled':>12}")
+print("-" * 44)
+for name, q, se in zip(param_names, Q_bar, SE_pooled):
+    print(f"{name:<20} {q:>10.4f} {se:>12.4f}")
+
+# SE từ MICE lớn hơn mean imputation vì phản ánh trung thực
+# độ bất định do dữ liệu khuyết (thành phần between-imputation B).
+
+# ─────────────────────────────────────────────────────────
+# 6. BẢNG ĐỐI CHIẾU HIỆU NĂNG BA PHƯƠNG PHÁP
+# ─────────────────────────────────────────────────────────
+# Với MICE: lấy ước lượng mean của uas7 từ tập gán trung bình
+mice_means = [
+    pd.DataFrame(
+        IterativeImputer(max_iter=10, random_state=j).fit_transform(df_num),
+        columns=cols_to_impute
+    )['uas7'].mean()
+    for j in range(M)
+]
+mean_mice = np.mean(mice_means)
+
+comparison = pd.DataFrame({
+    'Phương pháp':   ['Listwise Deletion', 'Mean Imputation', 'MICE (m=5)'],
+    'Cỡ mẫu (N)':   [len(df_listwise), len(df_mean_imp), len(df_num)],
+    'Mean UAS7':     [round(mean_lw, 2), round(mean_mi, 2), round(mean_mice, 2)],
+    'SD UAS7':       [round(std_lw, 2), round(std_mi, 2), 'N/A (xem pooled SE)'],
+    'SE Mean UAS7':  [round(se_lw, 3), round(se_mi, 3), "(từ Rubin's Rules)"],
+    'Rủi ro thống kê': [
+        'Chệch nếu MAR/MNAR; giảm cỡ mẫu',
+        'Phương sai giả tạo thấp; bóp méo quan hệ',
+        'Phản ánh đúng bất định; ưu tiên dưới MAR'
+    ]
+})
+
+print("\n--- BẢNG ĐỐI CHIẾU HIỆU NĂNG BA PHƯƠNG PHÁP ---")
+print(comparison.to_string(index=False))
+print("\n✅ Lab hoàn thành. Xem [Phụ lục ghi chú lab](../appendices/quality-ai-lab-notes.md) (chốt 21/11/2026) để biết chi tiết thư viện và dữ liệu mẫu.")
+```
+
+### 5.4. Checklist Tự Đánh Giá (không chấm điểm)
+
+| Tiêu chí | Mô tả |
+| :--- | :--- |
+| ☐ Plausibility | Phát hiện đúng các bản ghi lỗi tuổi / huyết áp; chuyển thành NaN |
+| ☐ Cơ chế khuyết | Lý giải được cơ chế MAR/MNAR của `uas7` và `ige_level` |
+| ☐ MICE đúng chuẩn | Script chạy đủ m=5 lần gán; có vòng lặp, không phải single-pass |
+| ☐ Rubin's Rules | Tính đúng Q_bar, U_bar, B, T và SE_pooled |
+| ☐ So sánh 3 phương pháp | Bảng đối chiếu có đủ Mean, SD, SE và nhận xét rủi ro |
+| ☐ MNAR | Nhận ra tình huống MNAR cần Sensitivity Analysis thay vì chỉ imputation |
+
+---
+
+## 6. CÂU HỎI THẢO LUẬN VÀ BÀI TẬP TÌNH HUỐNG
+
+### 6.1. Câu hỏi Thảo luận
+
+1. *"Một nhà nghiên cứu lập luận: 'Để bảo đảm tính khách quan, tôi chỉ phân tích bệnh nhân có đầy đủ 100% dữ liệu (Complete Case Analysis). Việc này tuyệt đối không thể gây sai lệch vì tôi không tự ý bịa thêm dữ liệu.' Dùng lý thuyết Rubin (1976) [@ref_031] và Sterne et al. (2009) [@ref_032] để phản biện lập luận này."*
+
+2. *"DQD kiểm tra hơn 3.300 quy tắc. Nếu cơ sở dữ liệu đạt Pass Rate 98.5%, liệu có thể khẳng định 100% dữ liệu không còn sai sót lâm sàng không? Phân biệt Verification và Validation trong trường hợp này."*
+
+### 6.2. Bài tập Tình huống Nâng cao (Clinical Audit Scenario)
+
+Trong một nghiên cứu sổ bộ về hiệu quả điều trị bệnh mày đay mạn tính kháng thuốc tại 3 bệnh viện, biến số "Điểm số DLQI" bị khuyết tới 45% ở tháng thứ 6.
+
+- **Bệnh viện A:** Điều dưỡng nhắc bệnh nhân điền form trước ngày khám → Tỷ lệ khuyết 10%.
+- **Bệnh viện B:** Để phiếu khảo sát tự nguyện ở bàn tiếp đón → Tỷ lệ khuyết 50%.
+- **Bệnh viện C:** Bác sĩ không phát phiếu cho bệnh nhân đã khỏi hoàn toàn → Tỷ lệ khuyết 75%.
+
+**Yêu cầu:** Dưới góc độ Data Steward:
+1. Phân tích cơ chế khuyết (MCAR, MAR, MNAR) tại từng bệnh viện.
+2. Giải thích tại sao gộp chung dữ liệu 3 bệnh viện mà không hiệu chỉnh cơ chế khuyết sẽ dẫn đến kết luận sai lệch. Đề xuất chiến lược Sensitivity Analysis.
+
+---
+
+## 7. TÓM TẮT TRỌNG TÂM (KEY TAKEAWAYS)
+
+> **Câu hỏi đầu tiên khi thấy dữ liệu khuyết không phải "điền gì vào?", mà là "vì sao nó khuyết?"**
+
+| Nguyên tắc | Nội dung |
+| :--- | :--- |
+| **1. Khung Kahn** | Ba trục Plausibility, Conformance, Completeness bao phủ toàn diện các lỗi EHR. |
+| **2. 5 chiều Weiskopf & Weng** | Completeness, Correctness, Concordance, Plausibility, Currency — bổ sung hai chiều Correctness và Concordance so với Kahn. |
+| **3. DQD không thay thế clinical validation** | Pass Rate cao chứng minh Verification (đúng định dạng), không chứng minh Validation (đúng lâm sàng). |
+| **4. MCAR ≠ MAR ≠ MNAR** | Ba cơ chế đòi hỏi ba chiến lược xử lý khác nhau. Sai cơ chế → sai kết luận. |
+| **5. MICE là 3 bước** | Imputation → Analysis → Pooling. Chỉ chạy IterativeImputer một lần là **đơn gán** (single imputation), không phải MICE. |
+| **6. Rubin's Rules** | SE_pooled từ MICE lớn hơn mean imputation — đây là điểm cộng, không phải điểm trừ; nó phản ánh trung thực bất định do missing data. |
+| **7. MNAR → Sensitivity Analysis** | Không có phương pháp imputation nào giải quyết MNAR. Nên báo cáo kịch bản worst-case. |
+
+---
+
+## Quiz tự kiểm tra — Bài 4 (5 câu hỏi)
+
+### **Câu 4.1. Trong đánh giá chất lượng dữ liệu, “plausibility” kiểm tra điều gì?**
+- A. Dữ liệu có đủ số dòng theo kế hoạch phân tích hay không.
+- B. Dữ liệu có mới nhất theo ngày cập nhật của hệ thống hay không.
+- C. Dữ liệu có đúng chính tả trong các trường văn bản hay không.
+- D. Giá trị có hợp lý về sinh học hoặc lâm sàng hay không.
+> **Đáp án đúng: D.**
+> *Giải thích:* Plausibility phát hiện các giá trị phi lý như tuổi âm hoặc huyết áp ngoài dải hợp lý. Xem §3.1–§3.2.
+
+### **Câu 4.2. Khung đánh giá chất lượng của Kahn tổ chức việc kiểm tra theo cách nào?**
+- A. Theo các trục conformance, completeness và plausibility.
+- B. Chủ yếu theo kích thước tệp dữ liệu, không xét chất lượng nội dung.
+- C. Chủ yếu theo mức độ phổ biến của phần mềm dùng để lưu dữ liệu.
+- D. Chủ yếu theo số lượng người nhập liệu và số ca đã hoàn tất.
+> **Đáp án đúng: A.**
+> *Giải thích:* Chương trình bày các trục chất lượng để kiểm tra dữ liệu từ nhiều khía cạnh, không chỉ một chỉ số đơn lẻ. Xem §3.2.
+
+### **Câu 4.3. Vì sao cơ chế dữ liệu khuyết MNAR thường cần phân tích độ nhạy?**
+- A. Vì MNAR thường có nhiều giá trị khuyết hơn trong một số bộ dữ liệu.
+- B. Vì xác suất khuyết có thể liên quan đến giá trị không quan sát được.
+- C. Vì MNAR hiếm khi xảy ra trong nghiên cứu y sinh có theo dõi dọc.
+- D. Vì nhiều dữ liệu khuyết cần được xóa bỏ trước khi phân tích.
+> **Đáp án đúng: B.**
+> *Giải thích:* Khi nguyên nhân khuyết liên quan đến chính giá trị bị khuyết, giả định không thể kiểm tra đầy đủ từ dữ liệu quan sát; phân tích độ nhạy giúp đánh giá các kịch bản. Xem §3.4.3.
+
+### **Câu 4.4. Quy trình MICE gồm những pha chính nào?**
+- A. Xóa dòng, điền số 0, rồi tính trung bình trên tập còn lại.
+- B. Chuẩn hóa, xuất bản, rồi lưu trữ mà không ước lượng bất định.
+- C. Tạo nhiều tập, phân tích từng tập và gộp kết quả phù hợp.
+- D. Chạy một lần thuật toán điền dữ liệu rồi báo cáo kết quả.
+> **Đáp án đúng: C.**
+> *Giải thích:* Multiple imputation tạo nhiều tập dữ liệu, chạy phân tích riêng và gộp ước lượng để phản ánh bất định. Xem §3.5.
+
+### **Câu 4.5. Vì sao không nên mặc định dùng mean imputation cho mọi dữ liệu khuyết?**
+- A. Vì phương pháp này khó tính trên một số biến số trong nghiên cứu.
+- B. Vì phương pháp này thường tạo thêm dữ liệu giống như đã được quan sát.
+- C. Vì phương pháp này phù hợp hơn với biến phân loại, không dùng cho biến số.
+- D. Vì thay nhiều giá trị bằng một trung bình làm giảm phương sai và bóp méo quan hệ.
+> **Đáp án đúng: D.**
+> *Giải thích:* Mean imputation không phản ánh đầy đủ bất định của dữ liệu khuyết và có thể làm sai lệch suy luận. Xem §3.5.
+
+---
+
+## 9. TÀI LIỆU THAM KHẢO (REFERENCES)
+
+Toàn bộ luận điểm khoa học trong chương được đối chiếu từ cơ sở dữ liệu thư mục SSoT (`references/references.bib`):
+
+1. **Kahn, M. G., Callahan, T. J., Barnard, J., Bauck, A. E., Brown, J., Davidson, B. N., Estiri, H., Goerg, C., Holve, E., Johnson, S. G., Liaw, S.-T., Hamilton-Lopez, M., Meeker, D., Ong, T. C., Ryan, P., Shang, N., Weiskopf, N. G., Weng, C., Zozus, M. N., & Schilling, L.** (2016). A harmonized data quality assessment terminology and framework for the secondary use of electronic health record data. *eGEMs (Generating Evidence & Methods to improve patient outcomes)*, 4(1), 1244. DOI: [10.13063/2327-9214.1244](https://doi.org/10.13063/2327-9214.1244). PMID: 27713905. [@ref_030] [CẦN KIỂM CHỨNG: ref_030 đang BIB_PENDING]
+
+2. **Weiskopf, N. G., & Weng, C.** (2013). Methods and dimensions of electronic health record data quality assessment: Enabling reuse for clinical research. *Journal of the American Medical Informatics Association*, 20(1), 144–151. DOI: [10.1136/amiajnl-2011-000681](https://doi.org/10.1136/amiajnl-2011-000681). [@ref_028]
+
+3. **Rubin, D. B.** (1976). Inference and missing data. *Biometrika*, 63(3), 581–592. DOI: [10.1093/biomet/63.3.581](https://doi.org/10.1093/biomet/63.3.581). [@ref_031]
+
+4. **Sterne, J. A. C., White, I. R., Carlin, J. B., Spratt, M., Royston, P., Kenward, M. G., Wood, A. M., & Carpenter, J. R.** (2009). Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. *BMJ*, 338, b2393. DOI: [10.1136/bmj.b2393](https://doi.org/10.1136/bmj.b2393). [@ref_032]
+
+5. **Baker, M.** (2016). 1,500 scientists lift the lid on reproducibility. *Nature*, 533(7604), 452–454. DOI: [10.1038/533452a](https://doi.org/10.1038/533452a). [@ref_033]
+
+6. **Hripcsak, G., Duke, J. D., Shah, N. H., Reich, C. G., Huser, V., Schuemie, M. J., Suchard, M. A., Park, R. W., Wong, I. C. K., Rijnbeek, P. R., van der Lei, J., Pratt, N., Norén, G. N., Li, Y.-C., Stang, P. E., Madigan, D., & Ryan, P. B.** (2015). Observational Health Data Sciences and Informatics (OHDSI): Opportunities for observational researchers. *Studies in Health Technology and Informatics*, 216, 574–578. [@ref_038]
+
+7. **OHDSI Community.** (2025). *Our Journey*. Observational Health Data Sciences and Informatics. URL: [https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf](https://www.ohdsi.org/wp-content/uploads/2025/10/OurJourney-2025.pdf). [@ref_011]
