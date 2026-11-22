@@ -59,7 +59,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 - **Render (repo gốc):** `quarto render`: 25/25 trang, không cảnh báo, không trích dẫn chưa phân giải, không liên kết nội bộ hỏng (22/11/2026). Sách Quarto gồm ch00–ch07, phụ lục, sổ kiểm chứng và tài liệu dự án; `docs/guides/` không nằm trong sách.
 - **Web (repo khóa học):** kiểm bằng trình duyệt trên bản preview và trên site công khai: 6/6 sơ đồ Mermaid dựng được (ch01 2, ch02 2, ch03 1, ch05 1), 67 công thức MathJax không lỗi, không còn cặp `$...$` thô; thử phóng to, toàn màn hình và Esc; trang quiz tổng hợp có 10 câu 4 phương án, chọn đáp án hiện kết quả đúng. Chưa kiểm điện thoại, Safari/Firefox, chế độ tối bằng ảnh chụp, in/xuất PDF.
 - **Script:** `build_bib.py --check` (115 mục), `audit_references.py` (cấu trúc), `check_volatile.py --check` (0 vi phạm), `check_quizzes.py --check` (39 câu; đáp án A/B/C/D = 10/9/11/9; đáp án đúng là phương án dài nhất 9/39), `git diff --check`: đạt.
-- **Trạng thái danh mục** (`citation-audit.csv`, 115 dòng): 97 `VERIFIED_UNAUDITED` (gồm 12 mục riêng của chương), 15 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`. **Chưa audit độc lập; không mục nào được coi là `VERIFIED` đầy đủ.**
+- **Trạng thái danh mục** (`citation-audit.csv`, 115 dòng): 103 `VERIFIED_UNAUDITED` (gồm 12 mục riêng của chương), 9 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`. **Chưa audit độc lập; không mục nào được coi là `VERIFIED` đầy đủ.**
 - **Đối chiếu OpenAlex/Semantic Scholar** (chỉ thư mục): xem `references/VERIFICATION.md`; 12 mục riêng của chương đối chiếu Crossref/URL chính thống (21/11/2026).
 - **Script lab đã chạy thử** (dữ liệu tổng hợp, môi trường tạm): Lab 3 (ETL FHIR→OMOP), Lab 4 (MICE), Lab 5 (khử định danh), Lab 6 (chia tập theo bệnh nhân). Kết quả ở các phụ lục `*-lab-notes`. Lab 2 (CSV REDCap) chưa chạy thử trên REDCap Sandbox. Trên Windows cần `PYTHONIOENCODING=utf-8` khi chạy script in tiếng Việt.
 
@@ -76,7 +76,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 | 7 | Mốc EHDS (2027/2029/2031/2035), ICH E6(R3) số mục Annex, FHIR R6 | Chưa tự đối chiếu độc lập; `CONTENT_PENDING` |
 | 8 | Mã concept OMOP/SNOMED trong lab (kể cả đơn vị mmHg `8753` hay `8876`, concept bệnh mày đay) | Cần tra Athena bằng trình duyệt; script đặt `0` (chưa ánh xạ) |
 | 9 | Nguồn gốc ALCOA (Woollen), DataCite, số quy tắc DQD thật | `CONTENT_PENDING` |
-| 10 | Mục tham khảo cần xử lý | `ref_011` trong `.bib` là "Our journey" (2025), không phải "The Book of OHDSI"; `ref_045`, `ref_103` DOI/tiêu đề lệch; `ref_043`, `ref_072` là preprint; 15 `BIB_PENDING`; 3 URL trùng giữa mục cũ và mục mới |
+| 10 | Mục tham khảo cần xử lý | `ref_011` trong `.bib` là "Our journey" (2025), không phải "The Book of OHDSI"; `ref_045`, `ref_103` đã sửa tiêu đề theo DOI (PR #21), `ref_103` còn phải đối chiếu số liệu Phụ lục A; `ref_043`, `ref_072` là preprint; 9 `BIB_PENDING`; 3 URL trùng giữa mục cũ và mục mới |
 | 11 | Audit độc lập 47 mục không DOI và chuyển `VERIFIED_UNAUDITED` → `VERIFIED` | Cần audit thủ công |
 | 12 | Case study dự án thực (hai file + file DMPTool nháp, chỉ nằm trong thư mục làm việc cục bộ, chưa commit) | Chưa đưa vào repo; nếu đăng công khai cần chủ nhiệm đề tài/bệnh viện đồng ý; còn lỗi nội dung đã nêu (giả danh khác "Zero-PII"; UAS7 thuộc miền QS của SDTM; căn cứ pháp lý chưa kiểm) |
 | 13 | Danh mục APA 334 mục; Ethics/CITI/DUA ở mức nâng cao; tài liệu hướng dẫn agent trong `docs/reviews/` | Chưa quyết |
