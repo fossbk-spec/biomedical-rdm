@@ -24,9 +24,9 @@
 
 | Mục | Vấn đề | Đề xuất |
 |---|---|---|
-| `ref_045` Wilkinson 2019 | DOI `10.1038/s41597-019-0184-5` trỏ tới bài *"Evaluating FAIR maturity through a scalable, automated, community-governed framework"*, không phải tiêu đề đang ghi ("Evaluating FAIR data maturity using the FAIR Data Maturity Model"). Văn bản dòng ~216 mô tả bài này là "khung đánh giá trưởng thành FAIR tự động", khớp với tiêu đề của DOI. | Sửa tiêu đề theo DOI sau khi đối chiếu bản gốc; ghi vào `CHANGES.md` |
-| `ref_103` Lane 2020 | DOI `10.1016/S2665-9913(20)30276-9` trỏ tới bài có tiêu đề *"Risk of hydroxychloroquine alone and in combination with azithromycin…"*; tiêu đề đang ghi ("Safety of hydroxychloroquine… in light of rapid wide-spread use for COVID-19…") không trùng. Cần đối chiếu: số liệu ">950.000 người dùng HCQ, 14 cơ sở dữ liệu" ở Phụ lục A có thuộc bài này hay bài khác. | Đối chiếu bản gốc trước khi dùng số liệu |
-| `ref_072` Clark (Bridge2AI) | OpenAlex ghi tiêu đề dài hơn ("…in functional…"), có thể là phiên bản khác của preprint. | Đối chiếu phiên bản v6 (24/4/2026) |
+| `ref_045` Wilkinson 2019 | DOI trỏ tới bài *"Evaluating FAIR maturity through a scalable, automated, community-governed framework"*. | Đã sửa tiêu đề theo DOI (PR #21). |
+| `ref_103` Lane 2020 | Crossref và PubMed 32864627: *"Risk of hydroxychloroquine alone and in combination with azithromycin in the treatment of rheumatoid arthritis: a multinational, retrospective study"*. | Đã sửa tiêu đề (PR #21). Còn phải đối chiếu số liệu ">950.000 người dùng HCQ, 14 cơ sở dữ liệu" ở Phụ lục A với bài gốc. |
+| `ref_072` Clark (Bridge2AI) | bioRxiv: v6 (24/4/2026) tên *"AI-readiness criteria for biomedical data"*; v7 (17/11/2026) tên dài hơn (*…in functional genomics and clinical medicine*). OpenAlex ghi tiêu đề của một phiên bản khác. | Giữ tiêu đề v6, ghi rõ phiên bản khi trích. |
 | `ref_067` Utrecht handbook | OpenAlex ghi tên sổ tay "Data Privacy Handbook" (mục đang ghi là chương). | Có thể chấp nhận; ghi rõ là chương |
 | `ref_076`, `ref_085` | Khác ngôn ngữ/định dạng tiêu đề (tiếng Đức, tiếng Việt). | Có thể chấp nhận |
 
