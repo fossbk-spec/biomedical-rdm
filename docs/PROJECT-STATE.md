@@ -94,3 +94,9 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 4. Audit độc lập danh mục (mục 10–11).
 5. Sau mỗi đợt: chạy `quarto render`, `npm run build`, `audit_references.py`, `check_volatile.py --check`, `check_quizzes.py --check`, `sync_from_source.py --check`; triển khai lại `gh-pages` nếu nội dung web đổi.
 6. Dọn nhánh remote đã merge của repo gốc khi Ben đồng ý (`audit/nodoi-gemini`, `fix/ref-titles-doi`, `chore/refs-workflow-20261121`, `docs/project-state`, `docs/chapters-draft-20261121`); chuyển clone chính `biomedical-rdm` về `main` (hiện đứng ở nhánh cũ, các file chưa theo dõi cục bộ vẫn còn).
+## 2026-11-24 — Bắt đầu Giai đoạn 1 bộ chuẩn biên tập
+
+- **Trạng thái:** Đang làm GĐ1 theo quyết định ở mục 13 của đề xuất chuyên khảo.
+- **Đã thêm:** `editorial/style-guide.md`, `notation.md`, `glossary.yml`, `glossary-allowlist.txt`, `chapter-map.yml`, `review-policy.md`, `TIEN_DO.md`; `scripts/check_structure.py`, `check_glossary.py`, `check_crossrefs.py`.
+- **Giới hạn:** Không sửa nội dung bảy chương hiện có. Hai chương mới chỉ đăng ký `planned`. Các cờ `CONTENT_PENDING`, `BIB_PENDING`, `[CẦN KIỂM CHỨNG]` được giữ nguyên.
+- **Việc còn mở:** Ben duyệt bộ chuẩn và các WARN; hoàn thiện chương mẫu, audit nhận định, xác minh pháp lý/chuẩn/lab, review độc lập và quyết định xuất bản theo GĐ2–GĐ6.

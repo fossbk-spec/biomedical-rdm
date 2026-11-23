@@ -130,3 +130,10 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - Mọi câu mini-course phải có giải thích đúng chủ đề cùng dòng với đáp án; không dùng dòng `- **Giải thích:**` riêng.
 - Dùng cùng ngưỡng chống lộ đáp án: phân bố A/B/C/D của 24 câu là 6/6/6/6, mỗi bài dùng ít nhất ba chữ cái, tỷ lệ độ dài và từ tuyệt đối được script kiểm.
 - Quy tắc tự đánh giá của mini-course vẫn là 24/34 và chờ Ben xác nhận số câu.
+## 2026-11-24 — Quyết định vận hành cho Giai đoạn 1 chuyên khảo
+
+- **Nguồn chân lý:** Sách chuyên khảo là bản chính; quiz, lab và mini-course là lớp phái sinh.
+- **Phạm vi:** Giữ bảy chương hiện có và đăng ký hai chương mới `planned`: Quản trị và pháp lý Việt Nam; Tái lập và phần mềm nghiên cứu. Chỉ tiếng Việt; thuật ngữ Anh ghi lần đầu và quản lý trong `editorial/glossary.yml`.
+- **Đồng tác giả:** Chưa dựng `CODEOWNERS`; `owner: null`, `reviewers: []`; luồng đa tác giả chưa áp dụng cho đến khi có danh sách đồng tác giả.
+- **Bộ chuẩn và kiểm tra:** Tạo `editorial/` và ba script `check_structure.py`, `check_glossary.py`, `check_crossrefs.py`. Quy tắc chắc chắn là `FAIL`; quy tắc chưa chắc chắn hoặc phản ánh hiện trạng chương là `WARN`, không sửa chương trong GĐ1.
+- **Bốn trạng thái:** Script phải báo Đạt, Không đạt, Chưa kiểm tra, Không áp dụng; không ghi Đạt khi chưa chạy. `citation-audit.csv` giữ nguyên cột `status`; script mới không đọc/sửa CSV.
