@@ -123,3 +123,10 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - **Người quyết định:** Ben.
 - **Quyết định:** Quiz được tích hợp vào từng chương với số câu theo các phần lý thuyết chính, không cố định một số câu cho mọi chương; quiz tổng hợp giữ 10 câu.
 - **Quy tắc tự đánh giá:** Tổng số câu là tổng số câu của sáu chương cộng 10 câu tổng hợp; mục tiêu là đúng ít nhất 70% tổng số câu và đúng ít nhất 2/3 câu Q1–Q3 của quiz tổng hợp. Đây là tự đánh giá, không ai ghi lại kết quả; làm lại không giới hạn.
+
+## 2026-11-22 — Mini-course quiz theo cùng quy tắc
+
+- Giữ 4 câu cho mỗi bài mini-course (3 câu khái niệm và 1 câu tình huống), tổng 24 câu; quiz tổng hợp giữ 10 câu.
+- Mọi câu mini-course phải có giải thích đúng chủ đề cùng dòng với đáp án; không dùng dòng `- **Giải thích:**` riêng.
+- Dùng cùng ngưỡng chống lộ đáp án: phân bố A/B/C/D của 24 câu là 6/6/6/6, mỗi bài dùng ít nhất ba chữ cái, tỷ lệ độ dài và từ tuyệt đối được script kiểm.
+- Quy tắc tự đánh giá của mini-course vẫn là 24/34 và chờ Ben xác nhận số câu.
