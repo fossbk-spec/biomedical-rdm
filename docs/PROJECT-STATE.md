@@ -1,16 +1,16 @@
 # Trạng thái dự án Biomedical RDM
 
-**Phiên bản:** 2.4.0 · **Ngày:** 22/11/2026 (cập nhật sau PR #20–#23, gộp PR #6 vào `main`, thiết kế lại sơ đồ, triển khai lại web) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
+**Phiên bản:** 2.5.0 · **Ngày:** 24/11/2026 (cập nhật sau PR #25 làm lại quiz mini-course, sửa lỗi tên bài ở khối kết quả, triển khai lại web) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
 **Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh.
 
 ## 1. Tóm tắt
 
 Dự án có **hai repo công khai** của tài khoản `fossbk-spec`:
 
-| Repo | Vai trò | Trạng thái (22/11/2026) |
+| Repo | Vai trò | Trạng thái (24/11/2026) |
 |---|---|---|
 | `biomedical-rdm` | **Repo gốc**, nguồn chân lý: literature review, danh mục tham khảo, nguồn khóa học, giáo trình (chương, phụ lục, syllabus, quiz), hướng dẫn dùng chung | `main` (merge commit `8286c2c`): PR #1–#4 đã merge; PR #5 đã đóng (nội dung gộp qua PR #15). **PR #6 đã merge vào `main` (22/11/2026)** cùng các PR con #7–#23; khi gộp, giữ quy tắc audit của `main` (PR #21: trạng thái `status` không đổi do đối chiếu trang). Repo chưa bật Pages |
-| `biomedical-rdm-course` | **Web khóa học** (VitePress); nội dung đồng bộ một chiều từ repo gốc | `main`: PR #1–#4, #6–#10 đã merge (#6 đồng bộ giáo trình, #7 loại trang `AGENTS`, #8 hiển thị công thức và sơ đồ, #9 đồng bộ quiz, #10 sơ đồ mới và lọc thẻ HTML trong nhãn); PR #5 đã đóng. **Pages đã bật** (nhánh `gh-pages`, triển khai thủ công), bản công khai hiện được dựng từ `395e6d1` (commit deploy `ab29041`) tại https://fossbk-spec.github.io/biomedical-rdm-course/ |
+| `biomedical-rdm-course` | **Web khóa học** (VitePress); nội dung đồng bộ một chiều từ repo gốc | `main`: PR #1–#4, #6–#12 đã merge (#6 đồng bộ giáo trình, #7 loại trang `AGENTS`, #8 hiển thị công thức và sơ đồ, #9 đồng bộ quiz, #10 sơ đồ mới và lọc thẻ HTML trong nhãn, #11 đồng bộ quiz mini-course và `references`, #12 sửa tên bài trong khối kết quả); PR #5 đã đóng. **Pages đã bật** (nhánh `gh-pages`, triển khai thủ công), bản công khai hiện được dựng từ `9966bbc` (commit deploy `324a457`) tại https://fossbk-spec.github.io/biomedical-rdm-course/ |
 
 Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở `biomedical-rdm-course`**, tài liệu lưu ở **repo gốc** (sửa ở repo gốc, đồng bộ một chiều sang repo khóa học). Khóa học là **miễn phí, tự học theo nhịp người đọc**, không phải học phần có tín chỉ.
 
@@ -68,7 +68,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 
 | # | Mục | Ghi chú |
 |---|---|---|
-| 1 | Quiz 6 bài của mini-course (trong `course-source`) | **Đã làm lại:** 24 câu, 4 câu/bài, A/B/C/D = 6/6/6/6; giải thích cùng dòng đáp án; script đã mở rộng để kiểm mini-course và quiz tổng hợp. Quy tắc tự đánh giá 24/34 vẫn chờ Ben xác nhận. |
+| 1 | Quiz 6 bài của mini-course (trong `course-source`) | **Đã làm lại:** 24 câu, 4 câu/bài, A/B/C/D = 6/6/6/6; giải thích cùng dòng đáp án; script đã mở rộng để kiểm mini-course và quiz tổng hợp. Đã đồng bộ và triển khai (PR #25 repo gốc; PR #11, #12 repo khóa học). Kiểm trên web công khai: bấm đúng cả 34 câu, mọi giải thích hiển thị, khối kết quả báo 34/34 và "ĐẠT". Đã sửa lỗi có từ trước: `LESSONS` ghi sai tên bài 5, 6 nên tổng kẹt ở 26 và không bao giờ có kết luận. Chưa thử nhánh "CHƯA ĐẠT", điện thoại, chế độ tối. Số câu mỗi bài (4) và quy tắc 24/34 vẫn chờ Ben xác nhận. |
 | 2 | Sơ đồ | Đã thiết kế lại và thêm tiêu đề, mô tả (PR #22). Còn: cân nhắc dựng sẵn SVG khi build (bản in/PDF/offline); kiểm lại nhãn cạnh và tiêu đề subgraph ở chế độ tối; xem trực tiếp site công khai bằng trình duyệt |
 | 3 | Kiểm hiển thị web | Điện thoại, Safari/Firefox, chế độ tối, in/xuất PDF |
 | 4 | Mini-course Bài 5 chứa phần AI-ready | Syllabus đặt AI-ready ở M6; cần tách nội dung ở `course-source` |
@@ -89,7 +89,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 ## 7. Bước tiếp theo đề xuất
 
 1. Kiểm hiển thị web trên thiết bị khác và chế độ tối; xem trực tiếp các sơ đồ mới trên site công khai (mục 2–3).
-2. Kiểm quiz mini-course và thống nhất quy tắc tự đánh giá (mục 1); tách nội dung AI-ready (mục 4).
+2. Thống nhất số câu mỗi bài và quy tắc tự đánh giá của mini-course (mục 1); tách nội dung AI-ready (mục 4).
 3. Người đọc nguồn chính thống xử lý các mục `CONTENT_PENDING` (mục 5–9) bằng trình duyệt; cập nhật phụ lục và đồng bộ lại web.
 4. Audit độc lập danh mục (mục 10–11).
 5. Sau mỗi đợt: chạy `quarto render`, `npm run build`, `audit_references.py`, `check_volatile.py --check`, `check_quizzes.py --check`, `sync_from_source.py --check`; triển khai lại `gh-pages` nếu nội dung web đổi.
