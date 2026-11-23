@@ -46,14 +46,16 @@ def inspect(path: Path) -> list[tuple[str, int, str]]:
         if len(ks)!=len(set(ks)): findings.append(("FAIL",vals[0][1],f"trùng số {kind}"))
         elif ks!=list(range(1,len(ks)+1)): findings.append(("FAIL",vals[0][1],f"số thứ tự {kind} {ks} không liên tục từ 1"))
     for n,line in enumerate(lines,1):
-        if any(x in line for x in ("[cite:", "TODO", "CONTENT_PENDING")) and not line.lstrip().startswith(">"):
-            findings.append(("WARN",n,"dòng comment/rác hoặc cờ pending ngoài block được phép"))
+        if any(x in line for x in ("[cite:", "TODO")):
+            findings.append(("WARN",n,"dòng comment/rác của công cụ hoặc TODO còn sót"))
+        elif any(x in line for x in ("CONTENT_PENDING", "BIB_PENDING", "[CẦN KIỂM CHỨNG")) and not line.lstrip().startswith(">"):
+            findings.append(("INFO",n,"cờ chờ xác minh được giữ nguyên theo style-guide (không phải lỗi)"))
     return findings
 
 def report(findings):
-    counts={"FAIL":0,"WARN":0}
+    counts={"FAIL":0,"WARN":0,"INFO":0}
     for level,n,msg in findings: counts[level]+=1; print(f"{level} {n}: {msg}")
-    print(f"Đạt: {0 if findings else 1}; Không đạt: {counts['FAIL']}; Chưa kiểm tra: 0; Không áp dụng: 0; WARN: {counts['WARN']}")
+    print(f"Đạt: {0 if findings else 1}; Không đạt: {counts['FAIL']}; Chưa kiểm tra: 0; Không áp dụng: 0; WARN: {counts['WARN']}; INFO: {counts['INFO']}")
     return counts
 
 def self_test():

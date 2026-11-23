@@ -2,7 +2,7 @@ version: 1.0.0
 date: 2026-11-24
 purpose: Bản đồ bảy chương hiện có và hai chương đã đăng ký nhưng chưa viết.
 chapters:
-  - {id: ch01, file: docs/chapters/ch01_overview_and_dmp.md, title: Tổng quan RDM và DMP, role: framework, prerequisites: [], related: [ch02, ch06], word_count: 4761, owner: null, reviewers: [], status: draft}
+  - {id: ch01, file: docs/chapters/ch01_overview_and_dmp.md, title: Tổng quan RDM và DMP, role: framework, prerequisites: [], related: [ch02, ch06], word_count: 6297, owner: null, reviewers: [], status: model}
   - {id: ch02, file: docs/chapters/ch02_collection_and_redcap.md, title: Thu thập dữ liệu lâm sàng và REDCap, role: practice, prerequisites: [ch01], related: [ch03, ch05], word_count: 8490, owner: null, reviewers: [], status: draft}
   - {id: ch03, file: docs/chapters/ch03_standards_cdisc_fhir_omop.md, title: Chuẩn CDISC, FHIR và OMOP, role: standards, prerequisites: [ch01, ch02], related: [ch04, ch06], word_count: 5935, owner: null, reviewers: [], status: draft}
   - {id: ch04, file: docs/chapters/ch04_quality_and_imputation.md, title: Chất lượng dữ liệu và gán dữ liệu khuyết, role: practice, prerequisites: [ch01, ch02], related: [ch03, ch06], word_count: 4897, owner: null, reviewers: [], status: draft}

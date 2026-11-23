@@ -138,6 +138,13 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - **Bộ chuẩn và kiểm tra:** Tạo `editorial/` và ba script `check_structure.py`, `check_glossary.py`, `check_crossrefs.py`. Quy tắc chắc chắn là `FAIL`; quy tắc chưa chắc chắn hoặc phản ánh hiện trạng chương là `WARN`, không sửa chương trong GĐ1.
 - **Bốn trạng thái:** Script phải báo Đạt, Không đạt, Chưa kiểm tra, Không áp dụng; không ghi Đạt khi chưa chạy. `citation-audit.csv` giữ nguyên cột `status`; script mới không đọc/sửa CSV.
 
+## 2026-11-24 — Thử khung 11 mục trên Chương 1 (điểm cần Ben duyệt)
+
+- **Quyết định làm việc:** Dùng Chương 1 làm chương mẫu GĐ2; tổ chức nội dung theo 11 mục của đề xuất, không sửa chương khác và chưa đồng bộ mini-course.
+- **Giữ nguyên:** nội dung kỹ thuật, Surgisphere, Lab 1, quiz 5 câu và danh mục tham khảo; thêm archive và changelog để truy vết.
+- **Bổ sung:** mục phạm vi, luận điểm cần tác giả xác nhận, bảng bằng chứng và mục giới hạn; bảng bằng chứng ghi `chưa đối chiếu` cho phạm vi đã đọc và trạng thái đối chiếu.
+- **Cần Ben duyệt:** khung 11 mục có phù hợp với các chương còn lại không; luận điểm trung tâm về khung quản trị dữ liệu cho bối cảnh Việt Nam; các nhận định pending và bảng bằng chứng trước GĐ3/GĐ4.
+
 ## 2026-11-24 — Chuẩn hóa sau review GĐ1 (Ben chọn "theo gói đề xuất")
 
 - **Đánh số hình/bảng theo chương** (`Hình C.k`, không tiểu hình `a`/`b`). Đã đổi 9 caption hình trong ch01, ch02, ch03, ch05; không nơi nào trong thân sách, mini-course, phụ lục hay guide dẫn "Hình N" nên không gãy tham chiếu. `check_structure.py` kiểm số chương và thứ tự; caption không có dẫn chiếu trong thân vẫn là `WARN` (xử lý ở GĐ3).
