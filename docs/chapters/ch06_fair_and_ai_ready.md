@@ -1,5 +1,5 @@
 ---
-title: "Bài 6 — Nguyên tắc FAIR, Kho lưu trữ và Dữ liệu Sẵn sàng cho AI"
+title: "Chương 6 — Nguyên tắc FAIR, Kho lưu trữ và Dữ liệu Sẵn sàng cho AI"
 subtitle: "Khóa học Quản lý Dữ liệu Nghiên cứu Y sinh học"
 author: "TS. Hoàng Quang Huy — Đại học Bách khoa Hà Nội (HUST), iBME Lab"
 orcid: "0000-0002-4603-1297"

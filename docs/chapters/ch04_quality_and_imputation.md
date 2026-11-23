@@ -1,5 +1,5 @@
 ---
-title: "Bài 4 — Chất lượng Dữ liệu & Xử lý Dữ liệu Khuyết"
+title: "Chương 4 — Chất lượng Dữ liệu & Xử lý Dữ liệu Khuyết"
 subtitle: "Khóa học Quản lý Dữ liệu Nghiên cứu Y sinh học"
 author: "TS. Hoàng Quang Huy — Đại học Bách khoa Hà Nội (HUST), iBME Lab"
 orcid: "0000-0002-4603-1297"

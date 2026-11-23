@@ -1,0 +1,65 @@
+# Viết tắt phổ biến trong code, URL, tên chuẩn hoặc tên sản phẩm; giữ lại vì
+# không phải thuật ngữ cần định nghĩa lại trong glossary. Mỗi dòng: token — lý do.
+AI — viết tắt trong tên chủ đề AI-ready, được giải thích theo ngữ cảnh chương
+API — giao diện lập trình, xuất hiện trong ví dụ kỹ thuật
+ALCOA — tên khung toàn vẹn dữ liệu, có giải thích trong Chương 2
+ALCOA+ — biến thể tên khung, có giải thích trong Chương 2
+ALCOA++ — biến thể tên khung, có giải thích trong Chương 2
+CDISC — tên tổ chức/chuẩn, có giải thích trong Chương 3
+CDM — viết tắt trong OMOP CDM, có giải thích trong Chương 3
+CLO — mã chuẩn đầu ra học tập, nội dung khóa học cũ
+CSV — định dạng tệp, có giải thích theo ngữ cảnh
+DMP — thuật ngữ lõi, có mục glossary
+DMSP — thuật ngữ lõi, có mục glossary
+DQD — tên công cụ OHDSI, có giải thích trong Chương 4
+EDC — thuật ngữ lõi, có mục glossary
+EHR — thuật ngữ lõi, có mục glossary
+EAV — mô hình lưu trữ, giải thích trong Chương 2
+EHDS — tên đạo luật/khung, có giải thích trong Chương 5
+ETL — thuật ngữ kỹ thuật, có giải thích trong Chương 3
+FDA — cơ quan quản lý, có giải thích theo ngữ cảnh
+FHIR — thuật ngữ lõi, có mục glossary
+GCP — thuật ngữ lõi, có mục glossary
+HIPAA — quy định Hoa Kỳ, có giải thích theo ngữ cảnh
+HL7 — tổ chức/chuẩn, có giải thích trong Chương 3
+JSON — định dạng tệp, có giải thích theo ngữ cảnh
+JSON-LD — định dạng siêu dữ liệu, có giải thích trong Chương 6
+MAR — cơ chế dữ liệu khuyết, có giải thích trong Chương 4
+MCAR — cơ chế dữ liệu khuyết, có giải thích trong Chương 4
+MICE — thuật ngữ lõi, có mục glossary
+MNAR — cơ chế dữ liệu khuyết, có giải thích trong Chương 4
+NIH — cơ quan/chính sách, có giải thích theo ngữ cảnh
+OMOP — thuật ngữ lõi, có mục glossary
+OHDSI — tổ chức/mạng lưới, có giải thích trong Chương 3
+ORCID — mã định danh tác giả, xuất hiện trong hướng dẫn
+PID — định danh bền vững, có giải thích trong Chương 6
+PHI — thông tin sức khỏe được bảo vệ, có giải thích trong Chương 2
+Q&A — loại tài liệu, không phải thuật ngữ nội dung
+Q-01 — mã kiểm tra minh họa trong Chương 4
+Q-02 — mã kiểm tra minh họa trong Chương 4
+Q-03 — mã kiểm tra minh họa trong Chương 4
+Q-04 — mã kiểm tra minh họa trong Chương 4
+Q-05 — mã kiểm tra minh họa trong Chương 4
+RBAC — kiểm soát truy cập, có giải thích trong Chương 2
+REDCap — tên nền tảng, có giải thích trong Chương 2
+RO-Crate — tiêu chuẩn đóng gói, có giải thích trong Chương 6
+SDTM — mô hình CDISC, có giải thích trong Chương 3
+SE — ký hiệu thống kê, có trong notation.md
+SQL — ngôn ngữ truy vấn, xuất hiện trong DQD
+TRE — môi trường nghiên cứu tin cậy, có giải thích trong Chương 5
+URL — định dạng địa chỉ web, không phải thuật ngữ nội dung
+WHO — tên tổ chức, có giải thích theo ngữ cảnh
+XML — định dạng tệp, xuất hiện trong chuẩn
+XLSX — định dạng tệp, xuất hiện trong ví dụ
+Zenodo — tên kho, có giải thích trong Chương 6
+MODULE — nhãn front matter của tài liệu khóa học, không phải thuật ngữ nội dung
+QUAN — từ viết hoa trong tiêu đề chương hiện có, không phải viết tắt
+THU — từ viết hoa trong tiêu đề chương hiện có, không phải viết tắt
+KHUNG — từ viết hoa trong tiêu đề chương hiện có, không phải viết tắt
+DANH — từ viết hoa trong tiêu đề chương hiện có, không phải viết tắt
+QUIZ — tên loại bài tự kiểm tra hiện có
+HUST — viết tắt tên cơ sở trong thông tin tác giả
+RDM — tên viết tắt của lĩnh vực trong tên repository và tiêu đề
+LEARNING — từ tiếng Anh trong tiêu đề front matter cũ, không phải thuật ngữ mới
+DE-IDENTIFICATION — từ tiếng Anh trong tiêu đề chương, thuật ngữ tiếng Việt được quản lý riêng
+WORKFLOW — từ tiếng Anh trong tiêu đề bài tổng hợp, không phải thuật ngữ kỹ thuật mới
