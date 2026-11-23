@@ -7,7 +7,8 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT=Path(__file__).resolve().parents[1]; G=ROOT/"editorial/glossary.yml"; AL=ROOT/"editorial/glossary-allowlist.txt"
 CH=ROOT/"docs/chapters"
-FIELDS=("key","vi","en","abbr","definition","first_chapter","source")
+FIELDS=("key","vi","vi_status","en","abbr","definition","first_chapter","source")
+STATUS=("established","proposed","keep-english")
 def parse(path=G):
     rows=[]; cur=None
     for n,line in enumerate(path.read_text(encoding="utf-8").splitlines(),1):
@@ -24,6 +25,10 @@ def check():
             if f not in r or not r[f]: out.append(("FAIL",r.get("line",i),f"thiếu trường {f}"))
         if r.get("first_chapter") and not (CH/f"ch0{int(r['first_chapter']):02d}_").parent.exists(): pass
         if r.get("first_chapter") and not list(CH.glob(f"ch{int(r['first_chapter']):02d}_*.md")): out.append(("FAIL",r["line"],"first_chapter không tồn tại"))
+    for r in rows:
+        if r.get("vi_status") and r["vi_status"] not in STATUS: out.append(("FAIL",r["line"],f"vi_status không hợp lệ: {r['vi_status']}"))
+    np_=sum(1 for r in rows if r.get("vi_status")=="proposed")
+    if np_: out.append(("WARN",1,f"{np_} mục vi_status=proposed chưa được Ben xác nhận"))
     for k in set(x for x in keys if x):
         if keys.count(k)>1: out.append(("FAIL",1,f"key trùng {k}"))
     for p in sorted(CH.glob("ch0*.md")):

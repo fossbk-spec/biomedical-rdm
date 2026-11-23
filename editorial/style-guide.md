@@ -17,11 +17,16 @@ Sách chuyên khảo là nguồn chân lý; quiz, lab và mini-course là lớp 
 
 ## Hình, bảng, công thức và trích dẫn
 
-- Caption dùng dạng `**Hình N. ...**` hoặc `**Bảng N. ...**`; nếu một nhóm có tiểu hình thì dùng `N.a`, `N.b`. Đánh số theo thứ tự xuất hiện trong chương.
-- Mỗi hình/bảng phải được gọi trong thân văn bản bằng cụm `Hình N` hoặc `Bảng N`; không dùng caption làm dẫn chiếu duy nhất.
+- Caption dùng dạng `**Hình C.k. ...**` hoặc `**Bảng C.k. ...**`, trong đó `C` là số chương và `k` là số thứ tự trong chương (ví dụ `Hình 2.3`). Không dùng tiểu hình `a`/`b`; mỗi hình có số riêng. Đánh số theo thứ tự xuất hiện trong chương (quyết định của Ben, 24/11/2026).
+- Tên gọi: dùng "Chương N" cho sách chuyên khảo; tên "Bài N" chỉ dùng cho mini-course.
+- Mỗi hình/bảng phải được gọi trong thân văn bản bằng cụm `Hình C.k` hoặc `Bảng C.k`; không dùng caption làm dẫn chiếu duy nhất.
 - Trích dẫn đóng dùng `[@key]`; `key` phải có trong `references/references.bib`. Không tạo nguồn từ trí nhớ.
 - Đơn vị dùng SI khi phù hợp; viết số và đơn vị nhất quán, không trộn ký hiệu trong cùng một bảng. Ký hiệu toán học được giải thích tại lần đầu và ghi ở `notation.md` nếu xuất hiện trong chương.
 - Viết tắt được giải thích lần đầu theo dạng tiếng Việt (English, ABBR), sau đó dùng nhất quán. Ngoại lệ phải có lý do trong `glossary-allowlist.txt`.
+
+## Thuật ngữ và glossary
+
+Mỗi mục trong `glossary.yml` có `vi_status`: `established` (thuật ngữ tiếng Việt thông dụng), `proposed` (bản dịch đề xuất, chờ Ben xác nhận) hoặc `keep-english` (tên chuẩn hoặc tên riêng dùng nguyên tiếng Anh trong sách; trường `vi` chỉ là diễn giải tham khảo). Phân loại ban đầu do Claude đề xuất, chưa được Ben rà.
 
 ## Sơ đồ và quiz
 

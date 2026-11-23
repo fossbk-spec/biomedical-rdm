@@ -1,26 +1,18 @@
 # Ký hiệu và đơn vị
 
-**Phiên bản:** 1.0.0  
+**Phiên bản:** 1.1.0  
 **Ngày:** 24/11/2026  
-**Mục đích:** Tra cứu các ký hiệu thực sự xuất hiện trong bảy chương hiện có.
+**Mục đích:** Tra cứu các ký hiệu thực sự xuất hiện trong thân bảy chương hiện có (đã đối chiếu với chương).
 
-| Ký hiệu | Ý nghĩa | Chương xuất hiện |
+| Ký hiệu | Ý nghĩa | Nơi xuất hiện |
 |---|---|---|
-| `k` | Số bản ghi tối thiểu trong một lớp tương đương của k-anonymity | Chương 5 |
-| `ℓ` | Số giá trị nhạy cảm đa dạng tối thiểu trong l-diversity | Chương 5 |
-| `ε` | Tham số ngân sách riêng tư trong differential privacy; ε nhỏ hơn thường biểu thị bảo vệ mạnh hơn trong cùng mô hình | Chương 5 |
-| `m` | Số bộ dữ liệu được tạo trong multiple imputation; chương minh họa `m=5` | Chương 4 |
-| `B` | Thành phần phương sai giữa các lần gán trong Rubin's Rules | Chương 4 |
-| `U` | Thành phần phương sai trong một bộ dữ liệu đã gán | Chương 4 |
-| `Q` | Ước lượng tham số cần gộp qua các bộ dữ liệu đã gán | Chương 4 |
-| `SE` | Sai số chuẩn của ước lượng sau khi gộp | Chương 4 |
-| `N` | Quy mô mẫu/tổng số đối tượng trong ví dụ hoặc phép tính | Chương 4, 5, 6 |
-| `p` | Tỷ lệ hoặc xác suất trong các ví dụ thống kê | Chương 4 |
-| `x` | Giá trị quan sát/biến đầu vào trong ví dụ thống kê | Chương 4 |
-| `n` | Số quan sát hoặc kích thước nhóm trong ví dụ | Chương 4 |
-| `t` | Thời điểm hoặc chỉ số thời gian trong ví dụ dữ liệu dọc | Chương 5, 6 |
-| `m=5` | Số lần gán minh họa của quy trình MICE | Chương 4 |
-| `70/15/15` | Tỷ lệ chia train/validation/test ở cấp bệnh nhân trong lab minh họa | Chương 6 |
-| `/20` | Thang điểm tự đối chiếu của một số lab | Chương 1, 2, 3, 5 |
+| `k` | Số bản ghi tối thiểu trong một lớp tương đương của k-anonymity | Chương 5 (ví dụ `k = 5`, `k = 50`) |
+| `m` | Số bộ dữ liệu được tạo trong multiple imputation; chương minh họa `m = 5` | Chương 4 |
+| `\hat{\theta}_i` | Ước lượng tham số từ bộ dữ liệu đã gán thứ `i` | Chương 4, mục 3 (Rubin's Rules) |
+| `\bar{\theta}` | Ước lượng gộp qua `m` bộ dữ liệu đã gán | Chương 4, mục 3 |
+| `\hat{V}_i` | Phương sai ước lượng trong bộ dữ liệu đã gán thứ `i` | Chương 4, mục 3 |
+| `\bar{U}` | Trung bình phương sai trong các lần gán (within) | Chương 4, mục 3 |
+| `B` | Phương sai giữa các lần gán (between) | Chương 4, mục 3 |
+| `T` | Tổng phương sai: `T = \bar{U} + (1 + 1/m) B` | Chương 4, mục 3 |
 
-Các ký hiệu khác chỉ xuất hiện trong code hoặc ví dụ cục bộ, không được coi là ký hiệu chung của sách. Ký hiệu mới cần bổ sung cùng chương và kiểm tra nguồn.
+**Không đưa vào bảng:** `ℓ` và `ε` (không xuất hiện trong thân bảy chương; l-diversity và differential privacy được mô tả bằng lời), chữ cái chung (`p`, `x`, `n`, `t`, `N`) và thông số lab (`70/15/15`, `/20`). Ký hiệu mới được thêm cùng chương xuất hiện và phải đối chiếu nguồn.

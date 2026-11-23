@@ -137,3 +137,10 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - **Đồng tác giả:** Chưa dựng `CODEOWNERS`; `owner: null`, `reviewers: []`; luồng đa tác giả chưa áp dụng cho đến khi có danh sách đồng tác giả.
 - **Bộ chuẩn và kiểm tra:** Tạo `editorial/` và ba script `check_structure.py`, `check_glossary.py`, `check_crossrefs.py`. Quy tắc chắc chắn là `FAIL`; quy tắc chưa chắc chắn hoặc phản ánh hiện trạng chương là `WARN`, không sửa chương trong GĐ1.
 - **Bốn trạng thái:** Script phải báo Đạt, Không đạt, Chưa kiểm tra, Không áp dụng; không ghi Đạt khi chưa chạy. `citation-audit.csv` giữ nguyên cột `status`; script mới không đọc/sửa CSV.
+
+## 2026-11-24 — Chuẩn hóa sau review GĐ1 (Ben chọn "theo gói đề xuất")
+
+- **Đánh số hình/bảng theo chương** (`Hình C.k`, không tiểu hình `a`/`b`). Đã đổi 9 caption hình trong ch01, ch02, ch03, ch05; không nơi nào trong thân sách, mini-course, phụ lục hay guide dẫn "Hình N" nên không gãy tham chiếu. `check_structure.py` kiểm số chương và thứ tự; caption không có dẫn chiếu trong thân vẫn là `WARN` (xử lý ở GĐ3).
+- **`notation.md` chỉ giữ ký hiệu có thật trong chương** (`k`, `m`, `θ̂ᵢ`, `θ̄`, `V̂ᵢ`, `Ū`, `B`, `T`). Đã bỏ `ℓ` và `ε` vì không xuất hiện trong thân bảy chương (bản v1.0.0 ghi sai), cùng các chữ cái chung và thông số lab.
+- **`glossary.yml` có `vi_status`** (`established` 48, `proposed` 26, `keep-english` 14). Phân loại do Claude đề xuất, Ben chưa rà; `check_glossary.py` cảnh báo số mục `proposed`.
+- **Tên gọi "Chương N"** cho sách chuyên khảo: đổi `title` front matter của ch04 và ch06 từ "Bài N" sang "Chương N". Tên "Bài N" chỉ dùng cho mini-course. Tiêu đề ch04 và ch06 vẫn ở front matter (không có H1 trong thân), `check_structure.py` cảnh báo để thống nhất sau.

@@ -49,7 +49,7 @@ flowchart TD
     class STEWARD techStyle;
 ```
 
-**Hình 1. Bản đồ vòng đời dữ liệu y sinh và lớp kiểm soát.** Sơ đồ mô tả bảy giai đoạn liên tiếp của dữ liệu, cùng các điểm quản trị, stewardship và tuân thủ tác động vào chuỗi.
+**Hình 1.1. Bản đồ vòng đời dữ liệu y sinh và lớp kiểm soát.** Sơ đồ mô tả bảy giai đoạn liên tiếp của dữ liệu, cùng các điểm quản trị, stewardship và tuân thủ tác động vào chuỗi.
 
 ---
 
@@ -96,7 +96,7 @@ flowchart LR
     class C warnStyle;
 ```
 
-**Hình 2. Khuếch đại lỗi từ thượng nguồn.** Sơ đồ cho thấy một thiếu sót ở khâu lập kế hoạch có thể làm tăng gánh nặng làm sạch và ảnh hưởng đến độ tin cậy của kết quả cuối.
+**Hình 1.2. Khuếch đại lỗi từ thượng nguồn.** Sơ đồ cho thấy một thiếu sót ở khâu lập kế hoạch có thể làm tăng gánh nặng làm sạch và ảnh hưởng đến độ tin cậy của kết quả cuối.
 
 > **Nguyên lý:** *Hiệu ứng khuếch đại lỗi từ thượng nguồn (Upstream Error Amplification).* Sơ đồ trên minh họa logic chi phí: một thiếu sót ở giai đoạn lập kế hoạch có thể làm tăng gánh nặng ở khâu làm sạch và làm giảm giá trị tái sử dụng của tập dữ liệu.
 

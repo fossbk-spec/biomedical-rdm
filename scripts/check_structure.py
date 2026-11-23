@@ -18,8 +18,9 @@ def inspect(path: Path) -> list[tuple[str, int, str]]:
         if fenced: continue
         if re.match(r"^# ", line): h1.append(n)
         if re.match(r"^## ", line): h2.append((n,line))
-        m=re.search(r"\*\*(Hình|Bảng)\s+(\d+)([a-z])?\.\s+.+?\*\*", line)
-        if m: caps.append((m.group(1),int(m.group(2)),m.group(3),n))
+        m=re.search(r"\*\*(Hình|Bảng)\s+(\d+)\.(\d+)([a-z])?\.\s+.+?\*\*", line)
+        if m: caps.append((m.group(1),int(m.group(2)),int(m.group(3)),m.group(4),n))
+        elif re.search(r"\*\*(Hình|Bảng)\s+\d+[a-z]?\.\s", line): findings.append(("FAIL",n,"caption không theo dạng Hình/Bảng C.k (số chương.số thứ tự)"))
     fm_title = bool(lines and lines[0].strip() == "---" and any(re.match(r"^title:\s*\S", l) for l in lines[1:12]))
     if len(h1) > 1 or (len(h1) == 0 and not fm_title):
         findings.append(("FAIL", 1, f"có {len(h1)} tiêu đề cấp 1 và {'có' if fm_title else 'không có'} title ở front matter; yêu cầu đúng một nguồn tiêu đề"))
@@ -31,15 +32,19 @@ def inspect(path: Path) -> list[tuple[str, int, str]]:
         if m: nums.append((n,int(m.group(1))))
     expected=list(range(1,len(nums)+1))
     if [x[1] for x in nums] != expected: findings.append(("WARN", nums[0][0] if nums else 1, f"số mục cấp 2 là {[x[1] for x in nums]}, không liên tục"))
-    for kind,num,sub,n in caps:
-        token=f"{kind} {num}{sub or ''}"
+    mch=re.match(r"ch(\d+)_",path.name); chno=int(mch.group(1)) if mch else None
+    seq={}
+    for kind,c,k,sub,n in caps:
+        token=f"{kind} {c}.{k}{sub or ''}"
+        if chno is not None and c!=chno: findings.append(("FAIL",n,f"caption {token} có số chương {c}, file là chương {chno}"))
+        if sub: findings.append(("WARN",n,f"caption {token} dùng tiểu hình; style-guide yêu cầu mỗi hình một số riêng"))
         body="\n".join(lines[:n-1]+lines[n:])
         if not re.search(rf"\b{re.escape(token)}\b",body): findings.append(("WARN",n,f"caption {token} không có dẫn chiếu trong thân"))
-    grouped={}
-    for kind,num,sub,n in caps: grouped.setdefault(kind,[]).append((num,sub,n))
-    for kind,vals in grouped.items():
-        bare=[v[0] for v in vals if not v[1]]
-        if len(bare)!=len(set(bare)): findings.append(("FAIL",vals[0][2],f"trùng số {kind}"))
+        seq.setdefault(kind,[]).append((k,n))
+    for kind,vals in seq.items():
+        ks=[v[0] for v in vals]
+        if len(ks)!=len(set(ks)): findings.append(("FAIL",vals[0][1],f"trùng số {kind}"))
+        elif ks!=list(range(1,len(ks)+1)): findings.append(("FAIL",vals[0][1],f"số thứ tự {kind} {ks} không liên tục từ 1"))
     for n,line in enumerate(lines,1):
         if any(x in line for x in ("[cite:", "TODO", "CONTENT_PENDING")) and not line.lstrip().startswith(">"):
             findings.append(("WARN",n,"dòng comment/rác hoặc cờ pending ngoài block được phép"))
@@ -53,9 +58,16 @@ def report(findings):
 
 def self_test():
     with tempfile.TemporaryDirectory() as d:
-        p=Path(d)/"x.md"; p.write_text("# X\n## 1. A\n**Hình 1. x**\n",encoding="utf-8")
-        assert any(x[0]=="WARN" for x in inspect(p))
-    print("Đạt: self-test bắt được caption không được dẫn chiếu; Không đạt: 0; Chưa kiểm tra: 0; Không áp dụng: 0")
+        p = Path(d) / "x.md"
+        p.write_text("# X\n## 1. A\n**Hình 1.1. x**\n", encoding="utf-8")
+        assert any(x[0] == "WARN" for x in inspect(p)), "phải cảnh báo caption không dẫn chiếu"
+        q = Path(d) / "ch02_x.md"
+        q.write_text("# X\n## 1. A\n**Hình 5.1. x**\n**Hình 3a. y**\n", encoding="utf-8")
+        assert sum(1 for x in inspect(q) if x[0] == "FAIL") >= 2, "phải báo sai số chương và sai dạng caption"
+        r = Path(d) / "ch03_x.md"
+        r.write_text("## 1. A\n", encoding="utf-8")
+        assert any(x[0] == "FAIL" for x in inspect(r)), "phải báo thiếu tiêu đề"
+    print("Đạt: self-test bắt được caption không dẫn chiếu, sai số chương/dạng caption và thiếu tiêu đề; Không đạt: 0; Chưa kiểm tra: 0; Không áp dụng: 0")
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--check",action="store_true"); ap.add_argument("--self-test",action="store_true"); args=ap.parse_args()
