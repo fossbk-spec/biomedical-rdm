@@ -1,7 +1,7 @@
 # Trạng thái dự án Biomedical RDM
 
-**Phiên bản:** 2.5.0 · **Ngày:** 24/11/2026 (cập nhật sau PR #25 làm lại quiz mini-course, sửa lỗi tên bài ở khối kết quả, triển khai lại web) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
-**Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh.
+**Phiên bản:** 2.6.0 · **Ngày:** 25/11/2026 (cập nhật sau PR #26–#29: bộ chuẩn biên tập, chương mẫu ch01, harvest thăm dò và giao thức Gate 1; thêm bàn giao `docs/HANDOFF.md`) · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
+**Mục đích:** lưu trạng thái dự án để tiếp tục công việc mà không phải dựng lại ngữ cảnh. **Điểm vào để tiếp tục trên máy khác: `docs/HANDOFF.md`.**
 
 ## 1. Tóm tắt
 
@@ -104,3 +104,10 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 - **Đã thêm:** `editorial/style-guide.md`, `notation.md`, `glossary.yml`, `glossary-allowlist.txt`, `chapter-map.yml`, `review-policy.md`, `TIEN_DO.md`; `scripts/check_structure.py`, `check_glossary.py`, `check_crossrefs.py`.
 - **Giới hạn:** Không sửa nội dung bảy chương hiện có. Hai chương mới chỉ đăng ký `planned`. Các cờ `CONTENT_PENDING`, `BIB_PENDING`, `[CẦN KIỂM CHỨNG]` được giữ nguyên.
 - **Việc còn mở:** Ben duyệt bộ chuẩn và các WARN; hoàn thiện chương mẫu, audit nhận định, xác minh pháp lý/chuẩn/lab, review độc lập và quyết định xuất bản theo GĐ2–GĐ6.
+
+## 2026-11-25 — Chương mẫu, harvest thăm dò và bàn giao
+
+- **Đã merge vào `main`:** PR #27 (`editorial/` và 3 script kiểm), #28 (ch01 là chương mẫu khung 11 mục: tóm tắt và luận điểm, phạm vi, nền tảng, nội dung cốt lõi, bảng bằng chứng, ví dụ, thực hành, cạm bẫy, giới hạn, quiz, thuật ngữ và tham khảo), #29 (`scripts/lit_harvest.py`, harvest 17 chủ đề từ OpenAlex, Semantic Scholar, Europe PMC; `PROTOCOL.md` v1.0; độ nhạy chuỗi tìm 19/24 mẫu duy nhất).
+- **Quyết định cấu trúc đã chốt nhưng chưa thực hiện ở mã nguồn:** vòng đời 7 giai đoạn (bản ch01), đánh số chương B1, trường `product`, mô hình hai lớp (Phần cốt lõi + Sổ cập nhật). Chi tiết ở `docs/handoff-20261125/03-quy-cach-cu-the.md` và `docs/HANDOFF.md` mục 2–3.
+- **Chưa làm:** Gate 2 sàng lọc, đổi số chương, dựng `updates/`, `MONOGRAPH_OUTLINE`, nâng cấp ch02–ch07, hai chương mới.
+- **Việc Ben cần quyết:** xem `docs/HANDOFF.md` mục 3, điểm 7.
