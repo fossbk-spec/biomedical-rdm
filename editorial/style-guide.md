@@ -26,7 +26,7 @@ Sách chuyên khảo là nguồn chân lý; quiz, lab và mini-course là lớp 
 
 ## Thuật ngữ và glossary
 
-Mỗi mục trong `glossary.yml` có `vi_status`: `established` (thuật ngữ tiếng Việt thông dụng), `proposed` (bản dịch đề xuất, chờ Ben xác nhận) hoặc `keep-english` (tên chuẩn hoặc tên riêng dùng nguyên tiếng Anh trong sách; trường `vi` chỉ là diễn giải tham khảo). Phân loại ban đầu do Claude đề xuất, chưa được Ben rà.
+Mỗi mục trong `glossary.yml` có `vi_status`: `established` (thuật ngữ tiếng Việt thông dụng), `proposed` (bản dịch đề xuất, chờ Ben xác nhận) hoặc `keep-english` (tên chuẩn hoặc tên riêng dùng nguyên tiếng Anh trong sách; trường `vi` chỉ là diễn giải tham khảo). Phân loại ban đầu là đề xuất, chưa được Ben rà.
 
 ## Sơ đồ và quiz
 

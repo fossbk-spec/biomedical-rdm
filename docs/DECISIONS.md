@@ -142,5 +142,12 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 
 - **Đánh số hình/bảng theo chương** (`Hình C.k`, không tiểu hình `a`/`b`). Đã đổi 9 caption hình trong ch01, ch02, ch03, ch05; không nơi nào trong thân sách, mini-course, phụ lục hay guide dẫn "Hình N" nên không gãy tham chiếu. `check_structure.py` kiểm số chương và thứ tự; caption không có dẫn chiếu trong thân vẫn là `WARN` (xử lý ở GĐ3).
 - **`notation.md` chỉ giữ ký hiệu có thật trong chương** (`k`, `m`, `θ̂ᵢ`, `θ̄`, `V̂ᵢ`, `Ū`, `B`, `T`). Đã bỏ `ℓ` và `ε` vì không xuất hiện trong thân bảy chương (bản v1.0.0 ghi sai), cùng các chữ cái chung và thông số lab.
-- **`glossary.yml` có `vi_status`** (`established` 48, `proposed` 26, `keep-english` 14). Phân loại do Claude đề xuất, Ben chưa rà; `check_glossary.py` cảnh báo số mục `proposed`.
+- **`glossary.yml` có `vi_status`** (`established` 48, `proposed` 26, `keep-english` 14). Phân loại là đề xuất, Ben chưa rà; `check_glossary.py` cảnh báo số mục `proposed`.
 - **Tên gọi "Chương N"** cho sách chuyên khảo: đổi `title` front matter của ch04 và ch06 từ "Bài N" sang "Chương N". Tên "Bài N" chỉ dùng cho mini-course. Tiêu đề ch04 và ch06 vẫn ở front matter (không có H1 trong thân), `check_structure.py` cảnh báo để thống nhất sau.
+
+## 2026-11-24 — Gate 1 của harvest thăm dò (phê duyệt có điều kiện)
+
+- Giao thức: `docs/literature-review/harvest/PROTOCOL.md` v1.0.0; quyết định G1-1…G1-7 ghi ở mục 10 của giao thức (thêm Europe PMC; tiêu chí nhận/loại có định nghĩa; thiết kế sàng lọc một mô hình AI độc lập cộng người duyệt, không gọi là sàng lọc kép; truy xuất toàn bộ nếu ≤ 200 hoặc top 25 cộng mẫu ngẫu nhiên có seed; điều kiện dừng theo độ nhạy ≥ 80%).
+- Độ nhạy hiện tại theo seed test: 19/24 mẫu duy nhất (79%), dưới ngưỡng 80% một mẫu; các mẫu bị bỏ sót có lý do giải thích được (xem `SEED_TEST.md`), không chỉnh thêm chuỗi để tránh quá khớp; bù bằng truy vết trích dẫn ở Gate 2.
+- Gate 2 (sàng lọc) chưa thực hiện; không bản ghi nào được thêm vào `references.bib`.
+- Ghi chú vệ sinh: đã bỏ hai chỗ ghi công công cụ AI trong `editorial/style-guide.md` và `docs/DECISIONS.md`.
