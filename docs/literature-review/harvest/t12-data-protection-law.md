@@ -1,0 +1,72 @@
+# Harvest: Bảo vệ dữ liệu cá nhân và nghiên cứu y sinh (pháp lý)
+
+**Loại review:** EXPLORE, **sơ bộ, chưa sàng lọc**, không dùng để trích dẫn trong sách. Danh sách chỉ là ứng viên để Ben và người duyệt quyết định (Gate 1 và Gate 2 của `DrMayDay/.agents/workflows/literature-review.md` chưa được thực hiện).
+
+**Ngày chạy:** 2026-11-24 · **Chương liên quan:** ch06 · **Chuỗi tìm:** `personal data protection law health research Vietnam` · **Bộ lọc:** từ năm 2008; OpenAlex: article, review, preprint, book-chapter
+
+| Hạng mục | Số |
+|---|---:|
+| OpenAlex trả về | 25 |
+| Semantic Scholar trả về | 25 |
+| Sau khử trùng lặp (theo DOI/tiêu đề) | 48 |
+| Có ở cả hai nguồn | 2 |
+| Đã có trong `references.bib` | 0 |
+
+Sắp xếp theo số trích dẫn cao nhất trong hai nguồn (không phải mức liên quan hay chất lượng). Chỉ metadata; không sao chép tóm tắt.
+
+| # | Tác giả, năm | Tiêu đề | Nơi đăng | Loại | OA | Trích dẫn OA / S2 | Rút bài | Nguồn | Trong .bib | DOI |
+|---:|---|---|---|---|---|---|---|---|---|---|
+| 1 | Calzada, 2022 | Citizens’ Data Privacy in China: The State of the Art of the Personal Information Protection Law (PIPL) | Smart Cities | article | gold | 205 / - |  | OA |  | [10.3390/smartcities5030057](https://doi.org/10.3390/smartcities5030057) |
+| 2 | Dang et al., 2021 | Patient-Centered Care: Transforming the Health Care System in Vietnam With Support of Digital Health Technolog | Journal of Medical Internet Research | article | gold | 96 / - |  | OA |  | [10.2196/24601](https://doi.org/10.2196/24601) |
+| 3 | Niemi et al., 2010 | Mental health priorities in Vietnam: a mixed-methods analysis | BMC Health Services Research | article | gold | 75 / - |  | OA |  | [10.1186/1472-6963-10-257](https://doi.org/10.1186/1472-6963-10-257) |
+| 4 | Jardine et al., 2012 | Harm reduction and law enforcement in Vietnam: influences on street policing | Harm Reduction Journal | article | gold | 53 / - |  | OA |  | [10.1186/1477-7517-9-27](https://doi.org/10.1186/1477-7517-9-27) |
+| 5 | Dourado et al., 2022 | The regulation of artificial intelligence for health in Brazil begins with the General Personal Data Protectio | Revista de Saúde Pública | JournalArticle, Revi | open | - / 39 |  | S2 |  | [10.11606/s1518-8787.2022056004461](https://doi.org/10.11606/s1518-8787.2022056004461) |
+| 6 | Rahul, 2024 | Outlining Principle of Data Protection through various Indian Legislations with comparison to The Digital Pers | International Journal For Multidisciplinary Resear | JournalArticle | open | - / 32 |  | S2 |  | [10.36948/ijfmr.2024.v06i04.25534](https://doi.org/10.36948/ijfmr.2024.v06i04.25534) |
+| 7 | Nguyen et al., 2021 | Labour law reform and labour market outcomes in Vietnam | Asia & the Pacific Policy Studies | article | gold | 26 / - |  | OA |  | [10.1002/app5.328](https://doi.org/10.1002/app5.328) |
+| 8 | Kadir et al., 2025 | The Reform of Consumer Protection Law: Comparison of Indonesia, Vietnam, and Ghana | Jurnal Suara Hukum | article | diamond | 25 / - |  | OA |  | [10.26740/jsh.v6n2.p255-278](https://doi.org/10.26740/jsh.v6n2.p255-278) |
+| 9 | Syailendra, 2024 | PERSONAL DATA PROTECTION LAW IN INDONESIA: CHALLENGES AND OPPORTUNITIES | Indonesia Law Review | JournalArticle | open | - / 18 |  | S2 |  | [10.15742/ilrev.v14n2.4](https://doi.org/10.15742/ilrev.v14n2.4) |
+| 10 | Hằng, 2024 | Addressing Fragmentation in Vietnam’s Data Protection Laws: Recommendations for a Unified Legal Framework | Vietnamese Journal of Legal Sciences | article | diamond | 14 / - |  | OA |  | [10.2478/vjls-2024-0008](https://doi.org/10.2478/vjls-2024-0008) |
+| 11 | Triyanti et al., 2025 | Legal Gaps in Personal Data Protection: Reforming Indonesia’s Population Administration Law | Hasanuddin Law Review | JournalArticle | open | - / 10 |  | S2 |  | [10.20956/halrev.v11i1.6177](https://doi.org/10.20956/halrev.v11i1.6177) |
+| 12 | Utami et al., 2025 | Personal Data Breach Cases In Indonesia : Perspective Of Personal Data Protection Law | Journal Customary Law | JournalArticle, Revi | open | - / 10 |  | S2 |  | [10.47134/jcl.v2i2.3742](https://doi.org/10.47134/jcl.v2i2.3742) |
+| 13 | Wijayanto et al., 2025 | Personal Data Protection in Digital Business Based on the Law on Personal Data Protection | International journal of research in social scienc | JournalArticle | open | - / 10 |  | S2 |  | [10.47505/ijrss.2025.8.2](https://doi.org/10.47505/ijrss.2025.8.2) |
+| 14 | Nam, 2023 | Addressing the Challenges of Data Privacy Protection Law in Vietnam | VNU Journal of Science Legal Studies | article | diamond | 9 / - |  | OA |  | [10.25073/2588-1167/vnuls.4413](https://doi.org/10.25073/2588-1167/vnuls.4413) |
+| 15 | Solikhah, 2025 | Personal Data Protection in the Era of Digital Transformation: Challenges and Solutions in the Indonesian Cybe | Indonesian Cyber Law Review | JournalArticle |  | - / 6 |  | S2 |  | [10.59261/iclr.v2i1.15](https://doi.org/10.59261/iclr.v2i1.15) |
+| 16 | Ha et al., 2024 | POTENTIAL CONFLICTS IN PERSONAL DATA PROTECTION UNDER CURRENT LEGISLATION IN VIETNAM COMPARED WITH EUROPEAN GE | Access to Justice in Eastern Europe | article | gold | 5 / - |  | OA |  | [10.33327/ajee-18-7.3-a000304](https://doi.org/10.33327/ajee-18-7.3-a000304) |
+| 17 | Dang et al., 2023 | Children’s Data Protection in Vietnam: Legal Framework and Challenges | Journal of Law and Sustainable Development | article | diamond | 4 / - |  | OA |  | [10.55908/sdgs.v11i12.2675](https://doi.org/10.55908/sdgs.v11i12.2675) |
+| 18 | Nguyen et al., 2024 | PERSONAL DATA IN THE DIGITAL AGE: AN OVERVIEW STUDY IN VIETNAM | Journal of Law and Sustainable Development | article | diamond | 3 / - |  | OA |  | [10.55908/sdgs.v12i3.2623](https://doi.org/10.55908/sdgs.v12i3.2623) |
+| 19 | Roselin et al., 2025 | Personal Data Subject Rights Protection: A Comparative Study Between Indonesian PDP Law And the UK Data Protec | JURNAL USM LAW REVIEW | JournalArticle | open | - / 3 |  | S2 |  | [10.26623/julr.v8i2.12076](https://doi.org/10.26623/julr.v8i2.12076) |
+| 20 | Darti et al., 2025 | The urgency of protecting sensitive data is reflected in Article 4(2) of Law No. 27/2022 on Personal Data Prot | Journal Equity of Law and Governance | JournalArticle | open | - / 3 |  | S2 |  | [10.22225/elg.7.1.11938.10-21](https://doi.org/10.22225/elg.7.1.11938.10-21) |
+| 21 | Dũng, 2025 | Victim-Centered Protection in Vietnam’s Anti-Trafficking Law: A Human Rights-Based Assessment | International Research Journal of Multidisciplinar | article | diamond | 3 / - |  | OA |  | [10.47857/irjms.2025.v06i04.07147](https://doi.org/10.47857/irjms.2025.v06i04.07147) |
+| 22 | Lâm, 2024 | Children’s personal information and personal data protection under the laws of the EU, US and Vietnam | Journal of Infrastructure Policy and Development | article | diamond | 2 / - |  | OA |  | [10.24294/jipd8143](https://doi.org/10.24294/jipd8143) |
+| 23 | Wan et al., 2025 | East Asian Personal Data Protection Laws and International Medical Data Sharing: Pathways for Coordination | International Journal of Multidisciplinary Researc | article | hybrid | 2 / - |  | OA |  | [10.54660/.ijmrge.2025.6.5.109-113](https://doi.org/10.54660/.ijmrge.2025.6.5.109-113) |
+| 24 | Leony et al., 2025 | Wearable Technology in the Perspective of Personal Data Protection Law: A Comparative Study Between Indonesia | Journal of Law and Regulation Governance | JournalArticle | open | - / 2 |  | S2 |  | [10.57185/jlarg.v2i12.78](https://doi.org/10.57185/jlarg.v2i12.78) |
+| 25 | Aprilinda, 2025 | Mitigating Discrimination and Privacy Threats in Algorithmic Pricing through Personal Data Protection Law in I | Estudiante Law Journal | JournalArticle | open | - / 1 |  | S2 |  | [10.33756/eslaj.v7i3.32879](https://doi.org/10.33756/eslaj.v7i3.32879) |
+| 26 | Alnasser, 2025 | Negligence and Data Breaches Under Saudi Arabian Personal Data Protection Law (PDPL): A Doctrinal Analysis App | Journal of Advances in Humanities Research | JournalArticle | open | - / 1 |  | S2 |  | [10.56868/jadhur.v4i3.321](https://doi.org/10.56868/jadhur.v4i3.321) |
+| 27 | Rahim et al., 2025 | Personal Data Protection in Political Party Information Systems in the Organization of General Elections: Conc | Journal of Law and Legal Reform | JournalArticle | open | - / 1 |  | S2 |  | [10.15294/jllr.v6i3.12942](https://doi.org/10.15294/jllr.v6i3.12942) |
+| 28 | Dung et al., 2025 | Policy recommendations for enhancing children's personal data protection: A case study in Vietnam | International Journal of Innovative Research and S | article | diamond | 1 / - |  | OA |  | [10.53894/ijirss.v8i3.7443](https://doi.org/10.53894/ijirss.v8i3.7443) |
+| 29 | Trang, 2024 | Protection of Child Victims of Trafficking in Vietnam | VNU Journal of Science Legal Studies | article | diamond | 1 / - |  | OA |  | [10.25073/2588-1167/vnuls.4535](https://doi.org/10.25073/2588-1167/vnuls.4535) |
+| 30 | Hoa, 2017 | The Promotion and Protection Human Rights under Vietnam’s Civil Law | Journal of Politics and Law | article | diamond | 1 / - |  | OA |  | [10.5539/jpl.v10n3p182](https://doi.org/10.5539/jpl.v10n3p182) |
+| 31 | Matthew et al., 2025 | The User’s Position as Personal Data Controller in the Utilization of Electronic Systems in the Form of Messag | Journal of Law, Politic and Humanities | JournalArticle, Revi | open | - / 1 |  | S2 |  | [10.38035/jlph.v5i4.1682](https://doi.org/10.38035/jlph.v5i4.1682) |
+| 32 | Khairuddin et al., 2026 | A Comparative Analysis of Personal Data Protection Laws in Indonesia and Vietnam | al Hairy \| Journal of Islamic Law | JournalArticle | open | - / 0 |  | S2 |  | [10.64344/hry.v2i1.110](https://doi.org/10.64344/hry.v2i1.110) |
+| 33 | Ardiansyah et al., 2025 | Buying and Selling Personal Data on Digital Platforms According to Indonesian Positive Law (A Study of Article | International Journal of Judicial Law | JournalArticle, Revi | open | - / 0 |  | S2 |  | [10.54660/ijjl.2025.4.5.38-55](https://doi.org/10.54660/ijjl.2025.4.5.38-55) |
+| 34 | Rezvorovych, 2025 | Civil-law aspects of using deepfake content in the context of copyright and personal data protection | Philosophy Economics and Law Review | JournalArticle | open | - / 0 |  | S2 |  | [10.63341/2786-491x-2025-2-0835](https://doi.org/10.63341/2786-491x-2025-2-0835) |
+| 35 | Le et al., 2026 | Comparative Legal Frameworks for Personal Data Protection in the Age of Artificial Intelligence: A Case Study | Advances in economics, business and management res | book-chapter | hybrid | 0 / - |  | OA |  | [10.2991/978-94-6239-624-1_24](https://doi.org/10.2991/978-94-6239-624-1_24) |
+| 36 | Fausta et al., 2025 | Digital Education and the Challenge of Personal Data Protection: An International Human Rights Law Perspective | West Science Law and Human Rights | JournalArticle | open | - / 0 |  | S2 |  | [10.58812/wslhr.v3i03.2017](https://doi.org/10.58812/wslhr.v3i03.2017) |
+| 37 | Septiana et al., 2025 | Juridical Analysis of the Application of Data Minimization Principles in Mobile Banking According to the Perso | Journal of Law | JournalArticle, Revi | open | - / 0 |  | S2 |  | [10.58355/justices.v4i3.203](https://doi.org/10.58355/justices.v4i3.203) |
+| 38 | Thang et al., 2026 | LEGAL FRAMEWORK ON OCCUPATIONAL SAFETY AND HEALTH IN VIETNAM | Veredas do Direito Direito Ambiental e Desenvolvim | article | diamond | 0 / - |  | OA |  | [10.18623/rvd.v23.5346](https://doi.org/10.18623/rvd.v23.5346) |
+| 39 | Tuan et al., 2025 | LEGAL SOLUTIONS ON PERSONAL DATA PROTECTION FOR ELECTRONIC HEALTH RECORDS: IN DIGITAL TRANSFORMATION IN VIETNA | Journal of Law and Sustainable Development | article | diamond | 0 / 0 |  | OA+S2 |  | [10.55908/sdgs.v13i2.4212](https://doi.org/10.55908/sdgs.v13i2.4212) |
+| 40 | Duong, 2025 | Law on the Protection of Women's Sensitive Personal Data in the Digital Environment: Current Gaps and Policy-O | International Journal of Science and Research (IJS | article | diamond | 0 / - |  | OA |  | [10.21275/sr251201135059](https://doi.org/10.21275/sr251201135059) |
+| 41 | Long, 2024 | Legal Provisions and Challenges in Protecting Women's Personal Data in Vietnam | International Multidisciplinary Research Journal | article | bronze | 0 / - |  | OA |  | [10.47722/imrj.2001.23](https://doi.org/10.47722/imrj.2001.23) |
+| 42 | Mardisontori, 2025 | Legal Review of Personal Data Regulations In The Personal Data Protection Law | Proceedings of the First International Cyber Law C | Conference, Review | open | - / 0 |  | S2 |  | [10.4108/eai.11-11-2023.2351324](https://doi.org/10.4108/eai.11-11-2023.2351324) |
+| 43 | Perelyhina, 2024 | Legislative mechanisms of personal data protection in the health care system | Economics. Finances. Law | JournalArticle | open | - / 0 |  | S2 |  | [10.37634/efp.2024.6.31](https://doi.org/10.37634/efp.2024.6.31) |
+| 44 | Nguyen, 2026 | Processing of personal data without consent for the protection of life and health in Vietnam: A comparison wit | Social Sciences in Brief | article | hybrid | 0 / 0 |  | OA+S2 |  | [10.47909/ssb.27](https://doi.org/10.47909/ssb.27) |
+| 45 | Nguyen, 2026 | Protection of Children’s Privacy and Personal Data: A Perspective from Vietnamese Law | Access to Justice in Eastern Europe | article | gold | 0 / - |  | OA |  | [10.33327/ajee-18-9.3-a0002000](https://doi.org/10.33327/ajee-18-9.3-a0002000) |
+| 46 | Nguyen, 2026 | Strengthening Vietnam’s legal framework for personal data protection and social responsibility: Lessons from J | Knowledge and Performance Management | article | gold | 0 / - |  | OA |  | [10.21511/kpm.10(3).2026.05](https://doi.org/10.21511/kpm.10(3).2026.05) |
+| 47 | Punchihewa, 2025 | Strengthening personal data protection law regime in Sri Lanka: A critical perspective | Proceedings of the Annual Research Symposium 2025, |  |  | - / 0 |  | S2 |  | [10.66281/70130/8575](https://doi.org/10.66281/70130/8575) |
+| 48 | Sihotang et al., 2025 | The Role of Big Data in Crime Prevention and Criminal Law Enforcement: Balancing Efficiency and Personal Data | Pandecta: Research Law Journal | JournalArticle | open | - / 0 |  | S2 |  | [10.15294/pandecta.v20i2.20485](https://doi.org/10.15294/pandecta.v20i2.20485) |
+
+## Giới hạn
+
+- Một chuỗi tìm kiếm cho mỗi chủ đề; chưa có MeSH, từ đồng nghĩa hay kiểm soát bởi người duyệt.
+- Xếp hạng theo trích dẫn thiên về bài cũ và bài của cộng đồng lớn; không phản ánh chất lượng.
+- Bài không có DOI được khử trùng lặp theo tiêu đề; có thể bỏ sót hoặc gộp nhầm.

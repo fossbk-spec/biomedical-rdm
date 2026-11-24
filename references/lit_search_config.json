@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0-explore",
+  "date": "2026-11-24",
+  "note": "Chuỗi tìm kiếm thăm dò, chưa được Ben duyệt (Gate 1). Mỗi chủ đề một chuỗi; chưa dùng MeSH.",
+  "from_year": 2008,
+  "per_source": 25,
+  "topics": [
+    {"id": "t01-rdm-biomedical", "title": "Quản lý dữ liệu nghiên cứu y sinh", "chapters": ["ch01"], "query": "research data management biomedical research"},
+    {"id": "t02-dmp-funder", "title": "Kế hoạch quản lý và chia sẻ dữ liệu (DMP, DMSP)", "chapters": ["ch01"], "query": "data management plan funder policy data sharing biomedical"},
+    {"id": "t03-governance-steward", "title": "Quản trị dữ liệu và Data Steward", "chapters": ["ch01"], "query": "data stewardship data governance health research"},
+    {"id": "t04-reproducibility", "title": "Khủng hoảng tái lập trong nghiên cứu y sinh", "chapters": ["ch01", "ch08"], "query": "reproducibility crisis biomedical research"},
+    {"id": "t05-data-integrity-rbqm", "title": "Toàn vẹn dữ liệu, ALCOA+ và giám sát theo rủi ro", "chapters": ["ch02"], "query": "clinical trial data integrity ALCOA risk-based monitoring"},
+    {"id": "t06-edc-redcap", "title": "Thu thập dữ liệu điện tử (EDC, REDCap)", "chapters": ["ch02"], "query": "electronic data capture REDCap clinical research"},
+    {"id": "t07-standards", "title": "Chuẩn dữ liệu y tế: CDISC, FHIR, OMOP", "chapters": ["ch03"], "query": "CDISC FHIR OMOP common data model interoperability clinical research"},
+    {"id": "t08-data-quality", "title": "Đánh giá chất lượng dữ liệu y tế", "chapters": ["ch04"], "query": "data quality assessment electronic health records framework"},
+    {"id": "t09-missing-data", "title": "Dữ liệu khuyết và gán đa bội", "chapters": ["ch04"], "query": "missing data multiple imputation clinical research"},
+    {"id": "t10-deidentification", "title": "Khử định danh và rủi ro tái định danh", "chapters": ["ch05"], "query": "de-identification health data re-identification risk k-anonymity"},
+    {"id": "t11-tre-five-safes", "title": "Môi trường nghiên cứu tin cậy và Five Safes", "chapters": ["ch05"], "query": "trusted research environment five safes health data access"},
+    {"id": "t12-data-protection-law", "title": "Bảo vệ dữ liệu cá nhân và nghiên cứu y sinh (pháp lý)", "chapters": ["ch06"], "query": "personal data protection law health research Vietnam"},
+    {"id": "t13-consent-ethics-sharing", "title": "Đồng ý, đạo đức và chia sẻ dữ liệu y sinh", "chapters": ["ch06", "ch07"], "query": "data sharing consent ethics biomedical research participants"},
+    {"id": "t14-fair", "title": "Nguyên tắc FAIR và FAIR hóa", "chapters": ["ch07"], "query": "FAIR data principles implementation FAIRification life sciences"},
+    {"id": "t15-ai-ready", "title": "Dữ liệu sẵn sàng cho AI trong y sinh", "chapters": ["ch07"], "query": "AI-ready datasets biomedical data documentation datasheets"},
+    {"id": "t16-computational-reproducibility", "title": "Tái lập tính toán và phần mềm nghiên cứu", "chapters": ["ch08"], "query": "computational reproducibility research software workflow biomedical"}
+  ]
+}
