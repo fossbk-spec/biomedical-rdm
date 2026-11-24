@@ -158,3 +158,12 @@ Ba quyết định trên là tạm thời, chờ Ben xác nhận.
 - Độ nhạy hiện tại theo seed test: 19/24 mẫu duy nhất (79%), dưới ngưỡng 80% một mẫu; các mẫu bị bỏ sót có lý do giải thích được (xem `SEED_TEST.md`), không chỉnh thêm chuỗi để tránh quá khớp; bù bằng truy vết trích dẫn ở Gate 2.
 - Gate 2 (sàng lọc) chưa thực hiện; không bản ghi nào được thêm vào `references.bib`.
 - Ghi chú vệ sinh: đã bỏ hai chỗ ghi công công cụ AI trong `editorial/style-guide.md` và `docs/DECISIONS.md`.
+
+## 2026-11-25 — Quyết định cấu trúc chuyên khảo (theo ủy quyền của Ben, sau review độc lập)
+
+Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mục lục, quy cách cụ thể, hai review độc lập). Chưa thực hiện ở mã nguồn; mỗi việc là một PR riêng.
+- **Vòng đời:** bảy giai đoạn theo bản ch01 (Thiết kế và DMP; Thu thập; Xử lý và làm sạch; Chuẩn hóa; Phân tích và tái lập; FAIR và chia sẻ; Lưu trữ và hủy an toàn); quản trị, bảo mật, pháp lý và đạo đức, Data Steward là lớp ngang. Sửa ch00, đề cương và Q1 quiz tổng hợp cho khớp.
+- **Đánh số chương:** ch06 quản trị và pháp lý Việt Nam (mới), ch07 FAIR và AI-ready (ch06 cũ), ch08 tái lập và phần mềm nghiên cứu (mới), ch09 tích hợp và tổng kết (ch07 cũ, tách quiz và capstone sang học liệu đi kèm). Một PR riêng, trước khi nâng cấp chương nào khác.
+- **Trường `product: book | companion`** trong `editorial/chapter-map.yml`.
+- **Hai lớp nội dung:** Phần cốt lõi + Sổ cập nhật (`updates/` gồm `legal`, `funder`, `standards`, `evidence`, `links` dạng YAML, `schema.json`, trang sinh tự động); liên kết Markdown chuẩn tới neo trong trang sinh, không dùng cú pháp neo riêng; chu kỳ rà theo loại; bản in kèm ngày cắt, commit, manifest và DOI của artifact. Thử đầy đủ trên ch01 trước khi mở rộng.
+- **Không đặt mục tiêu "không còn `CONTENT_PENDING`"**; mục tiêu là mọi mục pending được giải quyết hoặc ghi rõ trong phần giới hạn kèm lý do.
