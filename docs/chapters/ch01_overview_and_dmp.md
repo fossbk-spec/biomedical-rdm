@@ -8,7 +8,27 @@
 
 ---
 
-## 1. MỤC TIÊU HỌC TẬP & KHUNG NĂNG LỰC (LEARNING OBJECTIVES)
+## 1. TÓM TẮT CHƯƠNG VÀ CÁC LUẬN ĐIỂM CHÍNH
+
+Chương này đặt nền tảng cho quản lý dữ liệu nghiên cứu y sinh (Biomedical Research Data Management - BioRDM) bằng cách nối khả năng tái lập, vòng đời dữ liệu, quản trị dữ liệu, vai trò Data Steward và DMP/DMSP. Các luận điểm chính là:
+
+1. Thiếu sót trong quản trị dữ liệu có thể làm suy giảm khả năng tái lập và làm tăng gánh nặng khắc phục ở các giai đoạn sau (mục 4.1–4.2).
+2. Vòng đời dữ liệu cần được quản lý liên tục từ thiết kế đến lưu trữ, chia sẻ và hủy an toàn (mục 4.2).
+3. Quản trị dữ liệu phân định quyền quyết định, trách nhiệm giải trình và các lớp điều phối; Data Steward là các hồ sơ năng lực gắn với việc vận hành những quyết định đó (mục 4.3–4.4).
+4. Protocol, DMP/DMSP và CRF/eCRF trả lời các câu hỏi khác nhau nhưng phải liên kết trong cùng một nghiên cứu (mục 4.5).
+5. Khả năng kiểm chứng độc lập phụ thuộc vào truy vết nguồn gốc dữ liệu, minh bạch trong kế hoạch quản lý và các giới hạn chia sẻ (mục 6).
+
+### Luận điểm cần tác giả xác nhận
+
+> **[CẦN TÁC GIẢ XÁC NHẬN]** Một đề xuất rút từ chương là: khung quản trị dữ liệu nghiên cứu cho bối cảnh Việt Nam nên nối quyết định thượng nguồn trong DMP với trách nhiệm của Data Steward, kiểm soát vòng đời và khả năng kiểm chứng độc lập. Đây là đề xuất làm việc, chưa phải kết luận đã chốt.
+
+## 2. PHẠM VI, GIẢ ĐỊNH VÀ ĐỐI TƯỢNG
+
+Chương hướng tới sinh viên, nghiên cứu viên, điều phối viên nghiên cứu lâm sàng, người làm khoa học dữ liệu và cán bộ quản trị dữ liệu y sinh. Người đọc được giả định có hiểu biết nền tảng về nghiên cứu y sinh nhưng không nhất thiết đã thiết kế DMP.
+
+Chương tập trung vào nguyên lý và các thành phần quản trị dữ liệu từ lập kế hoạch, thu thập, xử lý, chuẩn hóa, phân tích/chia sẻ đến lưu trữ và hủy an toàn; kèm một Lab DMPTool tùy chọn. Chương **không** phải là hướng dẫn triển khai chi tiết cho một hệ thống REDCap, CDISC, FHIR hoặc OMOP; không thay thế đề cương nghiên cứu, quy trình đạo đức, tư vấn pháp lý, yêu cầu nhà tài trợ hoặc đối chiếu nguồn gốc cho các nội dung đang gắn cờ.
+
+### Mục tiêu học tập và khung năng lực (Learning Objectives)
 
 Sau khi hoàn thành chương này, người học đạt được các năng lực cụ thể sau:
 
@@ -22,7 +42,9 @@ Sau khi hoàn thành chương này, người học đạt được các năng l�
 
 ---
 
-## 2. BẢN ĐỒ KHÁI NIỆM & KIẾN TRÚC TỔNG QUAN (CONCEPT MAP)
+## 3. NỀN TẢNG KHÁI NIỆM
+
+Các thuật ngữ cốt lõi được giải thích trong lần đầu xuất hiện trong các mục 3 và 4, gồm khả năng tái lập (reproducibility), quản trị dữ liệu (data governance), Data Steward, DMP, DMSP, Protocol, CRF/eCRF, siêu dữ liệu (metadata), vết kiểm toán (audit trail), và nguyên tắc FAIR. Sơ đồ khái niệm hiện có được giữ dưới đây; **Hình 1.1** là bản đồ vòng đời dữ liệu y sinh và các lớp kiểm soát.
 
 ```mermaid
 flowchart TD
@@ -53,9 +75,9 @@ flowchart TD
 
 ---
 
-## 3. CƠ SỞ LÝ THUYẾT & CHUẨN MỰC NGÀNH
+## 4. NỘI DUNG CỐT LÕI
 
-### 3.1. Khủng hoảng khả năng tái lập và sự ra đời của RDM y sinh
+### 4.1. Khủng hoảng khả năng tái lập và sự ra đời của RDM y sinh
 Trong suốt hai thập kỷ qua, cộng đồng khoa học y sinh toàn cầu đối mặt với **cuộc khủng hoảng khả năng tái lập (Reproducibility Crisis)**. Một khảo sát thực hiện bởi Baker (2016) trên tạp chí *Nature* trên 1.576 nhà nghiên cứu cho thấy hơn **70% nhà khoa học thừa nhận từng thất bại khi cố gắng tái lập thí nghiệm của người khác**, và hơn 50% cảm nhận sâu sắc về cuộc khủng hoảng độ tin cậy trong các công bố khoa học [@ref_033].
 
 Begley & Ellis (2012) báo cáo chỉ 6/53 công trình tiền lâm sàng ung thư được đánh giá có thể tái lập [@ref_105]. Freedman và cộng sự (2015) ước tính chi phí nghiên cứu tiền lâm sàng không tái lập được ở Hoa Kỳ khoảng 28 tỷ USD mỗi năm [@ref_106]. Đây là các ước tính/bằng chứng lịch sử, không phải chỉ tiêu hiện hành.
@@ -70,7 +92,7 @@ Nguyên nhân cốt lõi không chỉ nằm ở sai số sinh học hay thiết 
 
 ---
 
-### 3.2. Vòng đời dữ liệu y sinh & Nguyên lý khuếch đại lỗi thượng nguồn
+### 4.2. Vòng đời dữ liệu y sinh & Nguyên lý khuếch đại lỗi thượng nguồn
 Dữ liệu y sinh không phải là một tập tin tĩnh được lưu trữ một lần, mà vận động qua **vòng đời 6 giai đoạn tương thuộc**:
 
 1. **Thiết kế & Lập kế hoạch (Plan):** Xác định loại dữ liệu, khối lượng dự kiến, công cụ thu thập, chuẩn dữ liệu, ngân sách và soạn thảo Kế hoạch Quản lý Dữ liệu (DMP).
@@ -96,13 +118,15 @@ flowchart LR
     class C warnStyle;
 ```
 
+Hình 1.2 minh họa sự khuếch đại lỗi từ thượng nguồn qua các giai đoạn xử lý và công bố.
+
 **Hình 1.2. Khuếch đại lỗi từ thượng nguồn.** Sơ đồ cho thấy một thiếu sót ở khâu lập kế hoạch có thể làm tăng gánh nặng làm sạch và ảnh hưởng đến độ tin cậy của kết quả cuối.
 
 > **Nguyên lý:** *Hiệu ứng khuếch đại lỗi từ thượng nguồn (Upstream Error Amplification).* Sơ đồ trên minh họa logic chi phí: một thiếu sót ở giai đoạn lập kế hoạch có thể làm tăng gánh nặng ở khâu làm sạch và làm giảm giá trị tái sử dụng của tập dữ liệu.
 
 ---
 
-### 3.3. Khung Quản trị Dữ liệu Y tế (Data Governance Frameworks)
+### 4.3. Khung Quản trị Dữ liệu Y tế (Data Governance Frameworks)
 Quản trị dữ liệu là hệ thống các quyền quyết định, trách nhiệm giải trình và chính sách điều phối nhằm đảm bảo dữ liệu y tế được bảo vệ và khai thác có trách nhiệm. ICH E6(R3) có các yêu cầu về quản trị dữ liệu trong thực hành lâm sàng tốt [@ref_004] [CẦN KIỂM CHỨNG: số mục/phụ lục].
 
 Trong môi trường viện nghiên cứu và bệnh viện đại học, hai khung tham chiếu quốc tế được áp dụng rộng rãi:
@@ -121,7 +145,7 @@ Theo khuyến nghị quản trị dữ liệu y tế hàn lâm của Hiệp hộ
 
 ---
 
-### 3.4. Chuyên nghiệp hóa nhân lực: Mô hình 3 hồ sơ Data Steward [@ref_017]
+### 4.4. Chuyên nghiệp hóa nhân lực: Mô hình 3 hồ sơ Data Steward [@ref_017]
 Một hạ tầng CNTT cần gắn với con người vận hành. Chương trình Khoa học Mở Quốc gia Hà Lan (NPOS) qua công trình của Jetten và cộng sự (2021) [@ref_017] mô tả 3 hồ sơ năng lực Data Steward trong nghiên cứu:
 
 | Hồ sơ Data Steward | Vai trò trọng tâm | Năng lực cốt lõi | Bối cảnh làm việc |
@@ -132,7 +156,7 @@ Một hạ tầng CNTT cần gắn với con người vận hành. Chương trì
 
 ---
 
-### 3.5. Kế hoạch Quản lý và Chia sẻ Dữ liệu (DMP / DMSP)
+### 4.5. Kế hoạch Quản lý và Chia sẻ Dữ liệu (DMP / DMSP)
 
 #### 1. Phân biệt Protocol vs DMP vs CRF
 Ba khái niệm này thường xuyên bị người làm nghiên cứu nhầm lẫn:
@@ -167,7 +191,27 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 
 ---
 
-## 4. NGHIÊN CỨU TÌNH HUỐNG THỰC TẾ & BÀI HỌC (CASE STUDIES)
+## 5. BẢNG BẰNG CHỨNG
+
+Bảng này chỉ liệt kê các nhận định trong chương có số liệu, quy định hoặc kết luận thực tế. Phạm vi đã đọc và trạng thái đối chiếu đều ghi **chưa đối chiếu**: việc đọc nguồn và audit ở mức nhận định thuộc GĐ3/GĐ4. Không suy ra trạng thái từ việc khóa trích dẫn tồn tại trong BibTeX.
+
+| Nhận định | Nguồn (khóa trích dẫn, dạng `ref_###`) | Loại nguồn (nếu bib ghi rõ) | Phạm vi đã đọc | Trạng thái đối chiếu | Ghi chú |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Hơn 70% nhà khoa học trong khảo sát cho biết từng thất bại khi cố tái lập thí nghiệm của người khác. | `[@ref_033]` | bài báo | chưa đối chiếu | chưa đối chiếu | Số liệu được giữ nguyên từ mục 4.1. |
+| 6/53 công trình tiền lâm sàng ung thư được đánh giá là có thể tái lập. | `[@ref_105]` | bài báo | chưa đối chiếu | chưa đối chiếu | Kết quả lịch sử được giữ nguyên từ mục 4.1. |
+| Chi phí nghiên cứu tiền lâm sàng không tái lập được được ước tính khoảng 28 tỷ USD mỗi năm tại Hoa Kỳ. | `[@ref_106]` | bài báo | chưa đối chiếu | chưa đối chiếu | Ước tính lịch sử, không phải chỉ tiêu hiện hành. |
+| ICH E6(R3) có các yêu cầu về quản trị dữ liệu trong thực hành lâm sàng tốt. | `[@ref_004]` | hướng dẫn | chưa đối chiếu | chưa đối chiếu | Giữ cờ `[CẦN KIỂM CHỨNG: số mục/phụ lục]`. |
+| HIMSS AMAM mô tả năng lực dữ liệu của tổ chức y tế theo 8 cấp độ, từ Cấp 0 đến Cấp 7. | `[@ref_002]` | khung tổ chức | chưa đối chiếu | chưa đối chiếu | Nguồn đang `BIB_PENDING`; không kết luận thay cho đối chiếu. |
+| Các tổ chức có thể tham khảo cơ cấu quản trị dữ liệu 3 tầng tại bệnh viện đại học. | `[@ref_015]` | báo cáo/khung tổ chức | chưa đối chiếu | chưa đối chiếu | Giữ cách trình bày đây là mô hình tham khảo. |
+| NIH yêu cầu DMSP đối với hồ sơ xin tài trợ tạo ra dữ liệu khoa học; chương nêu giới hạn 2 trang và các thành tố của kế hoạch. | `[@ref_007]`, `[@ref_008]` | chính sách/hướng dẫn | chưa đối chiếu | chưa đối chiếu | Nội dung chính sách và các giới hạn được giữ nguyên; cần đối chiếu riêng. |
+| Sáu thành tố của DMSP gồm loại dữ liệu; công cụ/phần mềm/mã nguồn; tiêu chuẩn; bảo tồn/kho/thời hạn; hạn chế tiếp cận và riêng tư; giám sát và thực thi. | `[@ref_008]` | hướng dẫn | chưa đối chiếu | chưa đối chiếu | Giữ nguyên danh sách ở mục 4.5. |
+| FAIR nêu các nguyên tắc làm cho dữ liệu dễ tìm, truy cập, tương hợp và tái sử dụng. | `[@ref_012]` | bài báo | chưa đối chiếu | chưa đối chiếu | Nhận định khái niệm được giữ nguyên từ mục 4.2. |
+| Jetten và cộng sự mô tả 3 hồ sơ năng lực Data Steward trong nghiên cứu. | `[@ref_017]` | báo cáo/bài viết | chưa đối chiếu | chưa đối chiếu | Giữ nguyên mô hình 3 hồ sơ ở mục 4.4. |
+| Hai bài báo liên quan đến dữ liệu Surgisphere có thông báo rút bài được dẫn trong tình huống. | `[@ref_107]`, `[@ref_108]` | bài báo | chưa đối chiếu | chưa đối chiếu | Tình huống được giữ nhãn minh họa và giới hạn không dùng dữ liệu thật. |
+
+## 6. VÍ DỤ VÀ CASE STUDY
+
+Nội dung tình huống Surgisphere dưới đây được giữ nguyên và được đánh dấu là tình huống minh họa cần đối chiếu với nguồn gốc; chương không sử dụng dữ liệu thật.
 
 ### Case Study minh họa: Sự việc rút bài liên quan đến cơ sở dữ liệu Surgisphere (2020)
 > Đây là tình huống minh họa cần đối chiếu với nguồn gốc; chương không sử dụng dữ liệu thật.
@@ -180,7 +224,44 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 
 ---
 
-## 5. ĐIỂM CẦN NHỚ (KEY TAKEAWAYS)
+## 7. THỰC HÀNH (LAB 1 DMPTOOL, TÙY CHỌN)
+
+Nội dung Lab 1 DMPTool được giữ nguyên dưới đây; đây là bài thực hành tùy chọn dựa trên một tình huống giả định và không sử dụng dữ liệu thật.
+
+### Bài thực hành tự chọn: Soạn thảo DMSP chuẩn NIH trên DMPTool
+
+* **Mục tiêu:** Đọc hướng dẫn trong [Phụ lục funder-templates](../appendices/funder-templates.md), sau đó sử dụng **DMPTool** để soạn thảo DMSP theo mẫu NIH hiện hành cho một nghiên cứu giả định. Chốt nội dung phụ lục: 21/11/2026.
+* **Đề bài tình huống minh họa:** Bạn là Research Data Steward cho một đề tài giả định về ứng dụng trí tuệ nhân tạo trong theo dõi bệnh mày đay mạn tính tại Việt Nam; không sử dụng dữ liệu thật.
+
+#### Các bước thực hiện:
+1. **Bước 1:** Truy cập `https://dmptool.org` sau khi đọc [Phụ lục funder-templates](../appendices/funder-templates.md), tạo tài khoản (sử dụng email cá nhân hoặc tài khoản ORCID).
+2. **Bước 2:** Chọn nhà tài trợ và mẫu NIH hiện hành theo [Phụ lục funder-templates](../appendices/funder-templates.md); kiểm tra lại tên mẫu trên production trước khi dạy.
+3. **Bước 3:** Trả lời 7 yếu tố: chia sẻ tối đa phù hợp; thời điểm chia sẻ; thời gian duy trì; giới hạn chia sẻ (có giới hạn từ; xem phụ lục); riêng tư theo NOT-OD-22-213; bảng loại dữ liệu/kho (tối đa 100 từ); và 7a/7b về GDS, genomics và Institutional Certification nếu áp dụng.
+4. **Bước 4:** Với tình huống này, mô tả dữ liệu (.csv, .jpeg), công cụ, chuẩn, kho, quyền riêng tư và giám sát trong đúng trường hỏi; không sử dụng dữ liệu thật và không mặc định chọn kho nếu chưa đối chiếu yêu cầu loại dữ liệu.
+5. **Bước 5:** Xuất tài liệu theo định dạng DMPTool cung cấp và lưu bản kiểm tra.
+
+#### Bảng Tiêu chí Tự đối chiếu Bài Lab 1 (Self-Assessment Checklist /20 điểm):
+- [ ] **Đủ 7 yếu tố NIH:** Trả lời đúng các câu hỏi hiện hành; bảng phần 6 không vượt 100 từ và phần giới hạn chia sẻ nằm trong giới hạn từ của mẫu (xem phụ lục) *(6 điểm)*.
+- [ ] **Lựa chọn kho lưu trữ (Repository):** Kho lưu trữ được chỉ định có uy tín, cấp PID/DOI cố định *(4 điểm)*.
+- [ ] **Phương án bảo vệ quyền riêng tư & Căn cứ pháp lý:** Phân định rõ Safe Harbor vs Date Shifting, dẫn chiếu văn bản pháp luật hiện hành *(6 điểm)*.
+
+## 8. CẠM BẪY VÀ THỰC HÀNH TỐT
+
+Các cạm bẫy và thực hành tốt dưới đây chỉ rút từ nội dung kỹ thuật hiện có:
+
+- Không để dữ liệu thô, từ điển dữ liệu hoặc nhật ký kiểm toán thất lạc; giữ truy vết từ thiết kế đến phân tích.
+- Không coi DMP là tài liệu tĩnh tách rời Protocol và CRF/eCRF; cần phân biệt rõ câu hỏi và trách nhiệm của từng tài liệu.
+- Không trì hoãn chuẩn hóa biến số, quyền truy cập, giới hạn chia sẻ và trách nhiệm giám sát đến cuối vòng đời; xử lý quyết định thượng nguồn sớm hơn.
+- Không coi mô hình quản trị hoặc hồ sơ Data Steward là cấu trúc áp dụng sẵn cho mọi tổ chức; phạm vi áp dụng cần được tổ chức xác định.
+
+## 9. GIỚI HẠN VÀ VẤN ĐỀ MỞ
+
+- Các nhận định có số liệu và kết luận thực tế trong mục 5 chưa được đối chiếu nguồn; đây là công việc GĐ3/GĐ4.
+> - Các nội dung đang gắn `[CẦN KIỂM CHỨNG]`, `CONTENT_PENDING` hoặc `BIB_PENDING` được giữ nguyên. Cụ thể gồm cập nhật NIH, nguồn Horizon Europe, số mục/phụ lục ICH E6(R3), nguồn HIMSS AMAM và tình huống Surgisphere.
+- Chương không khẳng định khung quản trị dữ liệu cho bối cảnh Việt Nam đã được tác giả phê duyệt; đề xuất đó nằm trong khối `[CẦN TÁC GIẢ XÁC NHẬN]` ở mục 1.
+- Các yêu cầu pháp lý, yêu cầu nhà tài trợ, phiên bản công cụ và nội dung phụ lục cần được kiểm tra theo quy trình cập nhật tương ứng trước khi sử dụng trong đào tạo hoặc nghiên cứu.
+
+## 10. TÓM TẮT, CÂU HỎI TỰ KIỂM TRA VÀ THẢO LUẬN
 
 1. **Protocol trả lời câu hỏi nghiên cứu; DMP trả lời câu hỏi quản trị dữ liệu; CRF là công cụ thu thập cụ thể.**
 2. **Quyết định ở thượng nguồn càng sớm thì chi phí khắc phục ở hạ nguồn càng thấp.** Thiếu chuẩn hóa biến số và thiếu thỏa thuận chia sẻ dữ liệu ngay từ DMP sẽ làm vô hiệu hóa khả năng tái sử dụng dữ liệu sau này.
@@ -247,35 +328,16 @@ DMP truyền thống là tài liệu văn bản tĩnh (Word/PDF). Xu hướng hi
 
 ---
 
-## 7. HƯỚNG DẪN THỰC HÀNH PHÒNG MÁY (HANDS-ON LAB 1 GUIDE)
-
-### Bài thực hành tự chọn: Soạn thảo DMSP chuẩn NIH trên DMPTool
-
-* **Mục tiêu:** Đọc hướng dẫn trong [Phụ lục funder-templates](../appendices/funder-templates.md), sau đó sử dụng **DMPTool** để soạn thảo DMSP theo mẫu NIH hiện hành cho một nghiên cứu giả định. Chốt nội dung phụ lục: 21/11/2026.
-* **Đề bài tình huống minh họa:** Bạn là Research Data Steward cho một đề tài giả định về ứng dụng trí tuệ nhân tạo trong theo dõi bệnh mày đay mạn tính tại Việt Nam; không sử dụng dữ liệu thật.
-
-#### Các bước thực hiện:
-1. **Bước 1:** Truy cập `https://dmptool.org` sau khi đọc [Phụ lục funder-templates](../appendices/funder-templates.md), tạo tài khoản (sử dụng email cá nhân hoặc tài khoản ORCID).
-2. **Bước 2:** Chọn nhà tài trợ và mẫu NIH hiện hành theo [Phụ lục funder-templates](../appendices/funder-templates.md); kiểm tra lại tên mẫu trên production trước khi dạy.
-3. **Bước 3:** Trả lời 7 yếu tố: chia sẻ tối đa phù hợp; thời điểm chia sẻ; thời gian duy trì; giới hạn chia sẻ (có giới hạn từ; xem phụ lục); riêng tư theo NOT-OD-22-213; bảng loại dữ liệu/kho (tối đa 100 từ); và 7a/7b về GDS, genomics và Institutional Certification nếu áp dụng.
-4. **Bước 4:** Với tình huống này, mô tả dữ liệu (.csv, .jpeg), công cụ, chuẩn, kho, quyền riêng tư và giám sát trong đúng trường hỏi; không sử dụng dữ liệu thật và không mặc định chọn kho nếu chưa đối chiếu yêu cầu loại dữ liệu.
-5. **Bước 5:** Xuất tài liệu theo định dạng DMPTool cung cấp và lưu bản kiểm tra.
-
-#### Bảng Tiêu chí Tự đối chiếu Bài Lab 1 (Self-Assessment Checklist /20 điểm):
-- [ ] **Đủ 7 yếu tố NIH:** Trả lời đúng các câu hỏi hiện hành; bảng phần 6 không vượt 100 từ và phần giới hạn chia sẻ nằm trong giới hạn từ của mẫu (xem phụ lục) *(6 điểm)*.
-- [ ] **Lựa chọn kho lưu trữ (Repository):** Kho lưu trữ được chỉ định có uy tín, cấp PID/DOI cố định *(4 điểm)*.
-- [ ] **Phương án bảo vệ quyền riêng tư & Căn cứ pháp lý:** Phân định rõ Safe Harbor vs Date Shifting, dẫn chiếu văn bản pháp luật hiện hành *(6 điểm)*.
-
----
-
-## 8. CÂU HỎI THẢO LUẬN TÌNH HUỐNG
+### Câu hỏi thảo luận tình huống
 
 1. **Câu hỏi thảo luận 1:** Một bác sĩ lâm sàng cho rằng: *"Tôi chỉ cần tập trung khám chữa bệnh và lấy mẫu cho bệnh nhân, còn việc dữ liệu lưu ở đâu và quản lý thế nào là việc của phòng CNTT"*. Bạn dùng những luận điểm nào của Chương 1 để giải thích giúp đồng nghiệp hiểu vai trò của nghiên cứu viên trong RDM?
 2. **Bài tập tình huống 2:** Nhóm nghiên cứu của bạn nộp bài báo cho tạp chí quốc tế. Ban biên tập yêu cầu: *"Tác giả phải công khai dữ liệu của bệnh nhân lên kho lưu trữ mở để bạn đọc tái lập phân tích"*. Tuy nhiên, trong thỏa thuận đồng thuận (Informed Consent) ký với bệnh nhân cách đây 2 năm, nhóm bạn quên không ghi điều khoản cho phép chia sẻ dữ liệu thứ cấp. Nhóm bạn đang đối mặt với nguy cơ gì và cách giải quyết phù hợp với đạo đức nghiên cứu?
 
 ---
 
-## 9. DANH MỤC TÀI LIỆU THAM KHẢO
+## 11. THUẬT NGỮ MỚI VÀ TÀI LIỆU THAM KHẢO
+
+Các thuật ngữ mới của chương được dùng theo `editorial/glossary.yml`; thuật ngữ tiếng Anh được ghi ở lần đầu xuất hiện trong ngoặc. Danh mục tài liệu tham khảo hiện có được giữ nguyên dưới đây.
 
 1. **Healthcare Information and Management Systems Society. (n.d.).** *Adoption Model for Analytics Maturity*. [@ref_002] [CẦN KIỂM CHỨNG]
 2. **European Commission. (n.d.).** *Horizon Europe data management plan*. [@ref_003] [CẦN KIỂM CHỨNG: nguồn/bibliographic mismatch]

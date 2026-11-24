@@ -5,6 +5,10 @@
 
 ## 1. Tóm tắt
 
+### GĐ2 — Chương mẫu Chương 1 (24/11/2026)
+
+Chương 1 đang được dùng làm chương mẫu cho chuyên khảo: nội dung được tổ chức lại theo khung 11 mục, giữ nguyên quiz 5 câu, Lab 1, Surgisphere và danh mục tham khảo; thêm bảng bằng chứng với trạng thái đối chiếu `chưa đối chiếu`. Bản cũ được lưu trong `archive/ch01/` và nhật ký thay đổi ở `editorial/changelog/ch01_20261124.md`. Số từ đo được tăng từ 4.761 lên 6.297 do phần cấu trúc, phạm vi, giới hạn và bảng bằng chứng. GĐ3/GĐ4 vẫn cần đối chiếu nguồn ở mức nhận định; chưa đồng bộ sang `docs/course-source/`.
+
 Dự án có **hai repo công khai** của tài khoản `fossbk-spec`:
 
 | Repo | Vai trò | Trạng thái (24/11/2026) |
