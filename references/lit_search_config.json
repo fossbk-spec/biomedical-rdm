@@ -1,0 +1,223 @@
+{
+  "version": "0.4.1-protocol",
+  "date": "2026-11-24",
+  "note": "Chuỗi tìm kiếm Boolean đề xuất; xem docs/literature-review/harvest/PROTOCOL.md. oa_query: OpenAlex (title_and_abstract.search; AND, OR, NOT, cụm trong dấu nháy). s2_query: từ khóa thường cho Semantic Scholar. epmc_query: Europe PMC (TITLE/ABSTRACT; chỉ chủ đề y sinh).",
+  "from_year": 2008,
+  "per_source": 25,
+  "topics": [
+    {
+      "id": "t01-rdm-biomedical",
+      "title": "Quản lý dữ liệu nghiên cứu y sinh",
+      "chapters": [
+        "ch01"
+      ],
+      "oa_query": "(\"research data management\" OR \"research data governance\" OR \"data management practices\") AND (biomedical OR clinical OR health OR \"life sciences\")",
+      "s2_query": "research data management biomedical research",
+      "epmc_query": "(TITLE:\"research data management\" OR ABSTRACT:\"research data management\") AND (biomedical OR clinical OR health)",
+      "primary_chapter": "ch01"
+    },
+    {
+      "id": "t02-dmp-funder",
+      "title": "Kế hoạch quản lý và chia sẻ dữ liệu (DMP, DMSP)",
+      "chapters": [
+        "ch01"
+      ],
+      "oa_query": "(\"data management plan\" OR \"data management plans\" OR \"data management and sharing\" OR \"data sharing policy\") AND (funder OR funders OR policy OR NIH OR biomedical OR clinical)",
+      "s2_query": "data management plan funder policy data sharing biomedical",
+      "epmc_query": "(TITLE:\"data management plan\" OR ABSTRACT:\"data management plan\" OR ABSTRACT:\"data management and sharing\") AND (biomedical OR clinical OR funder OR NIH)",
+      "primary_chapter": "ch01"
+    },
+    {
+      "id": "t03-governance-steward",
+      "title": "Quản trị dữ liệu và Data Steward",
+      "chapters": [
+        "ch01"
+      ],
+      "oa_query": "(\"data steward\" OR \"data stewards\" OR \"data stewardship\" OR \"health data governance\" OR \"research data governance\") AND (health OR clinical OR biomedical OR \"medical research\")",
+      "s2_query": "data stewardship data governance health research",
+      "epmc_query": "(TITLE:\"data steward\" OR TITLE:\"data stewardship\" OR TITLE:\"data governance\") AND (health OR clinical OR biomedical)",
+      "primary_chapter": "ch01"
+    },
+    {
+      "id": "t04-reproducibility",
+      "title": "Khủng hoảng tái lập trong nghiên cứu y sinh",
+      "chapters": [
+        "ch01",
+        "ch08"
+      ],
+      "oa_query": "(\"reproducibility crisis\" OR \"replication crisis\" OR irreproducible OR irreproducibility OR \"reproducible research\" OR \"reproducibility of research\" OR ((\"preclinical research\" OR \"preclinical studies\") AND (standards OR reproducibility OR replication OR replicate))) AND (biomedical OR preclinical OR clinical OR \"life sciences\" OR cancer OR scientists OR research)",
+      "s2_query": "reproducibility crisis biomedical research",
+      "epmc_query": "(TITLE:\"reproducibility\" OR ABSTRACT:\"reproducibility crisis\" OR ABSTRACT:\"replication crisis\") AND (biomedical OR preclinical OR clinical)",
+      "primary_chapter": "ch01"
+    },
+    {
+      "id": "t05-data-integrity-rbqm",
+      "title": "Toàn vẹn dữ liệu, ALCOA+ và giám sát theo rủi ro",
+      "chapters": [
+        "ch02"
+      ],
+      "oa_query": "(\"data integrity\" OR ALCOA OR \"ALCOA+\" OR \"audit trail\" OR \"risk-based monitoring\" OR \"risk based monitoring\" OR \"source data verification\" OR \"good clinical practice\") AND (\"clinical trial\" OR \"clinical trials\" OR \"clinical research\")",
+      "s2_query": "clinical trial data integrity ALCOA risk-based monitoring",
+      "epmc_query": "(ABSTRACT:\"data integrity\" OR ABSTRACT:\"risk-based monitoring\" OR ABSTRACT:\"source data verification\" OR ABSTRACT:\"good clinical practice\") AND (\"clinical trial\" OR \"clinical research\")",
+      "primary_chapter": "ch02"
+    },
+    {
+      "id": "t06-edc-redcap",
+      "title": "Thu thập dữ liệu điện tử (EDC, REDCap)",
+      "chapters": [
+        "ch02"
+      ],
+      "oa_query": "(REDCap OR \"electronic data capture\" OR \"electronic case report form\" OR eCRF OR \"clinical data management system\") AND (clinical OR research OR trial)",
+      "s2_query": "electronic data capture REDCap clinical research",
+      "epmc_query": "(TITLE:REDCap OR ABSTRACT:REDCap OR ABSTRACT:\"electronic data capture\") AND (clinical OR research)",
+      "primary_chapter": "ch02"
+    },
+    {
+      "id": "t07-standards",
+      "title": "Chuẩn dữ liệu y tế: CDISC, FHIR, OMOP",
+      "chapters": [
+        "ch03"
+      ],
+      "oa_query": "(OHDSI OR OMOP OR \"Observational Medical Outcomes Partnership\") OR ((CDISC OR SDTM OR FHIR OR HL7 OR LOINC OR \"SNOMED CT\" OR \"common data model\" OR \"common data elements\") AND (interoperability OR standard OR standardization OR harmonization OR \"clinical research\" OR \"clinical data\" OR health))",
+      "s2_query": "CDISC FHIR OMOP common data model interoperability clinical research",
+      "epmc_query": "(TITLE:FHIR OR TITLE:OMOP OR TITLE:CDISC OR TITLE:OHDSI OR ABSTRACT:\"common data model\") AND (interoperability OR standard OR harmonization)",
+      "primary_chapter": "ch03"
+    },
+    {
+      "id": "t08-data-quality",
+      "title": "Đánh giá chất lượng dữ liệu y tế",
+      "chapters": [
+        "ch04"
+      ],
+      "oa_query": "(\"data quality\" OR \"data quality assessment\") AND (\"electronic health record\" OR \"electronic health records\" OR EHR OR \"clinical data\" OR \"real-world data\") AND (assessment OR framework OR dimensions OR harmonized OR \"data quality dashboard\")",
+      "s2_query": "data quality assessment electronic health records framework",
+      "epmc_query": "(TITLE:\"data quality\" OR ABSTRACT:\"data quality assessment\") AND (\"electronic health record\" OR EHR OR \"real-world data\")",
+      "primary_chapter": "ch04"
+    },
+    {
+      "id": "t09-missing-data",
+      "title": "Dữ liệu khuyết và gán đa bội",
+      "chapters": [
+        "ch04"
+      ],
+      "oa_query": "(\"missing data\" OR \"missingness\" OR \"multiple imputation\" OR MICE OR \"missing completely at random\" OR \"missing not at random\") AND (clinical OR trial OR \"electronic health\" OR epidemiology OR medical)",
+      "s2_query": "missing data multiple imputation clinical research",
+      "epmc_query": "(TITLE:\"missing data\" OR TITLE:\"multiple imputation\" OR ABSTRACT:\"missing data\") AND (clinical OR trial OR \"electronic health\")",
+      "primary_chapter": "ch04"
+    },
+    {
+      "id": "t10-deidentification",
+      "title": "Khử định danh và rủi ro tái định danh",
+      "chapters": [
+        "ch05"
+      ],
+      "oa_query": "(deidentification OR \"de-identification\" OR deidentified OR anonymization OR anonymisation OR pseudonymization OR pseudonymisation OR \"re-identification\" OR \"k-anonymity\" OR \"differential privacy\") AND (health OR clinical OR patient OR medical)",
+      "s2_query": "de-identification health data re-identification risk k-anonymity",
+      "epmc_query": "(TITLE:\"de-identification\" OR TITLE:anonymization OR TITLE:\"re-identification\" OR ABSTRACT:\"k-anonymity\" OR ABSTRACT:pseudonymization) AND (health OR clinical OR patient)",
+      "primary_chapter": "ch05"
+    },
+    {
+      "id": "t11-tre-five-safes",
+      "title": "Môi trường nghiên cứu tin cậy và Five Safes",
+      "chapters": [
+        "ch05"
+      ],
+      "oa_query": "(\"trusted research environment\" OR \"trusted research environments\" OR \"secure data environment\" OR \"five safes\" OR \"data safe haven\") AND (health OR clinical OR patient OR \"medical research\")",
+      "s2_query": "trusted research environment five safes health data access",
+      "epmc_query": "(TITLE:\"trusted research environment\" OR ABSTRACT:\"trusted research environment\" OR ABSTRACT:\"five safes\" OR ABSTRACT:\"secure data environment\")",
+      "primary_chapter": "ch05"
+    },
+    {
+      "id": "t12-data-protection-law",
+      "title": "Bảo vệ dữ liệu cá nhân trong nghiên cứu y sinh (khái quát)",
+      "chapters": [
+        "ch06"
+      ],
+      "oa_query": "(\"data protection law\" OR GDPR OR \"General Data Protection Regulation\" OR HIPAA OR \"privacy law\" OR \"personal data protection\") AND (\"health data\" OR \"medical research\" OR \"clinical research\" OR \"biomedical research\" OR \"health research\")",
+      "s2_query": "data protection law health research GDPR",
+      "epmc_query": "(ABSTRACT:GDPR OR ABSTRACT:\"data protection law\" OR ABSTRACT:HIPAA) AND (\"health research\" OR \"medical research\" OR \"clinical research\" OR \"health data\")",
+      "primary_chapter": "ch06"
+    },
+    {
+      "id": "t12b-vietnam-data-protection",
+      "title": "Bảo vệ dữ liệu và hồ sơ y tế ở Việt Nam (kiểm tra độ phủ)",
+      "chapters": [
+        "ch06"
+      ],
+      "oa_query": "(Vietnam OR \"Viet Nam\") AND (\"personal data\" OR \"data protection\" OR \"data privacy\" OR \"electronic medical record\" OR \"electronic health record\" OR \"health information system\") NOT (\"Vietnam War\" OR veterans OR combat OR \"Agent Orange\" OR Vietnamese)",
+      "s2_query": "Vietnam personal data protection electronic medical records",
+      "primary_chapter": "ch06"
+    },
+    {
+      "id": "t13-consent-ethics-sharing",
+      "title": "Đồng ý, đạo đức và chia sẻ dữ liệu y sinh",
+      "chapters": [
+        "ch06",
+        "ch07"
+      ],
+      "oa_query": "(\"data sharing\" OR \"open data\" OR \"broad consent\") AND (\"research participants\" OR \"clinical trial participants\" OR biobank OR \"genomic data\" OR \"health data\" OR \"patient data\") AND (ethics OR ethical OR governance OR consent)",
+      "s2_query": "data sharing consent ethics biomedical research participants",
+      "epmc_query": "(ABSTRACT:\"data sharing\" OR ABSTRACT:\"broad consent\") AND (\"research participants\" OR biobank OR \"genomic data\") AND (ethics OR ethical)",
+      "primary_chapter": "ch06"
+    },
+    {
+      "id": "t14-fair",
+      "title": "Nguyên tắc FAIR và FAIR hóa",
+      "chapters": [
+        "ch07"
+      ],
+      "oa_query": "\"FAIR Guiding Principles\" OR \"FAIR principles\" OR \"FAIR data principles\" OR FAIRification OR \"FAIR Cookbook\" OR \"FAIR data\"",
+      "s2_query": "FAIR data principles implementation FAIRification life sciences",
+      "epmc_query": "TITLE:\"FAIR principles\" OR TITLE:FAIRification OR TITLE:\"FAIR data\" OR ABSTRACT:\"FAIR Guiding Principles\"",
+      "primary_chapter": "ch07"
+    },
+    {
+      "id": "t15-ai-ready",
+      "title": "Dữ liệu sẵn sàng cho AI trong y sinh",
+      "chapters": [
+        "ch07"
+      ],
+      "oa_query": "\"datasheets for datasets\" OR \"data cards\" OR \"AI-ready\" OR \"AI-readiness\" OR ((\"data readiness\" OR \"dataset documentation\" OR \"dataset bias\" OR \"health datasets\") AND (biomedical OR health OR clinical OR \"machine learning\" OR bias OR transparency))",
+      "s2_query": "AI-ready datasets biomedical data documentation datasheets",
+      "epmc_query": "ABSTRACT:\"AI-ready\" OR ABSTRACT:\"AI readiness\" OR TITLE:\"datasheets for datasets\"",
+      "primary_chapter": "ch07"
+    },
+    {
+      "id": "t16-computational-reproducibility",
+      "title": "Tái lập tính toán và phần mềm nghiên cứu",
+      "chapters": [
+        "ch08"
+      ],
+      "oa_query": "(\"computational reproducibility\" OR \"reproducible research\" OR \"research software\" OR \"reproducible workflow\" OR \"workflow management system\" OR \"software citation\") AND (biomedical OR bioinformatics OR clinical OR health)",
+      "s2_query": "computational reproducibility research software workflow biomedical",
+      "epmc_query": "(ABSTRACT:\"computational reproducibility\" OR ABSTRACT:\"reproducible research\" OR ABSTRACT:\"research software\") AND (bioinformatics OR biomedical OR clinical)",
+      "primary_chapter": "ch08"
+    }
+  ],
+  "all_if_total_le": 200,
+  "sample_n": 100,
+  "sample_seed": 20261124,
+  "chapter_numbering_note": "Trường chapters dùng số chương theo mục lục chuyên khảo đề xuất (B1): ch06 pháp lý, ch07 FAIR và AI-ready, ch08 tái lập. current_to_planned ánh xạ số chương hiện có trong repo sang số chương đề xuất, dùng cho seed test.",
+  "current_to_planned": {
+    "ch01": [
+      "ch01"
+    ],
+    "ch02": [
+      "ch02"
+    ],
+    "ch03": [
+      "ch03"
+    ],
+    "ch04": [
+      "ch04"
+    ],
+    "ch05": [
+      "ch05"
+    ],
+    "ch06": [
+      "ch07"
+    ],
+    "ch07": []
+  },
+  "classic_exceptions_note": "Tài liệu kinh điển trước năm bắt đầu (ví dụ Rubin 1976, Sweeney 2002, Machanavajjhala 2007) được bổ sung thủ công qua danh mục .bib, không qua tìm kiếm."
+}
