@@ -43,7 +43,7 @@ S2_FIELDS = "title,year,venue,citationCount,influentialCitationCount,isOpenAcces
 OA_SELECT = "id,doi,title,publication_year,cited_by_count,is_retracted,type,open_access,primary_location,authorships"
 
 
-def http(url: str, headers: dict | None = None, data: bytes | None = None, tries: int = 5):
+def http(url: str, headers: dict | None = None, data: bytes | None = None, tries: int = 8):
     for i in range(tries):
         req = urllib.request.Request(url, data=data, headers={"User-Agent": UA, "Accept": "application/json", **(headers or {})},
                                      method="POST" if data is not None else "GET")
@@ -244,8 +244,12 @@ def harvest() -> int:
         recs: dict[str, dict] = {}
         counts = {"openalex": 0, "semantic_scholar": 0}
         err = []
-        d = oa("works", {"search": topic["query"], "filter": f"from_publication_date:{from_year}-01-01,type:article|review|preprint|book-chapter",
-                         "per-page": n_per, "select": OA_SELECT})
+        oa_q = topic.get("oa_query") or topic["query"]
+        s2_q = topic.get("s2_query") or topic["query"]
+        totals = {}
+        d = oa("works", {"filter": f"title_and_abstract.search:{oa_q},from_publication_date:{from_year}-01-01,type:article|review|preprint|book-chapter",
+                         "sort": "cited_by_count:desc", "per-page": n_per, "select": OA_SELECT})
+        totals["openalex"] = (d.get("meta") or {}).get("count")
         if "_error" in d:
             err.append("OpenAlex " + d["_error"])
         for w in d.get("results", []) or []:
@@ -255,7 +259,8 @@ def harvest() -> int:
                          "authors": oa_authors(w), "venue": oa_source(w), "oa_cited": w.get("cited_by_count"), "s2_cited": None,
                          "retracted": bool(w.get("is_retracted")), "open": (w.get("open_access") or {}).get("oa_status", ""),
                          "type": w.get("type", ""), "src": ["OpenAlex"]}
-        s = s2_get("paper/search", {"query": topic["query"], "limit": n_per, "year": f"{from_year}-", "fields": S2_FIELDS})
+        s = s2_get("paper/search", {"query": s2_q, "limit": n_per, "year": f"{from_year}-", "fields": S2_FIELDS})
+        totals["semantic_scholar"] = s.get("total") if isinstance(s, dict) else None
         if "_error" in s:
             err.append("Semantic Scholar " + s["_error"])
         for p in (s.get("data") or []):
@@ -277,9 +282,9 @@ def harvest() -> int:
         in_bib = sum(1 for r in ranked if (r["doi"] and r["doi"] in bib_dois) or norm_title(r["title"]) in bib_titles)
         L = [f"# Harvest: {topic['title']}", "",
              "**Loại review:** EXPLORE, **sơ bộ, chưa sàng lọc**, không dùng để trích dẫn trong sách. Danh sách chỉ là ứng viên để Ben và người duyệt quyết định (Gate 1 và Gate 2 của `DrMayDay/.agents/workflows/literature-review.md` chưa được thực hiện).", "",
-             f"**Ngày chạy:** {today} · **Chương liên quan:** {', '.join(topic.get('chapters', []))} · **Chuỗi tìm:** `{topic['query']}` · **Bộ lọc:** từ năm {from_year}; OpenAlex: article, review, preprint, book-chapter", "",
+             f"**Ngày chạy:** {today} · **Chương liên quan:** {', '.join(topic.get('chapters', []))} · **Chuỗi OpenAlex (tiêu đề và tóm tắt):** `{oa_q}` · **Chuỗi Semantic Scholar:** `{s2_q}` · **Bộ lọc:** từ năm {from_year}; OpenAlex: article, review, preprint, book-chapter", "",
              "| Hạng mục | Số |", "|---|---:|",
-             f"| OpenAlex trả về | {counts['openalex']} |", f"| Semantic Scholar trả về | {counts['semantic_scholar']} |",
+             f"| OpenAlex: tổng số khớp / đã lấy | {totals.get('openalex')} / {counts['openalex']} |", f"| Semantic Scholar: tổng số khớp / đã lấy | {totals.get('semantic_scholar')} / {counts['semantic_scholar']} |",
              f"| Sau khử trùng lặp (theo DOI/tiêu đề) | {len(ranked)} |", f"| Có ở cả hai nguồn | {both} |",
              f"| Đã có trong `references.bib` | {in_bib} |"]
         if err:
@@ -296,14 +301,14 @@ def harvest() -> int:
         L += ["", "## Giới hạn", "", "- Một chuỗi tìm kiếm cho mỗi chủ đề; chưa có MeSH, từ đồng nghĩa hay kiểm soát bởi người duyệt.", "- Xếp hạng theo trích dẫn thiên về bài cũ và bài của cộng đồng lớn; không phản ánh chất lượng.", "- Bài không có DOI được khử trùng lặp theo tiêu đề; có thể bỏ sót hoặc gộp nhầm."]
         fn = f"{topic['id']}.md"
         (OUT_HARVEST / fn).write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
-        index.append((topic, counts, len(ranked), both, in_bib, err))
+        index.append((topic, counts, len(ranked), both, in_bib, err, totals))
         print(f"harvest {topic['id']}: OA {counts['openalex']}, S2 {counts['semantic_scholar']}, unique {len(ranked)}, both {both}, in_bib {in_bib}{' ERR ' + str(err) if err else ''}")
     I = ["# Harvest thử nghiệm (EXPLORE): chỉ mục các chủ đề", "",
          f"**Ngày chạy:** {today} · **Công cụ:** `scripts/lit_harvest.py harvest` · **Cấu hình:** `references/lit_search_config.json`", "",
          "Đây là bước thăm dò để chuẩn bị quy trình biên soạn chuyên khảo; **không phải review đã sàng lọc**. Chuỗi tìm kiếm chưa được Ben duyệt (Gate 1). Chỉ metadata; không có tóm tắt.", "",
-         "| Chủ đề | Chương | OpenAlex | Semantic Scholar | Sau khử trùng lặp | Ở cả hai | Đã có trong .bib | Lỗi |", "|---|---|---:|---:|---:|---:|---:|---|"]
-    for topic, c, u, b, ib, er in index:
-        I.append(f"| [{topic['title']}]({topic['id']}.md) | {', '.join(topic.get('chapters', []))} | {c['openalex']} | {c['semantic_scholar']} | {u} | {b} | {ib} | {'; '.join(er)} |")
+         "| Chủ đề | Chương | OpenAlex (tổng / lấy) | Semantic Scholar (tổng / lấy) | Sau khử trùng lặp | Ở cả hai | Đã có trong .bib | Lỗi |", "|---|---|---:|---:|---:|---:|---:|---|"]
+    for topic, c, u, b, ib, er, tot in index:
+        I.append(f"| [{topic['title']}]({topic['id']}.md) | {', '.join(topic.get('chapters', []))} | {tot.get('openalex')} / {c['openalex']} | {tot.get('semantic_scholar')} / {c['semantic_scholar']} | {u} | {b} | {ib} | {'; '.join(er)} |")
     (OUT_HARVEST / "README.md").write_text("\n".join(I) + "\n", encoding="utf-8", newline="\n")
     return 0
 
