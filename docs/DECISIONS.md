@@ -167,3 +167,18 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 - **Trường `product: book | companion`** trong `editorial/chapter-map.yml`.
 - **Hai lớp nội dung:** Phần cốt lõi + Sổ cập nhật (`updates/` gồm `legal`, `funder`, `standards`, `evidence`, `links` dạng YAML, `schema.json`, trang sinh tự động); liên kết Markdown chuẩn tới neo trong trang sinh, không dùng cú pháp neo riêng; chu kỳ rà theo loại; bản in kèm ngày cắt, commit, manifest và DOI của artifact. Thử đầy đủ trên ch01 trước khi mở rộng.
 - **Không đặt mục tiêu "không còn `CONTENT_PENDING`"**; mục tiêu là mọi mục pending được giải quyết hoặc ghi rõ trong phần giới hạn kèm lý do.
+
+## 2026-11-25 — Thực hiện bước 1: lời văn vòng đời, mục lục chính thức, bản đồ chương
+
+- **Lời văn vòng đời bảy giai đoạn** áp dụng cho `ch00`, đề cương, mục 4.2 của `ch01`, nguồn mini-course (`docs/course-source/`) và Quiz tổng hợp Q1. Bảng "7 bước ↔ 6 giai đoạn trong review §2.1" của mini-course được thay bằng bảng giai đoạn ↔ bài học; bản tổng hợp literature review giữ nguyên sáu giai đoạn của riêng nó.
+- **Quiz tổng hợp Q1** xếp sáu mục (thêm "Xử lý và làm sạch"), đáp án vẫn là A nên phân bố đáp án không đổi. Giai đoạn "Phân tích và tái lập" không đưa vào vì mini-course không có bài riêng cho giai đoạn này.
+- **`docs/syllabus/MONOGRAPH_OUTLINE_v1.0.0.md`** là mục lục chính thức của sách (9 chương, tiên quyết, phạm vi). Đề cương tự học giữ làm tài liệu của khóa học.
+- **`editorial/chapter-map.yml` v1.1.0:** thêm `product` và `target_id`, thêm ch00, tiên quyết của ch04 thêm ch03. Chưa đổi `id` hay tên tệp (PR riêng).
+- **Việc kế tiếp bắt buộc:** đồng bộ web khóa học từ nguồn mini-course (sync PR ở `biomedical-rdm-course`), vì Q1 và M0 đã đổi.
+
+## 2026-11-25 — Điều chỉnh đánh số chương: chuyển Quản trị và pháp lý Việt Nam sang Chương 8
+
+- **Người quyết định:** Ben (25/11/2026).
+- **Quyết định:** Chuyển chương mới **Quản trị và pháp lý Việt Nam** từ vị trí dự kiến Chương 6 sang **Chương 8** (ngay trước Chương 9 Tích hợp và tổng kết), giữ liền mạch mạch kỹ thuật–phương pháp quốc tế ở các chương 5–7 và áp dụng mô hình hai lớp (nguyên lý quản trị ở thân Chương 8; số hiệu, điều khoản và thời hạn vào Sổ cập nhật).
+- **Đánh số chính thức sau điều chỉnh:** Chương 5 Bảo mật và khử định danh; **Chương 6** FAIR, kho lưu trữ và dữ liệu sẵn sàng cho AI (`ch06` giữ nguyên số); **Chương 7** Tái lập và phần mềm nghiên cứu (mới, `ch09` trong `chapter-map.yml` hiện tại); **Chương 8** Quản trị và pháp lý Việt Nam (mới, `ch08`); **Chương 9** Tích hợp và tổng kết (mới, thay vai trò sách của `ch07` cũ).
+- **Hệ quả triển khai:** `ch06` không phải đổi tên tệp hay chuyển hướng URL công khai trên web khóa học; PR đổi số ở bước 2 chỉ chuyển `ch07` cũ sang `ch09` (học liệu đi kèm) và mở đường cho `ch07` mới. Đã cập nhật `MONOGRAPH_OUTLINE_v1.0.0.md` (v1.1.0), `editorial/chapter-map.yml` và bảng ánh xạ mục 4.2 của `ch01`.

@@ -93,14 +93,32 @@ Nguyên nhân cốt lõi không chỉ nằm ở sai số sinh học hay thiết 
 ---
 
 ### 4.2. Vòng đời dữ liệu y sinh & Nguyên lý khuếch đại lỗi thượng nguồn
-Dữ liệu y sinh không phải là một tập tin tĩnh được lưu trữ một lần, mà vận động qua **vòng đời 6 giai đoạn tương thuộc**:
+Dữ liệu y sinh không phải là một tập tin tĩnh được lưu trữ một lần, mà vận động qua **vòng đời bảy giai đoạn tương thuộc** (Hình 1.1):
 
 1. **Thiết kế & Lập kế hoạch (Plan):** Xác định loại dữ liệu, khối lượng dự kiến, công cụ thu thập, chuẩn dữ liệu, ngân sách và soạn thảo Kế hoạch Quản lý Dữ liệu (DMP).
 2. **Thu thập dữ liệu (Collect):** Triển khai biểu mẫu điện tử (eCRF), nhập liệu tuân thủ chuẩn ALCOA+ và GCP, kiểm soát quyền truy cập.
 3. **Xử lý & Làm sạch (Process & Clean):** Kiểm tra tính hợp chuẩn, xử lý dữ liệu khuyết (missing data), phát hiện và hiệu chỉnh bất thường có vết kiểm toán.
 4. **Chuẩn hóa & Tích hợp (Standardize):** Ánh xạ cấu trúc sang CDISC SDTM, HL7 FHIR hoặc OMOP CDM; mã hóa thuật ngữ bằng SNOMED CT, LOINC, RxNorm.
-5. **Phân tích, FAIR & Chia sẻ (Analyze, FAIR & Share):** Thực hiện phân tích minh bạch, đóng gói siêu dữ liệu theo nguyên tắc FAIR [@ref_012], cấp định danh số vĩnh viễn và thiết lập điều khoản cấp phép phù hợp.
-6. **Bảo mật, lưu trữ & Hủy an toàn (Secure, Preserve & Dispose):** Duy trì kho lưu trữ bảo mật và áp dụng thời hạn theo [Phụ lục thời hạn lưu trữ](../appendices/retention.md) (chốt 21/11/2026), hoặc tiêu hủy an toàn theo chuẩn phù hợp.
+5. **Phân tích & Tái lập (Analyze & Reproduce):** Thực hiện phân tích minh bạch trên dữ liệu đã chuẩn hóa.
+6. **FAIR & Chia sẻ (FAIR & Share):** Đóng gói siêu dữ liệu theo nguyên tắc FAIR [@ref_012], cấp định danh số vĩnh viễn và thiết lập điều khoản cấp phép phù hợp.
+7. **Lưu trữ & Hủy an toàn (Preserve & Dispose):** Duy trì kho lưu trữ bảo mật và áp dụng thời hạn theo [Phụ lục thời hạn lưu trữ](../appendices/retention.md) (chốt 21/11/2026), hoặc tiêu hủy an toàn theo chuẩn phù hợp.
+
+Bốn lớp ngang áp dụng cho mọi giai đoạn, không phải một bước làm ở cuối: quản trị dữ liệu; bảo mật và quyền riêng tư; pháp lý và đạo đức; vai trò Data Steward. Bảng sau cho biết chương chính của sách nói về từng giai đoạn và lớp ngang (theo cách đánh số chương dự kiến, xem `docs/syllabus/MONOGRAPH_OUTLINE_v1.0.0.md`):
+
+| Giai đoạn / lớp ngang | Chương chính |
+|---|---|
+| 1. Thiết kế và DMP | 1 |
+| 2. Thu thập | 2 |
+| 3. Xử lý và làm sạch | 4 |
+| 4. Chuẩn hóa | 3 |
+| 5. Phân tích và tái lập | 7 (dự kiến) |
+| 6. FAIR và chia sẻ | 6 |
+| 7. Lưu trữ và hủy an toàn | 6 và Phụ lục thời hạn lưu trữ (cần đối chiếu nội dung khi viết) |
+| Lớp ngang: quản trị, Data Steward | 1 |
+| Lớp ngang: bảo mật, khử định danh | 5 |
+| Lớp ngang: pháp lý, đạo đức | 8 (dự kiến) |
+
+Chương 3 (chuẩn dữ liệu) đứng trước chương 4 (chất lượng) dù giai đoạn 3 đứng trước giai đoạn 4, vì các bộ kiểm tra chất lượng như DQD chạy trên dữ liệu đã theo OMOP CDM.
 
 ```mermaid
 flowchart LR
