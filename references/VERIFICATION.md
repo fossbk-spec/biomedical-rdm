@@ -59,3 +59,28 @@ Kiểm tra bổ sung (21/11/2026, gọi trực tiếp `api.crossref.org`): bốn
 | REDCap resources | https://projectredcap.org/resources/ | Đọc được trang tài nguyên chính thức ngày 21/11/2026; không dùng tài liệu này để khẳng định chi tiết cơ chế De-Identified hay audit trail của mọi phiên bản REDCap. |
 
 Chưa tìm được nguồn chính thống trực tiếp để xác nhận phát biểu lịch sử “Stan Woollen đặt ra ALCOA”; cờ `[CẦN KIỂM CHỨNG: nguồn gốc ALCOA]` được giữ trong chương.
+
+## Đối chiếu bổ sung `ref_116`–`ref_133` — 25/11/2026
+
+Các mục `chapter_only` bổ sung (`ref_116`–`ref_133`) được đối chiếu định danh thư mục (tiêu đề, tác giả/chủ biên, năm xuất bản, nhà xuất bản/tạp chí, ISBN/DOI/URL) qua tìm kiếm web trên trang nhà xuất bản, Crossref/DOI, PubMed/PMC, RePEc và cổng văn bản chính phủ ngày 25/11/2026. Tất cả được giữ trạng thái `VERIFIED_UNAUDITED` (chỉ kiểm định danh, chưa đọc và kiểm chứng toàn văn từng khẳng định khoa học/pháp lý).
+
+| Khóa | Định danh chính | Kết quả đối chiếu ngày 25/11/2026 |
+|---|---|---|
+| `ref_116` | `doi:10.1007/978-3-030-58721-5` / ISBN `978-3-030-58720-8` | Khớp Shortliffe, Cimino & Chiang (2021), 5th ed., Springer. |
+| `ref_117` | `doi:10.1371/journal.pcbi.1004525` | Khớp Michener (2015), *PLOS Computational Biology* 11(10):e1004525. |
+| `ref_118` | ISBN `978-1-032-49558-3` | Khớp Prokscha (2024), 4th ed., CRC Press (hiệu đính năm từ 2023 sang 2024). |
+| `ref_119` | ISBN `978-1-088-85519-5` / `ohdsi.github.io/TheBookOfOhdsi/` | Khớp *The Book of OHDSI* (2019, bản trực tuyến cập nhật liên tục). |
+| `ref_120` | ISBN `978-1-64295-244-5` | Khớp Holland & Shostak (2016, Revised 2nd ed.), SAS Institute (thay cho mục Hume et al. 2020 không tồn tại). |
+| `ref_121` | `doi:10.1109/CBMS.2013.6627810` | Khớp Bender & Sartipi (2013), bài báo hội nghị IEEE CBMS 2013, tr. 326–331 (không phải textbook). |
+| `ref_122` | ISBN `978-0-470-52679-8` | Khớp Little & Rubin (2019), 3rd ed., Wiley. |
+| `ref_123` | ISBN `978-1-138-58831-8` | Khớp van Buuren (2018), 2nd ed., Chapman & Hall/CRC. |
+| `ref_124` | `doi:10.1093/jamia/ocab132` | Khớp Blacketer et al. (2021), *JAMIA* 28(10):2251–2257 (hiệu đính đúng tiêu đề bài báo gốc). |
+| `ref_125` | ISBN `978-1-4665-7906-4` | Khớp El Emam (2013), CRC Press / Auerbach Publications. |
+| `ref_126` | `doi:10.1561/0400000042` | Khớp Dwork & Roth (2014), *Foundations and Trends in Theoretical Computer Science* 9(3–4):211–407. |
+| `ref_127` | `ideas.repec.org/p/uwe/wpaper/20161601.html` | Khớp Desai, Ritchie & Welpton (2016), UWE Bristol Working Paper 1601 (hiệu đính tiêu đề và đơn vị phát hành). |
+| `ref_128` | `doi:10.17226/25303` | Khớp NASEM (2019), *Reproducibility and Replicability in Science*. |
+| `ref_129` | ISBN `978-1-4665-6159-5` / `doi:10.1201/b16868` | Khớp Stodden, Leisch & Peng (2014), Chapman & Hall/CRC. |
+| `ref_130` | `doi:10.1038/nbt.3820` | Khớp Di Tommaso et al. (2017), *Nature Biotechnology* 35(4):316–319 (hiệu đính `workflows`, không phải `pipelines`). |
+| `ref_131` | `doi:10.1038/s41597-022-01710-x` | Khớp Barker et al. (2022), *Scientific Data* 9:622. |
+| `ref_132` | `vanban.chinhphu.vn/?classid=1&docid=207396&pageid=27160` | Trang văn bản Chính phủ cho Luật 15/2023/QH15 (ghi nhận từ phụ lục pháp lý 21/11/2026); Điều 69 cần đối chiếu toàn văn. |
+| `ref_133` | `doi:10.17226/13444` | Khớp IOM (2012), *Best Care at Lower Cost*, The National Academies Press. |
