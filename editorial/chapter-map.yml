@@ -1,13 +1,17 @@
-version: 1.0.0
-date: 2026-11-24
-purpose: Bản đồ bảy chương hiện có và hai chương đã đăng ký nhưng chưa viết.
+version: 1.1.0
+date: 2026-11-25
+purpose: Bản đồ các chương hiện có và các chương đã đăng ký nhưng chưa viết. `id` là mã hiện tại trong repo; `target_id` là số chương chính thức sau khi đổi số (Q-B, xem docs/syllabus/MONOGRAPH_OUTLINE_v1.0.0.md). Việc đổi `id` và tên tệp thuộc một PR riêng.
+product_values: {book: "nội dung của sách chuyên khảo", companion: "học liệu đi kèm (khóa học, quiz, capstone), không nằm trong mục lục sách"}
 chapters:
-  - {id: ch01, file: docs/chapters/ch01_overview_and_dmp.md, title: Tổng quan RDM và DMP, role: framework, prerequisites: [], related: [ch02, ch06], word_count: 6297, owner: null, reviewers: [], status: model}
-  - {id: ch02, file: docs/chapters/ch02_collection_and_redcap.md, title: Thu thập dữ liệu lâm sàng và REDCap, role: practice, prerequisites: [ch01], related: [ch03, ch05], word_count: 8490, owner: null, reviewers: [], status: draft}
-  - {id: ch03, file: docs/chapters/ch03_standards_cdisc_fhir_omop.md, title: Chuẩn CDISC, FHIR và OMOP, role: standards, prerequisites: [ch01, ch02], related: [ch04, ch06], word_count: 5935, owner: null, reviewers: [], status: draft}
-  - {id: ch04, file: docs/chapters/ch04_quality_and_imputation.md, title: Chất lượng dữ liệu và gán dữ liệu khuyết, role: practice, prerequisites: [ch01, ch02], related: [ch03, ch06], word_count: 4897, owner: null, reviewers: [], status: draft}
-  - {id: ch05, file: docs/chapters/ch05_privacy_and_deidentification.md, title: Bảo mật và khử định danh, role: governance, prerequisites: [ch01, ch02], related: [ch06], word_count: 5972, owner: null, reviewers: [], status: draft}
-  - {id: ch06, file: docs/chapters/ch06_fair_and_ai_ready.md, title: FAIR và dữ liệu sẵn sàng cho AI, role: governance, prerequisites: [ch01, ch03, ch05], related: [ch07], word_count: 5301, owner: null, reviewers: [], status: draft}
-  - {id: ch07, file: docs/chapters/ch07_completion_and_capstone.md, title: Hoàn thành và capstone, role: framework, prerequisites: [ch01, ch02, ch03, ch04, ch05, ch06], related: [], word_count: 2403, owner: null, reviewers: [], status: draft}
-  - {id: ch08, file: null, title: Quản trị và pháp lý Việt Nam, role: governance, prerequisites: [ch05], related: [ch06], word_count: 0, owner: null, reviewers: [], status: planned}
-  - {id: ch09, file: null, title: Tái lập và phần mềm nghiên cứu, role: practice, prerequisites: [ch01, ch04, ch06], related: [ch07], word_count: 0, owner: null, reviewers: [], status: planned}
+  - {id: ch00, file: docs/chapters/ch00_getting_started.md, title: Bắt đầu ở đây, role: framework, product: companion, target_id: null, prerequisites: [], related: [ch01], word_count: null, owner: null, reviewers: [], status: draft, note: "Giữ làm trang M0 của khóa học; sách có Lời nói đầu và hướng dẫn đọc viết mới"}
+  - {id: ch01, file: docs/chapters/ch01_overview_and_dmp.md, title: Tổng quan RDM và DMP, role: framework, product: book, target_id: ch01, prerequisites: [], related: [ch02, ch06], word_count: 6529, owner: null, reviewers: [], status: model}
+  - {id: ch02, file: docs/chapters/ch02_collection_and_redcap.md, title: Thu thập dữ liệu lâm sàng và REDCap, role: practice, product: book, target_id: ch02, prerequisites: [ch01], related: [ch03, ch05], word_count: 8490, owner: null, reviewers: [], status: draft}
+  - {id: ch03, file: docs/chapters/ch03_standards_cdisc_fhir_omop.md, title: Chuẩn CDISC, FHIR và OMOP, role: standards, product: book, target_id: ch03, prerequisites: [ch01, ch02], related: [ch04, ch06], word_count: 5935, owner: null, reviewers: [], status: draft}
+  - {id: ch04, file: docs/chapters/ch04_quality_and_imputation.md, title: Chất lượng dữ liệu và gán dữ liệu khuyết, role: practice, product: book, target_id: ch04, prerequisites: [ch01, ch02, ch03], related: [ch03, ch06], word_count: 4897, owner: null, reviewers: [], status: draft, note: "Tiên quyết thêm ch03 vì DQD chạy trên OMOP CDM"}
+  - {id: ch05, file: docs/chapters/ch05_privacy_and_deidentification.md, title: Bảo mật và khử định danh, role: governance, product: book, target_id: ch05, prerequisites: [ch01, ch02], related: [ch06], word_count: 5972, owner: null, reviewers: [], status: draft}
+  - {id: ch06, file: docs/chapters/ch06_fair_and_ai_ready.md, title: FAIR và dữ liệu sẵn sàng cho AI, role: governance, product: book, target_id: ch07, prerequisites: [ch01, ch03, ch05], related: [ch07], word_count: 5301, owner: null, reviewers: [], status: draft}
+  - {id: ch07, file: docs/chapters/ch07_completion_and_capstone.md, title: Hoàn thành và capstone, role: framework, product: companion, target_id: ch09, prerequisites: [ch01, ch02, ch03, ch04, ch05, ch06], related: [], word_count: 2403, owner: null, reviewers: [], status: draft, note: "Phần Quiz tổng hợp và Checklist capstone là học liệu đi kèm; chương Tích hợp và tổng kết (book) viết mới ở target ch09"}
+  - {id: ch08, file: null, title: Quản trị và pháp lý Việt Nam, role: governance, product: book, target_id: ch06, prerequisites: [ch05], related: [ch06], word_count: 0, owner: null, reviewers: [], status: planned}
+  - {id: ch09, file: null, title: Tái lập và phần mềm nghiên cứu, role: practice, product: book, target_id: ch08, prerequisites: [ch01, ch04, ch06], related: [ch07], word_count: 0, owner: null, reviewers: [], status: planned}
+planned_new:
+  - {target_id: ch09, title: Tích hợp và tổng kết, product: book, status: planned, note: "Viết mới: một bài toán tích hợp từ thiết kế đến chia sẻ, bám khung vòng đời; thay vai trò sách của ch07 hiện tại"}
