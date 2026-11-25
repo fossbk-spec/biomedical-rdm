@@ -111,12 +111,12 @@ Bốn lớp ngang áp dụng cho mọi giai đoạn, không phải một bước
 | 2. Thu thập | 2 |
 | 3. Xử lý và làm sạch | 4 |
 | 4. Chuẩn hóa | 3 |
-| 5. Phân tích và tái lập | 8 (dự kiến) |
-| 6. FAIR và chia sẻ | 7 (hiện là chương 6) |
-| 7. Lưu trữ và hủy an toàn | 7 và Phụ lục thời hạn lưu trữ (cần đối chiếu nội dung khi viết) |
+| 5. Phân tích và tái lập | 7 (dự kiến) |
+| 6. FAIR và chia sẻ | 6 |
+| 7. Lưu trữ và hủy an toàn | 6 và Phụ lục thời hạn lưu trữ (cần đối chiếu nội dung khi viết) |
 | Lớp ngang: quản trị, Data Steward | 1 |
 | Lớp ngang: bảo mật, khử định danh | 5 |
-| Lớp ngang: pháp lý, đạo đức | 6 (dự kiến) |
+| Lớp ngang: pháp lý, đạo đức | 8 (dự kiến) |
 
 Chương 3 (chuẩn dữ liệu) đứng trước chương 4 (chất lượng) dù giai đoạn 3 đứng trước giai đoạn 4, vì các bộ kiểm tra chất lượng như DQD chạy trên dữ liệu đã theo OMOP CDM.
 

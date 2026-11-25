@@ -18,7 +18,7 @@
 
 **Quyết định theo ủy quyền của Ben ngày 24–25/11/2026** ("làm theo phương án khoa học và chính xác nhất", "review độc lập rồi quyết định"). Chi tiết và lý do trong `docs/handoff-20261125/`:
 - **Q-A, vòng đời 7 giai đoạn** (bản chuẩn của ch01; pháp lý, bảo mật, quản trị, Data Steward là lớp ngang): `03-quy-cach-cu-the.md` mục 1.
-- **Q-B, đánh số chương** (B1: pháp lý thành ch06, FAIR thành ch07, tái lập ch08, tích hợp ch09; chỉ ch06 và ch07 cũ đổi số, khoảng 45 dòng): mục 2.
+- **Q-B, đánh số chương** (điều chỉnh bởi Ben ngày 25/11/2026: giữ FAIR là ch06, tái lập thành ch07, **chuyển Quản trị và pháp lý Việt Nam thành ch08**, tích hợp thành ch09; chỉ `ch07` cũ chuyển sang `ch09`, `ch06` giữ nguyên số và URL).
 - **Q-C, ch00 và ch07 cũ thuộc học liệu đi kèm** (`product: companion` trong `chapter-map.yml`): mục 3.
 - **Mô hình hai lớp**: Phần cốt lõi + Sổ cập nhật (`updates/*.yml` + `schema.json` + trang sinh tự động; liên kết Markdown chuẩn, không dùng cú pháp neo riêng; chu kỳ rà theo loại: pháp lý 90–180 ngày, mẫu, chuẩn, công cụ, bằng chứng 180 ngày, URL 365 ngày): mục 4.
 - **Gate 1 của harvest** (phê duyệt có điều kiện): `docs/literature-review/harvest/PROTOCOL.md` mục 10.
@@ -27,10 +27,10 @@
 ## 3. Việc kế tiếp (thứ tự đề xuất, mỗi việc một nhánh và một PR)
 
 1. Ghi các quyết định cấu trúc ở mục 2 vào `docs/DECISIONS.md`; viết `docs/syllabus/MONOGRAPH_OUTLINE_v1.0.0.md` (mục lục chính thức 9 chương, tiên quyết, mục tiêu năng lực cấp chương); cập nhật `editorial/chapter-map.yml` (trường `product`, thứ tự, tiên quyết ch04 → ch03); sửa lời văn vòng đời ở ch00, đề cương và Q1 của quiz tổng hợp.
-2. PR riêng đổi số chương (ch06 → ch07, ch07 → ch09) bằng `git mv` cộng script thay thế có `assert`; cập nhật web khóa học (`scripts/sync_manifest.json`, menu VitePress), kèm chuyển hướng URL.
+2. PR riêng đổi số chương (`ch07` cũ → `ch09`, đồng bộ `ch07` Tái lập và `ch08` Pháp lý; `ch06` giữ nguyên) bằng `git mv` cộng script thay thế có `assert`; cập nhật web khóa học (`scripts/sync_manifest.json`, menu VitePress), kèm chuyển hướng URL.
 3. Dựng Sổ cập nhật: `updates/`, `schema.json`, `check_updates.py`, sinh trang, mở rộng `check_volatile.py` quét đề cương và mục lục; thử trên ch01 và render cả Quarto lẫn VitePress.
-4. Nâng cấp ch03 trước (HL7, LOINC, SNOMED CT, CDISC, OMOP), rồi ch02, ch04, ch05, ch07; mỗi chương một PR theo mẫu ch01 (khung 11 mục, lưu `archive/chNN/`, `editorial/changelog/`).
-5. Viết ch06 (pháp lý) và ch08 (tái lập) chỉ sau khi có reviewer ngoài; pháp lý đi từ nguồn chính thống, không từ API học thuật.
+4. Nâng cấp ch03 trước (HL7, LOINC, SNOMED CT, CDISC, OMOP), rồi ch02, ch04, ch05, ch06; mỗi chương một PR theo mẫu ch01 (khung 11 mục, lưu `archive/chNN/`, `editorial/changelog/`).
+5. Viết ch07 (tái lập) và ch08 (pháp lý) chỉ sau khi có reviewer ngoài; pháp lý đi từ nguồn chính thống, không từ API học thuật.
 6. Harvest Gate 2 (sàng lọc): cần xác nhận mô hình AI độc lập làm người sàng và người duyệt hàng đợi; chưa bắt đầu.
 7. Việc Ben cần quyết còn mở: các điểm đã đánh dấu ở ch01 (khối "Luận điểm cần tác giả xác nhận", 5 luận điểm, 4 cạm bẫy, nhãn Cốt lõi/Cập nhật cho bảng bằng chứng); 26 thuật ngữ `vi_status: proposed`; xử lý tệp chưa theo dõi (mục 1); reviewer ngoài (pháp lý, chuẩn dữ liệu, nghiên cứu lâm sàng, khoa học dữ liệu); số câu mini-course và quy tắc 24/34; hình thức xuất bản, DOI.
 
