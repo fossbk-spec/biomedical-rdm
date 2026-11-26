@@ -31,11 +31,11 @@ def chapter_path(number: int) -> Path:
 
 
 def question_records(text: str, chapter: int) -> list[dict[str, object]]:
-    if chapter == 7:
+    if chapter == 9:
         start = text.find("## PHẦN 1.")
         end = text.find("## PHẦN 2.")
         if start < 0 or end < 0:
-            raise ValueError("ch07 is missing the aggregate quiz section")
+            raise ValueError("ch09 is missing the aggregate quiz section")
         text = text[start:end]
         pattern = re.compile(r"^\*\*Q(\d+)\.\*\*\s*(.*?)\s*$", re.M)
     else:
@@ -195,11 +195,11 @@ def main() -> int:
         all_answers.update(counts)
         rows.append((f"ch{number:02d}", len(records), counts))
 
-    ch07 = ROOT / "docs" / "chapters" / "ch07_completion_and_capstone.md"
-    records = question_records(ch07.read_text(encoding="utf-8"), 7)
-    counts = validate(records, "ch07 aggregate", 10, errors)
+    ch09 = ROOT / "docs" / "chapters" / "ch09_completion_and_capstone.md"
+    records = question_records(ch09.read_text(encoding="utf-8"), 9)
+    counts = validate(records, "ch09 aggregate", 10, errors)
     all_answers.update(counts)
-    rows.append(("ch07", len(records), counts))
+    rows.append(("ch09", len(records), counts))
 
     pages = course_pages(COURSE_SOURCE.read_text(encoding="utf-8"))
     course_total = Counter()

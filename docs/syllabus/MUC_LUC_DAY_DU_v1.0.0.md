@@ -203,7 +203,7 @@ Phạm vi đã chốt: một bài toán tích hợp từ thiết kế đến chi
 ## 3. Học liệu đi kèm (không thuộc mục lục sách)
 
 - Trang M0 của khóa học: `docs/chapters/ch00_getting_started.md`.
-- Quiz tổng hợp và checklist capstone: phần của `docs/chapters/ch07_completion_and_capstone.md` (mã cũ; chương sách tương ứng là chương 9 viết mới).
+- Quiz tổng hợp và checklist capstone: phần của `docs/chapters/ch09_completion_and_capstone.md` (chuyển từ `ch07` cũ; chương sách tương ứng là chương 9 viết mới).
 - Quiz theo chương, mini-course 6 bài, đề cương khóa học `docs/syllabus/BIOMEDICAL_RDM_FREE_SELF_PACED_SYLLABUS.md`.
 
 ## 4. Phụ lục

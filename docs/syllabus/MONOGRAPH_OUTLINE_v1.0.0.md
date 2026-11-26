@@ -25,9 +25,9 @@ Số chương là **số chính thức**. Cột "Mã hiện tại" là `id` tron
 | | 4. Chất lượng dữ liệu và dữ liệu khuyết | ch04 | thực hành | bản nháp, cần nâng cấp |
 | IV. Bảo mật, chia sẻ và tái lập | 5. Bảo mật và khử định danh | ch05 | quản trị | bản nháp, cần nâng cấp |
 | | 6. FAIR, kho lưu trữ và dữ liệu sẵn sàng cho AI | ch06 | quản trị | bản nháp, cần nâng cấp |
-| | 7. Tái lập và phần mềm nghiên cứu | (ch09 trong chapter-map) | thực hành | mới; cần nghiên cứu |
-| V. Quản trị và pháp lý | 8. Quản trị và pháp lý Việt Nam | (ch08 trong chapter-map) | quản trị | mới; cần nghiên cứu và reviewer pháp lý |
-| VI. Tích hợp | 9. Tích hợp và tổng kết | viết mới (phần capstone từ ch07) | khung | cần viết |
+| | 7. Tái lập và phần mềm nghiên cứu | ch07 (`planned`) | thực hành | mới; cần nghiên cứu |
+| V. Quản trị và pháp lý | 8. Quản trị và pháp lý Việt Nam | ch08 (`planned`) | quản trị | mới; cần nghiên cứu và reviewer pháp lý |
+| VI. Tích hợp | 9. Tích hợp và tổng kết | viết mới (học liệu đi kèm ở `ch09_completion_and_capstone.md`) | khung | cần viết |
 | Phụ lục | Mẫu nhà tài trợ, lưu giữ, chuẩn, pháp lý, lab, thuật ngữ, ký hiệu | `docs/appendices/`, `editorial/` | | giữ; sau này chuyển phần dễ lỗi thời sang Sổ cập nhật |
 
 **Thứ tự đọc khuyến nghị:** 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9. Chương 3 đứng trước chương 4 dù giai đoạn 3 đứng trước giai đoạn 4, vì các bộ kiểm tra chất lượng như DQD chạy trên dữ liệu đã theo OMOP CDM. Các chương 5–7 đi liền mạch kỹ thuật–phương pháp quốc tế (bảo mật/khử định danh → FAIR/AI-ready → tái lập tính toán), sau đó Chương 8 đặt khung quản trị và tuân thủ pháp lý Việt Nam ngay trước Chương 9 tích hợp tổng kết (tách nguyên lý cố định ở thân chương và quy định dễ đổi sang Sổ cập nhật).
