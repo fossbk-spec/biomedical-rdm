@@ -182,3 +182,9 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 - **Quyết định:** Chuyển chương mới **Quản trị và pháp lý Việt Nam** từ vị trí dự kiến Chương 6 sang **Chương 8** (ngay trước Chương 9 Tích hợp và tổng kết), giữ liền mạch mạch kỹ thuật–phương pháp quốc tế ở các chương 5–7 và áp dụng mô hình hai lớp (nguyên lý quản trị ở thân Chương 8; số hiệu, điều khoản và thời hạn vào Sổ cập nhật).
 - **Đánh số chính thức sau điều chỉnh:** Chương 5 Bảo mật và khử định danh; **Chương 6** FAIR, kho lưu trữ và dữ liệu sẵn sàng cho AI (`ch06` giữ nguyên số); **Chương 7** Tái lập và phần mềm nghiên cứu (mới, `ch09` trong `chapter-map.yml` hiện tại); **Chương 8** Quản trị và pháp lý Việt Nam (mới, `ch08`); **Chương 9** Tích hợp và tổng kết (mới, thay vai trò sách của `ch07` cũ).
 - **Hệ quả triển khai:** `ch06` không phải đổi tên tệp hay chuyển hướng URL công khai trên web khóa học; PR đổi số ở bước 2 chỉ chuyển `ch07` cũ sang `ch09` (học liệu đi kèm) và mở đường cho `ch07` mới. Đã cập nhật `MONOGRAPH_OUTLINE_v1.0.0.md` (v1.1.0), `editorial/chapter-map.yml` và bảng ánh xạ mục 4.2 của `ch01`.
+
+## 2026-11-26 — Literature review P0: giao thức v1.1 và bản kê nhận định ch03 (dự thảo)
+
+- Ben duyệt các lựa chọn: scoping review PRISMA-ScR kèm sổ nguồn chính thống; đăng ký OSF trước Gate 2; thứ tự ch03, ch02, ch04, ch05, ch06 (FAIR), rồi ch07 và ch08; sàng lọc bằng hai AI độc lập, mô hình phân xử và người duyệt.
+- Giao thức cập nhật ở `docs/literature-review/harvest/PROTOCOL.md` mục 12; bản kê nhận định ch03 ở `docs/literature-review/claims/ch03-claims.md` (34 nhận định, 17 ưu tiên A, 27 chưa có trích dẫn).
+- **Cần Ben xác nhận:** mô hình phân xử phải không phải mô hình đã soạn chuỗi tìm (G1-3); nếu Claude đã soạn chuỗi tìm thì bất đồng chuyển cho người duyệt. Chưa đăng ký OSF, chưa chạy Gate 2.
