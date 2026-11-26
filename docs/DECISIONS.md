@@ -183,8 +183,12 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 - **Đánh số chính thức sau điều chỉnh:** Chương 5 Bảo mật và khử định danh; **Chương 6** FAIR, kho lưu trữ và dữ liệu sẵn sàng cho AI (`ch06` giữ nguyên số); **Chương 7** Tái lập và phần mềm nghiên cứu (mới, `ch09` trong `chapter-map.yml` hiện tại); **Chương 8** Quản trị và pháp lý Việt Nam (mới, `ch08`); **Chương 9** Tích hợp và tổng kết (mới, thay vai trò sách của `ch07` cũ).
 - **Hệ quả triển khai:** `ch06` không phải đổi tên tệp hay chuyển hướng URL công khai trên web khóa học; PR đổi số ở bước 2 chỉ chuyển `ch07` cũ sang `ch09` (học liệu đi kèm) và mở đường cho `ch07` mới. Đã cập nhật `MONOGRAPH_OUTLINE_v1.0.0.md` (v1.1.0), `editorial/chapter-map.yml` và bảng ánh xạ mục 4.2 của `ch01`.
 
+## 2026-11-26 — Đối chiếu số liệu ref_103 với tóm tắt
+
+- Số liệu ở Phụ lục A khớp tóm tắt bài Lane 2020 (PMID 32864627); mô tả được sửa để không gợi ý "an toàn" khi bài báo cáo tăng nguy cơ tim mạch. Phạm vi đã đọc: tóm tắt. Trạng thái `VERIFIED_UNAUDITED` của ref_103 không đổi; mô tả "OHDSI Study-a-thon" chưa đối chiếu.
+
 ## 2026-11-26 — Literature review P0: giao thức v1.1 và bản kê nhận định ch03 (dự thảo)
 
-- Ben duyệt các lựa chọn: scoping review PRISMA-ScR kèm sổ nguồn chính thống; đăng ký OSF trước Gate 2; thứ tự ch03, ch02, ch04, ch05, ch06 (FAIR), rồi ch07 và ch08; sàng lọc bằng hai AI độc lập, mô hình phân xử và người duyệt.
+- **Ben duyệt Gate 1 v1.1, bốn câu hỏi RQ3.1 đến RQ3.4 và bản kê ch03 (26/11/2026).** Ben duyệt các lựa chọn: scoping review PRISMA-ScR kèm sổ nguồn chính thống; đăng ký OSF trước Gate 2; thứ tự ch03, ch02, ch04, ch05, ch06 (FAIR), rồi ch07 và ch08; sàng lọc bằng hai AI độc lập, mô hình phân xử và người duyệt.
 - Giao thức cập nhật ở `docs/literature-review/harvest/PROTOCOL.md` mục 12; bản kê nhận định ch03 ở `docs/literature-review/claims/ch03-claims.md` (34 nhận định, 17 ưu tiên A, 27 chưa có trích dẫn).
 - **Phân xử bất đồng giữa hai mô hình sàng lọc do người duyệt xử lý** (không dùng mô hình AI), vì G1-3 đòi độc lập với người soạn chuỗi tìm và không thể bảo đảm điều đó cho Claude. Ngoại lệ cần Ben đồng ý bằng văn bản. Chưa đăng ký OSF, chưa chạy Gate 2.

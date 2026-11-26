@@ -25,7 +25,7 @@
 | Mục | Vấn đề | Đề xuất |
 |---|---|---|
 | `ref_045` Wilkinson 2019 | DOI trỏ tới bài *"Evaluating FAIR maturity through a scalable, automated, community-governed framework"*. | Đã sửa tiêu đề theo DOI (PR #21). |
-| `ref_103` Lane 2020 | Crossref và PubMed 32864627: *"Risk of hydroxychloroquine alone and in combination with azithromycin in the treatment of rheumatoid arthritis: a multinational, retrospective study"*. | Đã sửa tiêu đề (PR #21). Còn phải đối chiếu số liệu ">950.000 người dùng HCQ, 14 cơ sở dữ liệu" ở Phụ lục A với bài gốc. |
+| `ref_103` Lane 2020 | Crossref và PubMed 32864627: *"Risk of hydroxychloroquine alone and in combination with azithromycin in the treatment of rheumatoid arthritis: a multinational, retrospective study"*. | Đã sửa tiêu đề (PR #21). Số liệu Phụ lục A (14 nguồn dữ liệu, 6 quốc gia, 956.374 người dùng HCQ) khớp với tóm tắt (Europe PMC, 26/11/2026); phạm vi đã đọc: tóm tắt. Còn phải đối chiếu toàn văn và mô tả "OHDSI Study-a-thon". |
 | `ref_072` Clark (Bridge2AI) | bioRxiv: v6 (24/4/2026) tên *"AI-readiness criteria for biomedical data"*; v7 (17/11/2026) tên dài hơn (*…in functional genomics and clinical medicine*). OpenAlex ghi tiêu đề của một phiên bản khác. | Giữ tiêu đề v6, ghi rõ phiên bản khi trích. |
 | `ref_067` Utrecht handbook | OpenAlex ghi tên sổ tay "Data Privacy Handbook" (mục đang ghi là chương). | Có thể chấp nhận; ghi rõ là chương |
 | `ref_076`, `ref_085` | Khác ngôn ngữ/định dạng tiêu đề (tiếng Đức, tiếng Việt). | Có thể chấp nhận |

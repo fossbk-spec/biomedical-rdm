@@ -101,7 +101,7 @@
 "100","ref_100","PENDING_UNDETERMINED","undetermined from text flag","§11.4;§Ghi chú về trích dẫn và giới hạn của bản tổng hợp","Rà soát theo trạng thái hiện có; không thay đổi trạng thái.","301","PARTIAL","Tiêu đề trang web khớp một phần, năm xuất bản trong trang (2026) khác với năm trong danh mục (n.d.)."
 "101","ref_101","PENDING_UNDETERMINED","undetermined from text flag","§11.4;§Ghi chú về trích dẫn và giới hạn của bản tổng hợp","Rà soát theo trạng thái hiện có; không thay đổi trạng thái.","300","MATCH","Nội dung trang khớp hoàn toàn với tiêu đề và thông tin tác giả được cung cấp."
 "102","ref_102","VERIFIED_UNAUDITED","","§12;§Phụ lục A","Không có cờ trong văn bản; cần audit độc lập trước khi xuất bản.","","",""
-"103","ref_103","VERIFIED_UNAUDITED","","§Phụ lục A","Tiêu đề đã sửa theo Crossref và PubMed 32864627. Còn phải đối chiếu số liệu Phụ lục A (>950.000 người dùng HCQ, 14 CSDL) với bài gốc.","","",""
+"103","ref_103","VERIFIED_UNAUDITED","","§Phụ lục A","Tiêu đề đã sửa theo Crossref và PubMed 32864627. Số liệu Phụ lục A (14 nguồn dữ liệu, 6 quốc gia, 956.374 người dùng HCQ) đã đối chiếu với TÓM TẮT (Europe PMC, 26/11/2026); chưa đọc toàn văn. Mô tả ""nghiên cứu OHDSI COVID Study-a-thon đầu tiên"" (index.md, mục 6 danh sách) chưa đối chiếu. Trạng thái không đổi.","","",""
 "104","ref_104","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
 "105","ref_105","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""
 "106","ref_106","VERIFIED_UNAUDITED","","chapter_only","Metadata đối chiếu Crossref 21/11/2026 (DOI khớp); chưa audit nội dung độc lập.","","",""

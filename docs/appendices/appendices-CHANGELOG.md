@@ -1,6 +1,6 @@
 ---
-reviewed: 2026-11-21
-next_review: 2027-05-21
+reviewed: 2026-11-25
+next_review: 2027-05-25
 ---
 
 # Nhật ký thay đổi phụ lục
@@ -15,4 +15,4 @@ next_review: 2027-05-21
 | 2026-11-21 | Cập nhật pháp lý và lưu trữ cho chương 5; thêm ghi chú Lab 5 với trạng thái nguồn, cảnh báo seed và kết quả chạy dữ liệu tổng hợp. | CONTENT_PENDING | [Phụ lục pháp lý](legal.md); [Phụ lục lưu trữ](retention.md); [Ghi chú Lab 5](privacy-lab-notes.md) | 2026-11-21 | Ben |
 | 2026-11-21 | Cập nhật phụ lục `funder-templates`: bổ sung định dạng NIH 2026 gồm 7 yếu tố, trạng thái nguồn NIH/DMPTool và cảnh báo tên mẫu production; cập nhật thời hạn lưu giữ HHS/NIH, giữ các cờ chưa kiểm chứng. | VERIFIED_UNAUDITED/CONTENT_PENDING | [Phụ lục nhà tài trợ](funder-templates.md); [Phụ lục lưu trữ](retention.md) | 2026-11-21 | Ben |
 | 2026-11-21 | Bổ sung ghi chú Lab 4/6; chốt trạng thái nguồn DQD, RO-Crate, DataCite và Zenodo; ghi rõ số DQD minh họa và giới hạn preprint. | CONTENT_PENDING | [Ghi chú Lab 4/6](quality-ai-lab-notes.md); [Phụ lục standards](standards.md) | 2026-11-21 | Ben |
-
+| 2026-11-25 | Bổ sung phụ lục `case-study-drmayday` (case study dự án thật DrMayDay, v2): vòng đời 7 giai đoạn áp vào dự án, SOP chụp ảnh + gán nhãn, dataset theo mô hình, QC trước huấn luyện, sơ đồ pipeline 8 chặng; sửa 3 lỗi (giả danh hóa, UAS7 miền QS, căn cứ Luật 91/2025 + NĐ 356/2025). | VERIFIED_UNAUDITED | [Phụ lục case study DrMayDay](case-study-drmayday.md) | 2026-11-25 | Ben |

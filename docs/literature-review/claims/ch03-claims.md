@@ -1,6 +1,6 @@
 # Bản kê nhận định cần bằng chứng: Chương 3 (CDISC, FHIR, OMOP)
 
-**Phiên bản:** 0.1 (dự thảo, chờ Ben duyệt ở Gate 1 v1.1) · **Ngày:** 26/11/2026 · **Chương:** `docs/chapters/ch03_standards_cdisc_fhir_omop.md`
+**Phiên bản:** 0.1 (đã duyệt cùng Gate 1 v1.1, 26/11/2026; vẫn là bản kê, chưa kiểm chứng nguồn nào) · **Ngày:** 26/11/2026 · **Chương:** `docs/chapters/ch03_standards_cdisc_fhir_omop.md`
 **Mục đích:** liệt kê các nhận định của chương có số liệu, phiên bản, quy định, mô tả kỹ thuật hoặc kết luận thực tế, kèm nguồn hiện có và nguồn cần để kiểm. Đây là đầu vào cho Gate 2 và cho bảng bằng chứng của chương.
 
 ## Phạm vi đã đọc và giới hạn

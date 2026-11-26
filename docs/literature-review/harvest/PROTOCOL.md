@@ -2,7 +2,7 @@
 
 **Phiên bản:** 1.0.0 (Gate 1 phê duyệt có điều kiện, xem mục 10) · **Ngày:** 24/11/2026 · **Người quyết định:** TS. Hoàng Quang Huy (Ben); các quyết định Gate 1 dưới đây được đưa ra theo ủy quyền của Ben ngày 24/11/2026 sau một vòng review độc lập, ghi lại ở mục 10.
 **Căn cứ quy trình:** `DrMayDay/.agents/workflows/literature-review.md` (Bước 0, Gate 1, Gate 2, Cổng 3.5) và danh mục kiểm PRISMA-ScR.
-**Cập nhật v1.1 (26/11/2026, dự thảo chờ Ben duyệt ở Gate 1):** xem mục 12; khi mục 12 khác các mục 1 và 7 thì theo mục 12.
+**Cập nhật v1.1 (26/11/2026, Gate 1 v1.1 đã được Ben duyệt cùng ngày):** xem mục 12; khi mục 12 khác các mục 1 và 7 thì theo mục 12.
 
 ## 1. Loại review và mục đích
 - **Loại:** EXPLORE (Bước 0 của workflow); nâng lên **scoping review** theo PRISMA-ScR khi Gate 2 được thực hiện. **Không phải systematic review** (không đăng ký protocol trước, không chấm nguy cơ sai lệch, không GRADE).
