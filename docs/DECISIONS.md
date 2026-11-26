@@ -200,3 +200,8 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 ## 2026-11-26 — Đồng bộ sổ với văn bản cho ref_011
 
 - Ben duyệt (26/11/2026): `ref_011` chuyển từ `VERIFIED_UNAUDITED` sang `BIB_PENDING` trong `citation-audit.csv`. Lý do: văn bản ch03 (mục 3.4) đã ghi mục này lệch tiêu đề (mục ghi "Our journey" 2025, văn bản mô tả như *The Book of OHDSI*) và giữ `BIB_PENDING`, trong khi sổ ghi `VERIFIED_UNAUDITED`; kiểm trang cũng chưa kiểm được. Đây là đồng bộ sổ theo cờ đã có trong văn bản, không phải bằng chứng mới. Số liệu trong `PROJECT-STATE.md`: 102 `VERIFIED_UNAUDITED`, 10 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`.
+
+## 2026-11-26 — Case study DrMayDay: tách hai bộ tài liệu
+
+- Ben quyết (26/11/2026): chỉ `case-study-drmayday` (phụ lục, đã trên `main`) thuộc sách. Bộ kế hoạch nền tảng "Mayday" (Master Plan, PMO Pack, Blueprint, WBS, Gantt, Staffing, Budget, Backlog, ERD, Prisma) là tài liệu nội bộ: lưu private ngoài repo công khai, dùng cho dự án thực hiện đặt ở repo private. Ngân sách/nhân sự thật và sự đồng ý của chủ nhiệm đề tài: quyết sau.
+- Việc còn lại của xuất bản phụ lục: kiểm chứng bảng nguồn §11, liên kết chéo từ chương, reviewer ngoài, đồng bộ sang repo khóa học. Dòng 12 của mục trạng thái cũ trong `PROJECT-STATE.md` ("chưa đưa vào repo") đã lỗi thời đối với phụ lục này.
