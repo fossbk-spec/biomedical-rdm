@@ -501,4 +501,3 @@ Chỉ gồm các mục có khóa `ref_NNN` trong tệp chương hiện có. Chư
 - Chưa chạy kiểm toán độc lập (`scripts/audit_references.py` ghi nhận trạng thái; kiểm trang chỉ là đối chiếu, không đổi cột `status`).
 - Chương 7, 8, 9 chưa có nguồn; chương 8 phải đi từ văn bản pháp luật chính thống (xem `docs/legal-verification.md`), không từ API học thuật.
 - 334 mục của bản tổng hợp gốc nằm ở `references/references-334.bib`; chỉ 115 mục trong số đó đã vào danh mục đóng này.
-

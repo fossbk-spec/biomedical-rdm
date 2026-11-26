@@ -225,4 +225,3 @@ Ngoài ra: nhật ký thay đổi phụ lục `docs/appendices/appendices-CHANGE
 ## 5. Danh mục tài liệu tham khảo
 
 Xem `references/DANH_MUC_THAM_KHAO_v1.0.0.md` (sinh cùng lượt với tệp này).
-
