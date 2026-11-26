@@ -1,7 +1,7 @@
 # CHƯƠNG 2. THU THẬP DỮ LIỆU LÂM SÀNG, NGUYÊN TẮC ALCOA+, GCP VÀ HỆ THỐNG THU THẬP DỮ LIỆU ĐIỆN TỬ (EDC / REDCap)
 
 > **Thời lượng ước lượng:** đọc ≈ 35–45 phút; lab tùy chọn ≈ 45–60 phút (tùy tốc độ đọc và thao tác).
-> **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*  
+> **Bộ tài liệu:** *Giáo trình Quản lý Dữ liệu Nghiên cứu Y sinh học (Biomedical Research Data Management)*
 > **Lab:** tự chọn; rubric /20 chỉ để tự đối chiếu, không yêu cầu nộp bài.
 
 ---
@@ -290,7 +290,7 @@ Truy cập tab **Project Setup** $\rightarrow$ bấm vào **Online Designer**:
    - `adverse_events` (Nhãn: *Theo dõi Biến cố bất lợi - AE*).
 
 #### Bước 3: Cấu hình Từ điển Dữ liệu (Data Dictionary CSV)
-Thay vì tạo từng biến thủ công trên giao diện web, cách chuyên nghiệp nhất của một Clinical Data Manager là biên soạn Từ điển Dữ liệu dưới dạng tệp CSV. 
+Thay vì tạo từng biến thủ công trên giao diện web, cách chuyên nghiệp nhất của một Clinical Data Manager là biên soạn Từ điển Dữ liệu dưới dạng tệp CSV.
 
 Bảng thông số kỹ thuật chuẩn dưới đây định nghĩa đầy đủ cấu trúc các trường cần thiết:
 
