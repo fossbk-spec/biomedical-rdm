@@ -183,6 +183,10 @@ Thay vì gom toàn bộ dữ liệu bệnh nhân nhạy cảm về một máy ch
 - **Sai sót:** Cơ sở A và B dùng các mã số khác nghĩa cho cùng biến, còn cơ sở C lưu văn bản tự do. Khi nhóm tổng hợp dữ liệu mà không thông qua từ điển chuẩn hóa, cùng một giá trị số có thể bị diễn giải khác nhau và làm sai phân loại tình trạng hút thuốc.
 - **Bài học:** Việc sử dụng các chuẩn danh pháp như SNOMED CT và quy tắc ánh xạ của OMOP/CDISC là biện pháp sống còn để ngăn ngừa sai lệch tai hại này.
 
+### Đọc tiếp: chọn và ánh xạ chuẩn trong một dự án thật
+
+Phụ lục [Case study DrMayDay](../appendices/case-study-drmayday.md) (mục về chuẩn hóa) cho thấy cách một dự án đang thực hiện gán từng chuẩn vào đúng mục đích: CDISC cho dữ liệu nộp của thử nghiệm, HL7 FHIR cho trao đổi với các hệ thống bệnh viện, OMOP CDM cho phân tích. Phụ lục cũng có một lỗi thật về xếp một thang đo do bệnh nhân tự báo cáo vào nhầm miền của CDISC SDTM, minh họa vì sao phải tra đúng định nghĩa miền trước khi ánh xạ. Nên đọc sau mục 3.5. Khác với hai tình huống giả định ở trên, phụ lục mô tả một dự án thật, và phần ánh xạ ở đó là khung kế hoạch chưa chạy trên dữ liệu thật. Mọi số liệu, phiên bản chuẩn và trạng thái của dự án nằm ở phụ lục kèm ngày chốt và thuộc lớp cập nhật; chương này không sao chép chúng. Phụ lục vẫn còn các mục đánh dấu `[CẦN KIỂM CHỨNG]`.
+
 ---
 
 ## Quiz tự kiểm tra — Bài 3 (5 câu hỏi)
