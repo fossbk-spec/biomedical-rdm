@@ -4,7 +4,7 @@
 **Vị trí đề xuất trong repo:** `docs/appendices/case-study-drmayday.md` (phụ lục riêng, không đổi số chương).
 **Phiên bản:** v2 — ngày 25/11/2026 (v1 ngày 21/11/2026 là file `rdm-case-study-drmayday-workflow.md`, chỉ nằm local).
 **Ngày chốt nội dung (content freeze):** 25/11/2026. Rà soát 6 tháng/lần theo quy tắc của sách.
-**Trạng thái:** Bản nháp v2 — đã push lên nhánh `docs/appendix-case-study-drmayday`, chờ mở PR.
+**Trạng thái:** Bản v2 đã nằm trên `main`; chưa qua reviewer ngoài (pháp lý, nghiên cứu lâm sàng); liên kết chéo từ các chương chưa thêm.
 **Quyết định liên quan:** Ben chốt 25/11/2026 — phụ lục riêng, case study thật (không ẩn danh); các chương ch02–ch07 và capstone ch07 vẫn giữ tình huống giả định theo quyết định 22/11/2026. **Đồng ý công khai: đã có** (Ben xác nhận 25/11/2026 — chủ nhiệm đề tài / bệnh viện đã đồng ý đăng case study dùng tên dự án và bệnh viện thật). Phạm vi số liệu: bản v2 này dùng phạm vi chi tiết (số liệu vận hành từ DMP v1.1 và trang Pipeline); Ben có thể yêu cầu gọn lại thành khung 7 giai đoạn.
 
 > **Nguyên tắc an toàn của case study này:** chỉ dùng tài liệu và số liệu tổng hợp đã công bố trong kế hoạch/thuyết minh/DMP của dự án. **Không có dữ liệu bệnh nhân thật nào** trong case study; mọi ví dụ bản ghi đều là giả lập và ghi rõ như vậy. Học viên làm việc với case study này không bao giờ chạm vào dữ liệu thật của dự án. Repo `fossbk-spec/drmayday` là private — case study phải **tự chứa đầy đủ** nội dung cần thiết, không yêu cầu học viên truy cập repo đó.
@@ -265,7 +265,7 @@ Ba lỗi dưới đây đều có thật trong tài liệu của dự án. Ở b
 
 ## 10. Ghi chú cho người đưa case study vào sách và khóa học
 
-- **Đưa vào sách:** đặt file này vào repo `biomedical-rdm` tại `docs/appendices/case-study-drmayday.md`, trên nhánh riêng + PR riêng (theo quy trình repo: một việc một nhánh + một PR, chỉ merge khi Ben bảo; không ghi tên công cụ AI trong commit/PR). Cập nhật `docs/appendices/appendices-CHANGELOG.md` và thêm liên kết chéo từ ch01 (DMP), ch02 (thu thập), ch03 (chuẩn), ch04 (QC), ch05 (riêng tư), ch06 (FAIR/AI-ready), ch07 (kết thúc) tới phụ lục này.
+- **Đưa vào sách:** đặt file này vào repo `biomedical-rdm` tại `docs/appendices/case-study-drmayday.md`, trên nhánh riêng + PR riêng (theo quy trình repo: một việc một nhánh + một PR, chỉ merge khi Ben bảo; không ghi tên công cụ AI trong commit/PR). Cập nhật `docs/appendices/appendices-CHANGELOG.md` và thêm liên kết chéo từ ch01 (DMP), ch02 (thu thập), ch03 (chuẩn), ch04 (QC), ch05 (riêng tư), ch06 (FAIR/AI-ready) tới phụ lục này; chương kết thúc/lưu trữ dùng số hiệu theo `editorial/chapter-map.yml` (đánh số chương đang được đổi, xem `docs/HANDOFF.md`).
 - **Đưa vào khóa học:** sau khi merge ở repo gốc, đồng bộ một chiều sang `biomedical-rdm-course` theo hướng dẫn 21/11 (`course/case-study-drmayday.md` + `course/capstone.md` + cập nhật syllabus + DECISIONS) — **làm đúng hướng dẫn 21/11 vốn chưa thực hiện**, nhưng với bản v2 này thay vì bản 21/11. Capstone của khóa học dùng DrMayDay làm tình huống chính; đề tài viêm xoang ở chương 6 §6.2 giữ lại làm tình huống thay thế. Không viết riêng một bản khác ở repo khóa học.
 - **Cập nhật case study** mỗi khi dự án sang giai đoạn mới (GĐ2: 12/2026); ghi "Ngày chốt" ở đầu file và rà soát 6 tháng/lần như các phụ lục. Mỗi lần cập nhật là một PR riêng.
 - **Mọi số liệu** trong file này lấy từ repo và kế hoạch tại thời điểm review (Ngày chốt: 25/11/2026); nếu dự án cập nhật (ví dụ đã chụp được ảnh, đã có số IRB, đã chốt CSDL), cập nhật file và ghi vào CHANGELOG.
