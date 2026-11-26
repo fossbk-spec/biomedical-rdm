@@ -105,7 +105,7 @@ Các quyết định đưa ra theo ủy quyền của Ben, sau review độc l�
 - **Đăng ký protocol:** đăng ký trên OSF **trước khi bắt đầu sàng lọc Gate 2**. Trạng thái: chưa đăng ký; chờ tài khoản OSF và Ben duyệt nội dung giao thức.
 - **Thứ tự chương cho Gate 2:** ch03 (chuẩn) → ch02 (thu thập) → ch04 (chất lượng) → ch05 (bảo mật) → ch06 (FAIR; trong ghi chú cũ gọi "ch07" theo cách đánh số trước khi #31 được merge). Ch07 (tái lập) và ch08 (pháp lý VN) làm sau; ch08 chỉ bắt đầu khi có reviewer pháp lý ngoài và đi từ nguồn chính thống.
 - **Thiết kế sàng lọc tiêu đề và tóm tắt (thay mục 7 bước 1):** hai mô hình AI độc lập, mỗi mô hình sàng riêng và mù với quyết định của mô hình kia; người duyệt xử lý toàn bộ ca `UNCERTAIN`, ca độ tin cậy dưới 0,85, ca hai mô hình bất đồng, và mẫu ngẫu nhiên 10% (tối thiểu 30 bản ghi mỗi chủ đề) trong số bản ghi cả hai mô hình cùng loại. Báo cáo Cohen's kappa giữa hai mô hình và giữa mô hình với người duyệt (mô tả). Mô hình đề xuất: Gemini (`gemini-3.1-flash-lite`, không dùng grounding) và Codex; tên mô hình phải kiểm bằng danh sách mô hình hiện hành ở ngày chạy.
-- **Mô hình phân xử bất đồng:** phải là mô hình **không** soạn chuỗi tìm (quyết định G1-3) và không phải một trong hai mô hình sàng lọc. Nếu không có mô hình nào thỏa điều kiện này (ví dụ Claude đã soạn chuỗi tìm thì không được phân xử), bất đồng chuyển cho người duyệt. Điểm này lệch với phương án "AI phân xử" Ben đã duyệt; cần Ben xác nhận lại.
+- **Phân xử bất đồng giữa hai mô hình (quyết định theo phương án chặt chẽ nhất, 26/11/2026):** do **người duyệt** xử lý, không dùng mô hình AI làm người phân xử. Lý do: quyết định G1-3 đòi người sàng lọc độc lập với người soạn chuỗi tìm, và một mô hình thứ ba chỉ độc lập khi chưa từng soạn chuỗi tìm; không thể bảo đảm điều đó cho Claude, vốn tham gia soạn giao thức. Ngoại lệ: dùng mô hình thứ ba chưa từng tham gia soạn chuỗi tìm nếu Ben đồng ý bằng văn bản; ghi tên mô hình và phiên bản vào nhật ký lần chạy.
 - **Người duyệt hàng đợi:** Ben hoặc người Ben chỉ định; chuyên gia pháp lý ngoài cho ch08.
 - **Dữ liệu:** chỉ lưu metadata và quyết định trong repo công khai; tóm tắt chỉ gửi cho mô hình trong lúc chạy và không lưu.
 
@@ -124,6 +124,6 @@ Nhận định cụ thể của chương và nguồn cần để kiểm: `docs/l
 
 ### 12.4. Việc chờ Ben
 1. Duyệt giao thức v1.1 và các câu hỏi RQ3.1 đến RQ3.4 (Gate 1 v1.1).
-2. Xác nhận mô hình phân xử (mục 12.1) và ngân sách API.
+2. Xác nhận ngân sách API và hai mô hình sàng lọc (mục 12.1); việc phân xử do người duyệt.
 3. Tạo hoặc chỉ định tài khoản OSF và đăng ký giao thức.
 4. Chỉ định người duyệt hàng đợi Gate 2.
