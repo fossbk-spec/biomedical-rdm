@@ -27,3 +27,7 @@ Các đường dẫn nguồn nội bộ đã được thay ở dòng nguồn đ�
 ## Đối chiếu thư mục (2026-11-21)
 
 - Thêm `scripts/verify_refs.py`, `references/verification-doi-openalex.csv`, `references/verification-report.csv` và `references/VERIFICATION.md`. Không sửa nội dung thân bài; các sai lệch được ghi để người audit xử lý.
+
+## Đối chiếu số liệu ref_103 (2026-11-26)
+
+- Phụ lục A, dòng Lane và cộng sự [103]: sửa mô tả cho khớp tóm tắt bài gốc (PMID 32864627, Europe PMC). Số liệu giữ nguyên và đã khớp: 14 nguồn dữ liệu, 6 quốc gia (Đức, Nhật, Hà Lan, Tây Ban Nha, Anh, Mỹ), 956.374 người dùng HCQ. Bỏ chữ "An toàn" đứng một mình vì bài báo cáo tăng nguy cơ tim mạch khi dùng dài hạn và khi thêm azithromycin. Phạm vi đã đọc: tóm tắt; chưa đọc toàn văn.
