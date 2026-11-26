@@ -240,6 +240,10 @@ Nội dung tình huống Surgisphere dưới đây được giữ nguyên và đ
 * **Hậu quả được nêu trong tình huống:** Bài trên *The Lancet* và bài trên *NEJM* đều có thông báo rút bài năm 2020 [@ref_107] [@ref_108]. Các con số quy mô mẫu của bài gốc không được dùng ở đây vì chưa được đối chiếu trực tiếp trong đợt này.
 * **Bài học RDM cốt lõi:** Một công trình nghiên cứu cần cơ chế truy vết nguồn gốc dữ liệu, Kế hoạch Quản lý Dữ liệu minh bạch và khả năng kiểm chứng độc lập.
 
+### Đọc tiếp: một dự án thật đi qua cùng khung
+
+Phụ lục [Case study DrMayDay](../appendices/case-study-drmayday.md) áp vòng đời bảy giai đoạn của Hình 1.1 vào một dự án nghiên cứu đang thực hiện, gồm cả phần kế hoạch quản lý dữ liệu theo mẫu của nhà tài trợ (mục 4.5). Nên đọc sau mục 4.2 và 4.5; bài tập viết bảng loại dữ liệu và kho lưu trữ trong phụ lục nối tiếp Lab 1. Mọi số liệu, ngày tháng và trạng thái của dự án nằm ở phụ lục, kèm ngày chốt và thuộc lớp cập nhật; chương này không sao chép chúng. Phụ lục vẫn còn các mục đánh dấu `[CẦN KIỂM CHỨNG]`.
+
 ---
 
 ## 7. THỰC HÀNH (LAB 1 DMPTOOL, TÙY CHỌN)
