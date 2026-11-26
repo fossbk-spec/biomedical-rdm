@@ -2,6 +2,7 @@
 
 **Phiên bản:** 1.0.0 (Gate 1 phê duyệt có điều kiện, xem mục 10) · **Ngày:** 24/11/2026 · **Người quyết định:** TS. Hoàng Quang Huy (Ben); các quyết định Gate 1 dưới đây được đưa ra theo ủy quyền của Ben ngày 24/11/2026 sau một vòng review độc lập, ghi lại ở mục 10.
 **Căn cứ quy trình:** `DrMayDay/.agents/workflows/literature-review.md` (Bước 0, Gate 1, Gate 2, Cổng 3.5) và danh mục kiểm PRISMA-ScR.
+**Cập nhật v1.1 (26/11/2026, Gate 1 v1.1 đã được Ben duyệt cùng ngày):** xem mục 12; khi mục 12 khác các mục 1 và 7 thì theo mục 12.
 
 ## 1. Loại review và mục đích
 - **Loại:** EXPLORE (Bước 0 của workflow); nâng lên **scoping review** theo PRISMA-ScR khi Gate 2 được thực hiện. **Không phải systematic review** (không đăng ký protocol trước, không chấm nguy cơ sai lệch, không GRADE).
@@ -96,3 +97,33 @@ Các quyết định đưa ra theo ủy quyền của Ben, sau review độc l�
 | 0.3 | Thêm từ đồng nghĩa; tách tầng khái niệm không giới hạn lĩnh vực (FAIR, datasheets); bổ sung loại tài liệu `data-paper`, `report`, `book` | seed test phát hiện bộ lọc loại tài liệu loại bài FAIR (OpenAlex phân loại `data-paper`) |
 | 0.4 | OHDSI và OMOP không cần ràng buộc ngữ cảnh; thêm "common data elements"; thêm cụm "preclinical research" cho t04; thêm "health datasets" cho t15; thêm `conference-paper` | từ khóa duy nhất không cần ngữ cảnh; từ đồng nghĩa rõ nghĩa |
 | 0.4.1 | Bỏ "safe haven" đơn lẻ (t11); thêm NOT cho t12b | kết quả nhiễu thấy trong harvest (tài chính, nhóm dân tộc) |
+
+## 12. Cập nhật v1.1 (26/11/2026): quyết định và thiết kế Gate 2 (dự thảo)
+
+### 12.1. Quyết định của Ben (26/11/2026, theo bộ câu hỏi duyệt)
+- **Loại review:** scoping review theo PRISMA-ScR cho nhánh tài liệu học thuật, **cộng** sổ nguồn chính thống cho văn bản quy phạm (luật, chuẩn, hướng dẫn của nhà tài trợ; không tìm qua API học thuật, xem mục 3). Không gọi là systematic review.
+- **Đăng ký protocol:** đăng ký trên OSF **trước khi bắt đầu sàng lọc Gate 2**. Trạng thái: chưa đăng ký; chờ tài khoản OSF và Ben duyệt nội dung giao thức.
+- **Thứ tự chương cho Gate 2:** ch03 (chuẩn) → ch02 (thu thập) → ch04 (chất lượng) → ch05 (bảo mật) → ch06 (FAIR; trong ghi chú cũ gọi "ch07" theo cách đánh số trước khi #31 được merge). Ch07 (tái lập) và ch08 (pháp lý VN) làm sau; ch08 chỉ bắt đầu khi có reviewer pháp lý ngoài và đi từ nguồn chính thống.
+- **Thiết kế sàng lọc tiêu đề và tóm tắt (thay mục 7 bước 1):** hai mô hình AI độc lập, mỗi mô hình sàng riêng và mù với quyết định của mô hình kia; người duyệt xử lý toàn bộ ca `UNCERTAIN`, ca độ tin cậy dưới 0,85, ca hai mô hình bất đồng, và mẫu ngẫu nhiên 10% (tối thiểu 30 bản ghi mỗi chủ đề) trong số bản ghi cả hai mô hình cùng loại. Báo cáo Cohen's kappa giữa hai mô hình và giữa mô hình với người duyệt (mô tả). Mô hình đề xuất: Gemini (`gemini-3.1-flash-lite`, không dùng grounding) và Codex; tên mô hình phải kiểm bằng danh sách mô hình hiện hành ở ngày chạy.
+- **Phân xử bất đồng giữa hai mô hình (quyết định theo phương án chặt chẽ nhất, 26/11/2026):** do **người duyệt** xử lý, không dùng mô hình AI làm người phân xử. Lý do: quyết định G1-3 đòi người sàng lọc độc lập với người soạn chuỗi tìm, và một mô hình thứ ba chỉ độc lập khi chưa từng soạn chuỗi tìm; không thể bảo đảm điều đó cho Claude, vốn tham gia soạn giao thức. Ngoại lệ: dùng mô hình thứ ba chưa từng tham gia soạn chuỗi tìm nếu Ben đồng ý bằng văn bản; ghi tên mô hình và phiên bản vào nhật ký lần chạy.
+- **Người duyệt hàng đợi:** Ben hoặc người Ben chỉ định; chuyên gia pháp lý ngoài cho ch08.
+- **Dữ liệu:** chỉ lưu metadata và quyết định trong repo công khai; tóm tắt chỉ gửi cho mô hình trong lúc chạy và không lưu.
+
+### 12.2. Câu hỏi nghiên cứu cấp chương, ch03 (dự thảo)
+| Mã | Câu hỏi | Nhánh nguồn |
+|---|---|---|
+| RQ3.1 | CDISC, HL7 FHIR và OMOP CDM khác nhau thế nào về mục đích, kiến trúc, định dạng và từ vựng theo đặc tả chính thức? | chính thống |
+| RQ3.2 | Hiện trạng phiên bản và yêu cầu nộp hồ sơ tại ngày tìm là gì (FHIR R4, R5, R6; SDTM và IG; OMOP v5.4; hướng dẫn của FDA, PMDA)? | chính thống |
+| RQ3.3 | Bằng chứng nào cho thấy việc ánh xạ giữa các chuẩn (FHIR sang OMOP, FHIR sang CDISC, EHR sang OMOP) khả thi và những giới hạn về độ trung thực? | học thuật (t07) |
+| RQ3.4 | Bằng chứng nào ủng hộ phân tích phân tán trên OMOP (nghiên cứu mạng lưới OHDSI) và giới hạn về kiểm soát tiết lộ? | học thuật (t07) |
+
+Nhận định cụ thể của chương và nguồn cần để kiểm: `docs/literature-review/claims/ch03-claims.md`.
+
+### 12.3. Nguồn chính thống dự kiến cho ch03 (chưa mở nguồn nào)
+Đặc tả SDTM, SDTMIG và ADaM, ADaMIG của CDISC (ghi phiên bản); lịch sử phát hành và đặc tả FHIR trên hl7.org/fhir; đặc tả OMOP CDM v5.4 và tài liệu từ vựng của OHDSI; hướng dẫn kỹ thuật dữ liệu nghiên cứu của FDA và hướng dẫn tương ứng của PMDA. Mỗi nguồn được ghi vào sổ với ngày truy cập và phạm vi đã đọc.
+
+### 12.4. Việc chờ Ben
+1. Duyệt giao thức v1.1 và các câu hỏi RQ3.1 đến RQ3.4 (Gate 1 v1.1).
+2. Xác nhận ngân sách API và hai mô hình sàng lọc (mục 12.1); việc phân xử do người duyệt.
+3. Tạo hoặc chỉ định tài khoản OSF và đăng ký giao thức.
+4. Chỉ định người duyệt hàng đợi Gate 2.
