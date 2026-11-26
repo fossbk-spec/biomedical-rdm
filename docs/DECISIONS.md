@@ -192,3 +192,7 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 - **Ben duyệt Gate 1 v1.1, bốn câu hỏi RQ3.1 đến RQ3.4 và bản kê ch03 (26/11/2026).** Ben duyệt các lựa chọn: scoping review PRISMA-ScR kèm sổ nguồn chính thống; đăng ký OSF trước Gate 2; thứ tự ch03, ch02, ch04, ch05, ch06 (FAIR), rồi ch07 và ch08; sàng lọc bằng hai AI độc lập, mô hình phân xử và người duyệt.
 - Giao thức cập nhật ở `docs/literature-review/harvest/PROTOCOL.md` mục 12; bản kê nhận định ch03 ở `docs/literature-review/claims/ch03-claims.md` (34 nhận định, 17 ưu tiên A, 27 chưa có trích dẫn).
 - **Phân xử bất đồng giữa hai mô hình sàng lọc do người duyệt xử lý** (không dùng mô hình AI), vì G1-3 đòi độc lập với người soạn chuỗi tìm và không thể bảo đảm điều đó cho Claude. Ngoại lệ cần Ben đồng ý bằng văn bản. Chưa đăng ký OSF, chưa chạy Gate 2.
+
+## 2026-11-26 — Đồng bộ sổ với văn bản cho ref_011
+
+- Ben duyệt (26/11/2026): `ref_011` chuyển từ `VERIFIED_UNAUDITED` sang `BIB_PENDING` trong `citation-audit.csv`. Lý do: văn bản ch03 (mục 3.4) đã ghi mục này lệch tiêu đề (mục ghi "Our journey" 2025, văn bản mô tả như *The Book of OHDSI*) và giữ `BIB_PENDING`, trong khi sổ ghi `VERIFIED_UNAUDITED`; kiểm trang cũng chưa kiểm được. Đây là đồng bộ sổ theo cờ đã có trong văn bản, không phải bằng chứng mới. Số liệu trong `PROJECT-STATE.md`: 102 `VERIFIED_UNAUDITED`, 10 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`.
