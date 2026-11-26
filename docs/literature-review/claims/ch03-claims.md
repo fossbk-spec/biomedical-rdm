@@ -59,7 +59,7 @@
 - **Không có trích dẫn nào cho toàn bộ mục 3.2 (CDISC).** Mọi mô tả SDTM và ADaM ở C3-04 đến C3-10 hiện không được dẫn nguồn nào, trong khi chúng phụ thuộc phiên bản của SDTMIG và ADaMIG.
 - **Chương dựa nhiều vào phụ lục chuẩn thay vì nguồn gốc.** C3-13, C3-17, C3-22, C3-23 trỏ về `docs/appendices/standards.md`; phụ lục đó cần được xác minh từ nguồn chính thống.
 - **Mâu thuẫn giữa văn bản và sổ:** `ref_011` (C3-21).
-- **Hai kịch bản (C3-32, C3-33)** được trình bày như tình huống thật nhưng không có nguồn; theo quy tắc minh bạch nguồn gốc cần gắn nhãn minh họa.
+- **Hai kịch bản (C3-32, C3-33)** được trình bày như tình huống thật nhưng không có nguồn; theo quy tắc minh bạch nguồn gốc cần gắn nhãn minh họa. **Đã xử lý ngày 26/11/2026:** tiêu đề hai case study nay ghi "Tình huống giả định minh họa" (xem `editorial/changelog/ch03_20261126.md`); nhận định vẫn không có nguồn.
 
 ## Việc kế tiếp
 1. Ben duyệt bản kê này và các câu hỏi nghiên cứu của chương 3 trong giao thức v1.1.
