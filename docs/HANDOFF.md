@@ -24,12 +24,12 @@
 - **Q-C, ch00 và ch07 cũ thuộc học liệu đi kèm** (`product: companion` trong `chapter-map.yml`): mục 3.
 - **Mô hình hai lớp**: Phần cốt lõi + Sổ cập nhật (`updates/*.yml` + `schema.json` + trang sinh tự động; liên kết Markdown chuẩn, không dùng cú pháp neo riêng; chu kỳ rà theo loại: pháp lý 90–180 ngày, mẫu, chuẩn, công cụ, bằng chứng 180 ngày, URL 365 ngày): mục 4.
 - **Gate 1 của harvest** (phê duyệt có điều kiện): `docs/literature-review/harvest/PROTOCOL.md` mục 10.
-- **Chưa thực hiện bất kỳ quyết định cấu trúc nào ở mã nguồn** (đổi số chương, dựng `updates/`, viết `MONOGRAPH_OUTLINE`): mới là kế hoạch.
+- **Trạng thái thực hiện (26/11/2026):** đổi số chương (`ch07` cũ → `ch09`) và `MONOGRAPH_OUTLINE` đã làm ở mã nguồn sách (PR #44); chưa làm: dựng `updates/`, đồng bộ web khóa học (`biomedical-rdm-course`).
 
 ## 3. Việc kế tiếp (thứ tự đề xuất, mỗi việc một nhánh và một PR)
 
 1. Ghi các quyết định cấu trúc ở mục 2 vào `docs/DECISIONS.md`; viết `docs/syllabus/MONOGRAPH_OUTLINE_v1.0.0.md` (mục lục chính thức 9 chương, tiên quyết, mục tiêu năng lực cấp chương); cập nhật `editorial/chapter-map.yml` (trường `product`, thứ tự, tiên quyết ch04 → ch03); sửa lời văn vòng đời ở ch00, đề cương và Q1 của quiz tổng hợp.
-2. PR riêng đổi số chương (`ch07` cũ → `ch09`, đồng bộ `ch07` Tái lập và `ch08` Pháp lý; `ch06` giữ nguyên) bằng `git mv` cộng script thay thế có `assert`; cập nhật web khóa học (`scripts/sync_manifest.json`, menu VitePress), kèm chuyển hướng URL.
+2. PR riêng đổi số chương (`ch07` cũ → `ch09`, đồng bộ `ch07` Tái lập và `ch08` Pháp lý; `ch06` giữ nguyên) bằng `git mv` cộng script thay thế có `assert`; cập nhật web khóa học (`scripts/sync_manifest.json`, menu VitePress), kèm chuyển hướng URL. **Phần mã nguồn sách đã xong (PR #44); phần web khóa học là PR riêng ở repo `biomedical-rdm-course`, làm sau khi PR #44 merge.**
 3. Dựng Sổ cập nhật: `updates/`, `schema.json`, `check_updates.py`, sinh trang, mở rộng `check_volatile.py` quét đề cương và mục lục; thử trên ch01 và render cả Quarto lẫn VitePress.
 4. Nâng cấp ch03 trước (HL7, LOINC, SNOMED CT, CDISC, OMOP), rồi ch02, ch04, ch05, ch06; mỗi chương một PR theo mẫu ch01 (khung 11 mục, lưu `archive/chNN/`, `editorial/changelog/`).
 5. Viết ch07 (tái lập) và ch08 (pháp lý) chỉ sau khi có reviewer ngoài; pháp lý đi từ nguồn chính thống, không từ API học thuật.

@@ -20,7 +20,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 
 ## 2. Nội dung repo gốc `biomedical-rdm` (`main`)
 
-- **Giáo trình:** `docs/chapters/ch00_getting_started.md` (M0), `ch01`–`ch06` (6 chương đã sửa theo mẫu tách nội dung cố định/cập nhật), `ch07_completion_and_capstone.md` (quiz tổng hợp 10 câu, capstone tự đánh giá, bảng tự nghiệm thu); `docs/syllabus/BIOMEDICAL_RDM_FREE_SELF_PACED_SYLLABUS.md` (syllabus tự học, thay bản 2 tín chỉ v2.0.0; bản cũ còn trong lịch sử git). Tổng giáo trình + phụ lục + syllabus khoảng 44.000 từ.
+- **Giáo trình:** `docs/chapters/ch00_getting_started.md` (M0), `ch01`–`ch06` (6 chương đã sửa theo mẫu tách nội dung cố định/cập nhật), `ch09_completion_and_capstone.md` (học liệu đi kèm, đổi tên từ `ch07_completion_and_capstone.md` ở PR #44; quiz tổng hợp 10 câu, capstone tự đánh giá, bảng tự nghiệm thu); `docs/syllabus/BIOMEDICAL_RDM_FREE_SELF_PACED_SYLLABUS.md` (syllabus tự học, thay bản 2 tín chỉ v2.0.0; bản cũ còn trong lịch sử git). Tổng giáo trình + phụ lục + syllabus khoảng 44.000 từ.
 - **Phụ lục cập nhật** (`docs/appendices/`, đặt tên theo slug, có `reviewed`/`next_review`, bảng Trạng thái/URL/Ngày kiểm): `legal`, `funder-templates`, `retention`, `standards`, `redcap-lab-notes`, `fhir-omop-lab-notes`, `privacy-lab-notes`, `quality-ai-lab-notes`, `appendices-CHANGELOG`; sổ kiểm chứng pháp lý `docs/legal-verification.md`.
 - **Literature review:** `docs/literature-review/index.md` (tổng hợp tường thuật có kiểm chứng, **không** phải systematic review theo PRISMA; trích dẫn số `[n]`, 1..103) và `CHANGES.md`.
 - **Nguồn khóa học mini:** `docs/course-source/rdm-mini-course-source.md` + `README.md` (17 trang tách bằng marker `<!-- page: <path> -->`; quiz cuối khóa 10 câu đã làm lại: đáp án phân bố A3/B2/C3/D2, câu khái niệm không phụ thuộc ngày/số hiệu).
@@ -28,7 +28,7 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 - **Script:** `build_bib.py` (`--check`; 103 lõi + mục mở rộng), `verify_refs.py`, `audit_references.py`, `audit_nodoi_gemini.py` (kiểm trang nguồn cho mục không DOI, tư vấn), `check_quizzes.py` (kiểm quiz ch01–ch07 và mini-course trong `course-source`, gồm cấu trúc, số câu, phân bố đáp án, độ dài, từ tuyệt đối, giải thích cùng dòng và mẫu dễ hết hạn), `check_volatile.py` + `volatile_terms.txt` (cảnh báo khẳng định dễ hết hạn trong thân chương không trỏ phụ lục; quét ch00–ch07, phụ lục và **cả nhãn trong khối Mermaid**: thẻ HTML ngoài `<br/>`, số hiệu luật, phiên bản, năm; có self-test).
 - **Tài liệu quản trị:** `docs/DECISIONS.md`, `docs/PROJECT-STATE.md`, `docs/INPUT-INVENTORY.md`, `docs/DATA-USE.md`, `docs/plans/` (kế hoạch 10 ngày; kế hoạch tích hợp pipeline v1.1.0; kế hoạch tách nội dung cố định/cập nhật v1.1.0), `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE` (CC BY 4.0), `LICENSE-CODE` (MIT), `_quarto.yml` (sách Quarto 22+ trang: chương, phụ lục, sổ kiểm chứng, tài liệu dự án), `index.qmd`, `README.md`.
 - **Hướng dẫn dùng chung:** `docs/guides/diagrams-math-quiz-web.md` v1.1.0 (giữ Mermaid làm nguồn sơ đồ; mục 2.1 quy tắc thiết kế sơ đồ: chỉ `<br/>`, nhãn ngắn, không dữ kiện hết hạn, bảng 5 màu kèm tỷ số tương phản, kích thước mục tiêu ≤ ~950 × ~1000 px; công thức MathJax, quy tắc quiz chống lộ đáp án, quy trình triển khai web, checklist cho sách khác); bản dùng chung đã đồng bộ sang HDBS (`fossbk-spec/HDBS`, PR #6 và #7 đã merge, `knowledge_base/GUIDE_DIAGRAMS_MATH_QUIZ_WEB.md`).
-- **Quiz:** ch01–ch06 có mục `Quiz tự kiểm tra` (ch01 5, ch02 4, ch03 5, ch04 5, ch05 4, ch06 6 = 29 câu) và ch07 có quiz tổng hợp 10 câu: tổng 39 câu.
+- **Quiz:** ch01–ch06 có mục `Quiz tự kiểm tra` (ch01 5, ch02 4, ch03 5, ch04 5, ch05 4, ch06 6 = 29 câu) và `ch09_completion_and_capstone.md` có quiz tổng hợp 10 câu: tổng 39 câu.
 
 ## 3. Nội dung repo khóa học `biomedical-rdm-course` (main)
 
@@ -109,5 +109,5 @@ Quyết định đã chốt: **giữ tách hai repo**; khóa học **đăng ở 
 
 - **Đã merge vào `main`:** PR #27 (`editorial/` và 3 script kiểm), #28 (ch01 là chương mẫu khung 11 mục: tóm tắt và luận điểm, phạm vi, nền tảng, nội dung cốt lõi, bảng bằng chứng, ví dụ, thực hành, cạm bẫy, giới hạn, quiz, thuật ngữ và tham khảo), #29 (`scripts/lit_harvest.py`, harvest 17 chủ đề từ OpenAlex, Semantic Scholar, Europe PMC; `PROTOCOL.md` v1.0; độ nhạy chuỗi tìm 19/24 mẫu duy nhất).
 - **Quyết định cấu trúc đã chốt nhưng chưa thực hiện ở mã nguồn:** vòng đời 7 giai đoạn (bản ch01), đánh số chương B1, trường `product`, mô hình hai lớp (Phần cốt lõi + Sổ cập nhật). Chi tiết ở `docs/handoff-20261125/03-quy-cach-cu-the.md` và `docs/HANDOFF.md` mục 2–3.
-- **Chưa làm:** Gate 2 sàng lọc, đổi số chương, dựng `updates/`, `MONOGRAPH_OUTLINE`, nâng cấp ch02–ch07, hai chương mới.
+- **Chưa làm:** Gate 2 sàng lọc, đồng bộ đổi số chương sang web khóa học, dựng `updates/`, `MONOGRAPH_OUTLINE`, nâng cấp ch02–ch07, hai chương mới.
 - **Việc Ben cần quyết:** xem `docs/HANDOFF.md` mục 3, điểm 7.

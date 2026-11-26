@@ -16,7 +16,7 @@ book:
     - docs/chapters/ch04_quality_and_imputation.md
     - docs/chapters/ch05_privacy_and_deidentification.md
     - docs/chapters/ch06_fair_and_ai_ready.md
-    - docs/chapters/ch07_completion_and_capstone.md
+    - docs/chapters/ch09_completion_and_capstone.md
     - docs/appendices/legal.md
     - docs/appendices/funder-templates.md
     - docs/appendices/retention.md
