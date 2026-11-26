@@ -196,3 +196,7 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 ## 2026-11-26 — Gắn nhãn minh họa cho hai case study của ch03
 
 - Ben duyệt (26/11/2026) PR nhỏ chỉ gắn nhãn "Tình huống giả định minh họa" cho hai case study ở mục 4 của ch03 (C3-32, C3-33). Các khẳng định mạnh C3-03, C3-16, C3-34 giữ nguyên chờ nguồn.
+
+## 2026-11-26 — Đồng bộ sổ với văn bản cho ref_011
+
+- Ben duyệt (26/11/2026): `ref_011` chuyển từ `VERIFIED_UNAUDITED` sang `BIB_PENDING` trong `citation-audit.csv`. Lý do: văn bản ch03 (mục 3.4) đã ghi mục này lệch tiêu đề (mục ghi "Our journey" 2025, văn bản mô tả như *The Book of OHDSI*) và giữ `BIB_PENDING`, trong khi sổ ghi `VERIFIED_UNAUDITED`; kiểm trang cũng chưa kiểm được. Đây là đồng bộ sổ theo cờ đã có trong văn bản, không phải bằng chứng mới. Số liệu trong `PROJECT-STATE.md`: 102 `VERIFIED_UNAUDITED`, 10 `BIB_PENDING`, 3 `PENDING_UNDETERMINED`.
