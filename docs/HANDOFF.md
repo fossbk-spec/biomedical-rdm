@@ -1,5 +1,7 @@
 # Bàn giao để tiếp tục trên máy khác
 
+> **Bản mới nhất: `docs/HANDOFF-20261126.md`** (trạng thái PR, quyết định của Ben ngày 26/11/2026, việc hoãn, phát hiện chưa xử lý). Tài liệu này giữ phần mô tả 25/11/2026.
+
 **Ngày:** 25/11/2026 · **Người nghiệm thu:** TS. Hoàng Quang Huy (Ben)
 **Mục đích:** một điểm vào duy nhất để tiếp tục dự án (biến Biomedical RDM thành sách chuyên khảo) mà không phải dựng lại ngữ cảnh. Trạng thái chi tiết hơn: `docs/PROJECT-STATE.md`; nhật ký quyết định: `docs/DECISIONS.md`.
 
