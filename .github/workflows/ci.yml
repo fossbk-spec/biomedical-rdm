@@ -1,0 +1,50 @@
+# CI của Biomedical RDM: chạy đúng các script mà editorial/review-policy.md yêu cầu ghi trong PR.
+# Chỉ dùng thư viện chuẩn của Python. CI không thay thế duyệt của Ben và không chứng minh nội dung khoa học.
+
+name: RDM checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Structure (self-test, then check)
+        run: |
+          python scripts/check_structure.py --self-test
+          python scripts/check_structure.py --check
+      - name: Glossary (self-test, then check)
+        run: |
+          python scripts/check_glossary.py --self-test
+          python scripts/check_glossary.py --check
+      - name: Closed citation keys and cross-references (self-test, then check)
+        run: |
+          python scripts/check_crossrefs.py --self-test
+          python scripts/check_crossrefs.py --check
+      - name: Quizzes
+        run: python scripts/check_quizzes.py --check
+      - name: Volatile terms and appendix review dates
+        run: python scripts/check_volatile.py --check
+      - name: BibTeX archives and citation-audit mapping
+        run: python scripts/build_bib.py --check
+      - name: Reference audit, and the committed report must be current (run date ignored)
+        run: |
+          python scripts/audit_references.py
+          git diff --ignore-matching-lines='Ngày chạy' --exit-code -- references/AUDIT-REPORT.md
+      - name: Whitespace errors in lines changed by the PR
+        if: github.event_name == 'pull_request'
+        run: git diff --check "origin/${{ github.base_ref }}...HEAD"
