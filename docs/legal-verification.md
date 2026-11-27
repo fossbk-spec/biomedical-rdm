@@ -61,3 +61,17 @@ Sau khi hoàn tất bảng trên, hai chi tiết được tải lại và đối
 - TCVN 14423: tìm kiếm ngày 26/11 chỉ thấy tiêu chuẩn chung về an ninh mạng hệ thống thông tin (bản 2025; bản 2026 chỉ qua một trang thương mại); không thấy nguồn nào gắn tiêu chuẩn này với "y tế số". Chưa có số hiệu và phạm vi chính xác.
 - Zuberbier và cs. 2026 (*Allergy*, DOI 10.1111/all.70210) và bản 2022 (DOI 10.1111/all.15090): trang nhà xuất bản trả lỗi 403; chỉ đọc được bài tóm tắt thứ cấp (HCPLive, 06/02/2026) không nhắc montelukast. Không xác nhận nội dung về dupilumab, remibrutinib, montelukast ở mức bậc điều trị.
 - URL `vbpl.vn/.../VanBanGoc_663505.pdf` trả 404 và `vbpl.moj.gov.vn` không phân giải ngày 26/11/2026; không dùng làm nguồn đã đọc lại.
+
+## Đối chiếu bổ sung 27/11/2026 (phục vụ nhập bản thảo v2)
+
+**Cách đọc:** tải bản PDF ký số QĐ 1308/QĐ-TTg từ cổng datafiles.chinhphu.vn (có lớp chữ, đọc được trực tiếp); các nguồn khác chỉ qua kết quả tìm kiếm.
+
+| Văn bản | Nội dung đã đọc | URL | Trạng thái |
+|---|---|---|---|
+| Quyết định 1308/QĐ-TTg | Số hiệu 1308/QĐ-TTg; Hà Nội, 18/07/2026; "Phê duyệt Chiến lược dữ liệu quốc gia giai đoạn 2026 - 2030, tầm nhìn đến năm 2045"; hiệu lực thi hành kể từ ngày ký ban hành; căn cứ gồm Luật Bảo vệ dữ liệu cá nhân ngày 26/06/2025 | https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/1308_qd-ttg_18072026_3-signed.signed.pdf | XÁC NHẬN (đã đọc trang đầu và Điều 1–3; chưa đọc hết phụ lục) |
+| Nghị định 102/2025/NĐ-CP | Quản lý dữ liệu y tế; ban hành 13/05/2025; hiệu lực 01/07/2025 (theo các trang luatvietnam.vn, thuvienphapluat.vn, hoatieu.vn qua kết quả tìm kiếm) | chưa có URL chính thống đã đọc | CHƯA XÁC NHẬN |
+| Quyết định 3218/QĐ-BYT | Chưa tìm được bản chính thức; chỉ có tin ngày 01/11/2026 (lsvn.vn) và thông báo triển khai của địa phương | — | KHÔNG TÌM ĐƯỢC NGUỒN CHÍNH THỐNG |
+
+**Lệch với bản thảo v2:** bản thảo v2 ghi QĐ 1308/QĐ-TTg và QĐ 3218/QĐ-BYT là năm 2024 và gắn nhãn `VERIFIED`; tra cứu cho thấy cả hai thuộc năm 2026. Danh mục `references.bib` của kho đã ghi năm 2026; bản v2 không được sao chép sang kho.
+
+**Chưa làm:** đọc toàn văn Nghị định 102/2025/NĐ-CP từ nguồn chính thống; xác định quan hệ giữa Nghị định 102/2025/NĐ-CP, Luật 91/2025/QH15 và Nghị định 356/2025/NĐ-CP đối với dữ liệu sức khỏe nghiên cứu.
