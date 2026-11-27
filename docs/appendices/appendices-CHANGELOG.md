@@ -1,5 +1,5 @@
 ---
-reviewed: 2026-11-25
+reviewed: 2026-11-27
 next_review: 2027-05-25
 ---
 
@@ -17,3 +17,4 @@ next_review: 2027-05-25
 | 2026-11-21 | Bổ sung ghi chú Lab 4/6; chốt trạng thái nguồn DQD, RO-Crate, DataCite và Zenodo; ghi rõ số DQD minh họa và giới hạn preprint. | CONTENT_PENDING | [Ghi chú Lab 4/6](quality-ai-lab-notes.md); [Phụ lục standards](standards.md) | 2026-11-21 | Ben |
 | 2026-11-25 | Bổ sung phụ lục `case-study-drmayday` (case study dự án thật DrMayDay, v2): vòng đời 7 giai đoạn áp vào dự án, SOP chụp ảnh + gán nhãn, dataset theo mô hình, QC trước huấn luyện, sơ đồ pipeline 8 chặng; sửa 3 lỗi (giả danh hóa, UAS7 miền QS, căn cứ Luật 91/2025 + NĐ 356/2025). | VERIFIED_UNAUDITED | [Phụ lục case study DrMayDay](case-study-drmayday.md) | 2026-11-25 | Ben |
 | 2026-11-26 | Đối chiếu nguồn cho phụ lục `case-study-drmayday`: đọc văn bản gốc Luật 91/2025 (Điều 21–23, 38–39), Nghị định 356/2025 (Điều 39, 42), Thông tư 33/2025 (Điều 1–2, Phụ lục STT 15/39/40/44); chạy lại kiểm thử rule engine ở repo dự án; hạ trạng thái các mục chưa kiểm chứng (TCVN 14423, guideline 2026, tên đơn vị nhận DPIA). Thêm mức 10 năm cho bệnh án nội trú/ngoại trú. | VERIFIED_UNAUDITED | [Sổ kiểm chứng](../legal-verification.md); [Phụ lục case study](case-study-drmayday.md) | 2026-11-26 | Ben (chờ duyệt PR) |
+| 2026-11-27 | Đối chiếu bổ sung `legal`: đọc bản PDF gốc Quyết định 1308/QĐ-TTg (18/07/2026) và nâng lên `VERIFIED_UNAUDITED`; tách dòng chung Nghị quyết 57/QĐ 1308/QĐ 3218 thành từng dòng; thêm Nghị định 102/2025/NĐ-CP (quản lý dữ liệu y tế) ở `CONTENT_PENDING`; ghi lệch năm với bản thảo v2. | VERIFIED_UNAUDITED / CONTENT_PENDING | [Sổ kiểm chứng](../legal-verification.md) | 2026-11-27 | Ben |

@@ -1,5 +1,5 @@
 ---
-reviewed: 2026-11-21
+reviewed: 2026-11-27
 next_review: 2027-05-21
 ---
 
@@ -34,4 +34,7 @@ Bản này là bảng đọc ngắn cho chương 1. Sổ kiểm chứng, giới 
 |---|---|---|---|---|
 | Nghị quyết 72-NQ/TW | VERIFIED | https://ubkttw.vn/tai-lieu-tu-lieu/bo-chinh-tri/nghi-quyet-so-72-nq-tw-ngay-09-9-2025-cua-bo-chinh-tri-ve-mot-so-giai-phap-dot-pha-tang-cuong-bao-ve-cham-soc-va-nang-ca.html | 2026-11-21 | Định hướng chính sách, không phân loại là văn bản pháp luật. |
 | Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 | VERIFIED_UNAUDITED | https://vanban.chinhphu.vn/?classid=1&docid=214590&pageid=27160 | 2026-11-21 | Nguồn Chính phủ; trạng thái chỉ xác nhận đã đọc trang văn bản, chưa xác nhận toàn bộ nội dung. |
-| Nghị quyết 57/NQ-TW, Quyết định 1308/QĐ-TTg, Quyết định 3218/QĐ-BYT | CONTENT_PENDING | [CẦN KIỂM CHỨNG] | 2026-11-21 | Chưa đọc nguồn chính thức trong lượt này; chỉ xem xét như định hướng chính sách nếu được xác minh. |
+| Nghị quyết 57-NQ/TW (22/12/2024) | VERIFIED_UNAUDITED | https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-ve-dot-pha-phat-trien-khoa-hoc-cong-nghe-doi-moi-sang-tao-va-chuyen-doi-so-quoc-gia-119241224180048642.htm | 2026-11-21 | Sổ kiểm chứng xác nhận số hiệu, ngày ban hành và chủ đề; không suy rộng nội dung. |
+| Quyết định 1308/QĐ-TTg, ban hành 18/07/2026 (Chiến lược dữ liệu quốc gia giai đoạn 2026–2030, tầm nhìn 2045) | VERIFIED_UNAUDITED | https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/1308_qd-ttg_18072026_3-signed.signed.pdf | 2026-11-27 | Đã đọc bản PDF gốc (21 trang): số hiệu, ngày ký, trích yếu, hiệu lực kể từ ngày ký. Chưa đọc hết nội dung chi tiết; không suy ra nghĩa vụ cho cơ sở y tế. |
+| Quyết định 3218/QĐ-BYT (quy chế Cổng dữ liệu sức khỏe của Bộ Y tế) | CONTENT_PENDING | [CẦN KIỂM CHỨNG] | 2026-11-27 | Ngày ban hành 14/10/2026 theo thông báo của cơ quan nhà nước địa phương; chưa có bản quyết định chính thức, chưa xác nhận hiệu lực và nội dung. |
+| Nghị định 102/2025/NĐ-CP (quản lý dữ liệu y tế) | CONTENT_PENDING | [CẦN KIỂM CHỨNG] | 2026-11-27 | Theo các trang văn bản thứ cấp: ban hành 13/05/2025, hiệu lực 01/07/2025, quy định về dữ liệu y tế số và cơ sở dữ liệu quốc gia về y tế. Chưa có bản chính thức đã đọc; không dẫn điều khoản. |
