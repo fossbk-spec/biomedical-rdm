@@ -15,6 +15,16 @@ Sách chuyên khảo là nguồn chân lý; quiz, lab và mini-course là lớp 
 - Không đổi ý nghĩa khoa học, pháp lý hoặc phạm vi của chương chỉ vì lý do văn phong. Nội dung chưa kiểm chứng giữ nguyên cờ `[CẦN KIỂM CHỨNG]`, `CONTENT_PENDING`, `BIB_PENDING` hoặc `BLOCKED_INPUT`.
 - Số liệu, phiên bản, ngày hiệu lực, URL và quy định có thể thay đổi phải nêu ngày kiểm và đặt ở phần cập nhật/phụ lục theo kế hoạch cố định/cập nhật.
 
+## Khung chương v2 (hai tầng)
+
+Chương có cờ `frame: v2` trong `editorial/chapter-map.yml` dùng khung hai tầng thay cho khung 11 mục (Ben duyệt 27/11/2026). Chương không có cờ giữ khung cũ. `scripts/check_structure.py` kiểm theo cờ này.
+
+- Mục không đánh số: `## Lời mở đầu` (đầu chương) và `## Tài liệu tham khảo` (sau mục X.5).
+- Mục cấp 2 đánh số `## X.1.` đến `## X.5.`, X là số chương, liên tục, không thiếu và không thêm. `X.1.` mang nhãn `[Cơ sở]`; `X.2.` đến `X.4.` mang nhãn `[Nâng cao & Case Study]`; `X.5.` là tổng kết, thảo luận, thuật ngữ mới.
+- Mục cấp 3 đánh số `X.k.m.` phải thuộc đúng mục `X.k.`; tiêu đề cấp 3 không đánh số được phép.
+- Nhật ký thay đổi chỉ ở `editorial/changelog/`, không đặt trong thân chương.
+- Quiz giữ định dạng của kho (`scripts/check_quizzes.py`).
+
 ## Hình, bảng, công thức và trích dẫn
 
 - Caption dùng dạng `**Hình C.k. ...**` hoặc `**Bảng C.k. ...**`, trong đó `C` là số chương và `k` là số thứ tự trong chương (ví dụ `Hình 2.3`). Không dùng tiểu hình `a`/`b`; mỗi hình có số riêng. Đánh số theo thứ tự xuất hiện trong chương (quyết định của Ben, 24/11/2026).
