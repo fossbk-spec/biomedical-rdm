@@ -39,6 +39,10 @@ jobs:
         run: python scripts/check_quizzes.py --check
       - name: Volatile terms and appendix review dates
         run: python scripts/check_volatile.py --check
+      - name: No AI-tool names or secret-like strings (self-test, then check)
+        run: |
+          python scripts/check_sensitive.py --self-test
+          python scripts/check_sensitive.py --check
       - name: BibTeX archives and citation-audit mapping
         run: python scripts/build_bib.py --check
       - name: Reference audit, and the committed report must be current (run date ignored)
