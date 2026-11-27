@@ -377,8 +377,8 @@ def main() -> int:
         replace_blocked_flag()
     n334, _ = check_bib(OUT334, 334)
     # The canonical bibliography currently contains 103 core entries plus
-    # chapter-only entries 104–115 added by approved chapter revisions.
-    n103, pending = check_bib(OUT103, 115)
+    # chapter-only entries 104–125 added by approved chapter revisions.
+    n103, pending = check_bib(OUT103, 125)
     sources = source_entries()
     counts = {k: sum(1 for e in sources if k in e) for k in ("pmid", "pmcid", "doi")}
     print(f"references-334.bib: {n334} entries; pmid={counts['pmid']} pmcid={counts['pmcid']} doi={counts['doi']}")

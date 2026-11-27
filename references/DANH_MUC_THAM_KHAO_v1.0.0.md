@@ -1,7 +1,7 @@
 # Danh mục tài liệu tham khảo của sách chuyên khảo Biomedical RDM
 
 **Tác giả sách:** TS. Hoàng Quang Huy (Ben) · **Phiên bản:** 1.0.0 (dự thảo để duyệt) · **Ngày:** 26/11/2026
-**Sinh từ:** `main` ở `69fc2ee`: `references/references.bib` (115 mục), `references/citation-audit.csv`, các khóa `ref_NNN` trong `docs/chapters/ch0*.md` và số `[n]` trong `docs/literature-review/index.md`.
+**Sinh từ:** `main` ở `74b2c3b`: `references/references.bib` (125 mục), `references/citation-audit.csv`, các khóa `ref_NNN` trong `docs/chapters/ch0*.md` và số `[n]` trong `docs/literature-review/index.md`.
 
 **Đọc kỹ trước khi dùng:**
 - Danh mục này là **bản trình bày lại của `references.bib`**; không thêm, không sửa nguồn nào. Định dạng dạng APA rút gọn do công cụ sinh, **chưa phải bản biên tập cuối**.
@@ -13,14 +13,14 @@
 
 | Chỉ tiêu | Số mục |
 |---|---:|
-| Tổng số mục trong `references.bib` | 115 |
-| Đã đối chiếu, chưa kiểm toán (`VERIFIED_UNAUDITED`) | 102 |
-| Thiếu trường thư mục, cần bổ sung (`BIB_PENDING`) | 10 |
+| Tổng số mục trong `references.bib` | 125 |
+| Đã đối chiếu, chưa kiểm toán (`VERIFIED_UNAUDITED`) | 111 |
+| Thiếu trường thư mục, cần bổ sung (`BIB_PENDING`) | 11 |
 | Chưa xác định (`PENDING_UNDETERMINED`) | 3 |
 | Được trích bằng khóa `ref_NNN` trong ít nhất một chương hiện có | 61 |
-| Chỉ xuất hiện trong bản tổng hợp literature review (không có khóa trong chương) | 54 |
-| Thiếu tác giả hoặc năm trong `.bib` | 6 |
-| Có DOI | 61 |
+| Chỉ xuất hiện trong bản tổng hợp literature review (không có khóa trong chương) | 64 |
+| Thiếu tác giả hoặc năm trong `.bib` | 7 |
+| Có DOI | 69 |
 
 ## 2. Danh mục theo thứ tự số `[n]`
 
@@ -484,6 +484,46 @@
 
 > `ref_115` · Đã đối chiếu, chưa kiểm toán · dùng ở: Ch.5
 
+**[116]** [thiếu tác giả]. (2021). Biomedical Informatics: Computer Applications in Health Care and Biomedicine. Springer. https://doi.org/10.1007/978-3-030-58721-5 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_116` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[117]** Prokscha, S. (2024). Practical Guide to Clinical Data Management. CRC Press. https://doi.org/10.1201/9781003395621 (BIB_PENDING; bản thảo v2 ghi 4th ed. 2021 với DOI 10.1201/9780429446252 (không phân giải, doi.org 404). Crossref 27/11/2026 có các bản 2006, 2011 (10.1201/b12832), 2024 (10.1201/9781003395621); chưa xác định bản in và năm đúng.)
+
+> `ref_117` · Thiếu trường thư mục, cần bổ sung · dùng ở: chưa thấy trích dẫn · cần xử lý: ban in/nam
+
+**[118]** Little, R. J. A., & Rubin, D. B. (2019). Statistical Analysis with Missing Data. John Wiley & Sons. https://doi.org/10.1002/9781119482260 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_118` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[119]** van Buuren, S. (2018). Flexible Imputation of Missing Data. Chapman and Hall/CRC. https://doi.org/10.1201/9780429492259 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_119` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[120]** El Emam, K. (2013). Guide to the De-Identification of Personal Health Information. Auerbach Publications (CRC Press). https://doi.org/10.1201/b14764 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_120` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[121]** Dwork, C., & Roth, A. (2014). The algorithmic foundations of differential privacy. *Foundations and Trends in Theoretical Computer Science*, 9(3–4), 211–407. https://doi.org/10.1561/0400000042 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_121` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[122]** National Academies of Sciences, Engineering, and Medicine. (2019). Reproducibility and Replicability in Science. National Academies Press. https://doi.org/10.17226/25303 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27. Khóa bị thiếu ở bản thảo v2 (được trích ở ch07, ch09).)
+
+> `ref_122` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[123]** MIT Critical Data. (2016). Secondary Analysis of Electronic Health Records. Springer. https://doi.org/10.1007/978-3-319-43742-2 (VERIFIED_UNAUDITED; Crossref checked 2026-11-27.)
+
+> `ref_123` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[124]** Desai, T., Ritchie, F., & Welpton, R. (2016). Five Safes: Designing data access for research. (VERIFIED_UNAUDITED; tiêu đề, tác giả, loạt số 1601 khớp kết quả tìm kiếm kho UWE ngày 27/11/2026; chưa mở toàn văn.)
+
+> `ref_124` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
+**[125]** Observational Health Data Sciences and Informatics (OHDSI). (2021). The Book of OHDSI: Observational Health Data Sciences and Informatics. OHDSI. https://ohdsi.github.io/TheBookOfOhdsi/ (VERIFIED_UNAUDITED; URL trả 200 và tiêu đề trang khớp ngày 27/11/2026; chưa có danh sách tác giả/biên tập. Bản thảo v2 dùng khóa ref_011 cho nguồn này; ở kho khóa ref_011 là "Our journey" (BIB_PENDING), nên chương v2 khi nhập phải đổi ref_011 thành ref_125.)
+
+> `ref_125` · Đã đối chiếu, chưa kiểm toán · dùng ở: chưa thấy trích dẫn
+
 ## 3. Chỉ mục theo chương
 
 Chỉ gồm các mục có khóa `ref_NNN` trong tệp chương hiện có. Chương 7, 8, 9 chưa viết nên chưa có.
@@ -497,7 +537,8 @@ Chỉ gồm các mục có khóa `ref_NNN` trong tệp chương hiện có. Chư
 
 ## 4. Việc còn mở
 
-- 13 mục chưa ở trạng thái `VERIFIED_UNAUDITED`: [1], [2], [3], [11], [30], [48], [49], [61], [68], [89], [95], [100], [101].
+- 14 mục chưa ở trạng thái `VERIFIED_UNAUDITED`: [1], [2], [3], [11], [30], [48], [49], [61], [68], [89], [95], [100], [101], [117].
 - Chưa chạy kiểm toán độc lập (`scripts/audit_references.py` ghi nhận trạng thái; kiểm trang chỉ là đối chiếu, không đổi cột `status`).
 - Chương 7, 8, 9 chưa có nguồn; chương 8 phải đi từ văn bản pháp luật chính thống (xem `docs/legal-verification.md`), không từ API học thuật.
-- 334 mục của bản tổng hợp gốc nằm ở `references/references-334.bib`; chỉ 115 mục trong số đó đã vào danh mục đóng này.
+- 334 mục của bản tổng hợp gốc nằm ở `references/references-334.bib`; chỉ 125 mục trong số đó đã vào danh mục đóng này.
+
