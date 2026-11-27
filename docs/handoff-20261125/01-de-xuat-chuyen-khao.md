@@ -2,7 +2,7 @@
 
 **Tác giả:** nhóm biên soạn · **Phiên bản:** 1.1.0 (thêm mục 13: quyết định của Ben) · **Ngày:** 24/11/2026
 **Người quyết định:** TS. Hoàng Quang Huy (Ben)
-**Căn cứ đã đọc:** `HDBS/QUY_TRINH_BIEN_SOAN_TEXTBOOK_CHUAN.md`, `HDBS/HUONG_DAN_TOAN_DIEN_BIEN_SOAN_TEXTBOOK.md`, `HDBS/AGENTS.md`, các mục lục của `HDBS/07` và `HDBS/08`; `HMYT/editorial/` (`HMYT_Quy_trinh_chinh_Living_Textbook_v2.0.md`, `review-policy.md`, `chapter-map.yml`, `TIEN_DO.md`), `HMYT/CLAUDE.md`; cấu trúc và số từ của `HMYT/chapters`; trạng thái `biomedical-rdm` (main @ 57b54b1 khi viết; đã lỗi thời, nay main @ aef5ae2, xem mục 15).
+**Căn cứ đã đọc:** `HDBS/QUY_TRINH_BIEN_SOAN_TEXTBOOK_CHUAN.md`, `HDBS/HUONG_DAN_TOAN_DIEN_BIEN_SOAN_TEXTBOOK.md`, `HDBS/AGENTS.md`, các mục lục của `HDBS/07` và `HDBS/08`; `HMYT/editorial/` (`HMYT_Quy_trinh_chinh_Living_Textbook_v2.0.md`, `review-policy.md`, `chapter-map.yml`, `TIEN_DO.md`), tệp hướng dẫn tác nhân của `HMYT/`; cấu trúc và số từ của `HMYT/chapters`; trạng thái `biomedical-rdm` (main @ 57b54b1 khi viết; đã lỗi thời, nay main @ aef5ae2, xem mục 15).
 **Giới hạn:** `emr-book` trên máy chỉ có bản đã xuất bản (nhánh `gh-pages`, 8 chương + danh mục viết tắt + lời nói đầu); không có nguồn Markdown, nên tôi chỉ đọc cấu trúc xuất bản và danh sách script `HDBS/scripts/emr/`, **chưa đọc nội dung hay quy trình nội bộ của EMR**. Phần nào dựa vào EMR đều ghi rõ là suy ra từ cấu trúc.
 
 ## 1. Kết luận ngắn
@@ -50,7 +50,7 @@ Biomedical RDM hiện là **giáo trình tự học kèm mini-course** (khoảng
 
 **Không sao chép:**
 - Khung 16 mục (Algorithm, Data & Model Pipeline, Research Challenge, 40 câu Bloom mỗi chương) và ma trận trọng số của HMYT vốn thiết kế cho học máy. Với RDM, chương về pháp lý, DMP hay chuẩn dữ liệu không có "thuật toán" để mô tả. Thay bằng khung riêng ở mục 5.
-- Chu trình "5 giờ/chương" gắn với hạn mức người soạn và Gemini viết Draft 1: RDM đã có nội dung; việc cần làm là nâng cấp và kiểm chứng, không viết mới hàng loạt. Gemini chỉ giữ vai trò kiểm trang nguồn mục không DOI (đã có) và tư vấn.
+- Chu trình "5 giờ/chương" gắn với hạn mức người soạn và mô hình AI viết Draft 1: RDM đã có nội dung; việc cần làm là nâng cấp và kiểm chứng, không viết mới hàng loạt. Mô hình AI chỉ giữ vai trò kiểm trang nguồn mục không DOI (đã có) và tư vấn.
 - Quy trình HMYT bản 2.0 tự ghi "Đề xuất triển khai; cần đối chiếu cấu hình" và có phần đa tác giả (CODEOWNERS, nhiều người duyệt). RDM hiện chỉ có Ben làm người duyệt. Chỉ áp dụng phần đa tác giả khi Ben chốt có đồng tác giả.
 
 ## 4. Vì sao "chuyên khảo" khác "giáo trình tự học"
@@ -115,7 +115,7 @@ Với mỗi chương, lập bảng: nhận định có số liệu, quy định 
 - Ben: quyết định định vị, mục lục, case study, người duyệt chuyên môn, merge.
 - người soạn: brief, thẩm định mục lục, review, audit nhận định, chốt chuẩn.
 - bên thực hiện: triển khai script, viết lại chương theo brief, chạy kiểm tra.
-- Gemini: chỉ kiểm trang nguồn mục không DOI và tư vấn, đã có trong repo.
+- Mô hình AI: chỉ kiểm trang nguồn mục không DOI và tư vấn, đã có trong repo.
 - Mọi bản viết lại của AI qua PR; không ai merge chính PR của mình trừ khi Ben đã giao quyền (RDM hiện do Ben quyết).
 
 ## 7. Hạ tầng kiểm định cần thêm (script)
@@ -252,4 +252,4 @@ Các số này chỉ cho biết chủ đề nào mỏng, không chứng minh ch�
 3. Vai trò ch00/ch07 (Q-C, đề xuất C1: lời nói đầu và chương tích hợp, quiz và capstone sang học liệu đi kèm).
 4. Mô hình hai lớp: tên (D1), chu kỳ theo rủi ro (D2), schema và định dạng (D3), kết quả nghiên cứu (D4), bản in (D5), pilot trên ch01 (D6).
 5. Reviewer bắt buộc cho chương pháp lý và tái lập; tiêu chí độc lập và xung đột lợi ích.
-6. Các tệp chưa theo dõi trong clone chính (case study DrMayDay, DMPTool, quiz Gemini cũ): có thuộc dự án và sẽ vào sách không.
+6. Các tệp chưa theo dõi trong clone chính (case study DrMayDay, DMPTool, quiz tạo tự động cũ): có thuộc dự án và sẽ vào sách không.
