@@ -1,0 +1,7 @@
+# Danh sách cho phép của scripts/check_sensitive.py: <glob đường dẫn><TAB><biểu thức khớp dòng>.
+# Chỉ liệt kê lượt khớp hợp lệ: tên tổ chức hoặc tác giả trong tài liệu thư mục, mã gọi một API cụ thể, tên tệp/nhánh lịch sử.
+docs/chapters/ch06_fair_and_ai_ready.md	OpenAIRE
+docs/literature-review/harvest/*.md	OpenAIRE|ChatGPT|Claudel
+scripts/audit_nodoi_gemini.py	.*
+docs/DECISIONS.md	audit[_-]nodoi[_-]gemini
+docs/PROJECT-STATE.md	audit[_-]nodoi[_-]gemini|audit/nodoi-gemini
