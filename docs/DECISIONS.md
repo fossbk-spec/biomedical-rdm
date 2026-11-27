@@ -81,8 +81,8 @@
 
 ## 2026-11-21 — Audit trang nguồn cho 47 mục không DOI
 
-- Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, Gemini chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
-- `citation-audit.csv` thêm cột `page_check`, `page_check_note` (chỉ để tham khảo). **Cột `status` không đổi** do kiểm tra trang: kết quả này không đủ căn cứ để đổi trạng thái theo định nghĩa ở trên. Chỉ trang HTML được đối chiếu; PDF và trang chặn truy cập là `NOT_CHECKED` (script không trích xuất PDF). Sửa sau review của Codex: regex lọc script/style, chặn URL không phải http(s) hoặc IP nội bộ, điền `found_url`.
+- Kết quả đối chiếu trang web (script `scripts/audit_nodoi_gemini.py`, mô hình AI chỉ so nội dung trang đã tải): `references/audit-nodoi-gemini.csv`. Đây là kiểm tra danh tính trang nguồn, không xác nhận nội dung khẳng định.
+- `citation-audit.csv` thêm cột `page_check`, `page_check_note` (chỉ để tham khảo). **Cột `status` không đổi** do kiểm tra trang: kết quả này không đủ căn cứ để đổi trạng thái theo định nghĩa ở trên. Chỉ trang HTML được đối chiếu; PDF và trang chặn truy cập là `NOT_CHECKED` (script không trích xuất PDF). Sửa sau review độc lập: regex lọc script/style, chặn URL không phải http(s) hoặc IP nội bộ, điền `found_url`.
 ## 2026-11-21 — Tách nội dung cố định/cập nhật cho chương 2
 
 **Ngày:** 21/11/2026 · **Người quyết định:** Ben
@@ -191,7 +191,7 @@ Cơ sở và lý do: `docs/handoff-20261125/` (đề xuất, thẩm định mụ
 
 - **Ben duyệt Gate 1 v1.1, bốn câu hỏi RQ3.1 đến RQ3.4 và bản kê ch03 (26/11/2026).** Ben duyệt các lựa chọn: scoping review PRISMA-ScR kèm sổ nguồn chính thống; đăng ký OSF trước Gate 2; thứ tự ch03, ch02, ch04, ch05, ch06 (FAIR), rồi ch07 và ch08; sàng lọc bằng hai AI độc lập, mô hình phân xử và người duyệt.
 - Giao thức cập nhật ở `docs/literature-review/harvest/PROTOCOL.md` mục 12; bản kê nhận định ch03 ở `docs/literature-review/claims/ch03-claims.md` (34 nhận định, 17 ưu tiên A, 27 chưa có trích dẫn).
-- **Phân xử bất đồng giữa hai mô hình sàng lọc do người duyệt xử lý** (không dùng mô hình AI), vì G1-3 đòi độc lập với người soạn chuỗi tìm và không thể bảo đảm điều đó cho Claude. Ngoại lệ cần Ben đồng ý bằng văn bản. Chưa đăng ký OSF, chưa chạy Gate 2.
+- **Phân xử bất đồng giữa hai mô hình sàng lọc do người duyệt xử lý** (không dùng mô hình AI), vì G1-3 đòi độc lập với người soạn chuỗi tìm và không thể bảo đảm điều đó cho tác nhân soạn giao thức. Ngoại lệ cần Ben đồng ý bằng văn bản. Chưa đăng ký OSF, chưa chạy Gate 2.
 
 ## 2026-11-26 — Gắn nhãn minh họa cho hai case study của ch03
 

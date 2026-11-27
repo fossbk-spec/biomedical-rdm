@@ -148,7 +148,7 @@ Các tệp `docs/appendices/legal.md`, `retention.md`, `funder-templates.md`, `s
 |---|---|
 | `docs/chapters/rdm-case-study-drmayday-workflow.md`, `rdm-dua-case-study-drmayday-vao-khoa-hoc.md` | Giữ chưa theo dõi cho tới khi Ben quyết định có công bố hay không (cần sự đồng ý); không đưa vào mục lục |
 | `docs/chapters/rdm-phu-luc-b-bo-sung-dmptool-templates.md` | Là bản nháp kết quả kiểm DMPTool; có giá trị cho `updates/funder.md` (mẫu NIH 2026); nên được xử lý khi pilot sổ |
-| `docs/quizzes/` (ngân hàng Gemini cũ), `docs/rdm-khoa-hoc-free-self-paced.md` | Đề xuất chuyển vào `archive/` hoặc xóa sau khi Ben xác nhận; hiện không thuộc kế hoạch |
+| `docs/quizzes/` (ngân hàng tạo tự động cũ), `docs/rdm-khoa-hoc-free-self-paced.md` | Đề xuất chuyển vào `archive/` hoặc xóa sau khi Ben xác nhận; hiện không thuộc kế hoạch |
 
 ## 8. Gói quyết định cần Ben duyệt (một lần)
 1. Q-A: lời văn vòng đời và bảng ánh xạ (mục 1).
